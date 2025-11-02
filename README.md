@@ -6,9 +6,9 @@
 
 A lightweight React components library built with **TypeScript**, React 19, HTML, and CSS configured specifically for whatever me and my friends need.
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue.svg)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-19.0-61dafb.svg)](https://reactjs.org/)
-[![Tested](https://img.shields.io/badge/Tests-318%20passing-success.svg)](./src)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19.2-61dafb.svg)](https://reactjs.org/)
+[![Tested](https://img.shields.io/badge/Tests-293%20passing-success.svg)](./src)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
 ## Features
@@ -73,10 +73,10 @@ We use CSS variables for theming. It is all centralized in `src/styles/variables
 ```css
 /* In your app's CSS */
 :root {
-  --color-primary-500: #8b5cf6; /* Purple instead of blue */
-  --color-success-500: #10b981; /* Different green */
-  --radius-md: 8px; /* More rounded corners */
-  --font-family-base: "Inter", sans-serif; /* Custom font */
+  --color-primary-500: #8b5cf6;
+  --color-success-500: #10b981;
+  --radius-md: 8px;
+  --font-family-base: "Inter", sans-serif;
 }
 ```
 
@@ -163,7 +163,7 @@ Anyone who wants to is welcome to contribute, just try and do the following:
 
 MIT © Mark Foster
 
-## 🔗 Links
+## Links
 
 - [Report Issues](https://github.com/markfoster314/marduk/issues)
 - [NPM Package](https://www.npmjs.com/package/@markfoster314/marduk)
