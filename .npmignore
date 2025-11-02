@@ -1,0 +1,53 @@
+# Source files
+src/
+.storybook/
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+**/setupTests.ts
+jest.config.js
+coverage/
+
+# Documentation
+internal/
+docs/
+*.md
+!README.md
+!CHANGELOG.md
+!LICENSE.md
+!dist/**/*.md
+
+# Development files
+rollup.config.js
+.babelrc
+tsconfig.json
+tsconfig.storybook.json
+
+# Storybook build
+storybook-static/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Misc
+node_modules/
+.env
+.env.local

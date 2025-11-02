@@ -1,0 +1,129 @@
+@import "../../styles/variables.css";
+
+.marduk-dropdown-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  width: 100%;
+}
+
+.marduk-dropdown-label {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-700);
+}
+
+.marduk-dropdown-required {
+  color: var(--color-error-400);
+  margin-left: var(--spacing-2);
+}
+
+.marduk-dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+.marduk-dropdown {
+  font-family: var(--font-family-base);
+  border: 2px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--transition-fast);
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--color-white);
+  cursor: pointer;
+  appearance: none;
+  padding-right: 40px;
+}
+
+.marduk-dropdown:hover:not(:disabled) {
+  border-color: var(--color-gray-400);
+}
+
+.marduk-dropdown:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.marduk-dropdown--small {
+  padding: var(--spacing-3) 10px;
+  font-size: var(--font-size-sm);
+}
+
+.marduk-dropdown--medium {
+  padding: 10px 14px;
+  font-size: var(--font-size-md);
+}
+
+.marduk-dropdown--large {
+  padding: 14px 18px;
+  font-size: var(--font-size-lg);
+}
+
+.marduk-dropdown-arrow {
+  position: absolute;
+  right: var(--spacing-5);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-gray-600);
+  font-size: var(--font-size-xs);
+}
+
+.marduk-dropdown:focus ~ .marduk-dropdown-arrow {
+  color: var(--color-primary-500);
+}
+
+.marduk-dropdown--error {
+  border-color: var(--color-error-400);
+}
+
+.marduk-dropdown--error:focus {
+  border-color: var(--color-error-400);
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+}
+
+.marduk-dropdown-error-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-error-400);
+  margin-top: -2px;
+}
+
+.marduk-dropdown-helper-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+  margin-top: -2px;
+}
+
+.marduk-dropdown--disabled,
+.marduk-dropdown:disabled {
+  background-color: var(--color-gray-100);
+  cursor: not-allowed;
+  opacity: var(--opacity-disabled);
+}
+
+.marduk-dropdown:disabled ~ .marduk-dropdown-arrow {
+  opacity: var(--opacity-disabled);
+}
+
+.marduk-dropdown option {
+  padding: var(--spacing-4);
+  background-color: var(--color-white);
+  color: var(--color-gray-700);
+}
+
+.marduk-dropdown option:disabled {
+  color: var(--color-gray-400);
+  background-color: var(--color-gray-50);
+}
+
+.marduk-dropdown option:hover:not(:disabled) {
+  background-color: var(--color-gray-100);
+}
+
+.marduk-dropdown option:checked {
+  background-color: var(--color-primary-500);
+  color: var(--color-white);
+}

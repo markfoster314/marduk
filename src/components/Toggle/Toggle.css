@@ -1,0 +1,167 @@
+@import "../../styles/variables.css";
+
+.marduk-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: var(--spacing-5);
+  font-family: var(--font-family-base);
+}
+
+.marduk-toggle-label--left {
+  flex-direction: row;
+}
+
+.marduk-toggle-label--right {
+  flex-direction: row;
+}
+
+.marduk-toggle-label--disabled {
+  cursor: not-allowed;
+  opacity: var(--opacity-disabled);
+}
+
+.marduk-toggle {
+  position: relative;
+  display: inline-block;
+}
+
+.marduk-toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.marduk-toggle-track {
+  position: relative;
+  display: block;
+  background-color: var(--color-gray-300);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+  cursor: pointer;
+}
+
+.marduk-toggle--small .marduk-toggle-track {
+  width: 36px;
+  height: 20px;
+}
+
+.marduk-toggle--medium .marduk-toggle-track {
+  width: 44px;
+  height: 24px;
+}
+
+.marduk-toggle--large .marduk-toggle-track {
+  width: 52px;
+  height: 28px;
+}
+
+.marduk-toggle-thumb {
+  position: absolute;
+  top: var(--spacing-1);
+  left: var(--spacing-1);
+  background-color: var(--color-white);
+  border-radius: var(--radius-circle);
+  transition: transform var(--transition-fast);
+  box-shadow: var(--shadow-button);
+}
+
+.marduk-toggle--small .marduk-toggle-thumb {
+  width: 16px;
+  height: 16px;
+}
+
+.marduk-toggle--medium .marduk-toggle-thumb {
+  width: 20px;
+  height: 20px;
+}
+
+.marduk-toggle--large .marduk-toggle-thumb {
+  width: 24px;
+  height: 24px;
+}
+
+.marduk-toggle-input:checked + .marduk-toggle-track {
+  background-color: var(--color-primary-500);
+}
+
+.marduk-toggle--small
+  .marduk-toggle-input:checked
+  ~ .marduk-toggle-track
+  .marduk-toggle-thumb {
+  transform: translateX(16px);
+}
+
+.marduk-toggle--medium
+  .marduk-toggle-input:checked
+  ~ .marduk-toggle-track
+  .marduk-toggle-thumb {
+  transform: translateX(20px);
+}
+
+.marduk-toggle--large
+  .marduk-toggle-input:checked
+  ~ .marduk-toggle-track
+  .marduk-toggle-thumb {
+  transform: translateX(24px);
+}
+
+.marduk-toggle-label:hover
+  .marduk-toggle-input:not(:disabled)
+  + .marduk-toggle-track {
+  background-color: var(--color-gray-400);
+}
+
+.marduk-toggle-label:hover
+  .marduk-toggle-input:not(:disabled):checked
+  + .marduk-toggle-track {
+  background-color: var(--color-primary-600);
+}
+
+.marduk-toggle-input:focus + .marduk-toggle-track {
+  box-shadow: var(--shadow-focus);
+}
+
+.marduk-toggle--focus-fading .marduk-toggle-input:focus + .marduk-toggle-track {
+  box-shadow: 0 0 0 3px var(--color-focus-transparent);
+  transition: box-shadow var(--transition-slow);
+}
+
+.marduk-toggle-input:disabled + .marduk-toggle-track {
+  background-color: var(--color-gray-100);
+  cursor: not-allowed;
+}
+
+.marduk-toggle-input:disabled:checked + .marduk-toggle-track {
+  background-color: var(--color-gray-400);
+}
+
+.marduk-toggle-input:disabled ~ .marduk-toggle-track .marduk-toggle-thumb {
+  box-shadow: var(--shadow-sm);
+}
+
+.marduk-toggle-text {
+  font-size: var(--font-size-md);
+  color: var(--color-gray-700);
+  font-weight: var(--font-weight-medium);
+}
+
+.marduk-toggle--small ~ .marduk-toggle-text,
+.marduk-toggle-label--left .marduk-toggle--small ~ .marduk-toggle-text,
+.marduk-toggle-label--right .marduk-toggle--small + .marduk-toggle-text {
+  font-size: var(--font-size-sm);
+}
+
+.marduk-toggle--large ~ .marduk-toggle-text,
+.marduk-toggle-label--left .marduk-toggle--large ~ .marduk-toggle-text,
+.marduk-toggle-label--right .marduk-toggle--large + .marduk-toggle-text {
+  font-size: var(--font-size-lg);
+}
+
+.marduk-toggle-label--disabled .marduk-toggle-text {
+  color: var(--color-gray-400);
+}

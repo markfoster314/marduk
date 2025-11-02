@@ -1,0 +1,83 @@
+@import "../../styles/variables.css";
+
+.marduk-pagination {
+  font-family: var(--font-family-base);
+}
+
+.marduk-pagination-list {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.marduk-pagination-button {
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-white);
+  color: var(--color-gray-700);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marduk-pagination-button:hover:not(:disabled) {
+  background-color: var(--color-gray-100);
+  border-color: var(--color-gray-400);
+}
+
+.marduk-pagination-button:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+.marduk-pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.marduk-pagination-button--active {
+  background-color: var(--color-primary-500);
+  border-color: var(--color-primary-500);
+  color: var(--color-white);
+}
+
+.marduk-pagination-button--active:hover {
+  background-color: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+}
+
+.marduk-pagination-button--small {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-sm);
+  min-width: 28px;
+  height: 28px;
+}
+
+.marduk-pagination-button--medium {
+  padding: var(--spacing-3) var(--spacing-5);
+  font-size: var(--font-size-md);
+  min-width: 36px;
+  height: 36px;
+}
+
+.marduk-pagination-button--large {
+  padding: var(--spacing-4) var(--spacing-6);
+  font-size: var(--font-size-lg);
+  min-width: 44px;
+  height: 44px;
+}
+
+.marduk-pagination-ellipsis {
+  padding: var(--spacing-3) var(--spacing-5);
+  color: var(--color-gray-500);
+  font-size: var(--font-size-md);
+  display: flex;
+  align-items: center;
+  user-select: none;
+}

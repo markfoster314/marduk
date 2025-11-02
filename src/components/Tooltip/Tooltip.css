@@ -1,0 +1,87 @@
+@import "../../styles/variables.css";
+
+.marduk-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.marduk-tooltip {
+  position: absolute;
+  background-color: var(--color-gray-700);
+  color: var(--color-white);
+  padding: var(--spacing-3) var(--spacing-5);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-base);
+  white-space: nowrap;
+  z-index: var(--z-index-tooltip);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.marduk-tooltip--visible {
+  opacity: 1;
+}
+
+.marduk-tooltip::before {
+  content: "";
+  position: absolute;
+  border: 5px solid transparent;
+}
+
+.marduk-tooltip--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: var(--spacing-4);
+}
+
+.marduk-tooltip--top::before {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: var(--color-gray-700);
+}
+
+.marduk-tooltip--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: var(--spacing-4);
+}
+
+.marduk-tooltip--bottom::before {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: var(--color-gray-700);
+}
+
+.marduk-tooltip--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: var(--spacing-4);
+}
+
+.marduk-tooltip--left::before {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-color: var(--color-gray-700);
+}
+
+.marduk-tooltip--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: var(--spacing-4);
+}
+
+.marduk-tooltip--right::before {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right-color: var(--color-gray-700);
+}

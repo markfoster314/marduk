@@ -1,0 +1,84 @@
+@import "../../styles/variables.css";
+
+.marduk-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  width: 100%;
+  font-family: var(--font-family-base);
+}
+
+.marduk-input-label {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-700);
+}
+
+.marduk-input-required {
+  color: var(--color-error-400);
+  margin-left: var(--spacing-2);
+}
+
+.marduk-input {
+  font-family: var(--font-family-base);
+  border: 2px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--transition-fast);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.marduk-input:hover:not(:disabled) {
+  border-color: var(--color-gray-400);
+}
+
+.marduk-input--focused,
+.marduk-input:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.marduk-input--small {
+  padding: var(--spacing-3) 10px;
+  font-size: var(--font-size-sm);
+}
+
+.marduk-input--medium {
+  padding: 10px 14px;
+  font-size: var(--font-size-md);
+}
+
+.marduk-input--large {
+  padding: 14px 18px;
+  font-size: var(--font-size-lg);
+}
+
+.marduk-input--error {
+  border-color: var(--color-error-400);
+}
+
+.marduk-input--error:focus {
+  border-color: var(--color-error-400);
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+}
+
+.marduk-input-error-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-error-400);
+  margin-top: -2px;
+}
+
+.marduk-input-helper-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+  margin-top: -2px;
+}
+
+.marduk-input--disabled,
+.marduk-input:disabled {
+  background-color: var(--color-gray-100);
+  cursor: not-allowed;
+  opacity: var(--opacity-disabled);
+}

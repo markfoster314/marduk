@@ -1,0 +1,170 @@
+@import "../../styles/variables.css";
+
+.marduk-radio-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.marduk-radio-label {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-700);
+}
+
+.marduk-radio-required {
+  color: var(--color-error-400);
+  margin-left: var(--spacing-2);
+}
+
+.marduk-radio-group {
+  display: flex;
+  gap: var(--spacing-5);
+}
+
+.marduk-radio-group--vertical {
+  flex-direction: column;
+}
+
+.marduk-radio-group--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.marduk-radio-item {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  font-family: var(--font-family-base);
+}
+
+.marduk-radio-item--disabled {
+  cursor: not-allowed;
+  opacity: var(--opacity-disabled);
+}
+
+.marduk-radio-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.marduk-radio-custom {
+  position: relative;
+  display: inline-block;
+  border: 2px solid var(--color-gray-300);
+  border-radius: var(--radius-circle);
+  background-color: var(--color-white);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.marduk-radio-item--small .marduk-radio-custom {
+  width: 16px;
+  height: 16px;
+}
+
+.marduk-radio-item--medium .marduk-radio-custom {
+  width: 20px;
+  height: 20px;
+}
+
+.marduk-radio-item--large .marduk-radio-custom {
+  width: 24px;
+  height: 24px;
+}
+
+.marduk-radio-item:hover
+  .marduk-radio-input:not(:disabled)
+  + .marduk-radio-custom {
+  border-color: var(--color-primary-500);
+}
+
+.marduk-radio-input:checked + .marduk-radio-custom {
+  border-color: var(--color-primary-500);
+  background-color: var(--color-primary-500);
+}
+
+.marduk-radio-item--small
+  .marduk-radio-input:checked
+  + .marduk-radio-custom::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-circle);
+  background-color: var(--color-white);
+}
+
+.marduk-radio-item--medium
+  .marduk-radio-input:checked
+  + .marduk-radio-custom::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-circle);
+  background-color: var(--color-white);
+}
+
+.marduk-radio-item--large
+  .marduk-radio-input:checked
+  + .marduk-radio-custom::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-circle);
+  background-color: var(--color-white);
+}
+
+.marduk-radio-input:focus + .marduk-radio-custom {
+  box-shadow: var(--shadow-focus);
+}
+
+.marduk-radio-input:disabled + .marduk-radio-custom {
+  background-color: var(--color-gray-100);
+  cursor: not-allowed;
+}
+
+.marduk-radio-input:disabled:checked + .marduk-radio-custom {
+  background-color: var(--color-gray-400);
+  border-color: var(--color-gray-400);
+}
+
+.marduk-radio-text {
+  margin-left: var(--spacing-4);
+  font-size: var(--font-size-md);
+  color: var(--color-gray-700);
+}
+
+.marduk-radio-item--small .marduk-radio-text {
+  font-size: var(--font-size-sm);
+}
+
+.marduk-radio-item--large .marduk-radio-text {
+  font-size: var(--font-size-lg);
+}
+
+.marduk-radio-error-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-error-400);
+}
+
+.marduk-radio-helper-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+}

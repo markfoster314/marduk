@@ -1,0 +1,200 @@
+@import "../../styles/variables.css";
+
+.marduk-checkbox-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.marduk-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  font-family: var(--font-family-base);
+}
+
+.marduk-checkbox-label--disabled {
+  cursor: not-allowed;
+  opacity: var(--opacity-disabled);
+}
+
+.marduk-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.marduk-checkbox-checkmark {
+  position: relative;
+  display: inline-block;
+  border: 2px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.marduk-checkbox--small + .marduk-checkbox-checkmark {
+  height: 16px;
+  width: 16px;
+}
+
+.marduk-checkbox--medium + .marduk-checkbox-checkmark {
+  height: 20px;
+  width: 20px;
+}
+
+.marduk-checkbox--large + .marduk-checkbox-checkmark {
+  height: 24px;
+  width: 24px;
+}
+
+.marduk-checkbox-label:hover
+  .marduk-checkbox:not(:disabled)
+  + .marduk-checkbox-checkmark {
+  border-color: var(--color-primary-500);
+}
+
+.marduk-checkbox:checked + .marduk-checkbox-checkmark {
+  background-color: var(--color-primary-500);
+  border-color: var(--color-primary-500);
+}
+
+.marduk-checkbox--small:checked + .marduk-checkbox-checkmark::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--color-white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.marduk-checkbox--medium:checked + .marduk-checkbox-checkmark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--color-white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.marduk-checkbox--large:checked + .marduk-checkbox-checkmark::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid var(--color-white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.marduk-checkbox--indeterminate + .marduk-checkbox-checkmark {
+  background-color: var(--color-primary-500);
+  border-color: var(--color-primary-500);
+}
+
+.marduk-checkbox--small.marduk-checkbox--indeterminate
+  + .marduk-checkbox-checkmark::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 6px;
+  width: 8px;
+  height: 2px;
+  background-color: var(--color-white);
+  border: none;
+  transform: none;
+}
+
+.marduk-checkbox--medium.marduk-checkbox--indeterminate
+  + .marduk-checkbox-checkmark::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  width: 10px;
+  height: 2px;
+  background-color: var(--color-white);
+  border: none;
+  transform: none;
+}
+
+.marduk-checkbox--large.marduk-checkbox--indeterminate
+  + .marduk-checkbox-checkmark::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  width: 12px;
+  height: 2px;
+  background-color: var(--color-white);
+  border: none;
+  transform: none;
+}
+
+.marduk-checkbox:focus + .marduk-checkbox-checkmark {
+  box-shadow: var(--shadow-focus);
+}
+
+.marduk-checkbox--focus-fading.marduk-checkbox:focus
+  + .marduk-checkbox-checkmark {
+  box-shadow: 0 0 0 3px var(--color-focus-transparent);
+  transition: box-shadow var(--transition-slow);
+}
+
+.marduk-checkbox:disabled + .marduk-checkbox-checkmark {
+  background-color: var(--color-gray-100);
+  cursor: not-allowed;
+}
+
+.marduk-checkbox:disabled:checked + .marduk-checkbox-checkmark {
+  background-color: var(--color-gray-400);
+  border-color: var(--color-gray-400);
+}
+
+.marduk-checkbox--error + .marduk-checkbox-checkmark {
+  border-color: var(--color-error-400);
+}
+
+.marduk-checkbox--error:checked + .marduk-checkbox-checkmark {
+  background-color: var(--color-error-400);
+  border-color: var(--color-error-400);
+}
+
+.marduk-checkbox-text {
+  margin-left: var(--spacing-4);
+  font-size: var(--font-size-md);
+  color: var(--color-gray-700);
+}
+
+.marduk-checkbox--small ~ .marduk-checkbox-text {
+  font-size: var(--font-size-sm);
+}
+
+.marduk-checkbox--large ~ .marduk-checkbox-text {
+  font-size: var(--font-size-lg);
+}
+
+.marduk-checkbox-error-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-error-400);
+  margin-left: 28px;
+}
+
+.marduk-checkbox-helper-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+  margin-left: 28px;
+}

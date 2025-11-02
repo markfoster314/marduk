@@ -1,0 +1,91 @@
+@import "../../styles/variables.css";
+
+.marduk-button {
+  font-family: var(--font-family-base);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: var(--font-weight-semibold);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.marduk-button:focus {
+  box-shadow: var(--shadow-focus);
+}
+
+.marduk-button--focus-fading.marduk-button:focus {
+  box-shadow: 0 0 0 3px var(--color-focus-transparent);
+  transition: box-shadow var(--transition-slow);
+}
+
+.marduk-button--primary {
+  background-color: var(--color-primary-500);
+  color: var(--color-white);
+}
+
+.marduk-button--primary:hover:not(:disabled) {
+  background-color: var(--color-primary-600);
+}
+
+.marduk-button--secondary {
+  background-color: var(--color-gray-500);
+  color: var(--color-white);
+}
+
+.marduk-button--secondary:hover:not(:disabled) {
+  background-color: var(--color-gray-600);
+}
+
+.marduk-button--success {
+  background-color: var(--color-success-500);
+  color: var(--color-white);
+}
+
+.marduk-button--success:hover:not(:disabled) {
+  background-color: var(--color-success-600);
+}
+
+.marduk-button--danger {
+  background-color: var(--color-error-400);
+  color: var(--color-white);
+}
+
+.marduk-button--danger:hover:not(:disabled) {
+  background-color: var(--color-error-500);
+}
+
+.marduk-button--outline {
+  background-color: transparent;
+  border: 2px solid var(--color-primary-500);
+  color: var(--color-primary-500);
+}
+
+.marduk-button--outline:hover:not(:disabled) {
+  background-color: var(--color-primary-500);
+  color: var(--color-white);
+}
+
+.marduk-button--small {
+  padding: var(--spacing-3) var(--spacing-5);
+  font-size: var(--font-size-sm);
+}
+
+.marduk-button--medium {
+  padding: 10px var(--spacing-7);
+  font-size: var(--font-size-md);
+}
+
+.marduk-button--large {
+  padding: var(--spacing-6) var(--spacing-9);
+  font-size: var(--font-size-lg);
+}
+
+.marduk-button--disabled,
+.marduk-button:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
