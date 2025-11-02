@@ -9,7 +9,10 @@ A lightweight React components library built with **TypeScript**, React 19, HTML
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.2-61dafb.svg)](https://reactjs.org/)
 [![Tested](https://img.shields.io/badge/Tests-293%20passing-success.svg)](./src)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+[![npm version](https://img.shields.io/npm/v/@markfoster314/marduk.svg)](https://www.npmjs.com/package/@markfoster314/marduk)
+[![npm downloads](https://img.shields.io/npm/dm/@markfoster314/marduk.svg)](https://www.npmjs.com/package/@markfoster314/marduk)
+[![GitHub](https://img.shields.io/github/license/markfoster314/marduk.svg)](https://github.com/markfoster314/marduk/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/markfoster314/marduk.svg?style=social)](https://github.com/markfoster314/marduk)
 
 ## Features
 
@@ -99,13 +102,13 @@ npm test
 Library was built with Typescript in mind, so there's full TypeScript support with exported types. You can make custom components with type safety like so:
 
 ```typescript
-import { Button, TextInput, Breadcrumb } from "@marduk/components";
+import { Button, TextInput, Breadcrumb } from "@markfoster314/marduk";
 import type {
   ButtonProps,
   TextInputProps,
   BreadcrumbProps,
   BreadcrumbItem,
-} from "@marduk/components";
+} from "@markfoster314/marduk";
 
 interface CustomButtonProps extends ButtonProps {
   loading?: boolean;

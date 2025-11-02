@@ -26,6 +26,9 @@
     "dist",
     "CHANGELOG.md"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",

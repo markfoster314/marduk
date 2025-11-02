@@ -31,4 +31,4 @@ Always optimize images before committing:
 
 ---
 
-**Tip**: Consider using [Shields.io](https://shields.io/) for badges instead of static images when possible.
+**Note**: Use [Shields.io](https://shields.io/) for badges instead of static images when possible.
