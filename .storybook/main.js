@@ -23,7 +23,6 @@ const config = {
   },
 
   webpackFinal: async (config) => {
-    // Ensure TypeScript files are handled
     config.resolve.extensions.push(".ts", ".tsx");
 
     // Add babel-loader for TypeScript files

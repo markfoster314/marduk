@@ -1,5 +1,3 @@
-@import "../../styles/variables.css";
-
 .marduk-button {
   font-family: var(--font-family-base);
   border: none;
