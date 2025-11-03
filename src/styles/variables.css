@@ -63,6 +63,21 @@
   --color-white: #ffffff;
   --color-black: #000000;
 
+  /* Dark Mode Colors */
+  --color-dark-bg-primary: #1e1e1e;
+  --color-dark-bg-secondary: #2d2d30;
+  --color-dark-bg-tertiary: #3e3e42;
+  --color-dark-text-primary: #f7fafc;
+  --color-dark-text-secondary: #e2e8f0;
+  --color-dark-text-tertiary: #cbd5e0;
+  --color-dark-border: #4a5568;
+
+  /* Dark Mode Variant Colors */
+  --color-dark-primary: #63b3ed;
+  --color-dark-success: #68d391;
+  --color-dark-warning: #f6ad55;
+  --color-dark-error: #fc8181;
+
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -101,6 +116,47 @@
   --font-size-md: 14px;
   --font-size-lg: 16px;
   --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 28px;
+  --font-size-5xl: 32px;
+  --font-size-6xl: 40px;
+
+  /* Title Font Sizes */
+  --heading-1-mobile: 1.875rem;
+  --heading-2-mobile: 1.5rem;
+  --heading-3-mobile: 1.25rem;
+  --heading-4-mobile: 1.125rem;
+  --heading-5-mobile: 1rem;
+  --heading-6-mobile: 0.875rem;
+
+  --heading-1-tablet: 2.25rem;
+  --heading-2-tablet: 1.875rem;
+  --heading-3-tablet: 1.5rem;
+  --heading-4-tablet: 1.25rem;
+  --heading-5-tablet: 1.125rem;
+  --heading-6-tablet: 1rem;
+
+  --heading-1-desktop: 2.5rem;
+  --heading-2-desktop: 2rem;
+  --heading-3-desktop: 1.75rem;
+  --heading-4-desktop: 1.5rem;
+  --heading-5-desktop: 1.25rem;
+  --heading-6-desktop: 1rem;
+
+  /* Margin Scale for Text Elements */
+  --margin-1: 0.25rem;
+  --margin-2: 0.5rem;
+  --margin-3: 0.625rem;
+  --margin-4: 0.75rem;
+  --margin-5: 0.875rem;
+  --margin-6: 1rem;
+  --margin-7: 1.25rem;
+  --margin-8: 1.5rem;
+  --margin-9: 1.75rem;
+  --margin-10: 2rem;
+  --margin-12: 3rem;
+  --margin-16: 4rem;
 
   /* Font Weights */
   --font-weight-normal: 400;
@@ -122,4 +178,10 @@
   --z-index-modal: 1050;
   --z-index-toast: 1100;
   --z-index-tooltip: 1200;
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
 }

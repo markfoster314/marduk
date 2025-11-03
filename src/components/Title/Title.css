@@ -1,0 +1,217 @@
+.marduk-title {
+  font-family: var(--font-family-base);
+  margin: 0;
+  line-height: 1.2;
+  color: var(--color-gray-800);
+  transition: font-size var(--transition-fast);
+}
+
+/* Mobile first (default) */
+.marduk-title--level-1 {
+  font-size: var(--heading-1-mobile);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--margin-4);
+}
+
+.marduk-title--level-2 {
+  font-size: var(--heading-2-mobile);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--margin-3);
+}
+
+.marduk-title--level-3 {
+  font-size: var(--heading-3-mobile);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--margin-2);
+}
+
+.marduk-title--level-4 {
+  font-size: var(--heading-4-mobile);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--margin-2);
+}
+
+.marduk-title--level-5 {
+  font-size: var(--heading-5-mobile);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--margin-2);
+}
+
+.marduk-title--level-6 {
+  font-size: var(--heading-6-mobile);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--margin-2);
+}
+
+@media (min-width: 768px) {
+  .marduk-title--level-1 {
+    font-size: var(--heading-1-tablet);
+    margin-bottom: var(--margin-5);
+  }
+
+  .marduk-title--level-2 {
+    font-size: var(--heading-2-tablet);
+    margin-bottom: var(--margin-4);
+  }
+
+  .marduk-title--level-3 {
+    font-size: var(--heading-3-tablet);
+    margin-bottom: var(--margin-3);
+  }
+
+  .marduk-title--level-4 {
+    font-size: var(--heading-4-tablet);
+    margin-bottom: var(--margin-2);
+  }
+
+  .marduk-title--level-5 {
+    font-size: var(--heading-5-tablet);
+  }
+
+  .marduk-title--level-6 {
+    font-size: var(--heading-6-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .marduk-title--level-1 {
+    font-size: var(--heading-1-desktop);
+    margin-bottom: var(--margin-6);
+  }
+
+  .marduk-title--level-2 {
+    font-size: var(--heading-2-desktop);
+    margin-bottom: var(--margin-5);
+  }
+
+  .marduk-title--level-3 {
+    font-size: var(--heading-3-desktop);
+    margin-bottom: var(--margin-4);
+  }
+
+  .marduk-title--level-4 {
+    font-size: var(--heading-4-desktop);
+    margin-bottom: var(--margin-3);
+  }
+
+  .marduk-title--level-5 {
+    font-size: var(--heading-5-desktop);
+  }
+
+  .marduk-title--level-6 {
+    font-size: var(--heading-6-desktop);
+  }
+}
+
+.marduk-title--variant-default {
+  color: var(--color-gray-800);
+}
+
+.marduk-title--variant-primary {
+  color: var(--color-primary-500);
+}
+
+.marduk-title--variant-secondary {
+  color: var(--color-gray-600);
+}
+
+.marduk-title--variant-success {
+  color: var(--color-success-600);
+}
+
+.marduk-title--variant-danger {
+  color: var(--color-error-500);
+}
+
+.marduk-title--align-left {
+  text-align: left;
+}
+
+.marduk-title--align-center {
+  text-align: center;
+}
+
+.marduk-title--align-right {
+  text-align: right;
+}
+
+/* Mobile first */
+.marduk-title--size-small {
+  font-size: var(--heading-6-mobile);
+}
+
+.marduk-title--size-medium {
+  font-size: var(--heading-3-mobile);
+}
+
+.marduk-title--size-large {
+  font-size: var(--heading-1-mobile);
+}
+
+@media (min-width: 768px) {
+  .marduk-title--size-small {
+    font-size: var(--heading-6-tablet);
+  }
+
+  .marduk-title--size-medium {
+    font-size: var(--heading-3-tablet);
+  }
+
+  .marduk-title--size-large {
+    font-size: var(--heading-1-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .marduk-title--size-small {
+    font-size: var(--heading-6-desktop);
+  }
+
+  .marduk-title--size-medium {
+    font-size: var(--heading-3-desktop);
+  }
+
+  .marduk-title--size-large {
+    font-size: var(--heading-1-desktop);
+  }
+}
+
+.marduk-title--weight-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.marduk-title--weight-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.marduk-title--weight-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.marduk-title--weight-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.marduk-title--dark {
+  color: var(--color-dark-text-primary);
+}
+
+.marduk-title--dark.marduk-title--variant-default {
+  color: var(--color-dark-text-primary);
+}
+
+.marduk-title--dark.marduk-title--variant-primary {
+  color: var(--color-dark-primary);
+}
+
+.marduk-title--dark.marduk-title--variant-secondary {
+  color: var(--color-dark-text-secondary);
+}
+
+.marduk-title--dark.marduk-title--variant-success {
+  color: var(--color-dark-success);
+}
+
+.marduk-title--dark.marduk-title--variant-danger {
+  color: var(--color-dark-error);
+}

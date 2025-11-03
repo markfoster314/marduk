@@ -47,3 +47,6 @@ export type { TooltipProps } from "./components/Tooltip/Tooltip";
 
 export { Modal } from "./components/Modal/Modal";
 export type { ModalProps } from "./components/Modal/Modal";
+
+export { Title } from "./components/Title/Title";
+export type { TitleProps } from "./components/Title/Title";
