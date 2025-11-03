@@ -1,4 +1,4 @@
-# Marduk Components Library
+# Marduk Institute Library
 
 <img alt="Rei Clones" style="display: block; margin: auto; padding-bottom: 20px;" src="./docs/images/rei-clones.png">
 
@@ -33,7 +33,7 @@ npm install @markfoster314/marduk
 
 ### Prerequisites
 
-- Node.js v14+
+- Node.js v18.14+
 - npm or yarn
 
 ### Setup
@@ -150,7 +150,7 @@ You do **not** get:
 
 - Source files, tests, and storybook files (excluded for smaller package)
 
-**Package size**: ~50-70KB (minified + gzipped: ~15-20KB)
+**Package size**: ~50-70KB
 
 ## Contributing
 
