@@ -8,7 +8,8 @@ A lightweight React components library built with **TypeScript**, React 19, HTML
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.2-61dafb.svg)](https://reactjs.org/)
-[![Tested](https://img.shields.io/badge/Tests-293%20passing-success.svg)](./src)
+[![CI Status](https://github.com/markfoster314/marduk/actions/workflows/ci.yml/badge.svg)](https://github.com/markfoster314/marduk/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/markfoster314/marduk/branch/main/graph/badge.svg)](https://codecov.io/gh/markfoster314/marduk)
 [![npm version](https://img.shields.io/npm/v/@markfoster314/marduk.svg)](https://www.npmjs.com/package/@markfoster314/marduk)
 [![npm downloads](https://img.shields.io/npm/dm/@markfoster314/marduk.svg)](https://www.npmjs.com/package/@markfoster314/marduk)
 [![GitHub](https://img.shields.io/github/license/markfoster314/marduk.svg)](https://github.com/markfoster314/marduk/blob/main/LICENSE)
