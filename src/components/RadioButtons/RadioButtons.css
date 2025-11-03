@@ -1,24 +1,24 @@
 .marduk-radio-wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-4);
+  gap: var(--marduk-spacing-4);
 }
 
 .marduk-radio-label {
-  font-family: var(--font-family-base);
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-gray-700);
+  font-family: var(--marduk-font-family-base);
+  font-size: var(--marduk-font-size-md);
+  font-weight: var(--marduk-font-weight-medium);
+  color: var(--marduk-color-gray-700);
 }
 
 .marduk-radio-required {
-  color: var(--color-error-400);
-  margin-left: var(--spacing-2);
+  color: var(--marduk-color-error-400);
+  margin-left: var(--marduk-spacing-2);
 }
 
 .marduk-radio-group {
   display: flex;
-  gap: var(--spacing-5);
+  gap: var(--marduk-spacing-5);
 }
 
 .marduk-radio-group--vertical {
@@ -36,12 +36,12 @@
   cursor: pointer;
   position: relative;
   user-select: none;
-  font-family: var(--font-family-base);
+  font-family: var(--marduk-font-family-base);
 }
 
 .marduk-radio-item--disabled {
   cursor: not-allowed;
-  opacity: var(--opacity-disabled);
+  opacity: var(--marduk-opacity-disabled);
 }
 
 .marduk-radio-input {
@@ -54,10 +54,10 @@
 .marduk-radio-custom {
   position: relative;
   display: inline-block;
-  border: 2px solid var(--color-gray-300);
-  border-radius: var(--radius-circle);
-  background-color: var(--color-white);
-  transition: all var(--transition-fast);
+  border: 2px solid var(--marduk-color-gray-300);
+  border-radius: var(--marduk-radius-circle);
+  background-color: var(--marduk-color-white);
+  transition: all var(--marduk-transition-fast);
   flex-shrink: 0;
 }
 
@@ -79,12 +79,12 @@
 .marduk-radio-item:hover
   .marduk-radio-input:not(:disabled)
   + .marduk-radio-custom {
-  border-color: var(--color-primary-500);
+  border-color: var(--marduk-color-primary-500);
 }
 
 .marduk-radio-input:checked + .marduk-radio-custom {
-  border-color: var(--color-primary-500);
-  background-color: var(--color-primary-500);
+  border-color: var(--marduk-color-primary-500);
+  background-color: var(--marduk-color-primary-500);
 }
 
 .marduk-radio-item--small
@@ -97,8 +97,8 @@
   transform: translate(-50%, -50%);
   width: 8px;
   height: 8px;
-  border-radius: var(--radius-circle);
-  background-color: var(--color-white);
+  border-radius: var(--marduk-radius-circle);
+  background-color: var(--marduk-color-white);
 }
 
 .marduk-radio-item--medium
@@ -111,8 +111,8 @@
   transform: translate(-50%, -50%);
   width: 10px;
   height: 10px;
-  border-radius: var(--radius-circle);
-  background-color: var(--color-white);
+  border-radius: var(--marduk-radius-circle);
+  background-color: var(--marduk-color-white);
 }
 
 .marduk-radio-item--large
@@ -125,44 +125,44 @@
   transform: translate(-50%, -50%);
   width: 12px;
   height: 12px;
-  border-radius: var(--radius-circle);
-  background-color: var(--color-white);
+  border-radius: var(--marduk-radius-circle);
+  background-color: var(--marduk-color-white);
 }
 
 .marduk-radio-input:focus + .marduk-radio-custom {
-  box-shadow: var(--shadow-focus);
+  box-shadow: var(--marduk-shadow-focus);
 }
 
 .marduk-radio-input:disabled + .marduk-radio-custom {
-  background-color: var(--color-gray-100);
+  background-color: var(--marduk-color-gray-100);
   cursor: not-allowed;
 }
 
 .marduk-radio-input:disabled:checked + .marduk-radio-custom {
-  background-color: var(--color-gray-400);
-  border-color: var(--color-gray-400);
+  background-color: var(--marduk-color-gray-400);
+  border-color: var(--marduk-color-gray-400);
 }
 
 .marduk-radio-text {
-  margin-left: var(--spacing-4);
-  font-size: var(--font-size-md);
-  color: var(--color-gray-700);
+  margin-left: var(--marduk-spacing-4);
+  font-size: var(--marduk-font-size-md);
+  color: var(--marduk-color-gray-700);
 }
 
 .marduk-radio-item--small .marduk-radio-text {
-  font-size: var(--font-size-sm);
+  font-size: var(--marduk-font-size-sm);
 }
 
 .marduk-radio-item--large .marduk-radio-text {
-  font-size: var(--font-size-lg);
+  font-size: var(--marduk-font-size-lg);
 }
 
 .marduk-radio-error-text {
-  font-size: var(--font-size-sm);
-  color: var(--color-error-400);
+  font-size: var(--marduk-font-size-sm);
+  color: var(--marduk-color-error-400);
 }
 
 .marduk-radio-helper-text {
-  font-size: var(--font-size-sm);
-  color: var(--color-gray-500);
+  font-size: var(--marduk-font-size-sm);
+  color: var(--marduk-color-gray-500);
 }

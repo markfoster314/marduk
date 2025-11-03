@@ -1,187 +1,197 @@
 :root {
   /* Primary Colors (Blue) */
-  --color-primary-50: #ebf8ff;
-  --color-primary-100: #bee3f8;
-  --color-primary-200: #90cdf4;
-  --color-primary-300: #63b3ed;
-  --color-primary-400: #4299e1;
-  --color-primary-500: #3182ce;
-  --color-primary-600: #2c5282;
-  --color-primary-700: #2a4365;
-  --color-primary-800: #1a365d;
-  --color-primary-900: #1a202c;
+  --marduk-color-primary-50: #ebf8ff;
+  --marduk-color-primary-100: #bee3f8;
+  --marduk-color-primary-200: #90cdf4;
+  --marduk-color-primary-300: #63b3ed;
+  --marduk-color-primary-400: #4299e1;
+  --marduk-color-primary-500: #3182ce;
+  --marduk-color-primary-600: #2c5282;
+  --marduk-color-primary-700: #2a4365;
+  --marduk-color-primary-800: #1a365d;
+  --marduk-color-primary-900: #1a202c;
 
   /* Gray Colors */
-  --color-gray-50: #f7fafc;
-  --color-gray-100: #edf2f7;
-  --color-gray-200: #e2e8f0;
-  --color-gray-300: #cbd5e0;
-  --color-gray-400: #a0aec0;
-  --color-gray-500: #718096;
-  --color-gray-600: #4a5568;
-  --color-gray-700: #2d3748;
-  --color-gray-800: #1a202c;
+  --marduk-color-gray-50: #f7fafc;
+  --marduk-color-gray-100: #edf2f7;
+  --marduk-color-gray-200: #e2e8f0;
+  --marduk-color-gray-300: #cbd5e0;
+  --marduk-color-gray-400: #a0aec0;
+  --marduk-color-gray-500: #718096;
+  --marduk-color-gray-600: #4a5568;
+  --marduk-color-gray-700: #2d3748;
+  --marduk-color-gray-800: #1a202c;
 
   /* Success Colors (Green) */
-  --color-success-50: #f0fff4;
-  --color-success-100: #c6f6d5;
-  --color-success-200: #9ae6b4;
-  --color-success-300: #68d391;
-  --color-success-400: #48bb78;
-  --color-success-500: #38a169;
-  --color-success-600: #2f855a;
-  --color-success-700: #276749;
-  --color-success-800: #22543d;
+  --marduk-color-success-50: #f0fff4;
+  --marduk-color-success-100: #c6f6d5;
+  --marduk-color-success-200: #9ae6b4;
+  --marduk-color-success-300: #68d391;
+  --marduk-color-success-400: #48bb78;
+  --marduk-color-success-500: #38a169;
+  --marduk-color-success-600: #2f855a;
+  --marduk-color-success-700: #276749;
+  --marduk-color-success-800: #22543d;
 
   /* Warning Colors (Orange) */
-  --color-warning-50: #fffaf0;
-  --color-warning-100: #feebc8;
-  --color-warning-200: #fbd38d;
-  --color-warning-300: #f6ad55;
-  --color-warning-400: #ed8936;
-  --color-warning-500: #dd6b20;
-  --color-warning-600: #c05621;
-  --color-warning-700: #9c4221;
-  --color-warning-800: #744210;
+  --marduk-color-warning-50: #fffaf0;
+  --marduk-color-warning-100: #feebc8;
+  --marduk-color-warning-200: #fbd38d;
+  --marduk-color-warning-300: #f6ad55;
+  --marduk-color-warning-400: #ed8936;
+  --marduk-color-warning-500: #dd6b20;
+  --marduk-color-warning-600: #c05621;
+  --marduk-color-warning-700: #9c4221;
+  --marduk-color-warning-800: #744210;
 
   /* Error/Danger Colors (Red) */
-  --color-error-50: #fff5f5;
-  --color-error-100: #fed7d7;
-  --color-error-200: #fc8181;
-  --color-error-300: #f56565;
-  --color-error-400: #e53e3e;
-  --color-error-500: #c53030;
-  --color-error-600: #9b2c2c;
-  --color-error-700: #742a2a;
+  --marduk-color-error-50: #fff5f5;
+  --marduk-color-error-100: #fed7d7;
+  --marduk-color-error-200: #fc8181;
+  --marduk-color-error-300: #f56565;
+  --marduk-color-error-400: #e53e3e;
+  --marduk-color-error-500: #c53030;
+  --marduk-color-error-600: #9b2c2c;
+  --marduk-color-error-700: #742a2a;
 
   /* Semantic Colors */
-  --color-focus: rgba(66, 153, 225, 0.5);
-  --color-focus-transparent: rgba(66, 153, 225, 0);
-  --color-outline: #3182ce;
+  --marduk-color-focus: rgba(66, 153, 225, 0.5);
+  --marduk-color-focus-transparent: rgba(66, 153, 225, 0);
+  --marduk-color-outline: #3182ce;
 
   /* Common Colors */
-  --color-white: #ffffff;
-  --color-black: #000000;
+  --marduk-color-white: #ffffff;
+  --marduk-color-black: #000000;
 
   /* Dark Mode Colors */
-  --color-dark-bg-primary: #1e1e1e;
-  --color-dark-bg-secondary: #2d2d30;
-  --color-dark-bg-tertiary: #3e3e42;
-  --color-dark-text-primary: #f7fafc;
-  --color-dark-text-secondary: #e2e8f0;
-  --color-dark-text-tertiary: #cbd5e0;
-  --color-dark-border: #4a5568;
+  --marduk-color-dark-bg-primary: #1e1e1e;
+  --marduk-color-dark-bg-secondary: #2d2d30;
+  --marduk-color-dark-bg-tertiary: #3e3e42;
+  --marduk-color-dark-text-primary: #f7fafc;
+  --marduk-color-dark-text-secondary: #e2e8f0;
+  --marduk-color-dark-text-tertiary: #cbd5e0;
+  --marduk-color-dark-border: #4a5568;
 
   /* Dark Mode Variant Colors */
-  --color-dark-primary: #63b3ed;
-  --color-dark-success: #68d391;
-  --color-dark-warning: #f6ad55;
-  --color-dark-error: #fc8181;
+  --marduk-color-dark-primary: #63b3ed;
+  --marduk-color-dark-success: #68d391;
+  --marduk-color-dark-warning: #f6ad55;
+  --marduk-color-dark-error: #fc8181;
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-  --shadow-focus: 0 0 0 3px var(--color-focus);
-  --shadow-button: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --marduk-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --marduk-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --marduk-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --marduk-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --marduk-shadow-focus: 0 0 0 3px var(--marduk-color-focus);
+  --marduk-shadow-button: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   /* Border Radius */
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
-  --radius-full: 100px;
-  --radius-circle: 50%;
+  --marduk-radius-sm: 2px;
+  --marduk-radius-md: 4px;
+  --marduk-radius-lg: 8px;
+  --marduk-radius-xl: 12px;
+  --marduk-radius-full: 100px;
+  --marduk-radius-circle: 50%;
 
   /* Spacing */
-  --spacing-1: 2px;
-  --spacing-2: 4px;
-  --spacing-3: 6px;
-  --spacing-4: 8px;
-  --spacing-5: 12px;
-  --spacing-6: 16px;
-  --spacing-7: 20px;
-  --spacing-8: 24px;
-  --spacing-9: 28px;
+  --marduk-spacing-1: 2px;
+  --marduk-spacing-2: 4px;
+  --marduk-spacing-3: 6px;
+  --marduk-spacing-4: 8px;
+  --marduk-spacing-5: 12px;
+  --marduk-spacing-6: 16px;
+  --marduk-spacing-7: 20px;
+  --marduk-spacing-8: 24px;
+  --marduk-spacing-9: 28px;
 
   /* Transitions */
-  --transition-fast: 0.2s ease-in-out;
-  --transition-medium: 0.3s ease-in-out;
-  --transition-slow: 0.5s ease-out;
+  --marduk-transition-fast: 0.2s ease-in-out;
+  --marduk-transition-medium: 0.3s ease-in-out;
+  --marduk-transition-slow: 0.5s ease-out;
 
   /* Font Sizes */
-  --font-size-xs: 10px;
-  --font-size-sm: 12px;
-  --font-size-md: 14px;
-  --font-size-lg: 16px;
-  --font-size-xl: 18px;
-  --font-size-2xl: 20px;
-  --font-size-3xl: 24px;
-  --font-size-4xl: 28px;
-  --font-size-5xl: 32px;
-  --font-size-6xl: 40px;
+  --marduk-font-size-xs: 10px;
+  --marduk-font-size-sm: 12px;
+  --marduk-font-size-md: 14px;
+  --marduk-font-size-lg: 16px;
+  --marduk-font-size-xl: 18px;
+  --marduk-font-size-2xl: 20px;
+  --marduk-font-size-3xl: 24px;
+  --marduk-font-size-4xl: 28px;
+  --marduk-font-size-5xl: 32px;
+  --marduk-font-size-6xl: 40px;
+
+  /* Text Font Sizes */
+  --marduk-text-size-xs: 0.625rem;
+  --marduk-text-size-sm: 0.875rem;
+  --marduk-text-size-md: 1rem;
+  --marduk-text-size-lg: 1.125rem;
+  --marduk-text-size-xl: 1.25rem;
+  --marduk-text-size-2xl: 1.5rem;
+  --marduk-text-size-3xl: 1.75rem;
+  --marduk-text-size-4xl: 2rem;
 
   /* Title Font Sizes */
-  --heading-1-mobile: 1.875rem;
-  --heading-2-mobile: 1.5rem;
-  --heading-3-mobile: 1.25rem;
-  --heading-4-mobile: 1.125rem;
-  --heading-5-mobile: 1rem;
-  --heading-6-mobile: 0.875rem;
+  --marduk-heading-1-mobile: 1.875rem;
+  --marduk-heading-2-mobile: 1.5rem;
+  --marduk-heading-3-mobile: 1.25rem;
+  --marduk-heading-4-mobile: 1.125rem;
+  --marduk-heading-5-mobile: 1rem;
+  --marduk-heading-6-mobile: 0.875rem;
 
-  --heading-1-tablet: 2.25rem;
-  --heading-2-tablet: 1.875rem;
-  --heading-3-tablet: 1.5rem;
-  --heading-4-tablet: 1.25rem;
-  --heading-5-tablet: 1.125rem;
-  --heading-6-tablet: 1rem;
+  --marduk-heading-1-tablet: 2.25rem;
+  --marduk-heading-2-tablet: 1.875rem;
+  --marduk-heading-3-tablet: 1.5rem;
+  --marduk-heading-4-tablet: 1.25rem;
+  --marduk-heading-5-tablet: 1.125rem;
+  --marduk-heading-6-tablet: 1rem;
 
-  --heading-1-desktop: 2.5rem;
-  --heading-2-desktop: 2rem;
-  --heading-3-desktop: 1.75rem;
-  --heading-4-desktop: 1.5rem;
-  --heading-5-desktop: 1.25rem;
-  --heading-6-desktop: 1rem;
+  --marduk-heading-1-desktop: 2.5rem;
+  --marduk-heading-2-desktop: 2rem;
+  --marduk-heading-3-desktop: 1.75rem;
+  --marduk-heading-4-desktop: 1.5rem;
+  --marduk-heading-5-desktop: 1.25rem;
+  --marduk-heading-6-desktop: 1rem;
 
   /* Margin Scale for Text Elements */
-  --margin-1: 0.25rem;
-  --margin-2: 0.5rem;
-  --margin-3: 0.625rem;
-  --margin-4: 0.75rem;
-  --margin-5: 0.875rem;
-  --margin-6: 1rem;
-  --margin-7: 1.25rem;
-  --margin-8: 1.5rem;
-  --margin-9: 1.75rem;
-  --margin-10: 2rem;
-  --margin-12: 3rem;
-  --margin-16: 4rem;
+  --marduk-margin-1: 0.25rem;
+  --marduk-margin-2: 0.5rem;
+  --marduk-margin-3: 0.625rem;
+  --marduk-margin-4: 0.75rem;
+  --marduk-margin-5: 0.875rem;
+  --marduk-margin-6: 1rem;
+  --marduk-margin-7: 1.25rem;
+  --marduk-margin-8: 1.5rem;
+  --marduk-margin-9: 1.75rem;
+  --marduk-margin-10: 2rem;
+  --marduk-margin-12: 3rem;
+  --marduk-margin-16: 4rem;
 
   /* Font Weights */
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
+  --marduk-font-weight-normal: 400;
+  --marduk-font-weight-medium: 500;
+  --marduk-font-weight-semibold: 600;
+  --marduk-font-weight-bold: 700;
 
   /* Font Family */
-  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  --marduk-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
 
   /* Opacity */
-  --opacity-disabled: 0.6;
-  --opacity-hover: 0.8;
+  --marduk-opacity-disabled: 0.6;
+  --marduk-opacity-hover: 0.8;
 
   /* Z-index */
-  --z-index-dropdown: 1000;
-  --z-index-modal: 1050;
-  --z-index-toast: 1100;
-  --z-index-tooltip: 1200;
+  --marduk-z-index-dropdown: 1000;
+  --marduk-z-index-modal: 1050;
+  --marduk-z-index-toast: 1100;
+  --marduk-z-index-tooltip: 1200;
 
   /* Breakpoints */
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
+  --marduk-breakpoint-sm: 640px;
+  --marduk-breakpoint-md: 768px;
+  --marduk-breakpoint-lg: 1024px;
+  --marduk-breakpoint-xl: 1280px;
 }

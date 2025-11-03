@@ -5,17 +5,17 @@
 
 .marduk-tooltip {
   position: absolute;
-  background-color: var(--color-gray-700);
-  color: var(--color-white);
-  padding: var(--spacing-3) var(--spacing-5);
-  border-radius: var(--radius-md);
-  font-size: var(--font-size-sm);
-  font-family: var(--font-family-base);
+  background-color: var(--marduk-color-gray-700);
+  color: var(--marduk-color-white);
+  padding: var(--marduk-spacing-3) var(--marduk-spacing-5);
+  border-radius: var(--marduk-radius-md);
+  font-size: var(--marduk-font-size-sm);
+  font-family: var(--marduk-font-family-base);
   white-space: nowrap;
-  z-index: var(--z-index-tooltip);
+  z-index: var(--marduk-z-index-tooltip);
   pointer-events: none;
   opacity: 0;
-  transition: opacity var(--transition-fast);
+  transition: opacity var(--marduk-transition-fast);
 }
 
 .marduk-tooltip--visible {
@@ -32,54 +32,54 @@
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--marduk-spacing-4);
 }
 
 .marduk-tooltip--top::before {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-top-color: var(--color-gray-700);
+  border-top-color: var(--marduk-color-gray-700);
 }
 
 .marduk-tooltip--bottom {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: var(--spacing-4);
+  margin-top: var(--marduk-spacing-4);
 }
 
 .marduk-tooltip--bottom::before {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-bottom-color: var(--color-gray-700);
+  border-bottom-color: var(--marduk-color-gray-700);
 }
 
 .marduk-tooltip--left {
   right: 100%;
   top: 50%;
   transform: translateY(-50%);
-  margin-right: var(--spacing-4);
+  margin-right: var(--marduk-spacing-4);
 }
 
 .marduk-tooltip--left::before {
   left: 100%;
   top: 50%;
   transform: translateY(-50%);
-  border-left-color: var(--color-gray-700);
+  border-left-color: var(--marduk-color-gray-700);
 }
 
 .marduk-tooltip--right {
   left: 100%;
   top: 50%;
   transform: translateY(-50%);
-  margin-left: var(--spacing-4);
+  margin-left: var(--marduk-spacing-4);
 }
 
 .marduk-tooltip--right::before {
   right: 100%;
   top: 50%;
   transform: translateY(-50%);
-  border-right-color: var(--color-gray-700);
+  border-right-color: var(--marduk-color-gray-700);
 }

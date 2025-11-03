@@ -50,3 +50,6 @@ export type { ModalProps } from "./components/Modal/Modal";
 
 export { Title } from "./components/Title/Title";
 export type { TitleProps } from "./components/Title/Title";
+
+export { Text } from "./components/Text/Text";
+export type { TextProps } from "./components/Text/Text";

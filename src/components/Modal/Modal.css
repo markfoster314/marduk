@@ -8,18 +8,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: var(--z-index-modal);
-  animation: fadeIn var(--transition-fast) ease-out;
+  z-index: var(--marduk-z-index-modal);
+  animation: fadeIn var(--marduk-transition-fast) ease-out;
 }
 
 .marduk-modal-content {
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-xl);
+  background-color: var(--marduk-color-white);
+  border-radius: var(--marduk-radius-lg);
+  box-shadow: var(--marduk-shadow-xl);
   max-height: 90vh;
   overflow-y: auto;
-  animation: slideIn var(--transition-medium) ease-out;
-  font-family: var(--font-family-base);
+  animation: slideIn var(--marduk-transition-medium) ease-out;
+  font-family: var(--marduk-font-family-base);
 }
 
 .marduk-modal-content--small {
@@ -41,37 +41,37 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--spacing-7) 24px;
-  border-bottom: 1px solid var(--color-gray-200);
+  padding: var(--marduk-spacing-7) 24px;
+  border-bottom: 1px solid var(--marduk-color-gray-200);
 }
 
 .marduk-modal-title {
   margin: 0;
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-gray-700);
+  font-size: var(--marduk-font-size-xl);
+  font-weight: var(--marduk-font-weight-semibold);
+  color: var(--marduk-color-gray-700);
 }
 
 .marduk-modal-close {
   background: none;
   border: none;
   cursor: pointer;
-  padding: var(--spacing-2);
+  padding: var(--marduk-spacing-2);
   font-size: 24px;
   line-height: 1;
-  color: var(--color-gray-500);
-  transition: color var(--transition-fast);
+  color: var(--marduk-color-gray-500);
+  transition: color var(--marduk-transition-fast);
   margin-left: auto;
 }
 
 .marduk-modal-close:hover {
-  color: var(--color-gray-700);
+  color: var(--marduk-color-gray-700);
 }
 
 .marduk-modal-close:focus {
-  outline: 2px solid var(--color-primary-500);
+  outline: 2px solid var(--marduk-color-primary-500);
   outline-offset: 2px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--marduk-radius-sm);
 }
 
 .marduk-modal-body {

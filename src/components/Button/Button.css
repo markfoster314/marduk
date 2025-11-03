@@ -1,10 +1,10 @@
 .marduk-button {
-  font-family: var(--font-family-base);
+  font-family: var(--marduk-font-family-base);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--marduk-radius-md);
   cursor: pointer;
-  font-weight: var(--font-weight-semibold);
-  transition: all var(--transition-fast);
+  font-weight: var(--marduk-font-weight-semibold);
+  transition: all var(--marduk-transition-fast);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -12,78 +12,78 @@
 }
 
 .marduk-button:focus {
-  box-shadow: var(--shadow-focus);
+  box-shadow: var(--marduk-shadow-focus);
 }
 
 .marduk-button--focus-fading.marduk-button:focus {
-  box-shadow: 0 0 0 3px var(--color-focus-transparent);
-  transition: box-shadow var(--transition-slow);
+  box-shadow: 0 0 0 3px var(--marduk-color-focus-transparent);
+  transition: box-shadow var(--marduk-transition-slow);
 }
 
 .marduk-button--primary {
-  background-color: var(--color-primary-500);
-  color: var(--color-white);
+  background-color: var(--marduk-color-primary-500);
+  color: var(--marduk-color-white);
 }
 
 .marduk-button--primary:hover:not(:disabled) {
-  background-color: var(--color-primary-600);
+  background-color: var(--marduk-color-primary-600);
 }
 
 .marduk-button--secondary {
-  background-color: var(--color-gray-500);
-  color: var(--color-white);
+  background-color: var(--marduk-color-gray-500);
+  color: var(--marduk-color-white);
 }
 
 .marduk-button--secondary:hover:not(:disabled) {
-  background-color: var(--color-gray-600);
+  background-color: var(--marduk-color-gray-600);
 }
 
 .marduk-button--success {
-  background-color: var(--color-success-500);
-  color: var(--color-white);
+  background-color: var(--marduk-color-success-500);
+  color: var(--marduk-color-white);
 }
 
 .marduk-button--success:hover:not(:disabled) {
-  background-color: var(--color-success-600);
+  background-color: var(--marduk-color-success-600);
 }
 
 .marduk-button--danger {
-  background-color: var(--color-error-400);
-  color: var(--color-white);
+  background-color: var(--marduk-color-error-400);
+  color: var(--marduk-color-white);
 }
 
 .marduk-button--danger:hover:not(:disabled) {
-  background-color: var(--color-error-500);
+  background-color: var(--marduk-color-error-500);
 }
 
 .marduk-button--outline {
   background-color: transparent;
-  border: 2px solid var(--color-primary-500);
-  color: var(--color-primary-500);
+  border: 2px solid var(--marduk-color-primary-500);
+  color: var(--marduk-color-primary-500);
 }
 
 .marduk-button--outline:hover:not(:disabled) {
-  background-color: var(--color-primary-500);
-  color: var(--color-white);
+  background-color: var(--marduk-color-primary-500);
+  color: var(--marduk-color-white);
 }
 
 .marduk-button--small {
-  padding: var(--spacing-3) var(--spacing-5);
-  font-size: var(--font-size-sm);
+  padding: var(--marduk-spacing-3) var(--marduk-spacing-5);
+  font-size: var(--marduk-font-size-sm);
 }
 
 .marduk-button--medium {
-  padding: 10px var(--spacing-7);
-  font-size: var(--font-size-md);
+  padding: 10px var(--marduk-spacing-7);
+  font-size: var(--marduk-font-size-md);
 }
 
 .marduk-button--large {
-  padding: var(--spacing-6) var(--spacing-9);
-  font-size: var(--font-size-lg);
+  padding: var(--marduk-spacing-6) var(--marduk-spacing-9);
+  font-size: var(--marduk-font-size-lg);
 }
 
 .marduk-button--disabled,
 .marduk-button:disabled {
-  opacity: var(--opacity-disabled);
+  opacity: var(--marduk-opacity-disabled);
   cursor: not-allowed;
 }

@@ -2,15 +2,15 @@
   position: fixed;
   display: flex;
   align-items: center;
-  gap: var(--spacing-5);
-  padding: var(--spacing-5) var(--spacing-6);
-  border-radius: var(--radius-md);
+  gap: var(--marduk-spacing-5);
+  padding: var(--marduk-spacing-5) var(--marduk-spacing-6);
+  border-radius: var(--marduk-radius-md);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   min-width: 300px;
   max-width: 500px;
-  z-index: var(--z-index-toast);
-  animation: slideIn var(--transition-medium) ease-out;
-  font-family: var(--font-family-base);
+  z-index: var(--marduk-z-index-toast);
+  animation: slideIn var(--marduk-transition-medium) ease-out;
+  font-family: var(--marduk-font-family-base);
 }
 
 .marduk-toast--top-right {
@@ -53,7 +53,7 @@
 
 .marduk-toast-message {
   flex: 1;
-  font-size: var(--font-size-md);
+  font-size: var(--marduk-font-size-md);
   line-height: 1.5;
 }
 
@@ -62,10 +62,10 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  font-size: var(--font-size-lg);
+  font-size: var(--marduk-font-size-lg);
   line-height: 1;
   opacity: 0.7;
-  transition: opacity var(--transition-fast);
+  transition: opacity var(--marduk-transition-fast);
   flex-shrink: 0;
 }
 
@@ -74,43 +74,43 @@
 }
 
 .marduk-toast--info {
-  background-color: var(--color-primary-50);
-  border: 1px solid var(--color-primary-200);
-  color: var(--color-primary-600);
+  background-color: var(--marduk-color-primary-50);
+  border: 1px solid var(--marduk-color-primary-200);
+  color: var(--marduk-color-primary-600);
 }
 
 .marduk-toast--info .marduk-toast-icon {
-  color: var(--color-primary-500);
+  color: var(--marduk-color-primary-500);
 }
 
 .marduk-toast--success {
-  background-color: var(--color-success-50);
-  border: 1px solid var(--color-success-200);
-  color: var(--color-success-800);
+  background-color: var(--marduk-color-success-50);
+  border: 1px solid var(--marduk-color-success-200);
+  color: var(--marduk-color-success-800);
 }
 
 .marduk-toast--success .marduk-toast-icon {
-  color: var(--color-success-500);
+  color: var(--marduk-color-success-500);
 }
 
 .marduk-toast--warning {
-  background-color: var(--color-warning-50);
-  border: 1px solid var(--color-warning-200);
-  color: var(--color-warning-800);
+  background-color: var(--marduk-color-warning-50);
+  border: 1px solid var(--marduk-color-warning-200);
+  color: var(--marduk-color-warning-800);
 }
 
 .marduk-toast--warning .marduk-toast-icon {
-  color: var(--color-warning-500);
+  color: var(--marduk-color-warning-500);
 }
 
 .marduk-toast--error {
-  background-color: var(--color-error-50);
-  border: 1px solid var(--color-error-200);
-  color: var(--color-error-700);
+  background-color: var(--marduk-color-error-50);
+  border: 1px solid var(--marduk-color-error-200);
+  color: var(--marduk-color-error-700);
 }
 
 .marduk-toast--error .marduk-toast-icon {
-  color: var(--color-error-400);
+  color: var(--marduk-color-error-400);
 }
 
 @keyframes slideIn {
@@ -125,11 +125,11 @@
 }
 
 .marduk-toast--top-center {
-  animation: slideInCenter var(--transition-medium) ease-out;
+  animation: slideInCenter var(--marduk-transition-medium) ease-out;
 }
 
 .marduk-toast--bottom-center {
-  animation: slideInCenter var(--transition-medium) ease-out;
+  animation: slideInCenter var(--marduk-transition-medium) ease-out;
 }
 
 @keyframes slideInCenter {

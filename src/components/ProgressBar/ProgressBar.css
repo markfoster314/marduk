@@ -6,26 +6,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--spacing-3);
-  font-family: var(--font-family-base);
+  margin-bottom: var(--marduk-spacing-3);
+  font-family: var(--marduk-font-family-base);
 }
 
 .marduk-progress-label {
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-gray-700);
+  font-size: var(--marduk-font-size-md);
+  font-weight: var(--marduk-font-weight-medium);
+  color: var(--marduk-color-gray-700);
 }
 
 .marduk-progress-percentage {
-  font-size: var(--font-size-sm);
-  color: var(--color-gray-500);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--marduk-font-size-sm);
+  color: var(--marduk-color-gray-500);
+  font-weight: var(--marduk-font-weight-semibold);
 }
 
 .marduk-progress-bar {
   width: 100%;
-  background-color: var(--color-gray-200);
-  border-radius: var(--radius-full);
+  background-color: var(--marduk-color-gray-200);
+  border-radius: var(--marduk-radius-full);
   overflow: hidden;
 }
 
@@ -34,33 +34,33 @@
 }
 
 .marduk-progress-bar--medium {
-  height: var(--spacing-4);
+  height: var(--marduk-spacing-4);
 }
 
 .marduk-progress-bar--large {
-  height: var(--spacing-5);
+  height: var(--marduk-spacing-5);
 }
 
 .marduk-progress-fill {
   height: 100%;
-  transition: width var(--transition-medium);
-  border-radius: var(--radius-full);
+  transition: width var(--marduk-transition-medium);
+  border-radius: var(--marduk-radius-full);
 }
 
 .marduk-progress-fill--primary {
-  background-color: var(--color-primary-500);
+  background-color: var(--marduk-color-primary-500);
 }
 
 .marduk-progress-fill--success {
-  background-color: var(--color-success-500);
+  background-color: var(--marduk-color-success-500);
 }
 
 .marduk-progress-fill--warning {
-  background-color: var(--color-warning-500);
+  background-color: var(--marduk-color-warning-500);
 }
 
 .marduk-progress-fill--error {
-  background-color: var(--color-error-400);
+  background-color: var(--marduk-color-error-400);
 }
 
 .marduk-progress-fill--striped {

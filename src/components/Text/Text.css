@@ -1,0 +1,142 @@
+.marduk-text {
+  font-family: var(--marduk-font-family-base);
+  margin: 0;
+  line-height: 1.6;
+  color: var(--marduk-color-gray-700);
+  transition: font-size var(--marduk-transition-fast);
+}
+
+/* Mobile first */
+.marduk-text--size-xs {
+  font-size: var(--marduk-text-size-xs);
+}
+
+.marduk-text--size-sm {
+  font-size: var(--marduk-text-size-sm);
+}
+
+.marduk-text--size-md {
+  font-size: var(--marduk-text-size-md);
+}
+
+.marduk-text--size-lg {
+  font-size: var(--marduk-text-size-lg);
+}
+
+.marduk-text--size-xl {
+  font-size: var(--marduk-text-size-xl);
+}
+
+@media (min-width: 768px) {
+  .marduk-text--size-xs {
+    font-size: var(--marduk-text-size-sm);
+  }
+
+  .marduk-text--size-sm {
+    font-size: var(--marduk-text-size-md);
+  }
+
+  .marduk-text--size-md {
+    font-size: var(--marduk-text-size-lg);
+  }
+
+  .marduk-text--size-lg {
+    font-size: var(--marduk-text-size-xl);
+  }
+
+  .marduk-text--size-xl {
+    font-size: var(--marduk-text-size-2xl);
+  }
+}
+
+.marduk-text--variant-default {
+  color: var(--marduk-color-gray-700);
+}
+
+.marduk-text--variant-primary {
+  color: var(--marduk-color-primary-500);
+}
+
+.marduk-text--variant-secondary {
+  color: var(--marduk-color-gray-600);
+}
+
+.marduk-text--variant-success {
+  color: var(--marduk-color-success-600);
+}
+
+.marduk-text--variant-danger {
+  color: var(--marduk-color-error-500);
+}
+
+.marduk-text--variant-muted {
+  color: var(--marduk-color-gray-500);
+}
+
+.marduk-text--align-left {
+  text-align: left;
+}
+
+.marduk-text--align-center {
+  text-align: center;
+}
+
+.marduk-text--align-right {
+  text-align: right;
+}
+
+.marduk-text--align-justify {
+  text-align: justify;
+}
+
+.marduk-text--weight-normal {
+  font-weight: var(--marduk-font-weight-normal);
+}
+
+.marduk-text--weight-medium {
+  font-weight: var(--marduk-font-weight-medium);
+}
+
+.marduk-text--weight-semibold {
+  font-weight: var(--marduk-font-weight-semibold);
+}
+
+.marduk-text--weight-bold {
+  font-weight: var(--marduk-font-weight-bold);
+}
+
+.marduk-text--italic {
+  font-style: italic;
+}
+
+.marduk-text--underline {
+  text-decoration: underline;
+}
+
+.marduk-text--dark {
+  color: var(--marduk-color-dark-text-primary);
+}
+
+.marduk-text--dark.marduk-text--variant-default {
+  color: var(--marduk-color-dark-text-primary);
+}
+
+.marduk-text--dark.marduk-text--variant-primary {
+  color: var(--marduk-color-dark-primary);
+}
+
+.marduk-text--dark.marduk-text--variant-secondary {
+  color: var(--marduk-color-dark-text-secondary);
+}
+
+.marduk-text--dark.marduk-text--variant-success {
+  color: var(--marduk-color-dark-success);
+}
+
+.marduk-text--dark.marduk-text--variant-danger {
+  color: var(--marduk-color-dark-error);
+}
+
+.marduk-text--dark.marduk-text--variant-muted {
+  color: var(--marduk-color-dark-text-tertiary);
+}
