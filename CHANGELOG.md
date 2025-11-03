@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Literally whatever I wind up using when building my react sites will be added as time goes on
 
+## [0.1.2] - 2024-11-03
+
+### Changed
+
+- Added Text and Title components
+- Updated button components
+- Incorporated dark mode styles
+
+### Fixed
+
+- CSS not being properly imported
+- Minor fixes and improvements
+
 ## [0.1.1] - 2024-11-03
 
 ### Changed

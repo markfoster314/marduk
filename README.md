@@ -17,12 +17,11 @@ A lightweight React components library built with **TypeScript**, React 19, HTML
 
 ## Features
 
-- **TypeScript Centric** - Full type safety and IntelliSense support
-- **Fully Tested** - Comprehensive test suite with React Testing Library
 - **Zero Dependencies** - Only React as a peer dependency
-- **Type Definitions Included** - `.d.ts` files generated automatically
 - **Tree-shakeable** - Import only what you need
 - **CSS Variables** - Centralized design tokens for easy theming
+
+I find myself rebuilding the same things over and over again every time I make a new project, so I'm putting together this library so all this stuff is in one place.
 
 ## Installation
 
@@ -40,21 +39,12 @@ npm install @markfoster314/marduk
 ### Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/markfoster314/marduk.git
 cd marduk
 
-# Install dependencies
 npm install
 
-# Run tests
-npm test
-
-# Start Storybook
 npm run storybook
-
-# Build the library
-npm run build
 ```
 
 ### Available Scripts
@@ -135,21 +125,17 @@ Visit `http://localhost:2015` to see everything.
 When you install this package, you get:
 
 ```
-@marduk/components/
+@markfoster314/marduk/
 ├── dist/
+│   ├── components/           # Components, duh
 │   ├── index.js              # CommonJS build
 │   ├── index.esm.js          # ES Module build
 │   └── *.d.ts                # TypeScript definitions
-└── package.json
+├── package.json
+├── CHANGELOG.md
+├── README.md
+└── LICENSE
 ```
-
-- **Compiled JavaScript** (CommonJS & ES Modules)
-- **TypeScript definitions** (`.d.ts` files)
-- **CSS styles** (automatically imported)
-
-You do **not** get:
-
-- Source files, tests, and storybook files (excluded for smaller package)
 
 **Package size**: ~50-70KB
 
