@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Literally whatever I wind up using when building my react sites will be added as time goes on
 
+## [0.1.1] - 2024-11-03
+
+### Changed
+
+- Updated dependencies to latest versions
+- Updated CI workflow to use Node.js 24
+- Added Codecov integration
+
+### Fixed
+
+- Minor fixes and improvements
+
 ## [0.1.0] - 2024-11-02
 
 ### Added
