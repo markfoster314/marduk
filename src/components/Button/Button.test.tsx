@@ -34,6 +34,12 @@ describe("Button", () => {
       expect(button).toHaveClass("marduk-button--success");
     });
 
+    it("applies warning variant class", () => {
+      render(<Button variant="warning">Warning</Button>);
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("marduk-button--warning");
+    });
+
     it("applies danger variant class", () => {
       render(<Button variant="danger">Danger</Button>);
       const button = screen.getByRole("button");

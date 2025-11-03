@@ -9,6 +9,7 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
     | "secondary"
     | "success"
     | "danger"
+    | "warning"
     | "muted";
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   weight?: "normal" | "medium" | "semibold" | "bold";

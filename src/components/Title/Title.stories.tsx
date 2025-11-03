@@ -17,7 +17,14 @@ const meta: Meta<typeof Title> = {
     },
     variant: {
       control: { type: "select" },
-      options: ["default", "primary", "secondary", "success", "danger"],
+      options: [
+        "default",
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+      ],
       description: "Color variant",
     },
     align: {
@@ -79,6 +86,9 @@ export const Variants: Story = {
       </Title>
       <Title level={2} variant="success">
         Success Variant
+      </Title>
+      <Title level={2} variant="warning">
+        Warning Variant
       </Title>
       <Title level={2} variant="danger">
         Danger Variant
@@ -251,10 +261,13 @@ export const DarkMode: Story = {
         <Title level={3} darkMode variant="success">
           Success in Dark Mode
         </Title>
-        <Title level={4} darkMode variant="danger">
+        <Title level={4} darkMode variant="warning">
+          Warning in Dark Mode
+        </Title>
+        <Title level={5} darkMode variant="danger">
           Danger in Dark Mode
         </Title>
-        <Title level={5} darkMode variant="secondary">
+        <Title level={6} darkMode variant="secondary">
           Secondary in Dark Mode
         </Title>
       </div>
@@ -287,6 +300,9 @@ export const DarkModeComparison: Story = {
         <Title level={3} variant="success">
           Success Text
         </Title>
+        <Title level={3} variant="warning">
+          Warning Text
+        </Title>
         <Title level={3} variant="danger">
           Danger Text
         </Title>
@@ -305,6 +321,9 @@ export const DarkModeComparison: Story = {
         </Title>
         <Title level={3} darkMode variant="success">
           Success Text
+        </Title>
+        <Title level={3} darkMode variant="warning">
+          Warning Text
         </Title>
         <Title level={3} darkMode variant="danger">
           Danger Text

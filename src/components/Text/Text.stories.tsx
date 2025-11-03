@@ -18,6 +18,7 @@ const meta: Meta<typeof Text> = {
         "secondary",
         "success",
         "danger",
+        "warning",
         "muted",
       ],
       description: "Color variant",
@@ -86,6 +87,7 @@ export const Variants: Story = {
       <Text variant="secondary">Secondary variant text</Text>
       <Text variant="success">Success variant text</Text>
       <Text variant="danger">Danger variant text</Text>
+      <Text variant="warning">Warning variant text</Text>
       <Text variant="muted">Muted variant text</Text>
     </div>
   ),
@@ -173,6 +175,9 @@ export const DarkMode: Story = {
         <Text darkMode variant="success">
           Success in dark mode
         </Text>
+        <Text darkMode variant="warning">
+          Warning in dark mode
+        </Text>
         <Text darkMode variant="danger">
           Danger in dark mode
         </Text>
@@ -205,6 +210,7 @@ export const DarkModeComparison: Story = {
           <Text variant="primary">Primary text color</Text>
           <Text variant="success">Success text color</Text>
           <Text variant="danger">Danger text color</Text>
+          <Text variant="warning">Warning text color</Text>
           <Text variant="muted">Muted text color</Text>
         </div>
       </div>
@@ -226,6 +232,9 @@ export const DarkModeComparison: Story = {
           </Text>
           <Text darkMode variant="danger">
             Danger text color
+          </Text>
+          <Text darkMode variant="warning">
+            Warning text color
           </Text>
           <Text darkMode variant="muted">
             Muted text color
@@ -324,6 +333,14 @@ export const SuccessMessage: Story = {
   args: {
     children: "Success! Your changes have been saved",
     variant: "success",
+    weight: "medium",
+  },
+};
+
+export const WarningMessage: Story = {
+  args: {
+    children: "Warning: This action cannot be undone",
+    variant: "warning",
     weight: "medium",
   },
 };

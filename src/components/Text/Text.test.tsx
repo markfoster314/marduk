@@ -95,6 +95,13 @@ describe("Text", () => {
       );
     });
 
+    it("applies warning variant class", () => {
+      render(<Text variant="warning">Test</Text>);
+      expect(screen.getByText("Test")).toHaveClass(
+        "marduk-text--variant-warning"
+      );
+    });
+
     it("applies danger variant class", () => {
       render(<Text variant="danger">Test</Text>);
       expect(screen.getByText("Test")).toHaveClass(

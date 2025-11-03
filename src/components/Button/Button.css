@@ -4,7 +4,11 @@
   border-radius: var(--marduk-radius-md);
   cursor: pointer;
   font-weight: var(--marduk-font-weight-semibold);
-  transition: all var(--marduk-transition-fast);
+  transition: background-color var(--marduk-transition-fast),
+    color var(--marduk-transition-fast),
+    border-color var(--marduk-transition-fast),
+    transform var(--marduk-transition-fast),
+    opacity var(--marduk-transition-fast);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -12,12 +16,8 @@
 }
 
 .marduk-button:focus {
-  box-shadow: var(--marduk-shadow-focus);
-}
-
-.marduk-button--focus-fading.marduk-button:focus {
-  box-shadow: 0 0 0 3px var(--marduk-color-focus-transparent);
-  transition: box-shadow var(--marduk-transition-slow);
+  outline: 2px solid var(--marduk-color-primary-500);
+  outline-offset: 2px;
 }
 
 .marduk-button--primary {
@@ -45,6 +45,15 @@
 
 .marduk-button--success:hover:not(:disabled) {
   background-color: var(--marduk-color-success-600);
+}
+
+.marduk-button--warning {
+  background-color: var(--marduk-color-warning-400);
+  color: var(--marduk-color-white);
+}
+
+.marduk-button--warning:hover:not(:disabled) {
+  background-color: var(--marduk-color-warning-500);
 }
 
 .marduk-button--danger {
@@ -86,4 +95,104 @@
 .marduk-button:disabled {
   opacity: var(--marduk-opacity-disabled);
   cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+  .marduk-button--small {
+    padding: var(--marduk-spacing-2) var(--marduk-spacing-5);
+    font-size: var(--marduk-text-size-sm);
+  }
+
+  .marduk-button--medium {
+    padding: var(--marduk-spacing-4) var(--marduk-spacing-7);
+    font-size: var(--marduk-text-size-md);
+  }
+
+  .marduk-button--large {
+    padding: var(--marduk-spacing-6) var(--marduk-spacing-9);
+    font-size: var(--marduk-text-size-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .marduk-button--small {
+    padding: var(--marduk-spacing-3) var(--marduk-spacing-6);
+    font-size: var(--marduk-text-size-sm);
+  }
+
+  .marduk-button--medium {
+    padding: var(--marduk-spacing-5) var(--marduk-spacing-8);
+    font-size: var(--marduk-text-size-md);
+  }
+
+  .marduk-button--large {
+    padding: var(--marduk-spacing-7) var(--marduk-spacing-11);
+    font-size: var(--marduk-text-size-lg);
+  }
+}
+
+.marduk-button.marduk-button--dark:focus {
+  outline: 2px solid var(--marduk-color-primary-300);
+  outline-offset: 2px;
+}
+
+.marduk-button--dark.marduk-button--primary {
+  background-color: var(--marduk-color-primary-300);
+  color: var(--marduk-color-dark-bg-primary);
+}
+
+.marduk-button--dark.marduk-button--primary:hover:not(:disabled) {
+  background-color: var(--marduk-color-primary-400);
+  color: var(--marduk-color-dark-bg-primary);
+}
+
+.marduk-button--dark.marduk-button--secondary {
+  background-color: var(--marduk-color-dark-bg-tertiary);
+  color: var(--marduk-color-dark-text-primary);
+}
+
+.marduk-button--dark.marduk-button--secondary:hover:not(:disabled) {
+  background-color: var(--marduk-color-dark-bg-secondary);
+  color: var(--marduk-color-dark-text-primary);
+}
+
+.marduk-button--dark.marduk-button--success {
+  background-color: var(--marduk-color-success-300);
+  color: var(--marduk-color-dark-bg-primary);
+}
+
+.marduk-button--dark.marduk-button--success:hover:not(:disabled) {
+  background-color: var(--marduk-color-success-400);
+  color: var(--marduk-color-dark-bg-primary);
+}
+
+.marduk-button--dark.marduk-button--warning {
+  background-color: var(--marduk-color-warning-200);
+  color: var(--marduk-color-dark-bg-primary);
+}
+
+.marduk-button--dark.marduk-button--warning:hover:not(:disabled) {
+  background-color: var(--marduk-color-warning-300);
+  color: var(--marduk-color-dark-bg-primary);
+}
+
+.marduk-button--dark.marduk-button--danger {
+  background-color: var(--marduk-color-error-200);
+  color: var(--marduk-color-dark-bg-primary);
+}
+
+.marduk-button--dark.marduk-button--danger:hover:not(:disabled) {
+  background-color: var(--marduk-color-error-300);
+  color: var(--marduk-color-dark-bg-primary);
+}
+
+.marduk-button--dark.marduk-button--outline {
+  background-color: transparent;
+  border: 2px solid var(--marduk-color-primary-300);
+  color: var(--marduk-color-primary-300);
+}
+
+.marduk-button--dark.marduk-button--outline:hover:not(:disabled) {
+  background-color: var(--marduk-color-primary-300);
+  color: var(--marduk-color-dark-bg-primary);
 }

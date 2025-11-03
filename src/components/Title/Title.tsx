@@ -4,7 +4,13 @@ import "./Title.css";
 export interface TitleProps extends HTMLAttributes<HTMLHeadingElement> {
   children: ReactNode;
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  variant?: "default" | "primary" | "secondary" | "success" | "danger";
+  variant?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "danger";
   align?: "left" | "center" | "right";
   size?: "small" | "medium" | "large";
   weight?: "normal" | "medium" | "semibold" | "bold";
