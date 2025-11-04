@@ -1,21 +1,18 @@
 import { MouseEvent, ReactNode, ButtonHTMLAttributes } from "react";
+import { ButtonVariant, ComponentSize } from "../../types";
 import "./Button.css";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant?:
-    | "primary"
-    | "secondary"
-    | "success"
-    | "warning"
-    | "danger"
-    | "outline";
-  size?: "small" | "medium" | "large";
+  variant?: ButtonVariant;
+  size?: ComponentSize;
   disabled?: boolean;
   darkMode?: boolean;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   type?: "button" | "submit" | "reset";
 }
+
+export type { ButtonVariant, ComponentSize };
 
 export const Button = ({
   children,

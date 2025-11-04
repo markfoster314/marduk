@@ -1,0 +1,177 @@
+.marduk-svg {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  transition: fill var(--marduk-transition-fast),
+    opacity var(--marduk-transition-fast),
+    transform var(--marduk-transition-fast);
+  color: var(--marduk-color-text-primary);
+}
+
+.marduk-svg--dark {
+  color: var(--marduk-color-dark-text-primary);
+}
+
+.marduk-svg--align-left {
+  display: block;
+  margin-right: auto;
+}
+
+.marduk-svg--align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.marduk-svg--align-right {
+  display: block;
+  margin-left: auto;
+}
+
+.marduk-svg--rotate-90 {
+  transform: rotate(90deg);
+}
+
+.marduk-svg--rotate-180 {
+  transform: rotate(180deg);
+}
+
+.marduk-svg--rotate-270 {
+  transform: rotate(270deg);
+}
+
+.marduk-svg--flip-horizontal {
+  transform: scaleX(-1);
+}
+
+.marduk-svg--flip-vertical {
+  transform: scaleY(-1);
+}
+
+.marduk-svg--flip-both {
+  transform: scale(-1);
+}
+
+.marduk-svg--rotate-90.marduk-svg--flip-horizontal {
+  transform: rotate(90deg) scaleX(-1);
+}
+
+.marduk-svg--rotate-90.marduk-svg--flip-vertical {
+  transform: rotate(90deg) scaleY(-1);
+}
+
+.marduk-svg--rotate-90.marduk-svg--flip-both {
+  transform: rotate(90deg) scale(-1);
+}
+
+.marduk-svg--rotate-180.marduk-svg--flip-horizontal {
+  transform: rotate(180deg) scaleX(-1);
+}
+
+.marduk-svg--rotate-180.marduk-svg--flip-vertical {
+  transform: rotate(180deg) scaleY(-1);
+}
+
+.marduk-svg--rotate-180.marduk-svg--flip-both {
+  transform: rotate(180deg) scale(-1);
+}
+
+.marduk-svg--rotate-270.marduk-svg--flip-horizontal {
+  transform: rotate(270deg) scaleX(-1);
+}
+
+.marduk-svg--rotate-270.marduk-svg--flip-vertical {
+  transform: rotate(270deg) scaleY(-1);
+}
+
+.marduk-svg--rotate-270.marduk-svg--flip-both {
+  transform: rotate(270deg) scale(-1);
+}
+
+@keyframes marduk-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes marduk-heartpulse-mobile {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 2px 2px #9b2c2c);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 3px 3px #fed7d7);
+  }
+}
+
+@keyframes marduk-heartpulse-tablet {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 2px 2px #9b2c2c);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 4px #fed7d7);
+  }
+}
+
+@keyframes marduk-heartpulse-desktop {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 2px 2px #9b2c2c);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 4px #fed7d7);
+  }
+}
+
+.marduk-svg--animation-heartpulse {
+  animation: marduk-heartpulse-mobile 3s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .marduk-svg--animation-heartpulse {
+    animation: marduk-heartpulse-tablet 3s ease-in-out infinite;
+  }
+}
+
+@media (min-width: 1024px) {
+  .marduk-svg--animation-heartpulse {
+    animation: marduk-heartpulse-desktop 3s ease-in-out infinite;
+  }
+}
+
+.marduk-svg--spin {
+  animation: marduk-spin linear infinite;
+}
+
+.marduk-svg--spin-slow {
+  animation-duration: 2s;
+}
+
+.marduk-svg--spin-normal {
+  animation-duration: 1s;
+}
+
+.marduk-svg--spin-fast {
+  animation-duration: 0.5s;
+}
+
+.marduk-svg--hoverable {
+  cursor: pointer;
+  transition: fill var(--marduk-transition-fast),
+    opacity var(--marduk-transition-fast),
+    transform var(--marduk-transition-fast);
+}
+
+.marduk-svg--hoverable:hover {
+  fill: var(--hover-color);
+}

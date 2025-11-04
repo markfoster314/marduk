@@ -1,21 +1,18 @@
 import { HTMLAttributes, ReactNode } from "react";
+import { TitleVariant, TitleSize, Alignment, FontWeight } from "../../types";
 import "./Title.css";
 
 export interface TitleProps extends HTMLAttributes<HTMLHeadingElement> {
   children: ReactNode;
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  variant?:
-    | "default"
-    | "primary"
-    | "secondary"
-    | "success"
-    | "warning"
-    | "danger";
-  align?: "left" | "center" | "right";
-  size?: "small" | "medium" | "large";
-  weight?: "normal" | "medium" | "semibold" | "bold";
+  variant?: TitleVariant;
+  align?: Alignment;
+  size?: TitleSize;
+  weight?: FontWeight;
   darkMode?: boolean;
 }
+
+export type { TitleVariant, TitleSize, Alignment, FontWeight };
 
 export const Title = ({
   children,

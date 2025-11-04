@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Checkbox } from "./Checkbox";
+import { Text } from "../Text/Text";
 import React, { useState } from "react";
 
 const meta: Meta<typeof Checkbox> = {
@@ -195,9 +196,9 @@ export const CheckboxGroup: Story = {
             />
           ))}
         </div>
-        <p style={{ marginTop: "8px", fontSize: "14px", color: "#4a5568" }}>
+        <Text style={{ marginTop: "8px", fontSize: "14px", color: "#4a5568" }}>
           Selected: {selectedItems.length} of {items.length}
-        </p>
+        </Text>
       </div>
     );
   },

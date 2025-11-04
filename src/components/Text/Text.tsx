@@ -1,24 +1,20 @@
 import { HTMLAttributes, ReactNode } from "react";
+import { TextVariant, TextSize, TextAlignment, FontWeight } from "../../types";
 import "./Text.css";
 
 export interface TextProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
-  variant?:
-    | "default"
-    | "primary"
-    | "secondary"
-    | "success"
-    | "danger"
-    | "warning"
-    | "muted";
-  size?: "xs" | "sm" | "md" | "lg" | "xl";
-  weight?: "normal" | "medium" | "semibold" | "bold";
-  align?: "left" | "center" | "right" | "justify";
+  variant?: TextVariant;
+  size?: TextSize;
+  weight?: FontWeight;
+  align?: TextAlignment;
   italic?: boolean;
   underline?: boolean;
   darkMode?: boolean;
   as?: "p" | "span" | "div" | "label";
 }
+
+export type { TextVariant, TextSize, TextAlignment, FontWeight };
 
 export const Text = ({
   children,

@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
+import { Text } from "../Text/Text";
+import { Title } from "../Title/Title";
 import React from "react";
 
 const meta: Meta<typeof Button> = {
@@ -178,7 +180,9 @@ export const DarkModeComparison: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
       <div>
-        <h3 style={{ marginBottom: "10px" }}>Light Mode</h3>
+        <Title level={3} style={{ marginBottom: "10px" }}>
+          Light Mode
+        </Title>
         <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
           <Button variant="primary">Primary</Button>
           <Button variant="secondary">Secondary</Button>
@@ -189,7 +193,9 @@ export const DarkModeComparison: Story = {
         </div>
       </div>
       <div>
-        <h3 style={{ marginBottom: "10px" }}>Dark Mode</h3>
+        <Title level={3} style={{ marginBottom: "10px" }}>
+          Dark Mode
+        </Title>
         <div
           style={{
             display: "flex",
@@ -228,20 +234,23 @@ export const ResponsiveDemo: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
       <div>
-        <h3 style={{ marginBottom: "10px" }}>
+        <Title level={3} style={{ marginBottom: "10px" }}>
           Responsive Buttons (resize browser to see changes)
-        </h3>
-        <p style={{ marginBottom: "20px", color: "#666", fontSize: "14px" }}>
+        </Title>
+        <Text style={{ marginBottom: "20px", color: "#666", fontSize: "14px" }}>
           Buttons automatically adjust their size based on screen width:
           <br />
           Mobile (default) → Tablet (768px+) → Desktop (1024px+)
-        </p>
+        </Text>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <div>
-          <h4 style={{ marginBottom: "10px", fontSize: "14px", color: "#666" }}>
+          <Title
+            level={4}
+            style={{ marginBottom: "10px", fontSize: "14px", color: "#666" }}
+          >
             Small Buttons
-          </h4>
+          </Title>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             <Button size="small" variant="primary">
               Small Primary
@@ -255,9 +264,12 @@ export const ResponsiveDemo: Story = {
           </div>
         </div>
         <div>
-          <h4 style={{ marginBottom: "10px", fontSize: "14px", color: "#666" }}>
+          <Title
+            level={4}
+            style={{ marginBottom: "10px", fontSize: "14px", color: "#666" }}
+          >
             Medium Buttons
-          </h4>
+          </Title>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             <Button size="medium" variant="primary">
               Medium Primary
@@ -271,9 +283,12 @@ export const ResponsiveDemo: Story = {
           </div>
         </div>
         <div>
-          <h4 style={{ marginBottom: "10px", fontSize: "14px", color: "#666" }}>
+          <Title
+            level={4}
+            style={{ marginBottom: "10px", fontSize: "14px", color: "#666" }}
+          >
             Large Buttons
-          </h4>
+          </Title>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             <Button size="large" variant="primary">
               Large Primary

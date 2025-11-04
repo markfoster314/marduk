@@ -1,5 +1,23 @@
 import "./styles/variables.css";
 
+export type {
+  TextVariant,
+  TitleVariant,
+  ButtonVariant,
+  AlertVariant,
+  ComponentSize,
+  TextSize,
+  TitleSize,
+  Alignment,
+  TextAlignment,
+  FontWeight,
+  RotationAngle,
+  FlipDirection,
+  SpinSpeed,
+  SvgAnimation,
+  LoadingScreenAnimation,
+} from "./types";
+
 export { Button } from "./components/Button/Button";
 export type { ButtonProps } from "./components/Button/Button";
 
@@ -53,3 +71,15 @@ export type { TitleProps } from "./components/Title/Title";
 
 export { Text } from "./components/Text/Text";
 export type { TextProps } from "./components/Text/Text";
+
+export { Svg } from "./components/Svg/Svg";
+export type { SvgProps } from "./components/Svg/Svg";
+
+export { LoadingScreen } from "./components/LoadingScreen/LoadingScreen";
+export type { LoadingScreenProps } from "./components/LoadingScreen/LoadingScreen";
+
+export { Icon } from "./icons";
+export type { IconProps, IconName } from "./icons";
+
+export { UserIcon } from "./icons";
+export type { UserIconProps } from "./icons";

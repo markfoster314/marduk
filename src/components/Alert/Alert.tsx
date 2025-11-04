@@ -1,13 +1,16 @@
 import { HTMLAttributes, ReactNode, useState } from "react";
+import { AlertVariant } from "../../types";
 import "./Alert.css";
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  variant?: "info" | "success" | "warning" | "error";
+  variant?: AlertVariant;
   onClose?: () => void;
   closable?: boolean;
   title?: string;
 }
+
+export type { AlertVariant };
 
 export const Alert = ({
   children,

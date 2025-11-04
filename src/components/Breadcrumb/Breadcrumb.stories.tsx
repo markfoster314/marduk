@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Breadcrumb, BreadcrumbItem } from "./Breadcrumb";
+import { Title } from "../Title/Title";
 import React from "react";
 
 const meta: Meta<typeof Breadcrumb> = {
@@ -120,7 +121,9 @@ export const InteractiveExample: Story = {
 
     return (
       <div>
-        <h3>Click on any breadcrumb item (except the last one)</h3>
+        <Title level={3}>
+          Click on any breadcrumb item (except the last one)
+        </Title>
         <Breadcrumb items={items} onItemClick={handleClick} separator=">" />
       </div>
     );
