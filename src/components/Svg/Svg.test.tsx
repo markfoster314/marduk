@@ -7,7 +7,7 @@ describe("Svg", () => {
     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
   );
 
-  describe("Rendering", () => {
+  describe("Core Rendering", () => {
     it("renders svg element", () => {
       const { container } = render(
         <Svg>
@@ -34,51 +34,124 @@ describe("Svg", () => {
       );
       expect(container.querySelector("svg")).toHaveClass("marduk-svg");
     });
+
+    it("forwards additional props to svg element", () => {
+      render(
+        <Svg data-testid="custom-svg" aria-label="Custom Icon">
+          <TestIcon />
+        </Svg>
+      );
+      const svg = screen.getByTestId("custom-svg");
+      expect(svg).toHaveAttribute("aria-label", "Custom Icon");
+    });
+
+    it("applies custom className along with component classes", () => {
+      const { container } = render(
+        <Svg className="custom-class">
+          <TestIcon />
+        </Svg>
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveClass("marduk-svg");
+      expect(svg).toHaveClass("custom-class");
+    });
   });
 
-  describe("Sizes", () => {
-    it("applies medium size by default", () => {
-      const { container } = render(
-        <Svg>
-          <TestIcon />
-        </Svg>
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).toHaveAttribute("width", "24");
-      expect(svg).toHaveAttribute("height", "24");
+  describe("Sizing", () => {
+    describe("Preset Sizes", () => {
+      it("applies medium size by default", () => {
+        const { container } = render(
+          <Svg>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveClass("marduk-svg--size-medium");
+        expect(svg).not.toHaveAttribute("width");
+        expect(svg).not.toHaveAttribute("height");
+      });
+
+      test.each([
+        { size: "xs", expectedClass: "marduk-svg--size-xs" },
+        { size: "small", expectedClass: "marduk-svg--size-small" },
+        { size: "large", expectedClass: "marduk-svg--size-large" },
+        { size: "xl", expectedClass: "marduk-svg--size-xl" },
+        { size: "2xl", expectedClass: "marduk-svg--size-2xl" },
+        { size: "3xl", expectedClass: "marduk-svg--size-3xl" },
+      ])("applies $size size class", ({ size, expectedClass }) => {
+        const { container } = render(
+          <Svg size={size as any}>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveClass(expectedClass);
+        expect(svg).not.toHaveAttribute("width");
+        expect(svg).not.toHaveAttribute("height");
+      });
     });
 
-    it("applies small size", () => {
-      const { container } = render(
-        <Svg size="small">
-          <TestIcon />
-        </Svg>
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).toHaveAttribute("width", "16");
-      expect(svg).toHaveAttribute("height", "16");
+    describe("Custom Sizes", () => {
+      it("applies custom numeric size", () => {
+        const { container } = render(
+          <Svg size={48}>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveAttribute("width", "48");
+        expect(svg).toHaveAttribute("height", "48");
+        expect(svg).not.toHaveClass("marduk-svg--size-xs");
+        expect(svg).not.toHaveClass("marduk-svg--size-small");
+        expect(svg).not.toHaveClass("marduk-svg--size-medium");
+        expect(svg).not.toHaveClass("marduk-svg--size-large");
+        expect(svg).not.toHaveClass("marduk-svg--size-xl");
+        expect(svg).not.toHaveClass("marduk-svg--size-2xl");
+        expect(svg).not.toHaveClass("marduk-svg--size-3xl");
+      });
+
+      it("uses CSS variable for custom numeric sizes", () => {
+        const { container } = render(
+          <Svg size={64}>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveStyle({ "--svg-custom-size": "64px" });
+      });
     });
 
-    it("applies large size", () => {
-      const { container } = render(
-        <Svg size="large">
-          <TestIcon />
-        </Svg>
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).toHaveAttribute("width", "32");
-      expect(svg).toHaveAttribute("height", "32");
-    });
+    describe("Responsive Prop", () => {
+      it("does not apply responsive class by default for custom sizes", () => {
+        const { container } = render(
+          <Svg size={48}>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).not.toHaveClass("marduk-svg--responsive");
+      });
 
-    it("applies custom numeric size", () => {
-      const { container } = render(
-        <Svg size={48}>
-          <TestIcon />
-        </Svg>
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).toHaveAttribute("width", "48");
-      expect(svg).toHaveAttribute("height", "48");
+      it("applies responsive class when responsive=true with custom size", () => {
+        const { container } = render(
+          <Svg size={48} responsive>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveClass("marduk-svg--responsive");
+      });
+
+      it("does not apply responsive class to preset sizes even if responsive=true", () => {
+        const { container } = render(
+          <Svg size="medium" responsive>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).not.toHaveClass("marduk-svg--responsive");
+        expect(svg).toHaveClass("marduk-svg--size-medium");
+      });
     });
   });
 
@@ -108,290 +181,266 @@ describe("Svg", () => {
     });
   });
 
-  describe("Color", () => {
-    it("uses currentColor by default", () => {
-      const { container } = render(
-        <Svg>
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "fill",
-        "currentColor"
-      );
+  describe("Visual Styling", () => {
+    describe("Color", () => {
+      it("uses currentColor by default", () => {
+        const { container } = render(
+          <Svg>
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).toHaveAttribute(
+          "fill",
+          "currentColor"
+        );
+      });
+
+      it("applies custom color", () => {
+        const { container } = render(
+          <Svg color="#ff0000">
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).toHaveAttribute(
+          "fill",
+          "#ff0000"
+        );
+      });
+
+      it("applies color variable", () => {
+        const { container } = render(
+          <Svg color="var(--marduk-color-primary-500)">
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).toHaveAttribute(
+          "fill",
+          "var(--marduk-color-primary-500)"
+        );
+      });
     });
 
-    it("applies custom color", () => {
-      const { container } = render(
-        <Svg color="#ff0000">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveAttribute("fill", "#ff0000");
+    describe("Dark Mode", () => {
+      it("does not apply dark class by default", () => {
+        const { container } = render(
+          <Svg>
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).not.toHaveClass(
+          "marduk-svg--dark"
+        );
+      });
+
+      it("applies dark class when darkMode is true", () => {
+        const { container } = render(
+          <Svg darkMode>
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).toHaveClass("marduk-svg--dark");
+      });
     });
 
-    it("applies color variable", () => {
-      const { container } = render(
-        <Svg color="var(--marduk-color-primary-500)">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "fill",
-        "var(--marduk-color-primary-500)"
-      );
-    });
-  });
+    describe("Alignment", () => {
+      it("does not apply alignment class by default", () => {
+        const { container } = render(
+          <Svg>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).not.toHaveClass("marduk-svg--align-left");
+        expect(svg).not.toHaveClass("marduk-svg--align-center");
+        expect(svg).not.toHaveClass("marduk-svg--align-right");
+      });
 
-  describe("Dark Mode", () => {
-    it("does not apply dark class by default", () => {
-      const { container } = render(
-        <Svg>
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).not.toHaveClass(
-        "marduk-svg--dark"
-      );
-    });
-
-    it("applies dark class when darkMode is true", () => {
-      const { container } = render(
-        <Svg darkMode>
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass("marduk-svg--dark");
-    });
-  });
-
-  describe("Alignment", () => {
-    it("does not apply alignment class by default", () => {
-      const { container } = render(
-        <Svg>
-          <TestIcon />
-        </Svg>
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).not.toHaveClass("marduk-svg--align-left");
-      expect(svg).not.toHaveClass("marduk-svg--align-center");
-      expect(svg).not.toHaveClass("marduk-svg--align-right");
+      test.each([
+        { align: "left", expectedClass: "marduk-svg--align-left" },
+        { align: "center", expectedClass: "marduk-svg--align-center" },
+        { align: "right", expectedClass: "marduk-svg--align-right" },
+      ])("applies $align alignment", ({ align, expectedClass }) => {
+        const { container } = render(
+          <Svg align={align as any}>
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).toHaveClass(expectedClass);
+      });
     });
 
-    it("applies left alignment class", () => {
-      const { container } = render(
-        <Svg align="left">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--align-left"
-      );
-    });
+    describe("Hover Color", () => {
+      it("does not apply hoverable class by default", () => {
+        const { container } = render(
+          <Svg>
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).not.toHaveClass(
+          "marduk-svg--hoverable"
+        );
+      });
 
-    it("applies center alignment class", () => {
-      const { container } = render(
-        <Svg align="center">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--align-center"
-      );
-    });
+      it("applies hoverable class when hoverColor is set", () => {
+        const { container } = render(
+          <Svg hoverColor="#ff0000">
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).toHaveClass(
+          "marduk-svg--hoverable"
+        );
+      });
 
-    it("applies right alignment class", () => {
-      const { container } = render(
-        <Svg align="right">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--align-right"
-      );
-    });
-  });
-
-  describe("Rotation", () => {
-    it("does not apply rotation class by default", () => {
-      const { container } = render(
-        <Svg>
-          <TestIcon />
-        </Svg>
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).not.toHaveClass("marduk-svg--rotate-90");
-      expect(svg).not.toHaveClass("marduk-svg--rotate-180");
-      expect(svg).not.toHaveClass("marduk-svg--rotate-270");
-    });
-
-    it("applies 90 degree rotation class", () => {
-      const { container } = render(
-        <Svg rotate={90}>
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--rotate-90"
-      );
-    });
-
-    it("applies 180 degree rotation class", () => {
-      const { container } = render(
-        <Svg rotate={180}>
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--rotate-180"
-      );
-    });
-
-    it("applies 270 degree rotation class", () => {
-      const { container } = render(
-        <Svg rotate={270}>
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--rotate-270"
-      );
-    });
-
-    it("does not apply rotation class for 0 degrees", () => {
-      const { container } = render(
-        <Svg rotate={0}>
-          <TestIcon />
-        </Svg>
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).not.toHaveClass("marduk-svg--rotate-0");
+      it("sets CSS variable for hover color", () => {
+        const { container } = render(
+          <Svg hoverColor="#ff0000">
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveStyle({ "--hover-color": "#ff0000" });
+      });
     });
   });
 
-  describe("Flip", () => {
-    it("does not apply flip class by default", () => {
-      const { container } = render(
-        <Svg>
-          <TestIcon />
-        </Svg>
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).not.toHaveClass("marduk-svg--flip-horizontal");
-      expect(svg).not.toHaveClass("marduk-svg--flip-vertical");
-      expect(svg).not.toHaveClass("marduk-svg--flip-both");
+  describe("Transformations", () => {
+    describe("Rotation", () => {
+      it("does not apply rotation class by default", () => {
+        const { container } = render(
+          <Svg>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).not.toHaveClass("marduk-svg--rotate-90");
+        expect(svg).not.toHaveClass("marduk-svg--rotate-180");
+        expect(svg).not.toHaveClass("marduk-svg--rotate-270");
+      });
+
+      test.each([
+        { degrees: 90, expectedClass: "marduk-svg--rotate-90" },
+        { degrees: 180, expectedClass: "marduk-svg--rotate-180" },
+        { degrees: 270, expectedClass: "marduk-svg--rotate-270" },
+      ])("applies $degrees degree rotation", ({ degrees, expectedClass }) => {
+        const { container } = render(
+          <Svg rotate={degrees as any}>
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).toHaveClass(expectedClass);
+      });
+
+      it("does not apply rotation class for 0 degrees", () => {
+        const { container } = render(
+          <Svg rotate={0}>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).not.toHaveClass("marduk-svg--rotate-0");
+      });
     });
 
-    it("applies horizontal flip class", () => {
-      const { container } = render(
-        <Svg flip="horizontal">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--flip-horizontal"
-      );
-    });
+    describe("Flip", () => {
+      it("does not apply flip class by default", () => {
+        const { container } = render(
+          <Svg>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).not.toHaveClass("marduk-svg--flip-horizontal");
+        expect(svg).not.toHaveClass("marduk-svg--flip-vertical");
+        expect(svg).not.toHaveClass("marduk-svg--flip-both");
+      });
 
-    it("applies vertical flip class", () => {
-      const { container } = render(
-        <Svg flip="vertical">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--flip-vertical"
-      );
-    });
-
-    it("applies both flip class", () => {
-      const { container } = render(
-        <Svg flip="both">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--flip-both"
-      );
-    });
-  });
-
-  describe("Spin Animation", () => {
-    it("does not apply spin class by default", () => {
-      const { container } = render(
-        <Svg>
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).not.toHaveClass(
-        "marduk-svg--spin"
-      );
-    });
-
-    it("applies spin class when spin is true", () => {
-      const { container } = render(
-        <Svg spin>
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass("marduk-svg--spin");
-    });
-
-    it("applies normal spin speed by default", () => {
-      const { container } = render(
-        <Svg spin>
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--spin-normal"
-      );
-    });
-
-    it("applies slow spin speed", () => {
-      const { container } = render(
-        <Svg spin spinSpeed="slow">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--spin-slow"
-      );
-    });
-
-    it("applies fast spin speed", () => {
-      const { container } = render(
-        <Svg spin spinSpeed="fast">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--spin-fast"
-      );
+      test.each([
+        {
+          direction: "horizontal",
+          expectedClass: "marduk-svg--flip-horizontal",
+        },
+        { direction: "vertical", expectedClass: "marduk-svg--flip-vertical" },
+        { direction: "both", expectedClass: "marduk-svg--flip-both" },
+      ])("applies $direction flip", ({ direction, expectedClass }) => {
+        const { container } = render(
+          <Svg flip={direction as any}>
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).toHaveClass(expectedClass);
+      });
     });
   });
 
-  describe("Custom Animation", () => {
-    it("does not apply animation class by default", () => {
-      const { container } = render(
-        <Svg>
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).not.toHaveClass(
-        "marduk-svg--animation-heartpulse"
-      );
+  describe("Animations", () => {
+    describe("Spin", () => {
+      it("does not apply spin class by default", () => {
+        const { container } = render(
+          <Svg>
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).not.toHaveClass(
+          "marduk-svg--spin"
+        );
+      });
+
+      it("applies spin class when spin is true", () => {
+        const { container } = render(
+          <Svg spin>
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).toHaveClass("marduk-svg--spin");
+      });
+
+      it("applies normal spin speed by default", () => {
+        const { container } = render(
+          <Svg spin>
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).toHaveClass(
+          "marduk-svg--spin-normal"
+        );
+      });
+
+      test.each([
+        { speed: "slow", expectedClass: "marduk-svg--spin-slow" },
+        { speed: "fast", expectedClass: "marduk-svg--spin-fast" },
+      ])("applies $speed spin speed", ({ speed, expectedClass }) => {
+        const { container } = render(
+          <Svg spin spinSpeed={speed as any}>
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).toHaveClass(expectedClass);
+      });
     });
 
-    it("applies heartpulse animation class", () => {
-      const { container } = render(
-        <Svg animation="heartpulse">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--animation-heartpulse"
-      );
+    describe("Custom Animations", () => {
+      it("does not apply animation class by default", () => {
+        const { container } = render(
+          <Svg>
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).not.toHaveClass(
+          "marduk-svg--animation-heartpulse"
+        );
+      });
+
+      it("applies heartpulse animation class", () => {
+        const { container } = render(
+          <Svg animation="heartpulse">
+            <TestIcon />
+          </Svg>
+        );
+        expect(container.querySelector("svg")).toHaveClass(
+          "marduk-svg--animation-heartpulse"
+        );
+      });
     });
   });
 
@@ -445,62 +494,142 @@ describe("Svg", () => {
     });
   });
 
-  describe("Hover Color", () => {
-    it("does not apply hoverable class by default", () => {
+  describe("Aspect Ratio", () => {
+    it("does not apply aspect ratio by default", () => {
+      const { container } = render(
+        <Svg size="medium">
+          <TestIcon />
+        </Svg>
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).not.toHaveAttribute("data-aspect-ratio");
+    });
+
+    test.each([
+      {
+        ratio: "16:9",
+        size: "medium",
+        expectedWidth: "24px",
+        expectedHeight: "14px",
+      },
+      {
+        ratio: "4:3",
+        size: "large",
+        expectedWidth: "32px",
+        expectedHeight: "24px",
+      },
+      {
+        ratio: "3:2",
+        size: "medium",
+        expectedWidth: "24px",
+        expectedHeight: "16px",
+      },
+      {
+        ratio: "21:9",
+        size: "large",
+        expectedWidth: "32px",
+        expectedHeight: "14px",
+      },
+      {
+        ratio: "2:1",
+        size: "medium",
+        expectedWidth: "24px",
+        expectedHeight: "12px",
+      },
+    ])(
+      "applies $ratio aspect ratio",
+      ({ ratio, size, expectedWidth, expectedHeight }) => {
+        const { container } = render(
+          <Svg size={size as any} aspectRatio={ratio}>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveAttribute("data-aspect-ratio", ratio);
+        expect(svg).toHaveStyle({
+          width: expectedWidth,
+          height: expectedHeight,
+        });
+      }
+    );
+
+    it("works with custom numeric size", () => {
+      const { container } = render(
+        <Svg size={48} aspectRatio="16:9">
+          <TestIcon />
+        </Svg>
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveAttribute("width", "48");
+      expect(svg).toHaveAttribute("height", "27");
+    });
+
+    it("maintains square aspect when no aspectRatio provided", () => {
+      const { container } = render(
+        <Svg size={48}>
+          <TestIcon />
+        </Svg>
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveAttribute("width", "48");
+      expect(svg).toHaveAttribute("height", "48");
+    });
+
+    it("handles portrait aspect ratio", () => {
+      const { container } = render(
+        <Svg size={48} aspectRatio="9:16">
+          <TestIcon />
+        </Svg>
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveAttribute("width", "27");
+      expect(svg).toHaveAttribute("height", "48");
+    });
+  });
+
+  describe("Filter Effects", () => {
+    it("does not apply filter by default", () => {
       const { container } = render(
         <Svg>
           <TestIcon />
         </Svg>
       );
-      expect(container.querySelector("svg")).not.toHaveClass(
-        "marduk-svg--hoverable"
-      );
+      const svg = container.querySelector("svg");
+      expect(svg).not.toHaveAttribute("data-filter");
+      expect(svg).not.toHaveStyle({ filter: expect.anything() });
     });
 
-    it("applies hoverable class when hoverColor is set", () => {
+    test.each([
+      { filter: "grayscale(100%)", name: "grayscale" },
+      { filter: "blur(2px)", name: "blur" },
+      { filter: "brightness(1.5)", name: "brightness" },
+      { filter: "contrast(200%)", name: "contrast" },
+      { filter: "opacity(50%)", name: "opacity" },
+      { filter: "saturate(200%)", name: "saturate" },
+      { filter: "sepia(100%)", name: "sepia" },
+      {
+        filter: "drop-shadow(2px 2px 4px rgba(0,0,0,0.5))",
+        name: "drop-shadow",
+      },
+    ])("applies $name filter", ({ filter }) => {
       const { container } = render(
-        <Svg hoverColor="#ff0000">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveClass(
-        "marduk-svg--hoverable"
-      );
-    });
-
-    it("sets CSS variable for hover color", () => {
-      const { container } = render(
-        <Svg hoverColor="#ff0000">
+        <Svg filter={filter}>
           <TestIcon />
         </Svg>
       );
       const svg = container.querySelector("svg");
-      expect(svg).toHaveStyle({ "--hover-color": "#ff0000" });
-    });
-  });
-
-  describe("Additional Props", () => {
-    it("forwards additional props to svg element", () => {
-      render(
-        <Svg data-testid="custom-svg" aria-label="Custom Icon">
-          <TestIcon />
-        </Svg>
-      );
-
-      const svg = screen.getByTestId("custom-svg");
-      expect(svg).toHaveAttribute("aria-label", "Custom Icon");
+      expect(svg).toHaveAttribute("data-filter", "true");
+      expect(svg).toHaveStyle({ filter });
     });
 
-    it("applies custom className along with component classes", () => {
+    it("applies multiple filters", () => {
       const { container } = render(
-        <Svg className="custom-class">
+        <Svg filter="grayscale(50%) blur(1px)">
           <TestIcon />
         </Svg>
       );
       const svg = container.querySelector("svg");
-
-      expect(svg).toHaveClass("marduk-svg");
-      expect(svg).toHaveClass("custom-class");
+      expect(svg).toHaveStyle({ filter: "grayscale(50%) blur(1px)" });
     });
   });
 
@@ -606,6 +735,175 @@ describe("Svg", () => {
       expect(container.querySelector("title")).toHaveTextContent("Home Icon");
       expect(container.querySelector("desc")).toHaveTextContent(
         "Navigate to home page"
+      );
+    });
+
+    describe("Reduced Motion", () => {
+      it("applies reduced motion styles via CSS media query", () => {
+        const { container } = render(
+          <Svg spin>
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveClass("marduk-svg--spin");
+      });
+
+      it("applies to heartpulse animation", () => {
+        const { container } = render(
+          <Svg animation="heartpulse">
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveClass("marduk-svg--animation-heartpulse");
+      });
+    });
+
+    describe("High Contrast Mode", () => {
+      it("maintains functionality with high contrast CSS", () => {
+        const { container } = render(
+          <Svg hoverColor="#ff0000">
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveClass("marduk-svg--hoverable");
+      });
+    });
+
+    describe("Forced Colors", () => {
+      it("respects system color preferences", () => {
+        const { container } = render(
+          <Svg color="#ff0000">
+            <TestIcon />
+          </Svg>
+        );
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveAttribute("fill", "#ff0000");
+      });
+    });
+  });
+
+  describe("Data Attributes", () => {
+    it("sets data-size for preset sizes", () => {
+      const { container } = render(
+        <Svg size="large">
+          <TestIcon />
+        </Svg>
+      );
+      expect(container.querySelector("svg")).toHaveAttribute(
+        "data-size",
+        "large"
+      );
+    });
+
+    it("sets data-size to custom and data-custom-size for numeric sizes", () => {
+      const { container } = render(
+        <Svg size={48}>
+          <TestIcon />
+        </Svg>
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveAttribute("data-size", "custom");
+      expect(svg).toHaveAttribute("data-custom-size", "48");
+    });
+
+    test.each([
+      { prop: "darkMode", propValue: true, attr: "data-dark-mode" },
+      { prop: "decorative", propValue: true, attr: "data-decorative" },
+      { prop: "color", propValue: "#ff0000", attr: "data-custom-color" },
+      { prop: "hoverColor", propValue: "#ff0000", attr: "data-hoverable" },
+      { prop: "filter", propValue: "blur(2px)", attr: "data-filter" },
+    ])("sets $attr when $prop is provided", ({ prop, propValue, attr }) => {
+      const { container } = render(
+        <Svg {...{ [prop]: propValue }}>
+          <TestIcon />
+        </Svg>
+      );
+      expect(container.querySelector("svg")).toHaveAttribute(attr, "true");
+    });
+
+    test.each([
+      { prop: "align", value: "left", attr: "data-align", expected: "left" },
+      { prop: "rotate", value: 90, attr: "data-rotate", expected: "90" },
+      {
+        prop: "flip",
+        value: "horizontal",
+        attr: "data-flip",
+        expected: "horizontal",
+      },
+      {
+        prop: "aspectRatio",
+        value: "16:9",
+        attr: "data-aspect-ratio",
+        expected: "16:9",
+      },
+    ])("sets $attr=$expected for $prop", ({ prop, value, attr, expected }) => {
+      const { container } = render(
+        <Svg {...{ [prop]: value }}>
+          <TestIcon />
+        </Svg>
+      );
+      expect(container.querySelector("svg")).toHaveAttribute(attr, expected);
+    });
+
+    it("sets data-spin and data-spin-speed when spinning", () => {
+      const { container } = render(
+        <Svg spin spinSpeed="fast">
+          <TestIcon />
+        </Svg>
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveAttribute("data-spin", "true");
+      expect(svg).toHaveAttribute("data-spin-speed", "fast");
+    });
+
+    it("sets data-animation for custom animations", () => {
+      const { container } = render(
+        <Svg animation="heartpulse">
+          <TestIcon />
+        </Svg>
+      );
+      expect(container.querySelector("svg")).toHaveAttribute(
+        "data-animation",
+        "heartpulse"
+      );
+    });
+
+    it("sets data-responsive when responsive=true with custom size", () => {
+      const { container } = render(
+        <Svg size={48} responsive>
+          <TestIcon />
+        </Svg>
+      );
+      expect(container.querySelector("svg")).toHaveAttribute(
+        "data-responsive",
+        "true"
+      );
+    });
+
+    it("sets data-stroke-width when strokeWidth is provided", () => {
+      const { container } = render(
+        <Svg strokeWidth={2}>
+          <TestIcon />
+        </Svg>
+      );
+      expect(container.querySelector("svg")).toHaveAttribute(
+        "data-stroke-width",
+        "2"
+      );
+    });
+
+    it("sets data-stroke-width with string value", () => {
+      const { container } = render(
+        <Svg strokeWidth="1.5">
+          <TestIcon />
+        </Svg>
+      );
+      expect(container.querySelector("svg")).toHaveAttribute(
+        "data-stroke-width",
+        "1.5"
       );
     });
   });

@@ -39,11 +39,6 @@
     "dist",
     "**/*.stories.tsx",
     "**/*.stories.ts",
-    "**/*.test.tsx",
-    "**/*.test.ts",
-    "**/*.spec.tsx",
-    "**/*.spec.ts",
-    "**/setupTests.ts",
     "coverage",
     "storybook-static"
   ]

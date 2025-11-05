@@ -42,8 +42,9 @@ describe("Icon (Generic Component)", () => {
     it("applies size prop", () => {
       const { container } = render(<Icon name="user" size="large" />);
       const svg = container.querySelector("svg");
-      expect(svg).toHaveAttribute("width", "32");
-      expect(svg).toHaveAttribute("height", "32");
+      expect(svg).toHaveClass("marduk-svg--size-large");
+      expect(svg).not.toHaveAttribute("width");
+      expect(svg).not.toHaveAttribute("height");
     });
 
     it("applies color prop", () => {
@@ -145,8 +146,9 @@ describe("Individual Icon Components", () => {
         it("accepts size prop", () => {
           const { container } = render(<Component size="large" />);
           const svg = container.querySelector("svg");
-          expect(svg).toHaveAttribute("width", "32");
-          expect(svg).toHaveAttribute("height", "32");
+          expect(svg).toHaveClass("marduk-svg--size-large");
+          expect(svg).not.toHaveAttribute("width");
+          expect(svg).not.toHaveAttribute("height");
         });
 
         it("accepts color prop", () => {

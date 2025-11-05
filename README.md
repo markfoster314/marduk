@@ -64,6 +64,8 @@ function App() {
 
 **Typography Elements:** [Title](src/components/Title/README.md) | [Text](src/components/Text/README.md)
 
+**Icon Elements:** [Svg](src/components/Svg/README.md)
+
 ## Development
 
 ```bash
@@ -141,7 +143,7 @@ npm run storybook  # localhost:2015
 ```bash
 npm test
 # Test Suites: 18 passed, 18 total
-# Tests:       750 passed, 750 total
+# Tests:       797 passed, 797 total
 ```
 
 ## Contributing
