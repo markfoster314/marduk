@@ -1,5 +1,4 @@
 :root {
-  /* Primary Colors (Blue) */
   --marduk-color-primary-50: #ebf8ff;
   --marduk-color-primary-100: #bee3f8;
   --marduk-color-primary-200: #90cdf4;
@@ -11,7 +10,6 @@
   --marduk-color-primary-800: #1a365d;
   --marduk-color-primary-900: #1a202c;
 
-  /* Gray Colors */
   --marduk-color-gray-50: #f7fafc;
   --marduk-color-gray-100: #edf2f7;
   --marduk-color-gray-200: #e2e8f0;
@@ -22,7 +20,6 @@
   --marduk-color-gray-700: #2d3748;
   --marduk-color-gray-800: #1a202c;
 
-  /* Success Colors (Green) */
   --marduk-color-success-50: #f0fff4;
   --marduk-color-success-100: #c6f6d5;
   --marduk-color-success-200: #9ae6b4;
@@ -33,7 +30,6 @@
   --marduk-color-success-700: #276749;
   --marduk-color-success-800: #22543d;
 
-  /* Warning Colors (Orange) */
   --marduk-color-warning-50: #fffaf0;
   --marduk-color-warning-100: #feebc8;
   --marduk-color-warning-200: #fbd38d;
@@ -44,7 +40,6 @@
   --marduk-color-warning-700: #9c4221;
   --marduk-color-warning-800: #744210;
 
-  /* Error/Danger Colors (Red) */
   --marduk-color-error-50: #fff5f5;
   --marduk-color-error-100: #fed7d7;
   --marduk-color-error-200: #fc8181;
@@ -54,16 +49,13 @@
   --marduk-color-error-600: #9b2c2c;
   --marduk-color-error-700: #742a2a;
 
-  /* Semantic Colors */
   --marduk-color-focus: rgba(66, 153, 225, 0.5);
   --marduk-color-focus-transparent: rgba(66, 153, 225, 0);
   --marduk-color-outline: #3182ce;
 
-  /* Common Colors */
   --marduk-color-white: #ffffff;
   --marduk-color-black: #000000;
 
-  /* Dark Mode Colors */
   --marduk-color-dark-bg-primary: #0f0a1a;
   --marduk-color-dark-bg-secondary: #1a1424;
   --marduk-color-dark-bg-tertiary: #251f30;
@@ -72,7 +64,6 @@
   --marduk-color-dark-text-tertiary: #cbd5e0;
   --marduk-color-dark-border: #4a5568;
 
-  /* Shadows */
   --marduk-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --marduk-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --marduk-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
@@ -80,7 +71,6 @@
   --marduk-shadow-focus: 0 0 0 3px var(--marduk-color-focus);
   --marduk-shadow-button: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-  /* Border Radius */
   --marduk-radius-sm: 2px;
   --marduk-radius-md: 4px;
   --marduk-radius-lg: 8px;
@@ -88,7 +78,6 @@
   --marduk-radius-full: 100px;
   --marduk-radius-circle: 50%;
 
-  /* Spacing */
   --marduk-spacing-1: 2px;
   --marduk-spacing-2: 4px;
   --marduk-spacing-3: 6px;
@@ -101,24 +90,26 @@
   --marduk-spacing-10: 32px;
   --marduk-spacing-11: 36px;
 
-  /* Transitions */
   --marduk-transition-fast: 0.2s ease-in-out;
   --marduk-transition-medium: 0.3s ease-in-out;
   --marduk-transition-slow: 0.5s ease-out;
 
-  /* Font Sizes */
-  --marduk-font-size-xs: 10px;
-  --marduk-font-size-sm: 12px;
-  --marduk-font-size-md: 14px;
-  --marduk-font-size-lg: 16px;
-  --marduk-font-size-xl: 18px;
-  --marduk-font-size-2xl: 20px;
-  --marduk-font-size-3xl: 24px;
-  --marduk-font-size-4xl: 28px;
+  /* TODO: change all font variables to the same group and 
+  use rem. (fucked up and make some components use pixels 
+  and other use rem, updated these variables to rem as interim 
+  fix to not deal with changing all variable names but needs 
+  to be done in the future) */
+  --marduk-font-size-xs: 0.625rem;
+  --marduk-font-size-sm: 0.875rem;
+  --marduk-font-size-md: 1rem;
+  --marduk-font-size-lg: 1.125rem;
+  --marduk-font-size-xl: 1.25rem;
+  --marduk-font-size-2xl: 1.5rem;
+  --marduk-font-size-3xl: 1.75rem;
+  --marduk-font-size-4xl: 2rem;
   --marduk-font-size-5xl: 32px;
   --marduk-font-size-6xl: 40px;
 
-  /* Text Font Sizes */
   --marduk-text-size-xs: 0.625rem;
   --marduk-text-size-sm: 0.875rem;
   --marduk-text-size-md: 1rem;
@@ -150,7 +141,6 @@
   --marduk-heading-5-desktop: 1.25rem;
   --marduk-heading-6-desktop: 1rem;
 
-  /* Margin Scale for Text Elements */
   --marduk-margin-1: 0.25rem;
   --marduk-margin-2: 0.5rem;
   --marduk-margin-3: 0.625rem;
@@ -164,28 +154,27 @@
   --marduk-margin-12: 3rem;
   --marduk-margin-16: 4rem;
 
-  /* Font Weights */
   --marduk-font-weight-normal: 400;
   --marduk-font-weight-medium: 500;
   --marduk-font-weight-semibold: 600;
   --marduk-font-weight-bold: 700;
 
-  /* Font Family */
+  --marduk-letter-spacing-tight: -0.02em;
+  --marduk-letter-spacing-normal: 0;
+  --marduk-letter-spacing-wide: 0.05em;
+
   --marduk-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
 
-  /* Opacity */
   --marduk-opacity-disabled: 0.6;
   --marduk-opacity-hover: 0.8;
 
-  /* Z-index */
   --marduk-z-index-dropdown: 1000;
   --marduk-z-index-modal: 1050;
   --marduk-z-index-toast: 1100;
   --marduk-z-index-tooltip: 1200;
 
-  /* Breakpoints */
   --marduk-breakpoint-sm: 640px;
   --marduk-breakpoint-md: 768px;
   --marduk-breakpoint-lg: 1024px;

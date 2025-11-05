@@ -15,7 +15,7 @@ Mark's React Components library
 
 ## What's This?
 
-A lightweight component library built for me and my friends. Zero dependencies (just React), fully typed, and themeable with CSS variables.
+A lightweight component library built for me and my friends. Zero dependencies (just React), responsive, fully typed, and themeable with CSS variables.
 
 **Notes:**
 
