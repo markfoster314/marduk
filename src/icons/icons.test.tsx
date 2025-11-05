@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Icon } from "./Icon";
 import { iconData } from "./data";
-import { UserIcon } from "./index";
+import { UserIcon, SkullCrossbonesIcon } from "./index";
 
 describe("Icon (Generic Component)", () => {
   describe("Rendering", () => {
@@ -101,6 +101,37 @@ describe("Individual Icon Components", () => {
       const { container } = render(<UserIcon rotate={90} />);
       const svg = container.querySelector("svg");
       expect(svg).toHaveClass("marduk-svg--rotate-90");
+    });
+  });
+
+  describe("SkullCrossbonesIcon", () => {
+    it("renders correctly", () => {
+      const { container } = render(<SkullCrossbonesIcon />);
+      expect(container.querySelector("svg")).toBeInTheDocument();
+    });
+
+    it("renders with custom viewBox", () => {
+      const { container } = render(<SkullCrossbonesIcon />);
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveAttribute("viewBox", "0 0 640 640");
+    });
+
+    it("accepts Svg props", () => {
+      const { container } = render(
+        <SkullCrossbonesIcon size="large" color="red" />
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveAttribute("width", "32");
+      expect(svg).toHaveAttribute("fill", "red");
+    });
+
+    it("supports transformations", () => {
+      const { container } = render(
+        <SkullCrossbonesIcon rotate={180} flip="horizontal" />
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveClass("marduk-svg--rotate-180");
+      expect(svg).toHaveClass("marduk-svg--flip-horizontal");
     });
   });
 });

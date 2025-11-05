@@ -1,5 +1,8 @@
 import { HTMLAttributes, ReactNode, useState } from "react";
-import { AlertVariant } from "../../types";
+import { AlertVariant, AlertAnimation } from "../../types";
+import { SkullCrossbonesIcon } from "../../icons/SkullCrossbonesIcon";
+import { Text } from "../Text/Text";
+import { Title } from "../Title/Title";
 import "./Alert.css";
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
@@ -8,6 +11,8 @@ export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
   closable?: boolean;
   title?: string;
+  darkMode?: boolean;
+  animation?: AlertAnimation;
 }
 
 export type { AlertVariant };
@@ -18,6 +23,8 @@ export const Alert = ({
   onClose,
   closable = false,
   title,
+  darkMode = false,
+  animation = "none",
   className,
   ...props
 }: AlertProps) => {
@@ -30,7 +37,13 @@ export const Alert = ({
 
   if (!isVisible) return null;
 
-  const alertClasses = ["marduk-alert", `marduk-alert--${variant}`, className]
+  const alertClasses = [
+    "marduk-alert",
+    `marduk-alert--${variant}`,
+    darkMode ? "marduk-alert--dark" : "",
+    animation !== "none" ? `marduk-alert--animation-${animation}` : "",
+    className,
+  ]
     .filter(Boolean)
     .join(" ");
 
@@ -38,15 +51,46 @@ export const Alert = ({
     info: "i",
     success: "✓",
     warning: "!",
-    error: "✕",
+    error: <SkullCrossbonesIcon />,
+  };
+
+  const getTextVariant = () => {
+    if (darkMode) {
+      return "secondary";
+    }
+    switch (variant) {
+      case "success":
+        return "success";
+      case "warning":
+        return "warning";
+      case "error":
+        return "danger";
+      default:
+        return "primary";
+    }
   };
 
   return (
     <div className={alertClasses} role="alert" {...props}>
       <div className="marduk-alert-icon">{icons[variant]}</div>
       <div className="marduk-alert-content">
-        {title && <div className="marduk-alert-title">{title}</div>}
-        <div className="marduk-alert-message">{children}</div>
+        {title && (
+          <Title
+            level={6}
+            darkMode={darkMode}
+            variant={getTextVariant()}
+            className="marduk-alert-title"
+          >
+            {title}
+          </Title>
+        )}
+        <Text
+          darkMode={darkMode}
+          variant={getTextVariant()}
+          className="marduk-alert-message"
+        >
+          {children}
+        </Text>
       </div>
       {closable && (
         <button

@@ -266,6 +266,75 @@ describe("Text", () => {
     });
   });
 
+  describe("Color Prop", () => {
+    it("applies custom color class and CSS variable", () => {
+      render(<Text color="#ff0000">Text</Text>);
+      const text = screen.getByText("Text");
+      expect(text).toHaveClass("marduk-text--custom-color");
+      expect(text).toHaveStyle({ "--marduk-text-custom-color": "#ff0000" });
+    });
+
+    it("works with CSS variables", () => {
+      render(<Text color="var(--marduk-color-primary-500)">Text</Text>);
+      const text = screen.getByText("Text");
+      expect(text).toHaveClass("marduk-text--custom-color");
+      expect(text).toHaveStyle({
+        "--marduk-text-custom-color": "var(--marduk-color-primary-500)",
+      });
+    });
+
+    it("does not apply custom color class when color prop is not provided", () => {
+      render(<Text>Text</Text>);
+      const text = screen.getByText("Text");
+      expect(text).not.toHaveClass("marduk-text--custom-color");
+      expect(text.getAttribute("style")).toBeNull();
+    });
+
+    it("merges with existing style prop", () => {
+      render(
+        <Text color="#ff0000" style={{ fontSize: "20px" }}>
+          Text
+        </Text>
+      );
+      const text = screen.getByText("Text");
+      expect(text).toHaveClass("marduk-text--custom-color");
+      expect(text).toHaveStyle({
+        "--marduk-text-custom-color": "#ff0000",
+        fontSize: "20px",
+      });
+    });
+
+    it("applies custom color class alongside variant class", () => {
+      render(
+        <Text variant="primary" color="#00ff00">
+          Text
+        </Text>
+      );
+      const text = screen.getByText("Text");
+      expect(text).toHaveClass("marduk-text--variant-primary");
+      expect(text).toHaveClass("marduk-text--custom-color");
+      expect(text).toHaveStyle({ "--marduk-text-custom-color": "#00ff00" });
+    });
+
+    it("applies RGB color values", () => {
+      render(<Text color="rgb(255, 100, 50)">Text</Text>);
+      const text = screen.getByText("Text");
+      expect(text).toHaveClass("marduk-text--custom-color");
+      expect(text).toHaveStyle({
+        "--marduk-text-custom-color": "rgb(255, 100, 50)",
+      });
+    });
+
+    it("applies named colors", () => {
+      render(<Text color="rebeccapurple">Text</Text>);
+      const text = screen.getByText("Text");
+      expect(text).toHaveClass("marduk-text--custom-color");
+      expect(text).toHaveStyle({
+        "--marduk-text-custom-color": "rebeccapurple",
+      });
+    });
+  });
+
   describe("Combined Props", () => {
     it("applies multiple prop classes together", () => {
       render(

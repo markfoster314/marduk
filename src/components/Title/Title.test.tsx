@@ -248,6 +248,95 @@ describe("Title", () => {
     });
   });
 
+  describe("Color Prop", () => {
+    it("applies custom color class and CSS variable", () => {
+      render(<Title color="#ff0000">Test</Title>);
+      const title = screen.getByText("Test");
+      expect(title).toHaveClass("marduk-title--custom-color");
+      expect(title).toHaveStyle({ "--marduk-title-custom-color": "#ff0000" });
+    });
+
+    it("works with CSS variables", () => {
+      render(<Title color="var(--marduk-color-primary-500)">Test</Title>);
+      const title = screen.getByText("Test");
+      expect(title).toHaveClass("marduk-title--custom-color");
+      expect(title).toHaveStyle({
+        "--marduk-title-custom-color": "var(--marduk-color-primary-500)",
+      });
+    });
+
+    it("does not apply custom color class when color prop is not provided", () => {
+      render(<Title>Test</Title>);
+      const title = screen.getByText("Test");
+      expect(title).not.toHaveClass("marduk-title--custom-color");
+      expect(title.getAttribute("style")).toBeNull();
+    });
+
+    it("merges with existing style prop", () => {
+      render(
+        <Title color="#ff0000" style={{ fontSize: "20px" }}>
+          Test
+        </Title>
+      );
+      const title = screen.getByText("Test");
+      expect(title).toHaveClass("marduk-title--custom-color");
+      expect(title).toHaveStyle({
+        "--marduk-title-custom-color": "#ff0000",
+        fontSize: "20px",
+      });
+    });
+
+    it("applies custom color class alongside variant class", () => {
+      render(
+        <Title variant="primary" color="#00ff00">
+          Test
+        </Title>
+      );
+      const title = screen.getByText("Test");
+      expect(title).toHaveClass("marduk-title--variant-primary");
+      expect(title).toHaveClass("marduk-title--custom-color");
+      expect(title).toHaveStyle({ "--marduk-title-custom-color": "#00ff00" });
+    });
+
+    it("applies RGB color values", () => {
+      render(<Title color="rgb(255, 100, 50)">Test</Title>);
+      const title = screen.getByText("Test");
+      expect(title).toHaveClass("marduk-title--custom-color");
+      expect(title).toHaveStyle({
+        "--marduk-title-custom-color": "rgb(255, 100, 50)",
+      });
+    });
+
+    it("applies named colors", () => {
+      render(<Title color="rebeccapurple">Test</Title>);
+      const title = screen.getByText("Test");
+      expect(title).toHaveClass("marduk-title--custom-color");
+      expect(title).toHaveStyle({
+        "--marduk-title-custom-color": "rebeccapurple",
+      });
+    });
+
+    it("works with all heading levels", () => {
+      const { rerender } = render(
+        <Title level={1} color="#ff0000">
+          Test
+        </Title>
+      );
+      let title = screen.getByRole("heading", { level: 1 });
+      expect(title).toHaveClass("marduk-title--custom-color");
+      expect(title).toHaveStyle({ "--marduk-title-custom-color": "#ff0000" });
+
+      rerender(
+        <Title level={6} color="#00ff00">
+          Test
+        </Title>
+      );
+      title = screen.getByRole("heading", { level: 6 });
+      expect(title).toHaveClass("marduk-title--custom-color");
+      expect(title).toHaveStyle({ "--marduk-title-custom-color": "#00ff00" });
+    });
+  });
+
   describe("Combined Props", () => {
     it("applies multiple prop classes together", () => {
       render(

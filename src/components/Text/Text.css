@@ -62,15 +62,15 @@
 }
 
 .marduk-text--variant-success {
-  color: var(--marduk-color-success-600);
+  color: var(--marduk-color-success-500);
 }
 
 .marduk-text--variant-danger {
-  color: var(--marduk-color-error-500);
+  color: var(--marduk-color-error-400);
 }
 
 .marduk-text--variant-warning {
-  color: var(--marduk-color-warning-500);
+  color: var(--marduk-color-warning-400);
 }
 
 .marduk-text--variant-muted {
@@ -147,4 +147,8 @@
 
 .marduk-text--dark.marduk-text--variant-muted {
   color: var(--marduk-color-dark-text-tertiary);
+}
+
+.marduk-text.marduk-text--custom-color {
+  color: var(--marduk-text-custom-color);
 }

@@ -45,20 +45,6 @@ describe("Alert", () => {
       const alert = screen.getByRole("alert");
       expect(alert.className).toContain("error");
     });
-
-    it("displays correct icon for each variant", () => {
-      const { rerender } = render(<Alert variant="info">Message</Alert>);
-      expect(screen.getByText("i")).toBeInTheDocument();
-
-      rerender(<Alert variant="success">Message</Alert>);
-      expect(screen.getByText("✓")).toBeInTheDocument();
-
-      rerender(<Alert variant="warning">Message</Alert>);
-      expect(screen.getByText("!")).toBeInTheDocument();
-
-      rerender(<Alert variant="error">Message</Alert>);
-      expect(screen.getByText("✕")).toBeInTheDocument();
-    });
   });
 
   describe("Closable", () => {
@@ -93,6 +79,87 @@ describe("Alert", () => {
       fireEvent.click(closeButton);
 
       expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+    });
+  });
+
+  describe("Dark Mode", () => {
+    it("does not apply dark class by default", () => {
+      render(<Alert>Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).not.toHaveClass("marduk-alert--dark");
+    });
+
+    it("applies dark class when darkMode is true", () => {
+      render(<Alert darkMode>Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveClass("marduk-alert--dark");
+    });
+
+    it("applies dark class with all variants", () => {
+      const variants = ["info", "success", "warning", "error"] as const;
+
+      variants.forEach((variant) => {
+        const { container } = render(
+          <Alert variant={variant} darkMode>
+            Message
+          </Alert>
+        );
+        const alert = screen.getByRole("alert");
+        expect(alert).toHaveClass("marduk-alert--dark");
+        expect(alert).toHaveClass(`marduk-alert--${variant}`);
+        container.remove();
+      });
+    });
+  });
+
+  describe("Animation", () => {
+    it("does not apply animation class by default", () => {
+      render(<Alert>Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).not.toHaveClass("marduk-alert--animation-fadeInUp");
+      expect(alert).not.toHaveClass("marduk-alert--animation-slideInRight");
+    });
+
+    it("does not apply animation class when animation is 'none'", () => {
+      render(<Alert animation="none">Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).not.toHaveClass("marduk-alert--animation-fadeInUp");
+      expect(alert).not.toHaveClass("marduk-alert--animation-slideInRight");
+    });
+
+    it("applies fadeInUp animation class", () => {
+      render(<Alert animation="fadeInUp">Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveClass("marduk-alert--animation-fadeInUp");
+    });
+
+    it("applies slideInRight animation class", () => {
+      render(<Alert animation="slideInRight">Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveClass("marduk-alert--animation-slideInRight");
+    });
+
+    it("works with all variants", () => {
+      const { container } = render(
+        <Alert variant="success" animation="fadeInUp">
+          Message
+        </Alert>
+      );
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveClass("marduk-alert--success");
+      expect(alert).toHaveClass("marduk-alert--animation-fadeInUp");
+      container.remove();
+    });
+
+    it("works with dark mode", () => {
+      render(
+        <Alert animation="fadeInUp" darkMode>
+          Message
+        </Alert>
+      );
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveClass("marduk-alert--dark");
+      expect(alert).toHaveClass("marduk-alert--animation-fadeInUp");
     });
   });
 

@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Svg, SvgProps } from "../components/Svg/Svg";
 import { iconData } from "./data";
 
@@ -7,7 +7,7 @@ export interface IconProps extends Omit<SvgProps, "children" | "viewBox"> {
   viewBox?: string;
 }
 
-export const Icon: React.FC<IconProps> = ({ name, viewBox, ...props }) => {
+export const Icon: FC<IconProps> = ({ name, viewBox, ...props }) => {
   const icon = iconData[name];
 
   if (!icon) {

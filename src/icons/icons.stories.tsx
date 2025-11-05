@@ -5,7 +5,7 @@ import { Text } from "../components/Text/Text";
 import { Title } from "../components/Title/Title";
 import { Button } from "../components/Button/Button";
 import React from "react";
-import { UserIcon } from "./index";
+import { UserIcon, SkullCrossbonesIcon } from "./index";
 
 const meta: Meta<typeof Icon> = {
   title: "Icons/Icon",
@@ -102,6 +102,10 @@ export const AllIcons: Story = {
 };
 
 export const Sizes: Story = {
+  args: {
+    name: "skullCrossbones",
+  },
+
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
       <div>
@@ -216,12 +220,44 @@ export const IndividualComponents: Story = {
           Import specific icon components for better tree-shaking
         </Text>
       </div>
-      <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-        <UserIcon size="large" color="var(--marduk-color-primary-500)" />
-        <UserIcon size="large" color="var(--marduk-color-success-500)" />
-        <UserIcon size="large" color="var(--marduk-color-warning-400)" />
-        <UserIcon size="large" color="var(--marduk-color-error-500)" />
-        <UserIcon size="large" color="var(--marduk-color-gray-600)" />
+      <div
+        style={{
+          display: "flex",
+          gap: "20px",
+          flexWrap: "wrap",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ textAlign: "center" }}>
+          <UserIcon size="large" color="var(--marduk-color-primary-500)" />
+          <Text as="div" style={{ fontSize: "12px", marginTop: "8px" }}>
+            UserIcon
+          </Text>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <SkullCrossbonesIcon
+            size="large"
+            color="var(--marduk-color-gray-700)"
+          />
+          <Text as="div" style={{ fontSize: "12px", marginTop: "8px" }}>
+            SkullCrossbonesIcon
+          </Text>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <UserIcon size="large" color="var(--marduk-color-success-500)" />
+          <Text as="div" style={{ fontSize: "12px", marginTop: "8px" }}>
+            Success
+          </Text>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <SkullCrossbonesIcon
+            size="large"
+            color="var(--marduk-color-error-500)"
+          />
+          <Text as="div" style={{ fontSize: "12px", marginTop: "8px" }}>
+            Danger
+          </Text>
+        </div>
       </div>
       <div
         style={{
@@ -232,9 +268,10 @@ export const IndividualComponents: Story = {
           fontSize: "12px",
         }}
       >
-        <div>{`import { UserIcon } from "@markfoster314/marduk";`}</div>
+        <div>{`import { UserIcon, SkullCrossbonesIcon } from "@markfoster314/marduk";`}</div>
         <br />
         <div>{`<UserIcon size="large" color="blue" />`}</div>
+        <div>{`<SkullCrossbonesIcon size="large" color="red" />`}</div>
       </div>
     </div>
   ),
@@ -265,21 +302,25 @@ export const WithTransformations: Story = {
           </Text>
         </div>
         <div style={{ textAlign: "center" }}>
-          <UserIcon size="large" rotate={180} />
+          <SkullCrossbonesIcon size="large" rotate={180} />
           <Text as="div" style={{ fontSize: "12px", marginTop: "8px" }}>
             Rotate 180°
           </Text>
         </div>
         <div style={{ textAlign: "center" }}>
-          <UserIcon size="large" flip="horizontal" />
+          <SkullCrossbonesIcon size="large" flip="horizontal" />
           <Text as="div" style={{ fontSize: "12px", marginTop: "8px" }}>
             Flip Horizontal
           </Text>
         </div>
         <div style={{ textAlign: "center" }}>
-          <UserIcon size="large" spin />
+          <SkullCrossbonesIcon
+            size="large"
+            spin
+            color="var(--marduk-color-error-500)"
+          />
           <Text as="div" style={{ fontSize: "12px", marginTop: "8px" }}>
-            Spinning
+            Spinning Skull
           </Text>
         </div>
       </div>
@@ -289,7 +330,8 @@ export const WithTransformations: Story = {
 
 export const InteractiveExample: Story = {
   render: () => {
-    const [count, setCount] = React.useState(1);
+    const [lives, setLives] = React.useState(3);
+    const [users, setUsers] = React.useState(1);
 
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
@@ -303,57 +345,83 @@ export const InteractiveExample: Story = {
             Icons can be used in interactive components
           </Text>
         </div>
-        <div
-          style={{
-            display: "flex",
-            gap: "20px",
-            flexWrap: "wrap",
-            alignItems: "center",
-          }}
-        >
-          <Button
-            onClick={() => setCount(Math.max(1, count - 1))}
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+          <div
             style={{
               display: "flex",
+              gap: "20px",
+              flexWrap: "wrap",
               alignItems: "center",
-              gap: "8px",
-              padding: "10px 20px",
-              backgroundColor: "var(--marduk-color-gray-200)",
-              color: "var(--marduk-color-gray-700)",
-              border: "none",
-              borderRadius: "6px",
-              cursor: "pointer",
             }}
           >
-            Remove User
-          </Button>
+            <Button
+              onClick={() => setUsers(Math.max(1, users - 1))}
+              variant="secondary"
+              size="small"
+            >
+              Remove User
+            </Button>
 
-          <div style={{ display: "flex", gap: "10px" }}>
-            {Array.from({ length: count }).map((_, i) => (
-              <UserIcon
-                key={i}
-                size="large"
-                color="var(--marduk-color-primary-500)"
-              />
-            ))}
+            <div style={{ display: "flex", gap: "10px" }}>
+              {Array.from({ length: users }).map((_, i) => (
+                <UserIcon
+                  key={i}
+                  size="large"
+                  color="var(--marduk-color-primary-500)"
+                />
+              ))}
+            </div>
+
+            <Button
+              onClick={() => setUsers(users + 1)}
+              variant="primary"
+              size="small"
+            >
+              Add User
+            </Button>
           </div>
 
-          <Button
-            onClick={() => setCount(count + 1)}
+          <div
             style={{
               display: "flex",
+              gap: "20px",
+              flexWrap: "wrap",
               alignItems: "center",
-              gap: "8px",
-              padding: "10px 20px",
-              backgroundColor: "var(--marduk-color-primary-500)",
-              color: "white",
-              border: "none",
-              borderRadius: "6px",
-              cursor: "pointer",
             }}
           >
-            Add User
-          </Button>
+            <Button
+              onClick={() => setLives(Math.max(0, lives - 1))}
+              variant="danger"
+              size="small"
+              disabled={lives === 0}
+            >
+              Lose Life
+            </Button>
+
+            <div style={{ display: "flex", gap: "10px" }}>
+              {Array.from({ length: lives }).map((_, i) => (
+                <SkullCrossbonesIcon
+                  key={i}
+                  size="large"
+                  color="var(--marduk-color-error-500)"
+                />
+              ))}
+              {lives === 0 && (
+                <Text as="div" style={{ fontSize: "14px", color: "#666" }}>
+                  Game Over!
+                </Text>
+              )}
+            </div>
+
+            <Button
+              onClick={() => setLives(Math.min(5, lives + 1))}
+              variant="success"
+              size="small"
+            >
+              Gain Life
+            </Button>
+          </div>
         </div>
       </div>
     );

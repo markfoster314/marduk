@@ -90,3 +90,82 @@
 .marduk-alert--error .marduk-alert-icon {
   color: var(--marduk-color-error-400);
 }
+
+.marduk-alert--dark.marduk-alert--info {
+  background-color: var(--marduk-color-dark-bg-secondary);
+  border-color: var(--marduk-color-primary-300);
+  color: var(--marduk-color-dark-text-primary);
+}
+
+.marduk-alert--dark.marduk-alert--info .marduk-alert-icon {
+  color: var(--marduk-color-primary-300);
+}
+
+.marduk-alert--dark.marduk-alert--success {
+  background-color: var(--marduk-color-dark-bg-secondary);
+  border-color: var(--marduk-color-success-300);
+  color: var(--marduk-color-dark-text-primary);
+}
+
+.marduk-alert--dark.marduk-alert--success .marduk-alert-icon {
+  color: var(--marduk-color-success-300);
+}
+
+.marduk-alert--dark.marduk-alert--warning {
+  background-color: var(--marduk-color-dark-bg-secondary);
+  border-color: var(--marduk-color-warning-200);
+  color: var(--marduk-color-dark-text-primary);
+}
+
+.marduk-alert--dark.marduk-alert--warning .marduk-alert-icon {
+  color: var(--marduk-color-warning-200);
+}
+
+.marduk-alert--dark.marduk-alert--error {
+  background-color: var(--marduk-color-dark-bg-secondary);
+  border-color: var(--marduk-color-error-200);
+  color: var(--marduk-color-dark-text-primary);
+}
+
+.marduk-alert--dark.marduk-alert--error .marduk-alert-icon {
+  color: var(--marduk-color-error-200);
+}
+
+.marduk-alert--dark .marduk-alert-close {
+  color: var(--marduk-color-dark-text-secondary);
+}
+
+.marduk-alert--dark .marduk-alert-close:hover {
+  color: var(--marduk-color-dark-text-primary);
+}
+
+/* Animations */
+@keyframes marduk-alert-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marduk-alert-slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.marduk-alert--animation-fadeInUp {
+  animation: marduk-alert-fadeInUp 0.4s ease-out;
+}
+
+.marduk-alert--animation-slideInRight {
+  animation: marduk-alert-slideInRight 0.5s ease-out;
+}

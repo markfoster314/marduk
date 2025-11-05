@@ -223,3 +223,7 @@
 .marduk-title--dark.marduk-title--variant-warning {
   color: var(--marduk-color-warning-200);
 }
+
+.marduk-title.marduk-title--custom-color {
+  color: var(--marduk-title-custom-color);
+}

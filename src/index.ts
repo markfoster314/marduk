@@ -1,6 +1,7 @@
 import "./styles/variables.css";
 
 export type {
+  BaseIconProps,
   TextVariant,
   TitleVariant,
   ButtonVariant,
@@ -16,6 +17,7 @@ export type {
   SpinSpeed,
   SvgAnimation,
   LoadingScreenAnimation,
+  AlertAnimation,
 } from "./types";
 
 export { Button } from "./components/Button/Button";
@@ -83,3 +85,6 @@ export type { IconProps, IconName } from "./icons";
 
 export { UserIcon } from "./icons";
 export type { UserIconProps } from "./icons";
+
+export { SkullCrossbonesIcon } from "./icons";
+export type { SkullCrossbonesIconProps } from "./icons";

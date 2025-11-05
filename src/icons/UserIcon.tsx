@@ -1,9 +1,10 @@
-import React from "react";
-import { Svg, SvgProps } from "../components/Svg/Svg";
+import { FC } from "react";
+import { Svg } from "../components/Svg/Svg";
+import { BaseIconProps } from "../types";
 
-export interface UserIconProps extends Omit<SvgProps, "children"> {}
+export interface UserIconProps extends BaseIconProps {}
 
-export const UserIcon: React.FC<UserIconProps> = (props) => {
+export const UserIcon: FC<UserIconProps> = (props) => {
   return (
     <Svg {...props}>
       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />

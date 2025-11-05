@@ -11,6 +11,13 @@ const meta: Meta<typeof Alert> = {
       control: "select",
       options: ["info", "success", "warning", "error"],
     },
+    darkMode: {
+      control: { type: "boolean" },
+    },
+    animation: {
+      control: { type: "select" },
+      options: ["none", "fadeInUp", "slideInRight"],
+    },
   },
 };
 
@@ -101,6 +108,102 @@ export const AllVariants: Story = {
       </Alert>
       <Alert variant="error" title="Error" closable>
         An error has occurred.
+      </Alert>
+    </div>
+  ),
+};
+
+export const DarkMode: Story = {
+  args: {
+    variant: "info",
+    darkMode: true,
+    children: "This is an alert in dark mode.",
+  },
+  parameters: {
+    backgrounds: { default: "dark" },
+  },
+};
+
+export const DarkModeVariants: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        maxWidth: "600px",
+        padding: "20px",
+        backgroundColor: "#1e1e1e",
+      }}
+    >
+      <Alert variant="info" title="Info" closable darkMode>
+        This is an informational alert in dark mode.
+      </Alert>
+      <Alert variant="success" title="Success" closable darkMode>
+        Operation completed successfully!
+      </Alert>
+      <Alert variant="warning" title="Warning" closable darkMode>
+        Please be cautious when proceeding.
+      </Alert>
+      <Alert variant="error" title="Error" closable darkMode>
+        An error has occurred.
+      </Alert>
+    </div>
+  ),
+  parameters: {
+    backgrounds: { default: "dark" },
+  },
+};
+
+export const WithFadeInUpAnimation: Story = {
+  args: {
+    variant: "success",
+    animation: "fadeInUp",
+    title: "Animated Alert",
+    children: "This alert fades in and moves up when it appears.",
+  },
+};
+
+export const WithSlideInRightAnimation: Story = {
+  args: {
+    variant: "info",
+    animation: "slideInRight",
+    title: "Sliding Alert",
+    children: "This alert slides in from the right when it appears.",
+  },
+};
+
+export const AnimatedVariants: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        maxWidth: "600px",
+      }}
+    >
+      <Alert variant="info" title="Fade In Up" animation="fadeInUp" closable>
+        This alert uses the fadeInUp animation.
+      </Alert>
+      <Alert variant="success" title="Fade In Up" animation="fadeInUp" closable>
+        Success message with fadeInUp animation.
+      </Alert>
+      <Alert
+        variant="warning"
+        title="Slide In Right"
+        animation="slideInRight"
+        closable
+      >
+        Warning message sliding in from the right.
+      </Alert>
+      <Alert
+        variant="error"
+        title="Slide In Right"
+        animation="slideInRight"
+        closable
+      >
+        Error message with slideInRight animation.
       </Alert>
     </div>
   ),

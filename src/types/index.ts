@@ -4,6 +4,7 @@
  */
 
 export type {
+  BaseIconProps,
   TextVariant,
   TitleVariant,
   ButtonVariant,
@@ -19,4 +20,5 @@ export type {
   SpinSpeed,
   SvgAnimation,
   LoadingScreenAnimation,
+  AlertAnimation,
 } from "./components";

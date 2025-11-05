@@ -1,3 +1,8 @@
+import { SvgProps } from "../components/Svg/Svg";
+
+// Icon Props
+export interface BaseIconProps extends Omit<SvgProps, "children"> {}
+
 // Variant Types
 export type TextVariant =
   | "default"
@@ -63,3 +68,5 @@ export type LoadingScreenAnimation =
   | "flip"
   | "orbit"
   | "shake";
+
+export type AlertAnimation = "none" | "fadeInUp" | "slideInRight";

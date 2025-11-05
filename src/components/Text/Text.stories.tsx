@@ -55,6 +55,10 @@ const meta: Meta<typeof Text> = {
       control: { type: "boolean" },
       description: "Enable dark mode styling",
     },
+    color: {
+      control: { type: "color" },
+      description: "Custom text color (overrides variant color)",
+    },
   },
 };
 
@@ -351,4 +355,40 @@ export const MutedCaption: Story = {
     variant: "muted",
     size: "sm",
   },
+};
+
+export const CustomColor: Story = {
+  args: {
+    children: "Custom colored text using the color prop",
+    color: "#ff6b6b",
+    weight: "semibold",
+  },
+};
+
+export const CustomColorShowcase: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <Text color="#e74c3c" size="lg" weight="bold">
+        Custom Red (#e74c3c)
+      </Text>
+      <Text color="#3498db" size="lg" weight="bold">
+        Custom Blue (#3498db)
+      </Text>
+      <Text color="#2ecc71" size="lg" weight="bold">
+        Custom Green (#2ecc71)
+      </Text>
+      <Text color="#f39c12" size="lg" weight="bold">
+        Custom Orange (#f39c12)
+      </Text>
+      <Text color="#9b59b6" size="lg" weight="bold">
+        Custom Purple (#9b59b6)
+      </Text>
+      <Text color="var(--marduk-color-primary-500)" size="lg" weight="bold">
+        CSS Variable (--marduk-color-primary-500)
+      </Text>
+      <Text variant="primary" color="#e74c3c" size="md">
+        Color prop overrides variant color
+      </Text>
+    </div>
+  ),
 };

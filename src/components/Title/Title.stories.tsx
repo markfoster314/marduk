@@ -46,6 +46,10 @@ const meta: Meta<typeof Title> = {
       control: { type: "boolean" },
       description: "Enable dark mode styling",
     },
+    color: {
+      control: { type: "color" },
+      description: "Custom title color (overrides variant color)",
+    },
   },
 };
 
@@ -334,4 +338,66 @@ export const DarkModeComparison: Story = {
   parameters: {
     layout: "fullscreen",
   },
+};
+
+export const CustomColor: Story = {
+  args: {
+    children: "Custom colored title",
+    level: 2,
+    color: "#ff6b6b",
+    weight: "bold",
+  },
+};
+
+export const CustomColorShowcase: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      <Title level={2} color="#e74c3c" weight="bold">
+        Custom Red (#e74c3c)
+      </Title>
+      <Title level={2} color="#3498db" weight="bold">
+        Custom Blue (#3498db)
+      </Title>
+      <Title level={2} color="#2ecc71" weight="bold">
+        Custom Green (#2ecc71)
+      </Title>
+      <Title level={2} color="#f39c12" weight="bold">
+        Custom Orange (#f39c12)
+      </Title>
+      <Title level={2} color="#9b59b6" weight="bold">
+        Custom Purple (#9b59b6)
+      </Title>
+      <Title level={2} color="var(--marduk-color-primary-500)" weight="bold">
+        CSS Variable (--marduk-color-primary-500)
+      </Title>
+      <Title level={3} variant="primary" color="#e74c3c">
+        Color prop overrides variant color
+      </Title>
+    </div>
+  ),
+};
+
+export const CustomColorWithLevels: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <Title level={1} color="#e74c3c">
+        H1 with Custom Color
+      </Title>
+      <Title level={2} color="#3498db">
+        H2 with Custom Color
+      </Title>
+      <Title level={3} color="#2ecc71">
+        H3 with Custom Color
+      </Title>
+      <Title level={4} color="#f39c12">
+        H4 with Custom Color
+      </Title>
+      <Title level={5} color="#9b59b6">
+        H5 with Custom Color
+      </Title>
+      <Title level={6} color="#e91e63">
+        H6 with Custom Color
+      </Title>
+    </div>
+  ),
 };
