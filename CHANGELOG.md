@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Literally whatever I wind up using when building my react sites will be added as time goes on
 
+## [0.1.3] - 2024-11-04
+
+### Added
+
+- Button component overhaul: appearances, loading, icons, async onClick
+- CSS variables for component-level theming
+- started icons repo
+
+### Changed
+
+- Improved accessibility across components
+
 ## [0.1.2] - 2024-11-03
 
 ### Changed

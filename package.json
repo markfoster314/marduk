@@ -1,6 +1,6 @@
 {
   "name": "@markfoster314/marduk",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A TypeScript React components library configured specifically for Mark and his pals",
   "author": "Mark L Foster <markfoster314@yahoo.com>",
   "license": "MIT",
@@ -40,8 +40,8 @@
     "type-check": "tsc --noEmit"
   },
   "peerDependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",

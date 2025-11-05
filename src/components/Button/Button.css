@@ -424,6 +424,8 @@
   margin: 0;
 }
 
+/* This is an odd piece of css, but it's an accessibility
+ thing for screen readers for icon only buttons */
 .marduk-button-text--icon-only {
   position: absolute;
   width: 1px;

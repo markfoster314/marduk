@@ -1,27 +1,25 @@
 # Marduk Institute Library
 
-<img alt="Rei Clones" style="display: block; margin: auto; padding-bottom: 20px;" src="./docs/images/rei-clones.png">
+<div align="center">
+  <img alt="Rei Clones" src="./docs/images/rei-clones.png" width="600">
+</div>
 
 > _"God's in his heaven, all's right with the world."_
 
-A lightweight React components library built with **TypeScript**, React 19, HTML, and CSS configured specifically for whatever me and my friends need.
+Mark's React Components library
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-19.2-61dafb.svg)](https://reactjs.org/)
-[![CI Status](https://github.com/markfoster314/marduk/actions/workflows/ci.yml/badge.svg)](https://github.com/markfoster314/marduk/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/markfoster314/marduk/branch/main/graph/badge.svg)](https://codecov.io/gh/markfoster314/marduk)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.1+-blue.svg)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19.0+-61dafb.svg)](https://reactjs.org/)
 [![npm version](https://img.shields.io/npm/v/@markfoster314/marduk.svg)](https://www.npmjs.com/package/@markfoster314/marduk)
-[![npm downloads](https://img.shields.io/npm/dm/@markfoster314/marduk.svg)](https://www.npmjs.com/package/@markfoster314/marduk)
-[![GitHub](https://img.shields.io/github/license/markfoster314/marduk.svg)](https://github.com/markfoster314/marduk/blob/main/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/markfoster314/marduk.svg?style=social)](https://github.com/markfoster314/marduk)
+[![License](https://img.shields.io/github/license/markfoster314/marduk.svg)](https://github.com/markfoster314/marduk/blob/main/LICENSE)
 
-## Features
+## What's This?
 
-- **Zero Dependencies** - Only React as a peer dependency
-- **Tree-shakeable** - Import only what you need
-- **CSS Variables** - Centralized design tokens for easy theming
+A lightweight component library built for me and my friends. Zero dependencies (just React), fully typed, and themeable with CSS variables.
 
-I find myself rebuilding the same things over and over again every time I make a new project, so I'm putting together this library so all this stuff is in one place.
+**Notes:**
+
+- Currently a WIP
 
 ## Installation
 
@@ -29,135 +27,128 @@ I find myself rebuilding the same things over and over again every time I make a
 npm install @markfoster314/marduk
 ```
 
+## Quick Start
+
+```tsx
+import { Button, Alert, TextInput } from "@markfoster314/marduk";
+
+function App() {
+  return (
+    <>
+      <Button variant="primary" appearance="filled">
+        Click me
+      </Button>
+
+      <Alert variant="success" closable>
+        All good!
+      </Alert>
+
+      <TextInput label="Email" placeholder="you@example.com" />
+    </>
+  );
+}
+```
+
+## Components in a ~finished state
+
+**UI Elements:** Button
+
 ## Development
-
-### Prerequisites
-
-- Node.js v18.14+
-- npm or yarn
-
-### Setup
 
 ```bash
 git clone https://github.com/markfoster314/marduk.git
 cd marduk
-
 npm install
-
-npm run storybook
+npm run storybook  # Opens on localhost:2015
 ```
 
-### Available Scripts
+**Useful commands:**
 
 ```bash
 npm test              # Run tests
-npm run test:watch    # Run tests in watch mode
-npm run test:coverage # Generate coverage report
-npm run storybook     # Start Storybook on port 2015
+npm run test:watch    # Tests in watch mode
+npm run storybook     # Component playground
 npm run build         # Build the library
-npm run type-check    # TypeScript type checking
+npm run type-check    # TypeScript checking
 ```
 
 ## Theming
 
-We use CSS variables for theming. It is all centralized in `src/styles/variables.css`:
-
-**Override variables to customize the theme:**
+Everything uses CSS variables, so theming is easy. Just override whatever you need changed for your project:
 
 ```css
-/* In your app's CSS */
 :root {
-  --color-primary-500: #8b5cf6;
-  --color-success-500: #10b981;
-  --radius-md: 8px;
-  --font-family-base: "Inter", sans-serif;
+  --marduk-color-primary-500: #8b5cf6;
+  --marduk-color-success-500: #10b981;
+  --marduk-radius-md: 8px;
+  --marduk-font-family-base: "Inter", sans-serif;
 }
 ```
 
-All components will now automatically use the custom theme
+Components also have their own CSS variables for granular control:
 
-## Testing
-
-We use React Testing Library for tests:
-
-```bash
-npm test
-# Test Suites: 13 passed, 13 total
-# Tests:       293 passed, 293 total
-# Snapshots:   0 total
-# Time:        15.802 s
+```tsx
+<Button
+  style={
+    {
+      "--button-border-radius": "999px",
+      "--button-active-scale": "1",
+    } as React.CSSProperties
+  }
+>
+  Pill Button
+</Button>
 ```
 
-## TypeScript Support
+## TypeScript
 
-Library was built with Typescript in mind, so there's full TypeScript support with exported types. You can make custom components with type safety like so:
+Fully typed with exported types for everything:
 
 ```typescript
-import { Button, TextInput, Breadcrumb } from "@markfoster314/marduk";
-import type {
-  ButtonProps,
-  TextInputProps,
-  BreadcrumbProps,
-  BreadcrumbItem,
-} from "@markfoster314/marduk";
+import { Button } from "@markfoster314/marduk";
+import type { ButtonProps } from "@markfoster314/marduk";
 
 interface CustomButtonProps extends ButtonProps {
-  loading?: boolean;
+  isLoading?: boolean;
 }
 
-const LoadingButton = ({ loading, ...props }: CustomButtonProps) => (
-  <Button {...props}>{loading ? "Loading..." : props.children}</Button>
+const MyButton = ({ isLoading, ...props }: CustomButtonProps) => (
+  <Button loading={isLoading} {...props} />
 );
 ```
 
 ## Storybook
 
-View live component examples and documentation:
+See all components in action:
 
 ```bash
-npm run storybook
+npm run storybook  # localhost:2015
 ```
 
-Visit `http://localhost:2015` to see everything.
+## Testing
 
-## What's Included
-
-When you install this package, you get:
-
+```bash
+npm test
+# Test Suites: 18 passed, 18 total
+# Tests:       582 passed, 582 total
 ```
-@markfoster314/marduk/
-├── dist/
-│   ├── components/           # Components, duh
-│   ├── index.js              # CommonJS build
-│   ├── index.esm.js          # ES Module build
-│   └── *.d.ts                # TypeScript definitions
-├── package.json
-├── CHANGELOG.md
-├── README.md
-└── LICENSE
-```
-
-**Package size**: ~50-70KB
 
 ## Contributing
 
-Anyone who wants to is welcome to contribute, just try and do the following:
+PRs will be more welcome in the future once we're off the ground.
 
-1. Write tests for new components/features
-2. Run `npm test` and `npm run type-check` before committing
-3. Try and maintain test coverage above 70%
-4. Follow the general patterns of the project
-5. Update Storybook stories for new features
+For PRs:
+
+- Write tests for updates
+- Run `npm test` and `npm run type-check` before committing
+- Follow existing patterns
+- Update Storybook stories
+
+[Open an issue](https://github.com/markfoster314/marduk/issues) if you have ideas or find bugs.
 
 ## License
 
 MIT © Mark Foster
-
-## Links
-
-- [Report Issues](https://github.com/markfoster314/marduk/issues)
-- [NPM Package](https://www.npmjs.com/package/@markfoster314/marduk)
-- [Documentation](https://github.com/markfoster314/marduk#readme)
 
 ---
 

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Button } from "./Button";
 
@@ -450,6 +450,10 @@ describe("Button", () => {
       fireEvent.click(button);
 
       expect(mockAsync).toHaveBeenCalledTimes(1);
+
+      await waitFor(() => {
+        expect(button).not.toHaveAttribute("data-loading");
+      });
     });
 
     it("sets loading state during async operation", async () => {
@@ -474,7 +478,9 @@ describe("Button", () => {
 
       resolvePromise!();
 
-      await new Promise((resolve) => setTimeout(resolve, 0));
+      await waitFor(() => {
+        expect(button).not.toHaveAttribute("data-loading");
+      });
     });
 
     it("calls both onClickAsync and onClick", async () => {
@@ -491,6 +497,10 @@ describe("Button", () => {
 
       expect(mockAsync).toHaveBeenCalledTimes(1);
       expect(mockClick).toHaveBeenCalledTimes(1);
+
+      await waitFor(() => {
+        expect(screen.getByRole("button")).not.toHaveAttribute("data-loading");
+      });
     });
 
     it("handles async errors gracefully", async () => {
@@ -501,12 +511,16 @@ describe("Button", () => {
 
       fireEvent.click(screen.getByRole("button"));
 
-      await new Promise((resolve) => setTimeout(resolve, 10));
+      await waitFor(() => {
+        expect(consoleSpy).toHaveBeenCalledWith(
+          "Error when calling button's onClickAsync method:",
+          expect.any(Error)
+        );
+      });
 
-      expect(consoleSpy).toHaveBeenCalledWith(
-        "Error when calling button's onClickAsync method:",
-        expect.any(Error)
-      );
+      await waitFor(() => {
+        expect(screen.getByRole("button")).not.toHaveAttribute("data-loading");
+      });
 
       consoleSpy.mockRestore();
     });
@@ -521,9 +535,9 @@ describe("Button", () => {
 
       expect(button).toHaveAttribute("data-loading", "true");
 
-      await new Promise((resolve) => setTimeout(resolve, 10));
-
-      expect(button).not.toHaveAttribute("data-loading");
+      await waitFor(() => {
+        expect(button).not.toHaveAttribute("data-loading");
+      });
     });
 
     it("works with loadingText", async () => {
@@ -549,7 +563,10 @@ describe("Button", () => {
       expect(screen.queryByText("Submit")).not.toBeInTheDocument();
 
       resolvePromise!();
-      await new Promise((resolve) => setTimeout(resolve, 0));
+
+      await waitFor(() => {
+        expect(screen.getByText("Submit")).toBeInTheDocument();
+      });
     });
 
     it("respects external loading prop", () => {
