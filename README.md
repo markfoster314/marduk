@@ -53,6 +53,8 @@ function App() {
 
 **UI Elements:** Button
 
+**Typography Elements:** Title
+
 ## Development
 
 ```bash
