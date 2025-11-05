@@ -2,7 +2,13 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Icon } from "./Icon";
 import { iconData } from "./data";
-import { UserIcon, SkullCrossbonesIcon } from "./index";
+import {
+  UserIcon,
+  SkullCrossbonesIcon,
+  CircleInfoIcon,
+  ThumbsUpIcon,
+  TriangleExclamationIcon,
+} from "./index";
 
 describe("Icon (Generic Component)", () => {
   describe("Rendering", () => {
@@ -78,62 +84,91 @@ describe("Icon (Generic Component)", () => {
 });
 
 describe("Individual Icon Components", () => {
-  describe("UserIcon", () => {
-    it("renders correctly", () => {
-      const { container } = render(<UserIcon />);
-      expect(container.querySelector("svg")).toBeInTheDocument();
-    });
+  const iconComponents = [
+    {
+      name: "UserIcon",
+      Component: UserIcon,
+      expectedViewBox: "0 0 24 24",
+      expectedPathCount: 2,
+      testColor: "blue",
+    },
+    {
+      name: "SkullCrossbonesIcon",
+      Component: SkullCrossbonesIcon,
+      expectedViewBox: "0 0 640 640",
+      expectedPathCount: 1,
+      testColor: "red",
+    },
+    {
+      name: "CircleInfoIcon",
+      Component: CircleInfoIcon,
+      expectedViewBox: "0 0 640 640",
+      expectedPathCount: 1,
+      testColor: "blue",
+    },
+    {
+      name: "ThumbsUpIcon",
+      Component: ThumbsUpIcon,
+      expectedViewBox: "0 0 640 640",
+      expectedPathCount: 1,
+      testColor: "green",
+    },
+    {
+      name: "TriangleExclamationIcon",
+      Component: TriangleExclamationIcon,
+      expectedViewBox: "0 0 640 640",
+      expectedPathCount: 1,
+      testColor: "orange",
+    },
+  ];
 
-    it("renders multiple paths", () => {
-      const { container } = render(<UserIcon />);
-      const paths = container.querySelectorAll("path");
-      expect(paths.length).toBe(2);
-    });
+  iconComponents.forEach(
+    ({ name, Component, expectedViewBox, expectedPathCount, testColor }) => {
+      describe(name, () => {
+        it("renders correctly", () => {
+          const { container } = render(<Component />);
+          expect(container.querySelector("svg")).toBeInTheDocument();
+        });
 
-    it("accepts Svg props", () => {
-      const { container } = render(<UserIcon size="large" color="blue" />);
-      const svg = container.querySelector("svg");
-      expect(svg).toHaveAttribute("width", "32");
-      expect(svg).toHaveAttribute("fill", "blue");
-    });
+        it(`renders with viewBox ${expectedViewBox}`, () => {
+          const { container } = render(<Component />);
+          const svg = container.querySelector("svg");
+          expect(svg).toHaveAttribute("viewBox", expectedViewBox);
+        });
 
-    it("supports rotation", () => {
-      const { container } = render(<UserIcon rotate={90} />);
-      const svg = container.querySelector("svg");
-      expect(svg).toHaveClass("marduk-svg--rotate-90");
-    });
-  });
+        it(`renders ${expectedPathCount} path element(s)`, () => {
+          const { container } = render(<Component />);
+          const paths = container.querySelectorAll("path");
+          expect(paths.length).toBe(expectedPathCount);
+        });
 
-  describe("SkullCrossbonesIcon", () => {
-    it("renders correctly", () => {
-      const { container } = render(<SkullCrossbonesIcon />);
-      expect(container.querySelector("svg")).toBeInTheDocument();
-    });
+        it("accepts size prop", () => {
+          const { container } = render(<Component size="large" />);
+          const svg = container.querySelector("svg");
+          expect(svg).toHaveAttribute("width", "32");
+          expect(svg).toHaveAttribute("height", "32");
+        });
 
-    it("renders with custom viewBox", () => {
-      const { container } = render(<SkullCrossbonesIcon />);
-      const svg = container.querySelector("svg");
-      expect(svg).toHaveAttribute("viewBox", "0 0 640 640");
-    });
+        it("accepts color prop", () => {
+          const { container } = render(<Component color={testColor} />);
+          const svg = container.querySelector("svg");
+          expect(svg).toHaveAttribute("fill", testColor);
+        });
 
-    it("accepts Svg props", () => {
-      const { container } = render(
-        <SkullCrossbonesIcon size="large" color="red" />
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).toHaveAttribute("width", "32");
-      expect(svg).toHaveAttribute("fill", "red");
-    });
+        it("supports rotation", () => {
+          const { container } = render(<Component rotate={90} />);
+          const svg = container.querySelector("svg");
+          expect(svg).toHaveClass("marduk-svg--rotate-90");
+        });
 
-    it("supports transformations", () => {
-      const { container } = render(
-        <SkullCrossbonesIcon rotate={180} flip="horizontal" />
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).toHaveClass("marduk-svg--rotate-180");
-      expect(svg).toHaveClass("marduk-svg--flip-horizontal");
-    });
-  });
+        it("supports flip transformations", () => {
+          const { container } = render(<Component flip="horizontal" />);
+          const svg = container.querySelector("svg");
+          expect(svg).toHaveClass("marduk-svg--flip-horizontal");
+        });
+      });
+    }
+  );
 });
 
 describe("Accessibility", () => {

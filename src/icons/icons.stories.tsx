@@ -5,7 +5,13 @@ import { Text } from "../components/Text/Text";
 import { Title } from "../components/Title/Title";
 import { Button } from "../components/Button/Button";
 import React from "react";
-import { UserIcon, SkullCrossbonesIcon } from "./index";
+import {
+  UserIcon,
+  SkullCrossbonesIcon,
+  CircleInfoIcon,
+  ThumbsUpIcon,
+  TriangleExclamationIcon,
+} from "./index";
 
 const meta: Meta<typeof Icon> = {
   title: "Icons/Icon",
@@ -244,18 +250,30 @@ export const IndividualComponents: Story = {
           </Text>
         </div>
         <div style={{ textAlign: "center" }}>
-          <UserIcon size="large" color="var(--marduk-color-success-500)" />
+          <CircleInfoIcon
+            size="large"
+            color="var(--marduk-color-primary-500)"
+          />
           <Text as="div" style={{ fontSize: "12px", marginTop: "8px" }}>
-            Success
+            CircleInfoIcon
           </Text>
         </div>
         <div style={{ textAlign: "center" }}>
-          <SkullCrossbonesIcon
+          <ThumbsUpIcon
             size="large"
-            color="var(--marduk-color-error-500)"
+            color="var(--marduk-color-success-500)"
           />
           <Text as="div" style={{ fontSize: "12px", marginTop: "8px" }}>
-            Danger
+            ThumbsUpIcon
+          </Text>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <TriangleExclamationIcon
+            size="large"
+            color="var(--marduk-color-warning-400)"
+          />
+          <Text as="div" style={{ fontSize: "12px", marginTop: "8px" }}>
+            TriangleExclamationIcon
           </Text>
         </div>
       </div>
@@ -268,10 +286,13 @@ export const IndividualComponents: Story = {
           fontSize: "12px",
         }}
       >
-        <div>{`import { UserIcon, SkullCrossbonesIcon } from "@markfoster314/marduk";`}</div>
+        <div>{`import { UserIcon, SkullCrossbonesIcon, CircleInfoIcon, ThumbsUpIcon, TriangleExclamationIcon } from "@markfoster314/marduk";`}</div>
         <br />
         <div>{`<UserIcon size="large" color="blue" />`}</div>
         <div>{`<SkullCrossbonesIcon size="large" color="red" />`}</div>
+        <div>{`<CircleInfoIcon size="large" color="blue" />`}</div>
+        <div>{`<ThumbsUpIcon size="large" color="green" />`}</div>
+        <div>{`<TriangleExclamationIcon size="large" color="orange" />`}</div>
       </div>
     </div>
   ),

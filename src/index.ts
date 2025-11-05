@@ -88,3 +88,12 @@ export type { UserIconProps } from "./icons";
 
 export { SkullCrossbonesIcon } from "./icons";
 export type { SkullCrossbonesIconProps } from "./icons";
+
+export { CircleInfoIcon } from "./icons";
+export type { CircleInfoIconProps } from "./icons";
+
+export { ThumbsUpIcon } from "./icons";
+export type { ThumbsUpIconProps } from "./icons";
+
+export { TriangleExclamationIcon } from "./icons";
+export type { TriangleExclamationIconProps } from "./icons";
