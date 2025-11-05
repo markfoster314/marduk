@@ -1,8 +1,8 @@
 {
   "name": "@markfoster314/marduk",
-  "version": "0.1.3",
-  "description": "A TypeScript React components library configured specifically for Mark and his pals",
-  "author": "Mark L Foster <markfoster314@yahoo.com>",
+  "version": "0.1.4",
+  "description": "TypeScript React components library configured specifically for Mark and his pals",
+  "author": "Mark L Foster (https://github.com/markfoster314)",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,11 +17,35 @@
     "components",
     "ui",
     "library",
-    "typescript"
+    "typescript",
+    "react-components",
+    "ui-library",
+    "component-library",
+    "design-system",
+    "accessible",
+    "no-dependencies",
+    "typescript-library"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/markfoster314/marduk"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./styles.css": "./dist/esm/index.css",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "*.css",
+    "**/*.css"
+  ],
   "files": [
     "dist",
     "CHANGELOG.md"
@@ -30,14 +54,22 @@
     "access": "public"
   },
   "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "npm run type-check && npm test",
+    "build:declarations": "tsc --noEmit false --declaration --emitDeclarationOnly --outDir dist/esm",
+    "build:rollup": "rollup -c",
+    "build": "npm run clean && npm run build:declarations && npm run build:rollup",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "storybook": "storybook dev -p 2015",
     "build-storybook": "storybook build",
-    "build": "rollup -c",
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "type-check": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=7.0.0"
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -50,6 +82,7 @@
     "@babel/preset-typescript": "^7.28.5",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.3.0",
     "@storybook/addon-docs": "^10.0.2",
     "@storybook/addon-links": "^10.0.2",
@@ -69,9 +102,12 @@
     "jest-environment-jsdom": "^30.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "rimraf": "^6.1.0",
     "rollup": "^4.52.5",
+    "rollup-plugin-filesize": "^10.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-visualizer": "^6.0.5",
     "storybook": "^10.0.2",
     "style-loader": "^4.0.0",
     "ts-jest": "^29.4.5",

@@ -10,8 +10,16 @@ src/
 **/setupTests.ts
 jest.config.js
 coverage/
+.nyc_output/
 
-# Documentation
+# Storybook
+**/*.stories.ts
+**/*.stories.tsx
+**/*.stories.js
+**/*.stories.jsx
+storybook-static/
+
+# Documentation (keep only main README and CHANGELOG)
 internal/
 docs/
 *.md
@@ -19,35 +27,80 @@ docs/
 !CHANGELOG.md
 !LICENSE.md
 !dist/**/*.md
+src/**/README.md
 
-# Development files
-rollup.config.js
+# Lock files (critical for libraries!)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build configuration
+rollup.config.*
 .babelrc
+.babelrc.*
 tsconfig.json
-tsconfig.storybook.json
+tsconfig.*.json
+*.tsbuildinfo
 
-# Storybook build
-storybook-static/
+# Config files
+.eslintrc
+.eslintrc.*
+.eslintignore
+.prettierrc
+.prettierrc.*
+.prettierignore
+.editorconfig
+.nvmrc
+.npmrc
+
+# CI/CD
+.github/
+.travis.yml
+.circleci/
+.gitlab-ci.yml
+azure-pipelines.yml
+netlify.toml
+vercel.json
 
 # Git
 .git/
 .gitignore
+.gitattributes
 
 # IDE
 .vscode/
 .idea/
+*.code-workspace
+*.sublime-workspace
+*.sublime-project
 
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
 # Misc
 node_modules/
 .env
-.env.local
+.env.*
+!.env.example
+.cache/
+*.tmp
+*.temp
+
+# Yalc
+yalc.lock
+.yalc/
+
+# Bundle analysis
+dist/bundle-analysis.html
+
+# Build artifacts
+dist/**/*.tsbuildinfo

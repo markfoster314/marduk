@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Literally whatever I wind up using when building my react sites will be added as time goes on
 
+## [0.1.4] - 2024-11-05
+
+### Added
+
+- Decided how to handle css for the project (exporting)
+- two new components finished, Text and Title
+
+### Changed
+
+- Build settings
+
 ## [0.1.3] - 2024-11-04
 
 ### Added

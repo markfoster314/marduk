@@ -1,31 +1,50 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM"],
+    "jsx": "react-jsx",
+
     "module": "ESNext",
-    "lib": ["ES2015", "DOM"],
-    "jsx": "react-jsx", // https://www.totaltypescript.com/react-refers-to-a-umd-global
-    "declaration": true,
-    "declarationDir": "./dist",
-    "outDir": "./dist",
     "moduleResolution": "node",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
+
+    "outDir": "./dist/esm",
+    "declarationDir": "./dist/esm",
+
+    "declaration": true,
+    "sourceMap": true,
+    "removeComments": true,
+    "importHelpers": false, // we want zero dependencies, this adds tslib if true, small increase in bundle size
+    "noEmit": true,
+    "noEmitOnError": true,
+
+    "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "skipLibCheck": true,
+
+    "incremental": true
   },
   "include": ["src/**/*"],
   "exclude": [
     "node_modules",
     "dist",
     "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "**/*.test.tsx",
+    "**/*.test.ts",
     "**/*.spec.tsx",
+    "**/*.spec.ts",
     "**/setupTests.ts",
-    "coverage"
+    "coverage",
+    "storybook-static"
   ]
 }

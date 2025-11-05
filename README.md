@@ -10,6 +10,8 @@ Mark's React Components library
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.1+-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.0+-61dafb.svg)](https://reactjs.org/)
+[![Node](https://img.shields.io/badge/Node-18+-green.svg)](https://nodejs.org/)
+[![npm](https://img.shields.io/badge/npm-7+-red.svg)](https://www.npmjs.com/)
 [![npm version](https://img.shields.io/npm/v/@markfoster314/marduk.svg)](https://www.npmjs.com/package/@markfoster314/marduk)
 [![License](https://img.shields.io/github/license/markfoster314/marduk.svg)](https://github.com/markfoster314/marduk/blob/main/LICENSE)
 
@@ -28,6 +30,13 @@ npm install @markfoster314/marduk
 ```
 
 ## Quick Start
+
+import CSS at the root of your application
+
+```tsx
+// Add to your app's entry point (main.tsx, App.tsx, _app.tsx, etc.)
+import "@markfoster314/marduk/styles.css";
+```
 
 ```tsx
 import { Button, Alert, TextInput } from "@markfoster314/marduk";
