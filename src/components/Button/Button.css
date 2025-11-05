@@ -6,6 +6,19 @@
   --button-border-color: transparent;
   --button-border-width: 0;
 
+  --button-border-radius: var(--marduk-radius-md);
+  --button-font-weight: var(--marduk-font-weight-semibold);
+
+  --button-focus-outline-color: var(--marduk-color-primary-500);
+  --button-focus-outline-width: 2px;
+  --button-focus-outline-offset: 2px;
+
+  --button-active-scale: 0.97;
+  --button-icon-gap: var(--marduk-spacing-2);
+
+  --button-disabled-opacity: var(--marduk-opacity-disabled);
+  --button-disabled-filter: grayscale(0.3);
+
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -20,9 +33,9 @@
   background-color: var(--button-bg);
   color: var(--button-color);
   border: var(--button-border-width) solid var(--button-border-color);
-  border-radius: var(--marduk-radius-md);
+  border-radius: var(--button-border-radius);
   cursor: pointer;
-  font-weight: var(--marduk-font-weight-semibold);
+  font-weight: var(--button-font-weight);
   transition: background-color var(--marduk-transition-fast),
     color var(--marduk-transition-fast),
     border-color var(--marduk-transition-fast),
@@ -33,18 +46,19 @@
   justify-content: center;
 }
 
-.marduk-button:hover:not(:disabled) {
+.marduk-button:where(:hover):not(:disabled) {
   background-color: var(--button-bg-hover);
   color: var(--button-color-hover);
 }
 
-.marduk-button:focus {
-  outline: 2px solid var(--marduk-color-primary-500);
-  outline-offset: 2px;
+.marduk-button:where(:focus) {
+  outline: var(--button-focus-outline-width) solid
+    var(--button-focus-outline-color);
+  outline-offset: var(--button-focus-outline-offset);
 }
 
-.marduk-button:active:not(:disabled) {
-  transform: scale(0.97);
+.marduk-button:where(:active):not(:disabled) {
+  transform: scale(var(--button-active-scale));
 }
 
 .marduk-button--appearance-filled.marduk-button--primary {
@@ -164,16 +178,19 @@
 .marduk-button--small {
   padding: var(--marduk-spacing-3) var(--marduk-spacing-5);
   font-size: var(--marduk-font-size-sm);
+  min-width: 48px;
 }
 
 .marduk-button--medium {
   padding: var(--marduk-spacing-4) var(--marduk-spacing-7);
   font-size: var(--marduk-font-size-md);
+  min-width: 64px;
 }
 
 .marduk-button--large {
   padding: var(--marduk-spacing-6) var(--marduk-spacing-9);
   font-size: var(--marduk-font-size-lg);
+  min-width: 80px;
 }
 
 /* text buttons need less padding */
@@ -192,19 +209,22 @@
   padding-right: var(--marduk-spacing-5);
 }
 
+.marduk-button:where(:disabled),
 .marduk-button--disabled,
-.marduk-button:disabled {
-  opacity: var(--marduk-opacity-disabled);
+.marduk-button[aria-disabled="true"] {
+  opacity: var(--button-disabled-opacity);
   cursor: not-allowed;
   pointer-events: none;
-  filter: grayscale(0.3);
+  filter: var(--button-disabled-filter);
   box-shadow: none;
 }
 
-.marduk-button:disabled:hover,
-.marduk-button--disabled:hover,
-.marduk-button:disabled:active,
-.marduk-button--disabled:active {
+.marduk-button:where(:disabled):where(:hover),
+.marduk-button--disabled:where(:hover),
+.marduk-button:where(:disabled):where(:active),
+.marduk-button--disabled:where(:active),
+.marduk-button[aria-disabled="true"]:where(:hover),
+.marduk-button[aria-disabled="true"]:where(:active) {
   background-color: var(--button-bg);
   color: var(--button-color);
   transform: none;
@@ -245,8 +265,7 @@
 }
 
 .marduk-button.marduk-button--dark:focus {
-  outline: 2px solid var(--marduk-color-primary-300);
-  outline-offset: 2px;
+  --button-focus-outline-color: var(--marduk-color-primary-300);
 }
 
 .marduk-button--dark.marduk-button--appearance-filled.marduk-button--primary {
@@ -359,6 +378,69 @@
   --button-color-hover: var(--marduk-color-error-100);
 }
 
+.marduk-button-icon-left,
+.marduk-button-icon-right {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.marduk-button-icon-left {
+  margin-right: var(--button-icon-gap);
+}
+
+.marduk-button-icon-right {
+  margin-left: var(--button-icon-gap);
+}
+
+.marduk-button--icon-only {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marduk-button--icon-only.marduk-button--small {
+  padding: var(--marduk-spacing-2);
+  min-width: auto;
+  aspect-ratio: 1;
+}
+
+.marduk-button--icon-only.marduk-button--medium {
+  padding: var(--marduk-spacing-3);
+  min-width: auto;
+  aspect-ratio: 1;
+}
+
+.marduk-button--icon-only.marduk-button--large {
+  padding: var(--marduk-spacing-4);
+  min-width: auto;
+  aspect-ratio: 1;
+}
+
+.marduk-button--icon-only .marduk-button-icon-left,
+.marduk-button--icon-only .marduk-button-icon-right {
+  margin: 0;
+}
+
+.marduk-button-text--icon-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.marduk-button--full-width {
+  width: 100%;
+  justify-content: center;
+}
+
 .marduk-button--loading {
   position: relative;
   pointer-events: none;
@@ -366,11 +448,13 @@
 
 .marduk-button-content--loading {
   opacity: 0;
-  visibility: hidden;
 }
 
 .marduk-button-spinner {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 16px;
   height: 16px;
   border: 2px solid currentColor;
@@ -393,22 +477,52 @@
 
 @keyframes marduk-button-spin {
   to {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marduk-button {
+  .marduk-button:where(*) {
     transition: none;
   }
 
-  .marduk-button:active:not(:disabled) {
+  .marduk-button:where(:active):not(:disabled) {
     transform: none;
   }
 
-  .marduk-button-spinner {
+  .marduk-button-spinner:where(*) {
     animation: none;
     border-right-color: currentColor;
     opacity: 0.5;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .marduk-button {
+    border: 2px solid currentColor;
+  }
+
+  .marduk-button:where(:focus) {
+    --button-focus-outline-width: 3px;
+  }
+
+  .marduk-button--appearance-outline {
+    border-width: 3px;
+  }
+
+  .marduk-button--appearance-text {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .marduk-button:where(:disabled),
+  .marduk-button--disabled,
+  .marduk-button[aria-disabled="true"] {
+    border-style: dashed;
+    opacity: 0.5;
+  }
+
+  .marduk-button-spinner {
+    border-width: 3px;
   }
 }
