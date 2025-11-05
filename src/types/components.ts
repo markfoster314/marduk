@@ -26,8 +26,9 @@ export type ButtonVariant =
   | "secondary"
   | "success"
   | "warning"
-  | "danger"
-  | "outline";
+  | "danger";
+
+export type ButtonAppearance = "filled" | "outline" | "text";
 
 export type AlertVariant = "info" | "success" | "warning" | "error";
 

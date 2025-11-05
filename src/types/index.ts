@@ -8,6 +8,7 @@ export type {
   TextVariant,
   TitleVariant,
   ButtonVariant,
+  ButtonAppearance,
   AlertVariant,
   ComponentSize,
   TextSize,

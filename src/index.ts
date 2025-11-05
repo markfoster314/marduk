@@ -18,6 +18,7 @@ export type {
   SvgAnimation,
   LoadingScreenAnimation,
   AlertAnimation,
+  ButtonAppearance,
 } from "./types";
 
 export { Button } from "./components/Button/Button";

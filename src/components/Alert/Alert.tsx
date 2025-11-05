@@ -1,8 +1,14 @@
 import { HTMLAttributes, ReactNode, useState } from "react";
 import { AlertVariant, AlertAnimation } from "../../types";
-import { SkullCrossbonesIcon } from "../../icons/SkullCrossbonesIcon";
+import {
+  SkullCrossbonesIcon,
+  TriangleExclamationIcon,
+  ThumbsUpIcon,
+  CircleInfoIcon,
+} from "../../icons";
 import { Text } from "../Text/Text";
 import { Title } from "../Title/Title";
+import { Button } from "../Button/Button";
 import "./Alert.css";
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
@@ -48,9 +54,9 @@ export const Alert = ({
     .join(" ");
 
   const icons = {
-    info: "i",
-    success: "✓",
-    warning: "!",
+    info: <CircleInfoIcon />,
+    success: <ThumbsUpIcon />,
+    warning: <TriangleExclamationIcon />,
     error: <SkullCrossbonesIcon />,
   };
 
@@ -58,6 +64,19 @@ export const Alert = ({
     if (darkMode) {
       return "secondary";
     }
+    switch (variant) {
+      case "success":
+        return "success";
+      case "warning":
+        return "warning";
+      case "error":
+        return "danger";
+      default:
+        return "primary";
+    }
+  };
+
+  const getButtonVariant = () => {
     switch (variant) {
       case "success":
         return "success";
@@ -88,19 +107,24 @@ export const Alert = ({
           darkMode={darkMode}
           variant={getTextVariant()}
           className="marduk-alert-message"
+          size="sm"
         >
           {children}
         </Text>
       </div>
       {closable && (
-        <button
+        <Button
           type="button"
-          className="marduk-alert-close"
+          variant={getButtonVariant()}
+          appearance="text"
+          size="small"
           onClick={handleClose}
           aria-label="Close alert"
+          darkMode={darkMode}
+          className="marduk-alert-close"
         >
           ✕
-        </button>
+        </Button>
       )}
     </div>
   );

@@ -45,11 +45,36 @@ describe("Button", () => {
       const button = screen.getByRole("button");
       expect(button).toHaveClass("marduk-button--danger");
     });
+  });
 
-    it("applies outline variant class", () => {
-      render(<Button variant="outline">Outline</Button>);
+  describe("Appearances", () => {
+    it("applies filled appearance by default", () => {
+      render(<Button>Filled</Button>);
       const button = screen.getByRole("button");
-      expect(button).toHaveClass("marduk-button--outline");
+      expect(button).toHaveClass("marduk-button--appearance-filled");
+    });
+
+    it("applies outline appearance", () => {
+      render(<Button appearance="outline">Outline</Button>);
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("marduk-button--appearance-outline");
+    });
+
+    it("applies text appearance", () => {
+      render(<Button appearance="text">Text</Button>);
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("marduk-button--appearance-text");
+    });
+
+    it("combines variant and appearance", () => {
+      render(
+        <Button variant="success" appearance="text">
+          Success Text
+        </Button>
+      );
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("marduk-button--success");
+      expect(button).toHaveClass("marduk-button--appearance-text");
     });
   });
 
@@ -88,6 +113,76 @@ describe("Button", () => {
       render(<Button disabled>Disabled</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("marduk-button--disabled");
+    });
+  });
+
+  describe("Loading State", () => {
+    it("is not loading by default", () => {
+      render(<Button>Not Loading</Button>);
+      const button = screen.getByRole("button");
+      expect(button).not.toHaveClass("marduk-button--loading");
+      expect(button).not.toHaveAttribute("aria-busy");
+    });
+
+    it("can be loading", () => {
+      render(<Button loading>Loading</Button>);
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("marduk-button--loading");
+    });
+
+    it("is disabled when loading", () => {
+      render(<Button loading>Loading</Button>);
+      expect(screen.getByRole("button")).toBeDisabled();
+    });
+
+    it("has aria-busy attribute when loading", () => {
+      render(<Button loading>Loading</Button>);
+      const button = screen.getByRole("button");
+      expect(button).toHaveAttribute("aria-busy", "true");
+    });
+
+    it("shows spinner when loading", () => {
+      const { container } = render(<Button loading>Loading</Button>);
+      const spinner = container.querySelector(".marduk-button-spinner");
+      expect(spinner).toBeInTheDocument();
+    });
+
+    it("hides content when loading", () => {
+      const { container } = render(<Button loading>Loading Text</Button>);
+      const content = container.querySelector(".marduk-button-content--loading");
+      expect(content).toBeInTheDocument();
+      expect(content).toHaveTextContent("Loading Text");
+    });
+
+    it("does not call onClick when loading", () => {
+      const handleClick = jest.fn();
+      render(
+        <Button onClick={handleClick} loading>
+          Loading
+        </Button>
+      );
+
+      fireEvent.click(screen.getByRole("button"));
+      expect(handleClick).not.toHaveBeenCalled();
+    });
+
+    it("works with all variants", () => {
+      const variants: Array<"primary" | "secondary" | "success" | "warning" | "danger"> = [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+      ];
+
+      variants.forEach((variant) => {
+        const { container } = render(
+          <Button variant={variant} loading>
+            Loading
+          </Button>
+        );
+        expect(container.querySelector(".marduk-button-spinner")).toBeInTheDocument();
+      });
     });
   });
 

@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Alert } from "./Alert";
 import React from "react";
+import { Title } from "../Title/Title";
+import { Text } from "../Text/Text";
 
 const meta: Meta<typeof Alert> = {
   title: "Components/Alert",
@@ -205,6 +207,60 @@ export const AnimatedVariants: Story = {
       >
         Error message with slideInRight animation.
       </Alert>
+    </div>
+  ),
+};
+
+export const Responsive: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "24px",
+      }}
+    >
+      <div>
+        <Title
+          level={3}
+          style={{ marginBottom: "12px", fontSize: "14px", color: "#666" }}
+        >
+          Responsive Alert Component
+        </Title>
+        <Text style={{ fontSize: "13px", color: "#666", marginBottom: "16px" }}>
+          Resize your browser window to see how the alert adapts:
+          <br />• <strong>Mobile (&lt; 768px):</strong> Compact padding, smaller
+          text and icons
+          <br />• <strong>Tablet (768px - 1024px):</strong> Medium padding and
+          font sizes
+          <br />• <strong>Desktop (≥ 1024px):</strong> Full padding, larger text
+          and icons
+        </Text>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        <Alert variant="info" title="Responsive Info Alert" closable>
+          This alert automatically adjusts its padding, font size, and icon size
+          based on the viewport width to ensure optimal readability across all
+          devices.
+        </Alert>
+
+        <Alert variant="success" title="Success Message" closable>
+          The responsive design ensures that alerts look great on mobile,
+          tablet, and desktop screens.
+        </Alert>
+
+        <Alert variant="warning" title="Important Notice" closable>
+          Try resizing your browser window to see how the spacing and typography
+          scale smoothly across breakpoints at 768px and 1024px.
+        </Alert>
+
+        <Alert variant="error" title="Error Notification" closable>
+          On smaller screens, the alert uses more compact spacing to maximize
+          content visibility, while larger screens benefit from more generous
+          spacing for improved readability.
+        </Alert>
+      </div>
     </div>
   ),
 };
