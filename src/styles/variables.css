@@ -163,6 +163,11 @@
   --marduk-letter-spacing-normal: 0;
   --marduk-letter-spacing-wide: 0.05em;
 
+  --marduk-line-height-tight: 1.2;
+  --marduk-line-height-normal: 1.6;
+  --marduk-line-height-relaxed: 1.8;
+  --marduk-line-height-loose: 2;
+
   --marduk-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;

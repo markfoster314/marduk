@@ -51,9 +51,9 @@ function App() {
 
 ## Components in a ~finished state
 
-**UI Elements:** Button
+**UI Elements:** [Button](src/components/Button/README.md)
 
-**Typography Elements:** Title
+**Typography Elements:** [Title](src/components/Title/README.md) | [Text](src/components/Text/README.md)
 
 ## Development
 
@@ -132,7 +132,7 @@ npm run storybook  # localhost:2015
 ```bash
 npm test
 # Test Suites: 18 passed, 18 total
-# Tests:       582 passed, 582 total
+# Tests:       750 passed, 750 total
 ```
 
 ## Contributing

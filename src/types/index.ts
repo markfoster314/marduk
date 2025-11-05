@@ -18,6 +18,7 @@ export type {
   FontWeight,
   LetterSpacing,
   UnderlineStyle,
+  LineHeight,
   RotationAngle,
   FlipDirection,
   SpinSpeed,

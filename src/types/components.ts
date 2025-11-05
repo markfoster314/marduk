@@ -46,6 +46,8 @@ export type LetterSpacing = "tight" | "normal" | "wide";
 
 export type UnderlineStyle = "solid" | "double" | "dotted" | "dashed" | "wavy";
 
+export type LineHeight = "tight" | "normal" | "relaxed" | "loose";
+
 export type RotationAngle = 0 | 90 | 180 | 270;
 
 export type FlipDirection = "horizontal" | "vertical" | "both";

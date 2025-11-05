@@ -191,47 +191,6 @@ export const CustomWeights: Story = {
   ),
 };
 
-export const PrimaryHeading: Story = {
-  args: {
-    children: "Welcome to Marduk Components",
-    level: 1,
-    variant: "primary",
-    align: "center",
-  },
-};
-
-export const SectionHeading: Story = {
-  args: {
-    children: "Getting Started",
-    level: 2,
-    variant: "default",
-  },
-};
-
-export const SubHeading: Story = {
-  args: {
-    children: "Installation Instructions",
-    level: 3,
-    variant: "secondary",
-  },
-};
-
-export const ErrorHeading: Story = {
-  args: {
-    children: "Error: Something went wrong",
-    level: 4,
-    variant: "danger",
-  },
-};
-
-export const SuccessHeading: Story = {
-  args: {
-    children: "Success! Your changes have been saved",
-    level: 4,
-    variant: "success",
-  },
-};
-
 export const ResponsiveDemo: Story = {
   render: () => (
     <div style={{ width: "100%", padding: "20px" }}>
@@ -470,15 +429,6 @@ export const DarkModeComparison: Story = {
   },
 };
 
-export const CustomColor: Story = {
-  args: {
-    children: "Custom colored title",
-    level: 2,
-    color: "#ff6b6b",
-    weight: "bold",
-  },
-};
-
 export const CustomColorShowcase: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -502,31 +452,6 @@ export const CustomColorShowcase: Story = {
       </Title>
       <Title level={3} variant="primary" color="#e74c3c">
         Color prop overrides variant color
-      </Title>
-    </div>
-  ),
-};
-
-export const CustomColorWithLevels: Story = {
-  render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-      <Title level={1} color="#e74c3c">
-        H1 with Custom Color
-      </Title>
-      <Title level={2} color="#3498db">
-        H2 with Custom Color
-      </Title>
-      <Title level={3} color="#2ecc71">
-        H3 with Custom Color
-      </Title>
-      <Title level={4} color="#f39c12">
-        H4 with Custom Color
-      </Title>
-      <Title level={5} color="#9b59b6">
-        H5 with Custom Color
-      </Title>
-      <Title level={6} color="#e91e63">
-        H6 with Custom Color
       </Title>
     </div>
   ),

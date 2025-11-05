@@ -60,102 +60,10 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
-  args: {
-    variant: "primary",
-    children: "Primary Button",
-  },
-};
-
-export const Secondary: Story = {
-  args: {
-    variant: "secondary",
-    children: "Secondary Button",
-  },
-};
-
-export const Success: Story = {
-  args: {
-    variant: "success",
-    children: "Success Button",
-  },
-};
-
-export const Warning: Story = {
-  args: {
-    variant: "warning",
-    children: "Warning Button",
-  },
-};
-
-export const Danger: Story = {
-  args: {
-    variant: "danger",
-    children: "Danger Button",
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: "small",
-    children: "Small Button",
-  },
-};
-
-export const Medium: Story = {
-  args: {
-    size: "medium",
-    children: "Medium Button",
-  },
-};
-
-export const Large: Story = {
-  args: {
-    size: "large",
-    children: "Large Button",
-  },
-};
-
 export const Disabled: Story = {
   args: {
     disabled: true,
     children: "Disabled Button",
-  },
-};
-
-export const Loading: Story = {
-  args: {
-    loading: true,
-    children: "Loading Button",
-  },
-};
-
-export const WithLeftIcon: Story = {
-  args: {
-    leftIcon: <UserIcon size="small" />,
-    children: "Profile",
-  },
-};
-
-export const WithRightIcon: Story = {
-  args: {
-    rightIcon: <span>→</span>,
-    children: "Next",
-  },
-};
-
-export const IconOnly: Story = {
-  args: {
-    iconOnly: true,
-    leftIcon: <span style={{ fontSize: "16px" }}>✕</span>,
-    children: "Close",
-  },
-};
-
-export const FullWidth: Story = {
-  args: {
-    fullWidth: true,
-    children: "Full Width Button",
   },
 };
 
@@ -600,7 +508,7 @@ export const FullWidthButtons: Story = {
           Full Width Buttons
         </Title>
         <Text style={{ marginBottom: "15px", color: "#666", fontSize: "14px" }}>
-          Perfect for forms and mobile layouts
+          For forms and mobile layouts
         </Text>
       </div>
 
@@ -874,7 +782,7 @@ export const AsyncOnClick: Story = {
     const simulateApiCall = () => {
       return new Promise<void>((resolve) => {
         setTimeout(() => {
-          setResult("Data saved successfully!");
+          setResult("Data saved.");
           resolve();
         }, 2000);
       });
@@ -960,7 +868,6 @@ export const AsyncOnClick: Story = {
             marginTop: "10px",
           }}
         >
-          <div>{`// No manual loading state needed!`}</div>
           <div>{`<Button`}</div>
           <div>{`  onClickAsync={async () => {`}</div>
           <div>{`    await saveToDatabase();`}</div>
@@ -1060,16 +967,6 @@ export const DataAttributesForTesting: Story = {
   ),
 };
 
-export const DarkMode: Story = {
-  args: {
-    darkMode: true,
-    children: "Dark Mode Button",
-  },
-  parameters: {
-    backgrounds: { default: "dark" },
-  },
-};
-
 export const DarkModeVariants: Story = {
   render: () => (
     <div
@@ -1148,102 +1045,6 @@ export const DarkModeComparison: Story = {
             Danger
           </Button>
         </div>
-      </div>
-    </div>
-  ),
-};
-
-export const FilledAppearance: Story = {
-  render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-      <div>
-        <Title level={3} style={{ marginBottom: "10px" }}>
-          Filled Buttons (Default)
-        </Title>
-        <Text style={{ marginBottom: "15px", color: "#666", fontSize: "14px" }}>
-          Solid background with white text
-        </Text>
-      </div>
-      <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-        <Button variant="primary" appearance="filled">
-          Primary
-        </Button>
-        <Button variant="secondary" appearance="filled">
-          Secondary
-        </Button>
-        <Button variant="success" appearance="filled">
-          Success
-        </Button>
-        <Button variant="warning" appearance="filled">
-          Warning
-        </Button>
-        <Button variant="danger" appearance="filled">
-          Danger
-        </Button>
-      </div>
-    </div>
-  ),
-};
-
-export const OutlineAppearance: Story = {
-  render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-      <div>
-        <Title level={3} style={{ marginBottom: "10px" }}>
-          Outline Buttons
-        </Title>
-        <Text style={{ marginBottom: "15px", color: "#666", fontSize: "14px" }}>
-          Transparent background with colored border and text
-        </Text>
-      </div>
-      <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-        <Button variant="primary" appearance="outline">
-          Primary
-        </Button>
-        <Button variant="secondary" appearance="outline">
-          Secondary
-        </Button>
-        <Button variant="success" appearance="outline">
-          Success
-        </Button>
-        <Button variant="warning" appearance="outline">
-          Warning
-        </Button>
-        <Button variant="danger" appearance="outline">
-          Danger
-        </Button>
-      </div>
-    </div>
-  ),
-};
-
-export const TextAppearance: Story = {
-  render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-      <div>
-        <Title level={3} style={{ marginBottom: "10px" }}>
-          Text Buttons
-        </Title>
-        <Text style={{ marginBottom: "15px", color: "#666", fontSize: "14px" }}>
-          Minimal style with just colored text, subtle hover effect
-        </Text>
-      </div>
-      <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-        <Button variant="primary" appearance="text">
-          Primary
-        </Button>
-        <Button variant="secondary" appearance="text">
-          Secondary
-        </Button>
-        <Button variant="success" appearance="text">
-          Success
-        </Button>
-        <Button variant="warning" appearance="text">
-          Warning
-        </Button>
-        <Button variant="danger" appearance="text">
-          Danger
-        </Button>
       </div>
     </div>
   ),
@@ -1841,8 +1642,7 @@ export const CSSVariableCustomization: Story = {
               overflow: "auto",
             }}
           >
-            {`// Inline style override
-<Button
+            {`<Button
   variant="primary"
   style={{
     "--button-border-radius": "999px",
@@ -1852,7 +1652,6 @@ export const CSSVariableCustomization: Story = {
   Pill Button
 </Button>
 
-// Global CSS override
 .custom-button {
   --button-border-radius: 20px;
   --button-font-weight: 700;
