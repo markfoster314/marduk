@@ -10,17 +10,24 @@ const meta: Meta<typeof Alert> = {
     variant: {
       control: "select",
       options: ["info", "success", "warning", "error"],
+      description: "Alert variant",
     },
     darkMode: {
-      control: { type: "boolean" },
+      control: "boolean",
+      description: "Dark mode styling",
     },
     animation: {
-      control: { type: "select" },
+      control: "select",
       options: ["none", "fadeInUp", "slideInRight"],
+      description: "Entry animation",
     },
     closable: {
-      control: { type: "boolean" },
+      control: "boolean",
       description: "Show close button",
+    },
+    title: {
+      control: "text",
+      description: "Alert title",
     },
   },
 };
@@ -68,21 +75,11 @@ export const Closable: Story = {
       <Alert variant="info" closable>
         You can close this alert
       </Alert>
-      <Alert variant="success" closable title="Closable with title">
-        Click the X button to close
+      <Alert variant="success" closable title="Closable">
+        Click the X button to dismiss
       </Alert>
-    </div>
-  ),
-};
-
-export const Animated: Story = {
-  render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-      <Alert variant="info" animation="fadeInUp">
-        Fade in up animation
-      </Alert>
-      <Alert variant="success" animation="slideInRight">
-        Slide in right animation
+      <Alert variant="warning" closable animation="fadeInUp" title="Warning">
+        This action cannot be undone
       </Alert>
     </div>
   ),
@@ -104,10 +101,43 @@ export const DarkMode: Story = {
         Info alert in dark mode
       </Alert>
       <Alert variant="success" darkMode title="Success">
-        Success alert with title in dark mode
+        Success alert with title
       </Alert>
-      <Alert variant="error" darkMode closable>
-        Error alert with close button in dark mode
+      <Alert variant="warning" darkMode closable>
+        Warning with close button
+      </Alert>
+      <Alert variant="error" darkMode closable title="Error">
+        Error with title and close
+      </Alert>
+    </div>
+  ),
+};
+
+export const CustomStyling: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <Alert
+        variant="info"
+        title="Custom Variables"
+        style={
+          {
+            "--alert-bg": "#0d3",
+            "--alert-border-color": "#f34",
+          } as React.CSSProperties
+        }
+      >
+        Using CSS variable overrides for custom colors
+      </Alert>
+      <Alert
+        variant="success"
+        animation="slideInRight"
+        style={
+          {
+            "--alert-animation-slide-duration": "1s",
+          } as React.CSSProperties
+        }
+      >
+        Slower animation with custom duration
       </Alert>
     </div>
   ),

@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode, useState } from "react";
+import { HTMLAttributes, ReactNode, useState, CSSProperties } from "react";
 import { AlertVariant, AlertAnimation } from "../../types";
 import {
   SkullCrossbonesIcon,
@@ -19,6 +19,7 @@ export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   title?: string;
   darkMode?: boolean;
   animation?: AlertAnimation;
+  style?: CSSProperties;
 }
 
 export type { AlertVariant };
@@ -32,6 +33,7 @@ export const Alert = ({
   darkMode = false,
   animation = "none",
   className,
+  style,
   ...props
 }: AlertProps) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -52,6 +54,14 @@ export const Alert = ({
   ]
     .filter(Boolean)
     .join(" ");
+
+  const dataAttributes = {
+    "data-variant": variant,
+    ...(closable && { "data-closable": true }),
+    ...(darkMode && { "data-dark-mode": true }),
+    ...(animation !== "none" && { "data-animation": animation }),
+    ...(title && { "data-has-title": true }),
+  };
 
   const icons = {
     info: <CircleInfoIcon />,
@@ -89,8 +99,17 @@ export const Alert = ({
     }
   };
 
+  const ariaLive = variant === "error" ? "assertive" : "polite";
+
   return (
-    <div className={alertClasses} role="alert" {...props}>
+    <div
+      className={alertClasses}
+      role="alert"
+      aria-live={ariaLive}
+      style={style}
+      {...dataAttributes}
+      {...props}
+    >
       <div className="marduk-alert-icon">{icons[variant]}</div>
       <div className="marduk-alert-content">
         {title && (

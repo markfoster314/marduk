@@ -66,6 +66,8 @@ function App() {
 
 **Icon Elements:** [Svg](src/components/Svg/README.md) | [Icons](src/icons/README.md)
 
+**Feedback Elements:** [Alert](src/components/Alert/README.md)
+
 **Overlay Elements:** [LoadingScreen](src/components/LoadingScreen/README.md)
 
 ## Development

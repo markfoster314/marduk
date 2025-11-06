@@ -22,29 +22,26 @@ describe("Alert", () => {
   });
 
   describe("Variants", () => {
-    it("renders info variant by default", () => {
-      render(<Alert>Info message</Alert>);
-      const alert = screen.getByRole("alert");
-      expect(alert.className).toContain("info");
-    });
-
-    it("renders success variant", () => {
-      render(<Alert variant="success">Success message</Alert>);
-      const alert = screen.getByRole("alert");
-      expect(alert.className).toContain("success");
-    });
-
-    it("renders warning variant", () => {
-      render(<Alert variant="warning">Warning message</Alert>);
-      const alert = screen.getByRole("alert");
-      expect(alert.className).toContain("warning");
-    });
-
-    it("renders error variant", () => {
-      render(<Alert variant="error">Error message</Alert>);
-      const alert = screen.getByRole("alert");
-      expect(alert.className).toContain("error");
-    });
+    test.each([
+      ["info", "Info message", "info"],
+      ["success", "Success message", "success"],
+      ["warning", "Warning message", "warning"],
+      ["error", "Error message", "error"],
+    ] as const)(
+      "renders %s variant correctly",
+      (variant, message, expectedClass) => {
+        render(
+          variant === "info" ? (
+            <Alert>{message}</Alert>
+          ) : (
+            <Alert variant={variant}>{message}</Alert>
+          )
+        );
+        const alert = screen.getByRole("alert");
+        expect(alert.className).toContain(expectedClass);
+        expect(alert).toHaveAttribute("data-variant", variant);
+      }
+    );
   });
 
   describe("Closable", () => {
@@ -87,19 +84,20 @@ describe("Alert", () => {
       render(<Alert>Message</Alert>);
       const alert = screen.getByRole("alert");
       expect(alert).not.toHaveClass("marduk-alert--dark");
+      expect(alert).not.toHaveAttribute("data-dark-mode");
     });
 
     it("applies dark class when darkMode is true", () => {
       render(<Alert darkMode>Message</Alert>);
       const alert = screen.getByRole("alert");
       expect(alert).toHaveClass("marduk-alert--dark");
+      expect(alert).toHaveAttribute("data-dark-mode", "true");
     });
 
-    it("applies dark class with all variants", () => {
-      const variants = ["info", "success", "warning", "error"] as const;
-
-      variants.forEach((variant) => {
-        const { container } = render(
+    test.each([["info"], ["success"], ["warning"], ["error"]] as const)(
+      "applies dark class with %s variant",
+      (variant) => {
+        render(
           <Alert variant={variant} darkMode>
             Message
           </Alert>
@@ -107,9 +105,8 @@ describe("Alert", () => {
         const alert = screen.getByRole("alert");
         expect(alert).toHaveClass("marduk-alert--dark");
         expect(alert).toHaveClass(`marduk-alert--${variant}`);
-        container.remove();
-      });
-    });
+      }
+    );
   });
 
   describe("Animation", () => {
@@ -118,6 +115,7 @@ describe("Alert", () => {
       const alert = screen.getByRole("alert");
       expect(alert).not.toHaveClass("marduk-alert--animation-fadeInUp");
       expect(alert).not.toHaveClass("marduk-alert--animation-slideInRight");
+      expect(alert).not.toHaveAttribute("data-animation");
     });
 
     it("does not apply animation class when animation is 'none'", () => {
@@ -125,41 +123,29 @@ describe("Alert", () => {
       const alert = screen.getByRole("alert");
       expect(alert).not.toHaveClass("marduk-alert--animation-fadeInUp");
       expect(alert).not.toHaveClass("marduk-alert--animation-slideInRight");
+      expect(alert).not.toHaveAttribute("data-animation");
     });
 
-    it("applies fadeInUp animation class", () => {
-      render(<Alert animation="fadeInUp">Message</Alert>);
+    test.each([
+      ["fadeInUp", "marduk-alert--animation-fadeInUp"],
+      ["slideInRight", "marduk-alert--animation-slideInRight"],
+    ] as const)("applies %s animation class", (animation, expectedClass) => {
+      render(<Alert animation={animation}>Message</Alert>);
       const alert = screen.getByRole("alert");
-      expect(alert).toHaveClass("marduk-alert--animation-fadeInUp");
+      expect(alert).toHaveClass(expectedClass);
+      expect(alert).toHaveAttribute("data-animation", animation);
     });
 
-    it("applies slideInRight animation class", () => {
-      render(<Alert animation="slideInRight">Message</Alert>);
-      const alert = screen.getByRole("alert");
-      expect(alert).toHaveClass("marduk-alert--animation-slideInRight");
-    });
-
-    it("works with all variants", () => {
-      const { container } = render(
-        <Alert variant="success" animation="fadeInUp">
+    it("works with variants and dark mode", () => {
+      render(
+        <Alert variant="success" animation="fadeInUp" darkMode>
           Message
         </Alert>
       );
       const alert = screen.getByRole("alert");
       expect(alert).toHaveClass("marduk-alert--success");
       expect(alert).toHaveClass("marduk-alert--animation-fadeInUp");
-      container.remove();
-    });
-
-    it("works with dark mode", () => {
-      render(
-        <Alert animation="fadeInUp" darkMode>
-          Message
-        </Alert>
-      );
-      const alert = screen.getByRole("alert");
       expect(alert).toHaveClass("marduk-alert--dark");
-      expect(alert).toHaveClass("marduk-alert--animation-fadeInUp");
     });
   });
 
@@ -176,10 +162,82 @@ describe("Alert", () => {
     });
   });
 
+  describe("Data Attributes", () => {
+    it("includes variant data attribute", () => {
+      render(<Alert variant="success">Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveAttribute("data-variant", "success");
+    });
+
+    it("includes closable data attribute when closable is true", () => {
+      render(<Alert closable>Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveAttribute("data-closable", "true");
+    });
+
+    it("does not include closable data attribute when closable is false", () => {
+      render(<Alert>Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).not.toHaveAttribute("data-closable");
+    });
+
+    it("includes has-title data attribute when title is provided", () => {
+      render(<Alert title="Test Title">Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveAttribute("data-has-title", "true");
+    });
+
+    it("does not include has-title data attribute when no title", () => {
+      render(<Alert>Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).not.toHaveAttribute("data-has-title");
+    });
+  });
+
+  describe("Style Prop", () => {
+    it("applies custom styles", () => {
+      render(<Alert style={{ border: "3px dashed red" }}>Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveStyle({ border: "3px dashed red" });
+    });
+
+    it("allows CSS variable overrides", () => {
+      render(
+        <Alert
+          style={
+            {
+              "--alert-bg": "purple",
+              "--alert-border-width": "5px",
+            } as React.CSSProperties
+          }
+        >
+          Message
+        </Alert>
+      );
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveStyle({
+        "--alert-bg": "purple",
+        "--alert-border-width": "5px",
+      });
+    });
+  });
+
   describe("Accessibility", () => {
     it("has alert role", () => {
       render(<Alert>Message</Alert>);
       expect(screen.getByRole("alert")).toBeInTheDocument();
+    });
+
+    it("has aria-live polite for non-error variants", () => {
+      render(<Alert variant="info">Message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveAttribute("aria-live", "polite");
+    });
+
+    it("has aria-live assertive for error variant", () => {
+      render(<Alert variant="error">Error message</Alert>);
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveAttribute("aria-live", "assertive");
     });
 
     it("close button has proper aria-label", () => {
