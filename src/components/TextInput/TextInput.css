@@ -8,7 +8,7 @@
 
 .marduk-input-label {
   font-family: var(--marduk-font-family-base);
-  font-size: var(--marduk-font-size-md);
+  font-size: var(--marduk-text-size-md);
   font-weight: var(--marduk-font-weight-medium);
   color: var(--marduk-color-gray-700);
 }
@@ -40,17 +40,17 @@
 
 .marduk-input--small {
   padding: var(--marduk-spacing-3) 10px;
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
 }
 
 .marduk-input--medium {
   padding: 10px 14px;
-  font-size: var(--marduk-font-size-md);
+  font-size: var(--marduk-text-size-md);
 }
 
 .marduk-input--large {
   padding: 14px 18px;
-  font-size: var(--marduk-font-size-lg);
+  font-size: var(--marduk-text-size-lg);
 }
 
 .marduk-input--error {
@@ -63,13 +63,13 @@
 }
 
 .marduk-input-error-text {
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
   color: var(--marduk-color-error-400);
   margin-top: -2px;
 }
 
 .marduk-input-helper-text {
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
   color: var(--marduk-color-gray-500);
   margin-top: -2px;
 }

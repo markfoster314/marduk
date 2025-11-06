@@ -66,6 +66,8 @@ function App() {
 
 **Icon Elements:** [Svg](src/components/Svg/README.md)
 
+**Overlay Elements:** [LoadingScreen](src/components/LoadingScreen/README.md)
+
 ## Development
 
 ```bash
@@ -143,7 +145,7 @@ npm run storybook  # localhost:2015
 ```bash
 npm test
 # Test Suites: 18 passed, 18 total
-# Tests:       797 passed, 797 total
+# Tests:       795 passed, 795 total
 ```
 
 ## Contributing

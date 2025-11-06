@@ -1,7 +1,12 @@
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
   stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  addons: ["@storybook/addon-links", "@storybook/addon-docs"],
+
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-docs",
+    "@storybook/addon-a11y",
+  ],
 
   framework: {
     name: "@storybook/react-webpack5",
@@ -25,7 +30,6 @@ const config = {
   webpackFinal: async (config) => {
     config.resolve.extensions.push(".ts", ".tsx");
 
-    // Add babel-loader for TypeScript files
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
       exclude: /node_modules/,
@@ -51,4 +55,5 @@ const config = {
     return config;
   },
 };
+
 export default config;

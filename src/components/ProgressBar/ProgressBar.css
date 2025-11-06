@@ -11,13 +11,13 @@
 }
 
 .marduk-progress-label {
-  font-size: var(--marduk-font-size-md);
+  font-size: var(--marduk-text-size-md);
   font-weight: var(--marduk-font-weight-medium);
   color: var(--marduk-color-gray-700);
 }
 
 .marduk-progress-percentage {
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
   color: var(--marduk-color-gray-500);
   font-weight: var(--marduk-font-weight-semibold);
 }

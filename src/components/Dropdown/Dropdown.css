@@ -7,7 +7,7 @@
 
 .marduk-dropdown-label {
   font-family: var(--marduk-font-family-base);
-  font-size: var(--marduk-font-size-md);
+  font-size: var(--marduk-text-size-md);
   font-weight: var(--marduk-font-weight-medium);
   color: var(--marduk-color-gray-700);
 }
@@ -47,17 +47,17 @@
 
 .marduk-dropdown--small {
   padding: var(--marduk-spacing-3) 10px;
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
 }
 
 .marduk-dropdown--medium {
   padding: 10px 14px;
-  font-size: var(--marduk-font-size-md);
+  font-size: var(--marduk-text-size-md);
 }
 
 .marduk-dropdown--large {
   padding: 14px 18px;
-  font-size: var(--marduk-font-size-lg);
+  font-size: var(--marduk-text-size-lg);
 }
 
 .marduk-dropdown-arrow {
@@ -67,7 +67,7 @@
   transform: translateY(-50%);
   pointer-events: none;
   color: var(--marduk-color-gray-600);
-  font-size: var(--marduk-font-size-xs);
+  font-size: var(--marduk-text-size-xs);
 }
 
 .marduk-dropdown:focus ~ .marduk-dropdown-arrow {
@@ -84,13 +84,13 @@
 }
 
 .marduk-dropdown-error-text {
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
   color: var(--marduk-color-error-400);
   margin-top: -2px;
 }
 
 .marduk-dropdown-helper-text {
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
   color: var(--marduk-color-gray-500);
   margin-top: -2px;
 }

@@ -54,7 +54,7 @@ export const Button = <E extends ElementType = typeof defaultElement>({
 
   const isLoading = loading || asyncLoading;
 
-  // TODO: potentially make onClick and onClickAsync props mutually exclusive,
+  // Thought: potentially make onClick and onClickAsync props mutually exclusive,
   //       would be a breaking change, so probably keep as is. Sort of cool to
   //       have both anyways
   const handleClick = async (e: any) => {
@@ -125,14 +125,21 @@ export const Button = <E extends ElementType = typeof defaultElement>({
         <span className="marduk-button-spinner" aria-hidden="true" />
       )}
       <span
-        className={
-          isLoading && !loadingText ? "marduk-button-content--loading" : ""
-        }
+        className={[
+          "marduk-button-content",
+          isLoading && !loadingText && "marduk-button-content--loading",
+        ]
+          .filter(Boolean)
+          .join(" ")}
       >
         {leftIcon && (
           <span className="marduk-button-icon-left">{leftIcon}</span>
         )}
-        <span className={iconOnly ? "marduk-button-text--icon-only" : ""}>
+        <span
+          className={
+            iconOnly ? "marduk-button-text--icon-only" : "marduk-button-text"
+          }
+        >
           {isLoading && loadingText ? loadingText : children}
         </span>
         {rightIcon && (

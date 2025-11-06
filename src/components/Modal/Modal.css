@@ -47,7 +47,7 @@
 
 .marduk-modal-title {
   margin: 0;
-  font-size: var(--marduk-font-size-xl);
+  font-size: var(--marduk-text-size-xl);
   font-weight: var(--marduk-font-weight-semibold);
   color: var(--marduk-color-gray-700);
 }

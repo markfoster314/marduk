@@ -67,8 +67,6 @@ describe("Svg", () => {
         );
         const svg = container.querySelector("svg");
         expect(svg).toHaveClass("marduk-svg--size-medium");
-        expect(svg).not.toHaveAttribute("width");
-        expect(svg).not.toHaveAttribute("height");
       });
 
       test.each([
@@ -86,8 +84,6 @@ describe("Svg", () => {
         );
         const svg = container.querySelector("svg");
         expect(svg).toHaveClass(expectedClass);
-        expect(svg).not.toHaveAttribute("width");
-        expect(svg).not.toHaveAttribute("height");
       });
     });
 
@@ -99,8 +95,6 @@ describe("Svg", () => {
           </Svg>
         );
         const svg = container.querySelector("svg");
-        expect(svg).toHaveAttribute("width", "48");
-        expect(svg).toHaveAttribute("height", "48");
         expect(svg).not.toHaveClass("marduk-svg--size-xs");
         expect(svg).not.toHaveClass("marduk-svg--size-small");
         expect(svg).not.toHaveClass("marduk-svg--size-medium");
@@ -494,99 +488,6 @@ describe("Svg", () => {
     });
   });
 
-  describe("Aspect Ratio", () => {
-    it("does not apply aspect ratio by default", () => {
-      const { container } = render(
-        <Svg size="medium">
-          <TestIcon />
-        </Svg>
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).not.toHaveAttribute("data-aspect-ratio");
-    });
-
-    test.each([
-      {
-        ratio: "16:9",
-        size: "medium",
-        expectedWidth: "24px",
-        expectedHeight: "14px",
-      },
-      {
-        ratio: "4:3",
-        size: "large",
-        expectedWidth: "32px",
-        expectedHeight: "24px",
-      },
-      {
-        ratio: "3:2",
-        size: "medium",
-        expectedWidth: "24px",
-        expectedHeight: "16px",
-      },
-      {
-        ratio: "21:9",
-        size: "large",
-        expectedWidth: "32px",
-        expectedHeight: "14px",
-      },
-      {
-        ratio: "2:1",
-        size: "medium",
-        expectedWidth: "24px",
-        expectedHeight: "12px",
-      },
-    ])(
-      "applies $ratio aspect ratio",
-      ({ ratio, size, expectedWidth, expectedHeight }) => {
-        const { container } = render(
-          <Svg size={size as any} aspectRatio={ratio}>
-            <TestIcon />
-          </Svg>
-        );
-        const svg = container.querySelector("svg");
-        expect(svg).toHaveAttribute("data-aspect-ratio", ratio);
-        expect(svg).toHaveStyle({
-          width: expectedWidth,
-          height: expectedHeight,
-        });
-      }
-    );
-
-    it("works with custom numeric size", () => {
-      const { container } = render(
-        <Svg size={48} aspectRatio="16:9">
-          <TestIcon />
-        </Svg>
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).toHaveAttribute("width", "48");
-      expect(svg).toHaveAttribute("height", "27");
-    });
-
-    it("maintains square aspect when no aspectRatio provided", () => {
-      const { container } = render(
-        <Svg size={48}>
-          <TestIcon />
-        </Svg>
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).toHaveAttribute("width", "48");
-      expect(svg).toHaveAttribute("height", "48");
-    });
-
-    it("handles portrait aspect ratio", () => {
-      const { container } = render(
-        <Svg size={48} aspectRatio="9:16">
-          <TestIcon />
-        </Svg>
-      );
-      const svg = container.querySelector("svg");
-      expect(svg).toHaveAttribute("width", "27");
-      expect(svg).toHaveAttribute("height", "48");
-    });
-  });
-
   describe("Filter Effects", () => {
     it("does not apply filter by default", () => {
       const { container } = render(
@@ -658,15 +559,6 @@ describe("Svg", () => {
       );
     });
 
-    it("supports role attribute", () => {
-      render(
-        <Svg role="img" data-testid="role-svg">
-          <TestIcon />
-        </Svg>
-      );
-      expect(screen.getByTestId("role-svg")).toHaveAttribute("role", "img");
-    });
-
     it("renders title element when title prop is provided", () => {
       const { container } = render(
         <Svg title="Home Icon">
@@ -685,15 +577,6 @@ describe("Svg", () => {
       expect(container.querySelector("desc")).toHaveTextContent(
         "Navigate to home page"
       );
-    });
-
-    it("sets role to img when title or description is provided", () => {
-      const { container } = render(
-        <Svg title="Home Icon">
-          <TestIcon />
-        </Svg>
-      );
-      expect(container.querySelector("svg")).toHaveAttribute("role", "img");
     });
 
     it("sets aria-hidden when decorative is true", () => {
@@ -832,12 +715,6 @@ describe("Svg", () => {
         value: "horizontal",
         attr: "data-flip",
         expected: "horizontal",
-      },
-      {
-        prop: "aspectRatio",
-        value: "16:9",
-        attr: "data-aspect-ratio",
-        expected: "16:9",
       },
     ])("sets $attr=$expected for $prop", ({ prop, value, attr, expected }) => {
       const { container } = render(

@@ -79,9 +79,7 @@ Truncate long text with single-line or multi-line clamping.
 NOTE: clamp requires -webkit-line-clamp support (Chrome, Safari, Edge, Firefox 68+)
 
 ```tsx
-<Text truncate>
-  Very long text that gets cut off with ellipsis...
-</Text>;
+<Text truncate>Very long text that gets cut off with ellipsis...</Text>;
 
 <Text clamp maxLines={3}>
   Longer text that wraps to three lines before being clamped...
@@ -234,6 +232,7 @@ Like the rest of the project, the text component handles these three screen size
 - **Desktop** (1024px+): Largest sizes
 
 Example sizing:
+
 - `xs`: 10px (mobile) → 11px (tablet) → 12px (desktop)
 - `sm`: 12px (mobile) → 13px (tablet) → 14px (desktop)
 - `md`: 14px (mobile) → 15px (tablet) → 16px (desktop)
@@ -261,4 +260,3 @@ Available attributes: `data-size`, `data-variant`, `data-align`, `data-weight`, 
 For more examples, check out the Storybook stories.
 
 THX 4 READING
-

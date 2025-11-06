@@ -59,8 +59,6 @@ Add icons on either side, or make it icon-only.
 
 Currently shows a spinner.
 
-TODO: add more loading state indicator options
-
 ```tsx
 <Button loading>Loading...</Button>
 <Button loading loadingText="Saving...">Save</Button>

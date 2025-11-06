@@ -4,7 +4,7 @@
   <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
 </div>
 
-_"I want to play!"_
+_"I guess power comes at a price in every world."_
 
 SVG icon component with animations and transformations
 
@@ -80,7 +80,6 @@ Override CSS variables for custom styling.
 | `strokeLinejoin` | `miter \| round \| bevel`                                      | -              | Stroke line join style                     |
 | `hoverColor`     | `string`                                                       | -              | Color on hover                             |
 | `responsive`     | `boolean`                                                      | `false`        | Enable responsive scaling for custom sizes |
-| `aspectRatio`    | `1:1 \| 16:9 \| 4:3 \| 3:2 \| 21:9 \| string`                  | -              | Aspect ratio for non-square SVGs           |
 | `filter`         | `string`                                                       | -              | CSS filter effects                         |
 | `title`          | `string`                                                       | -              | Accessible title for screen readers        |
 | `description`    | `string`                                                       | -              | Accessible description                     |
@@ -129,7 +128,7 @@ Data attributes are included for E2E testing:
 // data-spin-speed="fast"
 ```
 
-Available attributes: `data-size`, `data-custom-size`, `data-responsive`, `data-aspect-ratio`, `data-filter`, `data-dark-mode`, `data-align`, `data-rotate`, `data-flip`, `data-spin`, `data-spin-speed`, `data-animation`, `data-decorative`, `data-custom-color`, `data-hoverable`, `data-stroke-width`
+Available attributes: `data-size`, `data-custom-size`, `data-responsive`, `data-filter`, `data-dark-mode`, `data-align`, `data-rotate`, `data-flip`, `data-spin`, `data-spin-speed`, `data-animation`, `data-decorative`, `data-custom-color`, `data-hoverable`, `data-stroke-width`
 
 ---
 

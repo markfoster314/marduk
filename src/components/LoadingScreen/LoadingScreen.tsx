@@ -1,8 +1,6 @@
-// TODO: test non svg logos, update to work with variable logo sizes,
-//       update css to work with different colors
 import { LogoSvg } from "./LogoSvg";
 import { Text } from "../Text/Text";
-import { ReactElement, cloneElement } from "react";
+import { ReactElement, CSSProperties } from "react";
 import { LoadingScreenAnimation, TextVariant } from "../../types";
 import "./LoadingScreen.css";
 
@@ -13,9 +11,18 @@ export interface LoadingScreenProps {
   icon?: ReactElement;
   darkMode?: boolean;
   textVariant?: TextVariant;
+  style?: CSSProperties;
 }
 
 export type { LoadingScreenAnimation, TextVariant };
+
+const Dots = () => (
+  <span className="marduk-loading-screen-dots" aria-hidden="true">
+    <span className="marduk-loading-screen-dot">.</span>
+    <span className="marduk-loading-screen-dot">.</span>
+    <span className="marduk-loading-screen-dot">.</span>
+  </span>
+);
 
 export const LoadingScreen = ({
   animation = "pulse",
@@ -24,27 +31,40 @@ export const LoadingScreen = ({
   icon,
   darkMode = false,
   textVariant = "default",
+  style,
 }: LoadingScreenProps) => {
-  const defaultIcon = <LogoSvg />;
-  const logoIcon = icon || defaultIcon;
+  const logoIcon = icon || <LogoSvg />;
 
-  const iconWithClass = cloneElement(logoIcon, {
-    className: `marduk-loading-screen-icon ${
-      logoIcon.props.className || ""
-    }`.trim(),
-  });
+  const containerClass = [
+    "marduk-loading-screen-container",
+    darkMode && "marduk-loading-screen-container--dark",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-  const containerClass = `marduk-loading-screen-container ${
-    darkMode ? "marduk-loading-screen-container--dark" : ""
-  }`.trim();
+  const dataAttributes = {
+    "data-animation": animation,
+    "data-show-text": showText,
+    ...(darkMode && { "data-dark-mode": true }),
+    ...(textVariant !== "default" && { "data-text-variant": textVariant }),
+  };
 
   return (
-    <div className={containerClass}>
+    <div
+      className={containerClass}
+      style={style}
+      role="status"
+      aria-live="polite"
+      aria-busy={true}
+      aria-label={showText ? undefined : text}
+      {...dataAttributes}
+    >
       <div className="marduk-loading-screen-content">
         <div
           className={`marduk-loading-screen-logo marduk-loading-screen-logo--${animation}`}
+          aria-hidden="true"
         >
-          {iconWithClass}
+          {logoIcon}
         </div>
         {showText && (
           <Text
@@ -54,11 +74,7 @@ export const LoadingScreen = ({
             as="div"
           >
             {text}
-            <span className="marduk-loading-screen-dots">
-              <span className="marduk-loading-screen-dot">.</span>
-              <span className="marduk-loading-screen-dot">.</span>
-              <span className="marduk-loading-screen-dot">.</span>
-            </span>
+            <Dots />
           </Text>
         )}
       </div>

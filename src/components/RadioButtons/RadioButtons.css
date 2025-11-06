@@ -6,7 +6,7 @@
 
 .marduk-radio-label {
   font-family: var(--marduk-font-family-base);
-  font-size: var(--marduk-font-size-md);
+  font-size: var(--marduk-text-size-md);
   font-weight: var(--marduk-font-weight-medium);
   color: var(--marduk-color-gray-700);
 }
@@ -145,24 +145,24 @@
 
 .marduk-radio-text {
   margin-left: var(--marduk-spacing-4);
-  font-size: var(--marduk-font-size-md);
+  font-size: var(--marduk-text-size-md);
   color: var(--marduk-color-gray-700);
 }
 
 .marduk-radio-item--small .marduk-radio-text {
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
 }
 
 .marduk-radio-item--large .marduk-radio-text {
-  font-size: var(--marduk-font-size-lg);
+  font-size: var(--marduk-text-size-lg);
 }
 
 .marduk-radio-error-text {
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
   color: var(--marduk-color-error-400);
 }
 
 .marduk-radio-helper-text {
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
   color: var(--marduk-color-gray-500);
 }

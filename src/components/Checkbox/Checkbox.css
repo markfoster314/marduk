@@ -173,26 +173,26 @@
 
 .marduk-checkbox-text {
   margin-left: var(--marduk-spacing-4);
-  font-size: var(--marduk-font-size-md);
+  font-size: var(--marduk-text-size-md);
   color: var(--marduk-color-gray-700);
 }
 
 .marduk-checkbox--small ~ .marduk-checkbox-text {
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
 }
 
 .marduk-checkbox--large ~ .marduk-checkbox-text {
-  font-size: var(--marduk-font-size-lg);
+  font-size: var(--marduk-text-size-lg);
 }
 
 .marduk-checkbox-error-text {
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
   color: var(--marduk-color-error-400);
   margin-left: 28px;
 }
 
 .marduk-checkbox-helper-text {
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
   color: var(--marduk-color-gray-500);
   margin-left: 28px;
 }

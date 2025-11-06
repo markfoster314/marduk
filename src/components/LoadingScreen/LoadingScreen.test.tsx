@@ -11,13 +11,6 @@ describe("LoadingScreen", () => {
       ).toBeInTheDocument();
     });
 
-    it("renders the default logo icon", () => {
-      const { container } = render(<LoadingScreen />);
-      expect(
-        container.querySelector(".marduk-loading-screen-icon")
-      ).toBeInTheDocument();
-    });
-
     it("renders loading text by default", () => {
       render(<LoadingScreen />);
       expect(screen.getByText(/Loading/i)).toBeInTheDocument();
@@ -36,165 +29,66 @@ describe("LoadingScreen", () => {
       expect(screen.getByText(/Please wait.../i)).toBeInTheDocument();
     });
 
-    it("hides text when showText is false", () => {
-      render(<LoadingScreen showText={false} />);
-      expect(screen.queryByText(/Loading/i)).not.toBeInTheDocument();
-    });
-
-    it("shows text when showText is true", () => {
-      render(<LoadingScreen showText={true} text="Loading data" />);
-      expect(screen.getByText(/Loading data/i)).toBeInTheDocument();
+    test.each([
+      [true, true],
+      [false, false],
+    ])("shows/hides text when showText=%s", (showText, shouldShow) => {
+      render(<LoadingScreen showText={showText} text="Loading data" />);
+      const textQuery = screen.queryByText(/Loading data/i);
+      shouldShow
+        ? expect(textQuery).toBeInTheDocument()
+        : expect(textQuery).not.toBeInTheDocument();
     });
   });
 
   describe("Animation Variants", () => {
-    it("applies pulse animation class by default", () => {
+    test.each([
+      ["pulse"],
+      ["rotate"],
+      ["breathe"],
+      ["glitch"],
+      ["ripple"],
+      ["bounce"],
+      ["swing"],
+      ["flip"],
+      ["orbit"],
+      ["shake"],
+    ] as const)("applies %s animation class", (animation) => {
+      const { container } = render(<LoadingScreen animation={animation} />);
+      expect(
+        container.querySelector(`.marduk-loading-screen-logo--${animation}`)
+      ).toBeInTheDocument();
+    });
+
+    it("applies pulse animation by default", () => {
       const { container } = render(<LoadingScreen />);
       expect(
         container.querySelector(".marduk-loading-screen-logo--pulse")
       ).toBeInTheDocument();
     });
+  });
 
-    it("applies rotate animation class", () => {
-      const { container } = render(<LoadingScreen animation="rotate" />);
-      expect(
-        container.querySelector(".marduk-loading-screen-logo--rotate")
-      ).toBeInTheDocument();
-    });
-
-    it("applies breathe animation class", () => {
-      const { container } = render(<LoadingScreen animation="breathe" />);
-      expect(
-        container.querySelector(".marduk-loading-screen-logo--breathe")
-      ).toBeInTheDocument();
-    });
-
-    it("applies glitch animation class", () => {
-      const { container } = render(<LoadingScreen animation="glitch" />);
-      expect(
-        container.querySelector(".marduk-loading-screen-logo--glitch")
-      ).toBeInTheDocument();
-    });
-
-    it("applies ripple animation class", () => {
-      const { container } = render(<LoadingScreen animation="ripple" />);
-      expect(
-        container.querySelector(".marduk-loading-screen-logo--ripple")
-      ).toBeInTheDocument();
-    });
-
-    it("applies bounce animation class", () => {
-      const { container } = render(<LoadingScreen animation="bounce" />);
-      expect(
-        container.querySelector(".marduk-loading-screen-logo--bounce")
-      ).toBeInTheDocument();
-    });
-
-    it("applies swing animation class", () => {
-      const { container } = render(<LoadingScreen animation="swing" />);
-      expect(
-        container.querySelector(".marduk-loading-screen-logo--swing")
-      ).toBeInTheDocument();
-    });
-
-    it("applies flip animation class", () => {
-      const { container } = render(<LoadingScreen animation="flip" />);
-      expect(
-        container.querySelector(".marduk-loading-screen-logo--flip")
-      ).toBeInTheDocument();
-    });
-
-    it("applies orbit animation class", () => {
-      const { container } = render(<LoadingScreen animation="orbit" />);
-      expect(
-        container.querySelector(".marduk-loading-screen-logo--orbit")
-      ).toBeInTheDocument();
-    });
-
-    it("applies shake animation class", () => {
-      const { container } = render(<LoadingScreen animation="shake" />);
-      expect(
-        container.querySelector(".marduk-loading-screen-logo--shake")
-      ).toBeInTheDocument();
+  describe("Structure", () => {
+    test.each([
+      ["content wrapper", ".marduk-loading-screen-content"],
+      ["logo wrapper", ".marduk-loading-screen-logo"],
+      ["text", ".marduk-loading-screen-text"],
+      ["dots wrapper", ".marduk-loading-screen-dots"],
+    ])("renders %s with correct class", (_name, selector) => {
+      const { container } = render(<LoadingScreen />);
+      expect(container.querySelector(selector)).toBeInTheDocument();
     });
   });
 
   describe("Custom Icon", () => {
     it("renders custom icon when provided", () => {
-      const CustomIcon = (
-        <div className="custom-icon" data-testid="custom-icon">
-          Custom
-        </div>
-      );
+      const CustomIcon = <div data-testid="custom-icon">Icon</div>;
       render(<LoadingScreen icon={CustomIcon} />);
       expect(screen.getByTestId("custom-icon")).toBeInTheDocument();
-    });
-
-    it("applies loader-icon class to custom icon", () => {
-      const CustomIcon = <div data-testid="custom-icon">Custom</div>;
-      render(<LoadingScreen icon={CustomIcon} />);
-      const icon = screen.getByTestId("custom-icon");
-      expect(icon).toHaveClass("marduk-loading-screen-icon");
-    });
-
-    it("preserves existing className on custom icon", () => {
-      const CustomIcon = (
-        <div className="existing-class" data-testid="custom-icon">
-          Custom
-        </div>
-      );
-      render(<LoadingScreen icon={CustomIcon} />);
-      const icon = screen.getByTestId("custom-icon");
-      expect(icon).toHaveClass("marduk-loading-screen-icon");
-      expect(icon).toHaveClass("existing-class");
-    });
-  });
-
-  describe("Structure", () => {
-    it("renders container with correct class", () => {
-      const { container } = render(<LoadingScreen />);
-      expect(
-        container.querySelector(".marduk-loading-screen-container")
-      ).toBeInTheDocument();
-    });
-
-    it("renders content wrapper with correct class", () => {
-      const { container } = render(<LoadingScreen />);
-      expect(
-        container.querySelector(".marduk-loading-screen-content")
-      ).toBeInTheDocument();
-    });
-
-    it("renders logo wrapper with correct class", () => {
-      const { container } = render(<LoadingScreen />);
-      expect(
-        container.querySelector(".marduk-loading-screen-logo")
-      ).toBeInTheDocument();
-    });
-
-    it("renders text with correct class", () => {
-      const { container } = render(<LoadingScreen />);
-      expect(
-        container.querySelector(".marduk-loading-screen-text")
-      ).toBeInTheDocument();
-    });
-
-    it("renders dots wrapper with correct class", () => {
-      const { container } = render(<LoadingScreen />);
-      expect(
-        container.querySelector(".marduk-loading-screen-dots")
-      ).toBeInTheDocument();
     });
   });
 
   describe("Dark Mode", () => {
-    it("does not apply dark class by default", () => {
-      const { container } = render(<LoadingScreen />);
-      expect(
-        container.querySelector(".marduk-loading-screen-container")
-      ).not.toHaveClass("marduk-loading-screen-container--dark");
-    });
-
     it("applies dark class when darkMode is true", () => {
       const { container } = render(<LoadingScreen darkMode />);
       expect(
@@ -212,75 +106,20 @@ describe("LoadingScreen", () => {
   });
 
   describe("Text Variant", () => {
-    it("applies default variant by default", () => {
-      const { container } = render(<LoadingScreen />);
+    test.each([
+      ["default"],
+      ["primary"],
+      ["secondary"],
+      ["success"],
+      ["danger"],
+      ["warning"],
+      ["muted"],
+    ] as const)("applies %s variant class", (variant) => {
+      const { container } = render(<LoadingScreen textVariant={variant} />);
       const textElement = container.querySelector(
         ".marduk-loading-screen-text"
       );
-      expect(textElement).toHaveClass("marduk-text--variant-default");
-    });
-
-    it("applies primary variant", () => {
-      const { container } = render(<LoadingScreen textVariant="primary" />);
-      const textElement = container.querySelector(
-        ".marduk-loading-screen-text"
-      );
-      expect(textElement).toHaveClass("marduk-text--variant-primary");
-    });
-
-    it("applies secondary variant", () => {
-      const { container } = render(<LoadingScreen textVariant="secondary" />);
-      const textElement = container.querySelector(
-        ".marduk-loading-screen-text"
-      );
-      expect(textElement).toHaveClass("marduk-text--variant-secondary");
-    });
-
-    it("applies success variant", () => {
-      const { container } = render(<LoadingScreen textVariant="success" />);
-      const textElement = container.querySelector(
-        ".marduk-loading-screen-text"
-      );
-      expect(textElement).toHaveClass("marduk-text--variant-success");
-    });
-
-    it("applies danger variant", () => {
-      const { container } = render(<LoadingScreen textVariant="danger" />);
-      const textElement = container.querySelector(
-        ".marduk-loading-screen-text"
-      );
-      expect(textElement).toHaveClass("marduk-text--variant-danger");
-    });
-
-    it("applies warning variant", () => {
-      const { container } = render(<LoadingScreen textVariant="warning" />);
-      const textElement = container.querySelector(
-        ".marduk-loading-screen-text"
-      );
-      expect(textElement).toHaveClass("marduk-text--variant-warning");
-    });
-
-    it("applies muted variant", () => {
-      const { container } = render(<LoadingScreen textVariant="muted" />);
-      const textElement = container.querySelector(
-        ".marduk-loading-screen-text"
-      );
-      expect(textElement).toHaveClass("marduk-text--variant-muted");
-    });
-  });
-
-  describe("Accessibility", () => {
-    it("uses Text component for loading text", () => {
-      render(<LoadingScreen text="Loading content" />);
-      expect(screen.getByText(/Loading content/i)).toBeInTheDocument();
-    });
-
-    it("renders text as div element", () => {
-      const { container } = render(<LoadingScreen />);
-      const textElement = container.querySelector(
-        ".marduk-loading-screen-text"
-      );
-      expect(textElement?.tagName.toLowerCase()).toBe("div");
+      expect(textElement).toHaveClass(`marduk-text--variant-${variant}`);
     });
   });
 
@@ -319,6 +158,172 @@ describe("LoadingScreen", () => {
       expect(
         container.querySelector(".marduk-loading-screen-logo--glitch")
       ).toBeInTheDocument();
+    });
+  });
+
+  describe("Data Attributes", () => {
+    it("sets data-animation attribute", () => {
+      const { container } = render(<LoadingScreen animation="pulse" />);
+      const containerEl = container.querySelector(
+        ".marduk-loading-screen-container"
+      );
+      expect(containerEl).toHaveAttribute("data-animation", "pulse");
+    });
+
+    test.each([
+      [true, "true"],
+      [false, "false"],
+    ])(
+      "sets data-show-text to %s when showText is %s",
+      (showText, expected) => {
+        const { container } = render(<LoadingScreen showText={showText} />);
+        const containerEl = container.querySelector(
+          ".marduk-loading-screen-container"
+        );
+        expect(containerEl).toHaveAttribute("data-show-text", expected);
+      }
+    );
+
+    test.each([
+      ["darkMode", true, "data-dark-mode", "true"],
+      ["textVariant", "primary", "data-text-variant", "primary"],
+    ])(
+      "sets %s data attribute when provided",
+      (prop, value, attr, expected) => {
+        const { container } = render(<LoadingScreen {...{ [prop]: value }} />);
+        const containerEl = container.querySelector(
+          ".marduk-loading-screen-container"
+        );
+        expect(containerEl).toHaveAttribute(attr, expected);
+      }
+    );
+
+    test.each([
+      ["darkMode", false, "data-dark-mode"],
+      ["textVariant", "default", "data-text-variant"],
+    ])("does not set %s when value is default", (prop, value, attr) => {
+      const { container } = render(<LoadingScreen {...{ [prop]: value }} />);
+      const containerEl = container.querySelector(
+        ".marduk-loading-screen-container"
+      );
+      expect(containerEl).not.toHaveAttribute(attr);
+    });
+
+    it("sets multiple data attributes together", () => {
+      const { container } = render(
+        <LoadingScreen
+          animation="bounce"
+          showText={true}
+          darkMode={true}
+          textVariant="success"
+        />
+      );
+      const containerEl = container.querySelector(
+        ".marduk-loading-screen-container"
+      );
+      expect(containerEl).toHaveAttribute("data-animation", "bounce");
+      expect(containerEl).toHaveAttribute("data-show-text", "true");
+      expect(containerEl).toHaveAttribute("data-dark-mode", "true");
+      expect(containerEl).toHaveAttribute("data-text-variant", "success");
+    });
+  });
+
+  describe("ARIA Attributes", () => {
+    it("sets required ARIA attributes on container", () => {
+      const { container } = render(<LoadingScreen />);
+      const containerEl = container.querySelector(
+        ".marduk-loading-screen-container"
+      );
+      expect(containerEl).toHaveAttribute("role", "status");
+      expect(containerEl).toHaveAttribute("aria-live", "polite");
+      expect(containerEl).toHaveAttribute("aria-busy");
+    });
+
+    test.each([
+      [true, undefined],
+      [false, "Processing"],
+    ])(
+      "sets aria-label appropriately when showText=%s",
+      (showText, expectedLabel) => {
+        const { container } = render(
+          <LoadingScreen showText={showText} text="Processing" />
+        );
+        const containerEl = container.querySelector(
+          ".marduk-loading-screen-container"
+        );
+        if (expectedLabel) {
+          expect(containerEl).toHaveAttribute("aria-label", expectedLabel);
+        } else {
+          expect(containerEl).not.toHaveAttribute("aria-label");
+        }
+      }
+    );
+
+    it("sets aria-hidden on decorative elements", () => {
+      const { container } = render(<LoadingScreen showText={true} />);
+      expect(
+        container.querySelector(".marduk-loading-screen-logo")
+      ).toHaveAttribute("aria-hidden", "true");
+      expect(
+        container.querySelector(".marduk-loading-screen-dots")
+      ).toHaveAttribute("aria-hidden", "true");
+    });
+  });
+
+  describe("Reduced Motion Accessibility", () => {
+    it("maintains complete structure for accessibility", () => {
+      const { container } = render(
+        <LoadingScreen animation="bounce" showText={true} />
+      );
+      expect(
+        container.querySelector(".marduk-loading-screen-logo--bounce")
+      ).toBeInTheDocument();
+      expect(
+        container.querySelectorAll(".marduk-loading-screen-dot")
+      ).toHaveLength(3);
+    });
+  });
+
+  describe("Style Prop", () => {
+    it("applies custom styles to container", () => {
+      const { container } = render(
+        <LoadingScreen style={{ opacity: "0.5" }} />
+      );
+      const containerEl = container.querySelector(
+        ".marduk-loading-screen-container"
+      );
+      expect(containerEl).toHaveStyle({ opacity: "0.5" });
+    });
+
+    it("allows overriding CSS variables", () => {
+      const { container } = render(
+        <LoadingScreen
+          style={
+            {
+              "--loading-screen-bg-light": "#f0f0f0",
+              "--loading-screen-icon-size": "10rem",
+            } as React.CSSProperties
+          }
+        />
+      );
+      const containerEl = container.querySelector(
+        ".marduk-loading-screen-container"
+      );
+      expect(containerEl).toHaveStyle({
+        "--loading-screen-bg-light": "#f0f0f0",
+        "--loading-screen-icon-size": "10rem",
+      });
+    });
+
+    it("merges custom styles with component classes", () => {
+      const { container } = render(
+        <LoadingScreen darkMode style={{ padding: "20px" }} />
+      );
+      const containerEl = container.querySelector(
+        ".marduk-loading-screen-container"
+      );
+      expect(containerEl).toHaveClass("marduk-loading-screen-container--dark");
+      expect(containerEl).toHaveStyle({ padding: "20px" });
     });
   });
 });

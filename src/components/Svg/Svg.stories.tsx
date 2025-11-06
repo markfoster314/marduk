@@ -1,5 +1,3 @@
-// TODO: update this story with more visual finesse
-
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Text } from "../Text/Text";
@@ -8,6 +6,9 @@ import { Svg } from "./Svg";
 const meta: Meta<typeof Svg> = {
   title: "Components/Svg",
   component: Svg,
+  parameters: {
+    layout: "centered",
+  },
   tags: ["autodocs"],
   argTypes: {
     size: {
@@ -17,15 +18,11 @@ const meta: Meta<typeof Svg> = {
     },
     color: {
       control: { type: "color" },
-      description: "Custom color for the SVG",
-    },
-    viewBox: {
-      control: { type: "text" },
-      description: "SVG viewBox attribute",
+      description: "Custom color",
     },
     darkMode: {
       control: { type: "boolean" },
-      description: "Enable dark mode styling",
+      description: "Dark mode styling",
     },
     align: {
       control: { type: "select" },
@@ -56,48 +53,17 @@ const meta: Meta<typeof Svg> = {
       options: ["heartpulse"],
       description: "Custom animation type",
     },
-    strokeWidth: {
-      control: { type: "number" },
-      description: "Stroke width for outlined icons",
-    },
-    strokeLinecap: {
-      control: { type: "select" },
-      options: ["butt", "round", "square"],
-      description: "Stroke line cap style",
-    },
-    strokeLinejoin: {
-      control: { type: "select" },
-      options: ["miter", "round", "bevel"],
-      description: "Stroke line join style",
-    },
-    hoverColor: {
-      control: { type: "color" },
-      description: "Color on hover",
-    },
     responsive: {
       control: { type: "boolean" },
       description: "Enable responsive scaling for custom sizes",
-    },
-    aspectRatio: {
-      control: { type: "select" },
-      options: ["1:1", "16:9", "4:3", "3:2", "21:9"],
-      description: "Aspect ratio for non-square SVGs",
     },
     filter: {
       control: { type: "text" },
       description: "CSS filter effects",
     },
-    title: {
-      control: { type: "text" },
-      description: "Accessible title for screen readers",
-    },
-    description: {
-      control: { type: "text" },
-      description: "Accessible description for screen readers",
-    },
-    decorative: {
-      control: { type: "boolean" },
-      description: "Mark as decorative (aria-hidden)",
+    hoverColor: {
+      control: { type: "color" },
+      description: "Color on hover",
     },
   },
 };
@@ -106,26 +72,27 @@ export default meta;
 type Story = StoryObj<typeof Svg>;
 
 const StarIcon = () => (
-  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+  <>
+    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+  </>
 );
 
 const HeartIcon = () => (
-  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+  <>
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+  </>
 );
 
-const CheckIcon = () => <polyline points="20 6 9 17 4 12" />;
-
-const SettingsIcon = () => (
+const CheckIcon = () => (
   <>
-    <circle cx="12" cy="12" r="3" />
-    <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24" />
+    <path d="M24 4.685l-16.327 17.315-7.673-9.054.761-.648 6.95 8.203 15.561-16.501.728.685z" />
   </>
 );
 
 export const Default: Story = {
   args: {
-    size: "medium",
     children: <StarIcon />,
+    size: "medium",
   },
 };
 
@@ -160,16 +127,13 @@ export const Sizes: Story = {
 export const Colors: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "20px" }}>
-      <Svg color="var(--marduk-color-primary-500)">
+      <Svg size="large" color="var(--marduk-color-primary-500)">
         <HeartIcon />
       </Svg>
-      <Svg color="var(--marduk-color-success-500)">
+      <Svg size="large" color="var(--marduk-color-success-500)">
         <CheckIcon />
       </Svg>
-      <Svg color="var(--marduk-color-error-500)">
-        <HeartIcon />
-      </Svg>
-      <Svg color="var(--marduk-color-warning-500)">
+      <Svg size="large" color="var(--marduk-color-danger-500)">
         <StarIcon />
       </Svg>
     </div>
@@ -178,47 +142,15 @@ export const Colors: Story = {
 
 export const Spinning: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "30px" }}>
-      <Svg
-        size="large"
-        spin
-        spinSpeed="slow"
-        color="var(--marduk-color-primary-500)"
-      >
-        <HeartIcon />
+    <div style={{ display: "flex", gap: "25px", alignItems: "center" }}>
+      <Svg size="large" spin spinSpeed="slow">
+        <StarIcon />
       </Svg>
-      <Svg
-        size="large"
-        spin
-        spinSpeed="normal"
-        color="var(--marduk-color-primary-500)"
-      >
-        <HeartIcon />
+      <Svg size="large" spin spinSpeed="normal">
+        <StarIcon />
       </Svg>
-      <Svg
-        size="large"
-        spin
-        spinSpeed="fast"
-        color="var(--marduk-color-primary-500)"
-      >
-        <HeartIcon />
-      </Svg>
-    </div>
-  ),
-};
-
-export const Animations: Story = {
-  render: () => (
-    <div style={{ display: "flex", gap: "30px" }}>
-      <Svg
-        size="xl"
-        animation="heartpulse"
-        color="var(--marduk-color-error-500)"
-      >
-        <HeartIcon />
-      </Svg>
-      <Svg size="xl" spin color="var(--marduk-color-primary-500)">
-        <SettingsIcon />
+      <Svg size="large" spin spinSpeed="fast">
+        <StarIcon />
       </Svg>
     </div>
   ),
@@ -226,55 +158,45 @@ export const Animations: Story = {
 
 export const Transformations: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "20px" }}>
-      <Svg size="large">
-        <CheckIcon />
-      </Svg>
-      <Svg size="large" rotate={90}>
-        <CheckIcon />
-      </Svg>
-      <Svg size="large" rotate={180}>
-        <CheckIcon />
-      </Svg>
-      <Svg size="large" rotate={270}>
-        <CheckIcon />
-      </Svg>
-      <Svg size="large" flip="horizontal">
-        <CheckIcon />
-      </Svg>
-      <Svg size="large" flip="vertical">
-        <CheckIcon />
-      </Svg>
+    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      <div style={{ display: "flex", gap: "20px" }}>
+        <Svg size="large" rotate={0}>
+          <StarIcon />
+        </Svg>
+        <Svg size="large" rotate={90}>
+          <StarIcon />
+        </Svg>
+        <Svg size="large" rotate={180}>
+          <StarIcon />
+        </Svg>
+        <Svg size="large" rotate={270}>
+          <StarIcon />
+        </Svg>
+      </div>
+      <div style={{ display: "flex", gap: "20px" }}>
+        <Svg size="large" flip="horizontal">
+          <StarIcon />
+        </Svg>
+        <Svg size="large" flip="vertical">
+          <StarIcon />
+        </Svg>
+        <Svg size="large" flip="both">
+          <StarIcon />
+        </Svg>
+      </div>
     </div>
   ),
 };
 
-export const AspectRatios: Story = {
+export const Animations: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "30px", alignItems: "flex-end" }}>
+    <div style={{ display: "flex", gap: "20px" }}>
       <Svg
-        size="large"
-        aspectRatio="1:1"
-        color="var(--marduk-color-primary-500)"
+        size="xl"
+        animation="heartpulse"
+        color="var(--marduk-color-danger-500)"
       >
-        <rect width="100%" height="100%" />
-      </Svg>
-      <Svg
-        size="large"
-        aspectRatio="16:9"
-        color="var(--marduk-color-success-500)"
-      >
-        <rect width="100%" height="100%" />
-      </Svg>
-      <Svg
-        size="large"
-        aspectRatio="4:3"
-        color="var(--marduk-color-warning-500)"
-      >
-        <rect width="100%" height="100%" />
-      </Svg>
-      <Svg size={48} aspectRatio="9:16" color="var(--marduk-color-error-500)">
-        <rect width="100%" height="100%" />
+        <HeartIcon />
       </Svg>
     </div>
   ),
@@ -286,28 +208,13 @@ export const Filters: Story = {
       <Svg size="xl" color="var(--marduk-color-primary-500)">
         <StarIcon />
       </Svg>
-      <Svg
-        size="xl"
-        filter="grayscale(100%)"
-        color="var(--marduk-color-primary-500)"
-      >
+      <Svg size="xl" filter="grayscale(100%)">
         <StarIcon />
       </Svg>
-      <Svg size="xl" filter="blur(1px)" color="var(--marduk-color-primary-500)">
+      <Svg size="xl" filter="blur(2px)">
         <StarIcon />
       </Svg>
-      <Svg
-        size="xl"
-        filter="brightness(1.5)"
-        color="var(--marduk-color-primary-500)"
-      >
-        <StarIcon />
-      </Svg>
-      <Svg
-        size="xl"
-        filter="drop-shadow(2px 2px 4px rgba(0,0,0,0.3))"
-        color="var(--marduk-color-primary-500)"
-      >
+      <Svg size="xl" filter="brightness(1.5)">
         <StarIcon />
       </Svg>
     </div>
@@ -316,29 +223,17 @@ export const Filters: Story = {
 
 export const Responsive: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "40px" }}>
-      <div>
-        <Text
-          as="div"
-          style={{ marginBottom: "10px", fontSize: "12px", color: "#666" }}
-        >
-          Fixed size
-        </Text>
-        <Svg size={48} color="var(--marduk-color-primary-500)">
-          <StarIcon />
-        </Svg>
-      </div>
-      <div>
-        <Text
-          as="div"
-          style={{ marginBottom: "10px", fontSize: "12px", color: "#666" }}
-        >
-          Responsive size
-        </Text>
-        <Svg size={48} responsive color="var(--marduk-color-success-500)">
-          <StarIcon />
-        </Svg>
-      </div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      <Svg size={64} responsive color="var(--marduk-color-primary-500)">
+        <StarIcon />
+      </Svg>
+      <Text
+        as="div"
+        style={{ fontSize: "14px", color: "#666", maxWidth: "400px" }}
+      >
+        Resize viewport to see responsive scaling at 768px and 1024px
+        breakpoints (custom size with responsive prop enabled)
+      </Text>
     </div>
   ),
 };
@@ -348,17 +243,17 @@ export const Interactive: Story = {
     <div style={{ display: "flex", gap: "20px" }}>
       <Svg
         size="xl"
-        hoverColor="var(--marduk-color-primary-600)"
-        color="var(--marduk-color-primary-500)"
+        hoverColor="var(--marduk-color-primary-500)"
+        style={{ cursor: "pointer" }}
       >
-        <StarIcon />
+        <HeartIcon />
       </Svg>
       <Svg
         size="xl"
-        hoverColor="var(--marduk-color-error-600)"
-        color="var(--marduk-color-error-500)"
+        hoverColor="var(--marduk-color-success-500)"
+        style={{ cursor: "pointer" }}
       >
-        <HeartIcon />
+        <CheckIcon />
       </Svg>
     </div>
   ),

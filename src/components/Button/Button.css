@@ -177,19 +177,19 @@
 
 .marduk-button--small {
   padding: var(--marduk-spacing-3) var(--marduk-spacing-5);
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
   min-width: 48px;
 }
 
 .marduk-button--medium {
   padding: var(--marduk-spacing-4) var(--marduk-spacing-7);
-  font-size: var(--marduk-font-size-md);
+  font-size: var(--marduk-text-size-md);
   min-width: 64px;
 }
 
 .marduk-button--large {
   padding: var(--marduk-spacing-6) var(--marduk-spacing-9);
-  font-size: var(--marduk-font-size-lg);
+  font-size: var(--marduk-text-size-lg);
   min-width: 80px;
 }
 
@@ -378,21 +378,23 @@
   --button-color-hover: var(--marduk-color-error-100);
 }
 
+.marduk-button-content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--button-icon-gap);
+}
+
 .marduk-button-icon-left,
 .marduk-button-icon-right {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  line-height: 0;
 }
 
-.marduk-button-icon-left {
-  margin-right: var(--button-icon-gap);
-}
-
-.marduk-button-icon-right {
-  margin-left: var(--button-icon-gap);
+.marduk-button-text {
+  display: inline-flex;
+  align-items: center;
 }
 
 .marduk-button--icon-only {

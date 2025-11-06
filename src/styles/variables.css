@@ -94,22 +94,6 @@
   --marduk-transition-medium: 0.3s ease-in-out;
   --marduk-transition-slow: 0.5s ease-out;
 
-  /* TODO: change all font variables to the same group and 
-  use rem. (fucked up and make some components use pixels 
-  and other use rem, updated these variables to rem as interim 
-  fix to not deal with changing all variable names but needs 
-  to be done in the future) */
-  --marduk-font-size-xs: 0.625rem;
-  --marduk-font-size-sm: 0.875rem;
-  --marduk-font-size-md: 1rem;
-  --marduk-font-size-lg: 1.125rem;
-  --marduk-font-size-xl: 1.25rem;
-  --marduk-font-size-2xl: 1.5rem;
-  --marduk-font-size-3xl: 1.75rem;
-  --marduk-font-size-4xl: 2rem;
-  --marduk-font-size-5xl: 32px;
-  --marduk-font-size-6xl: 40px;
-
   --marduk-text-size-xs: 0.625rem;
   --marduk-text-size-sm: 0.875rem;
   --marduk-text-size-md: 1rem;
@@ -179,6 +163,7 @@
   --marduk-z-index-modal: 1050;
   --marduk-z-index-toast: 1100;
   --marduk-z-index-tooltip: 1200;
+  --marduk-z-index-loading-screen: 9999;
 
   --marduk-breakpoint-sm: 640px;
   --marduk-breakpoint-md: 768px;

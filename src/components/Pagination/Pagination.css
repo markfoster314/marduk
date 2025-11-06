@@ -52,21 +52,21 @@
 
 .marduk-pagination-button--small {
   padding: var(--marduk-spacing-2) var(--marduk-spacing-4);
-  font-size: var(--marduk-font-size-sm);
+  font-size: var(--marduk-text-size-sm);
   min-width: 28px;
   height: 28px;
 }
 
 .marduk-pagination-button--medium {
   padding: var(--marduk-spacing-3) var(--marduk-spacing-5);
-  font-size: var(--marduk-font-size-md);
+  font-size: var(--marduk-text-size-md);
   min-width: 36px;
   height: 36px;
 }
 
 .marduk-pagination-button--large {
   padding: var(--marduk-spacing-4) var(--marduk-spacing-6);
-  font-size: var(--marduk-font-size-lg);
+  font-size: var(--marduk-text-size-lg);
   min-width: 44px;
   height: 44px;
 }
@@ -74,7 +74,7 @@
 .marduk-pagination-ellipsis {
   padding: var(--marduk-spacing-3) var(--marduk-spacing-5);
   color: var(--marduk-color-gray-500);
-  font-size: var(--marduk-font-size-md);
+  font-size: var(--marduk-text-size-md);
   display: flex;
   align-items: center;
   user-select: none;
