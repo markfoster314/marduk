@@ -21,7 +21,7 @@ A lightweight component library built for me and my friends. Zero dependencies (
 
 ## High Level Concept
 
-Designed to work out of the box while staying completely customizable. Sensible defaults, preset system for common patterns, and full control when you need it. No bloat, no dependencies, just clean components.
+Designed to work out of the box while staying customizable. Clean defaults, presets for common patterns, and full control when wanted. No dependencies, just stylish components.
 
 **Notes:**
 
