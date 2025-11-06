@@ -64,7 +64,7 @@ function App() {
 
 **Typography Elements:** [Title](src/components/Title/README.md) | [Text](src/components/Text/README.md)
 
-**Icon Elements:** [Svg](src/components/Svg/README.md)
+**Icon Elements:** [Svg](src/components/Svg/README.md) | [Icons](src/icons/README.md)
 
 **Overlay Elements:** [LoadingScreen](src/components/LoadingScreen/README.md)
 
