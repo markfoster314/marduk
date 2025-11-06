@@ -4,14 +4,13 @@ import {
   ReactNode,
   CSSProperties,
 } from "react";
+import { TitleVariant, TitleSize } from "./Title.types";
 import {
-  TitleVariant,
-  TitleSize,
   Alignment,
   FontWeight,
   LetterSpacing,
   UnderlineStyle,
-} from "../../types";
+} from "../../types/components";
 import "./Title.css";
 
 type TitleOwnProps<E extends ElementType = ElementType> = {

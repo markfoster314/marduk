@@ -1,5 +1,5 @@
 import { HTMLAttributes, ReactNode, useState, CSSProperties } from "react";
-import { AlertVariant, AlertAnimation } from "../../types";
+import { AlertVariant, AlertAnimation } from "./Alert.types";
 import {
   SkullCrossbonesIcon,
   TriangleExclamationIcon,

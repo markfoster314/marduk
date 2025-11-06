@@ -1,0 +1,225 @@
+.marduk-box {
+  --box-bg: transparent;
+  --box-border-radius: 0;
+  --box-padding: 0;
+  --box-margin: 0;
+  --box-gap: 0;
+
+  box-sizing: border-box;
+  background-color: var(--box-bg);
+  border-radius: var(--box-border-radius);
+  padding: var(--box-padding);
+  margin: var(--box-margin);
+
+  transition: var(--marduk-transition-fast);
+  transition-property: background-color, border-color, opacity, transform;
+}
+
+.marduk-box--padding-xs {
+  --box-padding: var(--marduk-spacing-1);
+}
+
+.marduk-box--padding-sm {
+  --box-padding: var(--marduk-spacing-2);
+}
+
+.marduk-box--padding-md {
+  --box-padding: var(--marduk-spacing-3);
+}
+
+.marduk-box--padding-lg {
+  --box-padding: var(--marduk-spacing-4);
+}
+
+.marduk-box--padding-xl {
+  --box-padding: var(--marduk-spacing-5);
+}
+
+.marduk-box--padding-2xl {
+  --box-padding: var(--marduk-spacing-6);
+}
+
+.marduk-box--padding-3xl {
+  --box-padding: var(--marduk-spacing-7);
+}
+
+.marduk-box--margin-xs {
+  --box-margin: var(--marduk-spacing-1);
+}
+
+.marduk-box--margin-sm {
+  --box-margin: var(--marduk-spacing-2);
+}
+
+.marduk-box--margin-md {
+  --box-margin: var(--marduk-spacing-3);
+}
+
+.marduk-box--margin-lg {
+  --box-margin: var(--marduk-spacing-4);
+}
+
+.marduk-box--margin-xl {
+  --box-margin: var(--marduk-spacing-5);
+}
+
+.marduk-box--margin-2xl {
+  --box-margin: var(--marduk-spacing-6);
+}
+
+.marduk-box--margin-3xl {
+  --box-margin: var(--marduk-spacing-7);
+}
+
+.marduk-box--display-flex {
+  display: flex;
+}
+
+.marduk-box--display-grid {
+  display: grid;
+}
+
+.marduk-box--display-block {
+  display: block;
+}
+
+.marduk-box--display-inline-block {
+  display: inline-block;
+}
+
+.marduk-box--display-inline {
+  display: inline;
+}
+
+.marduk-box--display-none {
+  display: none;
+}
+
+.marduk-box--flex-row {
+  flex-direction: row;
+}
+
+.marduk-box--flex-column {
+  flex-direction: column;
+}
+
+.marduk-box--flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.marduk-box--flex-column-reverse {
+  flex-direction: column-reverse;
+}
+
+.marduk-box--justify-start {
+  justify-content: flex-start;
+}
+
+.marduk-box--justify-end {
+  justify-content: flex-end;
+}
+
+.marduk-box--justify-center {
+  justify-content: center;
+}
+
+.marduk-box--justify-between {
+  justify-content: space-between;
+}
+
+.marduk-box--justify-around {
+  justify-content: space-around;
+}
+
+.marduk-box--justify-evenly {
+  justify-content: space-evenly;
+}
+
+.marduk-box--align-start {
+  align-items: flex-start;
+}
+
+.marduk-box--align-end {
+  align-items: flex-end;
+}
+
+.marduk-box--align-center {
+  align-items: center;
+}
+
+.marduk-box--align-baseline {
+  align-items: baseline;
+}
+
+.marduk-box--align-stretch {
+  align-items: stretch;
+}
+
+.marduk-box--gap-xs {
+  --box-gap: var(--marduk-spacing-1);
+  gap: var(--box-gap);
+}
+
+.marduk-box--gap-sm {
+  --box-gap: var(--marduk-spacing-2);
+  gap: var(--box-gap);
+}
+
+.marduk-box--gap-md {
+  --box-gap: var(--marduk-spacing-3);
+  gap: var(--box-gap);
+}
+
+.marduk-box--gap-lg {
+  --box-gap: var(--marduk-spacing-4);
+  gap: var(--box-gap);
+}
+
+.marduk-box--gap-xl {
+  --box-gap: var(--marduk-spacing-5);
+  gap: var(--box-gap);
+}
+
+.marduk-box--gap-2xl {
+  --box-gap: var(--marduk-spacing-6);
+  gap: var(--box-gap);
+}
+
+.marduk-box--gap-3xl {
+  --box-gap: var(--marduk-spacing-7);
+  gap: var(--box-gap);
+}
+
+.marduk-box--wrap-nowrap {
+  flex-wrap: nowrap;
+}
+
+.marduk-box--wrap-wrap {
+  flex-wrap: wrap;
+}
+
+.marduk-box--wrap-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.marduk-box--radius-sm {
+  --box-border-radius: var(--marduk-radius-sm);
+}
+
+.marduk-box--radius-md {
+  --box-border-radius: var(--marduk-radius-md);
+}
+
+.marduk-box--radius-lg {
+  --box-border-radius: var(--marduk-radius-lg);
+}
+
+.marduk-box--radius-full {
+  --box-border-radius: var(--marduk-radius-full);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marduk-box {
+    transition: none;
+  }
+}

@@ -1,31 +1,74 @@
 import "./styles/variables.css";
+import "./components/Box/augmentation";
 
+// Shared types - used across multiple components
 export type {
-  BaseIconProps,
-  TextVariant,
-  TitleVariant,
-  ButtonVariant,
-  AlertVariant,
   ComponentSize,
-  TextSize,
-  TitleSize,
   Alignment,
-  TextAlignment,
   FontWeight,
   LetterSpacing,
   UnderlineStyle,
   LineHeight,
+} from "./types/components";
+
+export type { BaseIconProps } from "./types/icons";
+
+export { Box } from "./components/Box/Box";
+export type { BoxProps } from "./components/Box/Box";
+export {
+  defineBoxPresets,
+  getAllPresets,
+  resetCustomPresets,
+} from "./components/Box/presets";
+export type { BoxPresetConfig, BoxPresets } from "./components/Box/presets";
+export type {
+  SpacingSize,
+  DisplayType,
+  FlexDirection,
+  FlexJustify,
+  FlexAlign,
+  FlexWrap,
+  BorderRadius,
+} from "./components/Box/Box.types";
+
+export { Button } from "./components/Button/Button";
+export type { ButtonProps } from "./components/Button/Button";
+export type {
+  ButtonVariant,
+  ButtonAppearance,
+} from "./components/Button/Button.types";
+
+export { Text } from "./components/Text/Text";
+export type { TextProps } from "./components/Text/Text";
+export type {
+  TextVariant,
+  TextSize,
+  TextAlignment,
+} from "./components/Text/Text.types";
+
+export { Title } from "./components/Title/Title";
+export type { TitleProps } from "./components/Title/Title";
+export type { TitleVariant, TitleSize } from "./components/Title/Title.types";
+
+export { Svg } from "./components/Svg/Svg";
+export type { SvgProps } from "./components/Svg/Svg";
+export type {
   RotationAngle,
   FlipDirection,
   SpinSpeed,
   SvgAnimation,
-  LoadingScreenAnimation,
-  AlertAnimation,
-  ButtonAppearance,
-} from "./types";
+} from "./components/Svg/Svg.types";
 
-export { Button } from "./components/Button/Button";
-export type { ButtonProps } from "./components/Button/Button";
+export { Alert } from "./components/Alert/Alert";
+export type { AlertProps } from "./components/Alert/Alert";
+export type {
+  AlertVariant,
+  AlertAnimation,
+} from "./components/Alert/Alert.types";
+
+export { LoadingScreen } from "./components/LoadingScreen/LoadingScreen";
+export type { LoadingScreenProps } from "./components/LoadingScreen/LoadingScreen";
+export type { LoadingScreenAnimation } from "./components/LoadingScreen/LoadingScreen.types";
 
 export { TextInput } from "./components/TextInput/TextInput";
 export type { TextInputProps } from "./components/TextInput/TextInput";
@@ -54,9 +97,6 @@ export type {
   RadioOption,
 } from "./components/RadioButtons/RadioButtons";
 
-export { Alert } from "./components/Alert/Alert";
-export type { AlertProps } from "./components/Alert/Alert";
-
 export { Toast } from "./components/Toast/Toast";
 export type { ToastProps } from "./components/Toast/Toast";
 
@@ -71,17 +111,5 @@ export type { TooltipProps } from "./components/Tooltip/Tooltip";
 
 export { Modal } from "./components/Modal/Modal";
 export type { ModalProps } from "./components/Modal/Modal";
-
-export { Title } from "./components/Title/Title";
-export type { TitleProps } from "./components/Title/Title";
-
-export { Text } from "./components/Text/Text";
-export type { TextProps } from "./components/Text/Text";
-
-export { Svg } from "./components/Svg/Svg";
-export type { SvgProps } from "./components/Svg/Svg";
-
-export { LoadingScreen } from "./components/LoadingScreen/LoadingScreen";
-export type { LoadingScreenProps } from "./components/LoadingScreen/LoadingScreen";
 
 export * from "./icons";

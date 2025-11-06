@@ -19,6 +19,10 @@ Mark's React Components library
 
 A lightweight component library built for me and my friends. Zero dependencies (just React), responsive, fully typed, and themeable with CSS variables.
 
+## High Level Concept
+
+Designed to work out of the box while staying completely customizable. Sensible defaults, preset system for common patterns, and full control when you need it. No bloat, no dependencies, just clean components.
+
 **Notes:**
 
 - Currently a WIP
@@ -58,11 +62,98 @@ function App() {
 }
 ```
 
-## Components in a ~finished state
+## Presets System
+
+Presets are composable, customizable, and fully typed.
+
+### Using Presets
+
+Pass presets as an array to supported components:
+
+```tsx
+import { Box } from "@markfoster314/marduk";
+
+<Box preset={["stack"]}>
+  <div>Item 1</div>
+  <div>Item 2</div>
+</Box>
+
+<Box preset={["stack", "card"]}>
+  Vertical layout with card styling
+</Box>
+```
+
+### Custom Presets
+
+Define your own presets at app startup:
+
+```tsx
+import { defineBoxPresets } from "@markfoster314/marduk";
+
+defineBoxPresets({
+  hero: {
+    display: "flex",
+    direction: "column",
+    justify: "center",
+    align: "center",
+    padding: "3xl",
+    gap: "lg",
+  },
+  container: {
+    width: "1200px",
+    margin: "auto",
+    padding: "xl",
+  },
+});
+
+<Box preset={["hero"]}>Hero section</Box>;
+```
+
+### TypeScript Support
+
+Add type definitions for autocomplete on custom presets:
+
+```tsx
+// In your app's type definitions
+declare module "@markfoster314/marduk" {
+  interface BoxPresets {
+    hero: BoxPresetConfig;
+    container: BoxPresetConfig;
+  }
+}
+```
+
+### Composing Presets
+
+Combine multiple presets by passing an array. Later presets overwrite earlier ones:
+
+```tsx
+<Box preset={["grid3", "spaceBetween"]}>Flex layout with grid spacing</Box>
+```
+
+### Override Preset Values
+
+Props always override preset values:
+
+```tsx
+<Box preset={["stack"]} gap="xl">
+  Uses stack preset but with xl gap instead of md
+</Box>
+
+<Box preset={["stack", "card"]} backgroundColor="blue">
+  Presets merged, then props override
+</Box>
+```
+
+**Components with Preset Support:** Box (more coming soon)
+
+## Components in a ~usable state
 
 **UI Elements:** [Button](src/components/Button/README.md)
 
 **Typography Elements:** [Title](src/components/Title/README.md) | [Text](src/components/Text/README.md)
+
+**Layout Elements:** [Box](src/components/Box/README.md)
 
 **Icon Elements:** [Svg](src/components/Svg/README.md) | [Icons](src/icons/README.md)
 

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Svg } from "../components/Svg/Svg";
-import { BaseIconProps } from "../types";
+import { BaseIconProps } from "../types/icons";
 
 export interface CircleInfoIconProps extends BaseIconProps {}
 

@@ -4,15 +4,13 @@ import {
   ReactNode,
   CSSProperties,
 } from "react";
+import { TextVariant, TextSize, TextAlignment } from "./Text.types";
 import {
-  TextVariant,
-  TextSize,
-  TextAlignment,
   FontWeight,
   LineHeight,
   LetterSpacing,
   UnderlineStyle,
-} from "../../types";
+} from "../../types/components";
 import "./Text.css";
 
 type TextOwnProps<E extends ElementType = ElementType> = {

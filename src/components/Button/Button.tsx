@@ -4,7 +4,8 @@ import {
   ReactNode,
   useState,
 } from "react";
-import { ButtonVariant, ButtonAppearance, ComponentSize } from "../../types";
+import { ButtonVariant, ButtonAppearance } from "./Button.types";
+import { ComponentSize } from "../../types/components";
 import "./Button.css";
 
 type ButtonOwnProps<E extends ElementType = ElementType> = {

@@ -1,7 +1,8 @@
 import { LogoSvg } from "./LogoSvg";
 import { Text } from "../Text/Text";
 import { ReactElement, CSSProperties } from "react";
-import { LoadingScreenAnimation, TextVariant } from "../../types";
+import { LoadingScreenAnimation } from "./LoadingScreen.types";
+import { TextVariant } from "../Text/Text.types";
 import "./LoadingScreen.css";
 
 export interface LoadingScreenProps {

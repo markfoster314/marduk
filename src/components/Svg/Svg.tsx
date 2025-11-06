@@ -1,5 +1,11 @@
 import { SVGAttributes, ReactNode, CSSProperties } from "react";
-import { SvgAnimation } from "../../types";
+import {
+  RotationAngle,
+  FlipDirection,
+  SpinSpeed,
+  SvgAnimation,
+} from "./Svg.types";
+import { Alignment } from "../../types/components";
 import "./Svg.css";
 
 export interface SvgProps extends SVGAttributes<SVGSVGElement> {
@@ -8,14 +14,14 @@ export interface SvgProps extends SVGAttributes<SVGSVGElement> {
   color?: string;
   viewBox?: string;
   darkMode?: boolean;
-  align?: "left" | "center" | "right";
-  rotate?: 0 | 90 | 180 | 270;
-  flip?: "horizontal" | "vertical" | "both";
+  align?: Alignment;
+  rotate?: RotationAngle;
+  flip?: FlipDirection;
   title?: string;
   description?: string;
   decorative?: boolean;
   spin?: boolean;
-  spinSpeed?: "slow" | "normal" | "fast";
+  spinSpeed?: SpinSpeed;
   animation?: SvgAnimation;
   strokeWidth?: number | string;
   strokeLinecap?: "butt" | "round" | "square";
