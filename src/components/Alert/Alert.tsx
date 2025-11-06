@@ -70,7 +70,26 @@ export const Alert = ({
     error: <SkullCrossbonesIcon />,
   };
 
-  const getTextVariant = () => {
+  const getTextPreset = () => {
+    let basePreset: string;
+    switch (variant) {
+      case "success":
+        basePreset = "success";
+        break;
+      case "warning":
+        basePreset = "warning";
+        break;
+      case "error":
+        basePreset = "danger";
+        break;
+      default:
+        basePreset = "primary";
+    }
+    return darkMode ? `${basePreset}Dark` : basePreset;
+  };
+
+  // This is temporary for when we migrate to the new title component
+  const getTitleVariant = () => {
     if (darkMode) {
       return "secondary";
     }
@@ -116,15 +135,14 @@ export const Alert = ({
           <Title
             level={6}
             darkMode={darkMode}
-            variant={getTextVariant()}
+            variant={getTitleVariant()}
             className="marduk-alert-title"
           >
             {title}
           </Title>
         )}
         <Text
-          darkMode={darkMode}
-          variant={getTextVariant()}
+          preset={[getTextPreset()]}
           className="marduk-alert-message"
           size="sm"
         >

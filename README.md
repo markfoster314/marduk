@@ -145,7 +145,7 @@ Props always override preset values:
 </Box>
 ```
 
-**Components with Preset Support:** Box (more coming soon)
+**Components with Preset Support:** Box, Text (more coming soon)
 
 ## Components in a ~usable state
 
@@ -237,8 +237,8 @@ npm run storybook  # localhost:2015
 
 ```bash
 npm test
-# Test Suites: 18 passed, 18 total
-# Tests:       795 passed, 795 total
+# Test Suites: 19 passed, 19 total
+# Tests:       822 passed, 822 total
 ```
 
 ## Contributing

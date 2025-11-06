@@ -10,7 +10,7 @@ const meta: Meta<typeof Text> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    variant: {
+    preset: {
       control: { type: "select" },
       options: [
         "default",
@@ -20,8 +20,15 @@ const meta: Meta<typeof Text> = {
         "danger",
         "warning",
         "muted",
+        "defaultDark",
+        "primaryDark",
+        "secondaryDark",
+        "successDark",
+        "dangerDark",
+        "warningDark",
+        "mutedDark",
       ],
-      description: "Color variant",
+      description: "Text preset (replaces variant + darkMode)",
     },
     size: {
       control: { type: "select" },
@@ -46,10 +53,6 @@ const meta: Meta<typeof Text> = {
     italic: {
       control: { type: "boolean" },
       description: "Italic text style",
-    },
-    darkMode: {
-      control: { type: "boolean" },
-      description: "Enable dark mode styling",
     },
     color: {
       control: { type: "color" },
@@ -113,13 +116,13 @@ export const Sizes: Story = {
 export const Variants: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-      <Text variant="default">Default variant</Text>
-      <Text variant="primary">Primary variant</Text>
-      <Text variant="secondary">Secondary variant</Text>
-      <Text variant="success">Success variant</Text>
-      <Text variant="danger">Danger variant</Text>
-      <Text variant="warning">Warning variant</Text>
-      <Text variant="muted">Muted variant</Text>
+      <Text preset={["default"]}>Default preset</Text>
+      <Text preset={["primary"]}>Primary preset</Text>
+      <Text preset={["secondary"]}>Secondary preset</Text>
+      <Text preset={["success"]}>Success preset</Text>
+      <Text preset={["danger"]}>Danger preset</Text>
+      <Text preset={["warning"]}>Warning preset</Text>
+      <Text preset={["muted"]}>Muted preset</Text>
     </div>
   ),
 };
@@ -184,7 +187,7 @@ export const Truncation: Story = {
       }}
     >
       <div>
-        <Text size="xs" variant="muted" style={{ marginBottom: "8px" }}>
+        <Text size="xs" preset={["muted"]} style={{ marginBottom: "8px" }}>
           Single-line truncate:
         </Text>
         <Text truncate>
@@ -193,7 +196,7 @@ export const Truncation: Story = {
         </Text>
       </div>
       <div>
-        <Text size="xs" variant="muted" style={{ marginBottom: "8px" }}>
+        <Text size="xs" preset={["muted"]} style={{ marginBottom: "8px" }}>
           Multi-line clamp (3 lines):
         </Text>
         <Text clamp maxLines={3}>
@@ -219,18 +222,10 @@ export const DarkMode: Story = {
         gap: "12px",
       }}
     >
-      <Text darkMode variant="primary">
-        Primary text in dark mode
-      </Text>
-      <Text darkMode variant="success">
-        Success text in dark mode
-      </Text>
-      <Text darkMode variant="danger">
-        Danger text in dark mode
-      </Text>
-      <Text darkMode variant="muted">
-        Muted text in dark mode
-      </Text>
+      <Text preset={["primaryDark"]}>Primary text in dark mode</Text>
+      <Text preset={["successDark"]}>Success text in dark mode</Text>
+      <Text preset={["dangerDark"]}>Danger text in dark mode</Text>
+      <Text preset={["mutedDark"]}>Muted text in dark mode</Text>
     </div>
   ),
 };
@@ -241,12 +236,12 @@ export const Polymorphic: Story = {
       <Text as="p">Paragraph element</Text>
       <Text as="span">Span element (inline)</Text>
       <Text as="label">Label element</Text>
-      <Text as="a" href="#" variant="primary" underlined>
+      <Text as="a" href="#" preset={["primary"]} underlined>
         Link element
       </Text>
       <Text
         as="button"
-        variant="danger"
+        preset={["danger"]}
         weight="bold"
         style={{ cursor: "pointer" }}
         onClick={() => alert("Clicked!")}
@@ -264,7 +259,7 @@ export const Responsive: Story = {
         Resize your viewport to see responsive sizing at 768px and 1024px
         breakpoints.
       </Text>
-      <Text variant="muted" size="sm">
+      <Text preset={["muted"]} size="sm">
         Note: The text component scales automatically at tablet (768px) and
         desktop (1024px) breakpoints.
       </Text>
@@ -286,7 +281,7 @@ export const CustomStyling: Story = {
           } as React.CSSProperties
         }
         underlined
-        variant="primary"
+        preset={["primary"]}
       >
         Custom underline thickness via CSS variables
       </Text>

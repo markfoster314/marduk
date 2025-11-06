@@ -101,7 +101,7 @@ describe("LoadingScreen", () => {
       const textElement = container.querySelector(
         ".marduk-loading-screen-text"
       );
-      expect(textElement).toHaveClass("marduk-text--dark");
+      expect(textElement).toHaveAttribute("data-preset", "defaultDark");
     });
   });
 
@@ -119,7 +119,7 @@ describe("LoadingScreen", () => {
       const textElement = container.querySelector(
         ".marduk-loading-screen-text"
       );
-      expect(textElement).toHaveClass(`marduk-text--variant-${variant}`);
+      expect(textElement).toHaveAttribute("data-preset", variant);
     });
   });
 

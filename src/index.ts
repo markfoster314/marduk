@@ -1,5 +1,6 @@
 import "./styles/variables.css";
 import "./components/Box/augmentation";
+import "./components/Text/augmentation";
 
 // Shared types - used across multiple components
 export type {
@@ -40,11 +41,12 @@ export type {
 
 export { Text } from "./components/Text/Text";
 export type { TextProps } from "./components/Text/Text";
-export type {
-  TextVariant,
-  TextSize,
-  TextAlignment,
-} from "./components/Text/Text.types";
+export {
+  defineTextPresets,
+  getAllPresets as getAllTextPresets,
+  resetCustomPresets as resetTextCustomPresets,
+} from "./components/Text/presets";
+export type { TextPresetConfig, TextPresets } from "./components/Text/presets";
 
 export { Title } from "./components/Title/Title";
 export type { TitleProps } from "./components/Title/Title";

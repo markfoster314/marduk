@@ -2,8 +2,16 @@ import { LogoSvg } from "./LogoSvg";
 import { Text } from "../Text/Text";
 import { ReactElement, CSSProperties } from "react";
 import { LoadingScreenAnimation } from "./LoadingScreen.types";
-import { TextVariant } from "../Text/Text.types";
 import "./LoadingScreen.css";
+
+type TextVariant =
+  | "default"
+  | "primary"
+  | "secondary"
+  | "success"
+  | "danger"
+  | "warning"
+  | "muted";
 
 export interface LoadingScreenProps {
   animation?: LoadingScreenAnimation;
@@ -15,7 +23,7 @@ export interface LoadingScreenProps {
   style?: CSSProperties;
 }
 
-export type { LoadingScreenAnimation, TextVariant };
+export type { LoadingScreenAnimation };
 
 const Dots = () => (
   <span className="marduk-loading-screen-dots" aria-hidden="true">
@@ -24,6 +32,16 @@ const Dots = () => (
     <span className="marduk-loading-screen-dot">.</span>
   </span>
 );
+
+const getTextPreset = (
+  variant: TextVariant,
+  darkMode: boolean
+): string => {
+  if (darkMode) {
+    return `${variant}Dark`;
+  }
+  return variant;
+};
 
 export const LoadingScreen = ({
   animation = "pulse",
@@ -50,6 +68,8 @@ export const LoadingScreen = ({
     ...(textVariant !== "default" && { "data-text-variant": textVariant }),
   };
 
+  const textPreset = getTextPreset(textVariant, darkMode);
+
   return (
     <div
       className={containerClass}
@@ -68,12 +88,7 @@ export const LoadingScreen = ({
           {logoIcon}
         </div>
         {showText && (
-          <Text
-            darkMode={darkMode}
-            variant={textVariant}
-            className="marduk-loading-screen-text"
-            as="div"
-          >
+          <Text preset={[textPreset]} className="marduk-loading-screen-text" as="div">
             {text}
             <Dots />
           </Text>

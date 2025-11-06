@@ -29,7 +29,7 @@
   transition: font-size var(--marduk-transition-fast);
 }
 
-/* Mobile first */
+/* Sizes - Mobile first */
 .marduk-text--size-xs {
   --text-font-size: var(--marduk-text-size-xs);
 }
@@ -92,34 +92,6 @@
   .marduk-text--size-xl {
     --text-font-size: var(--marduk-text-size-3xl);
   }
-}
-
-.marduk-text--variant-default {
-  --text-color: var(--marduk-color-gray-700);
-}
-
-.marduk-text--variant-primary {
-  --text-color: var(--marduk-color-primary-500);
-}
-
-.marduk-text--variant-secondary {
-  --text-color: var(--marduk-color-gray-600);
-}
-
-.marduk-text--variant-success {
-  --text-color: var(--marduk-color-success-500);
-}
-
-.marduk-text--variant-danger {
-  --text-color: var(--marduk-color-error-400);
-}
-
-.marduk-text--variant-warning {
-  --text-color: var(--marduk-color-warning-400);
-}
-
-.marduk-text--variant-muted {
-  --text-color: var(--marduk-color-gray-500);
 }
 
 .marduk-text--align-left {
@@ -231,43 +203,10 @@
   font-style: italic;
 }
 
-.marduk-text--dark {
-  --text-color: var(--marduk-color-dark-text-primary);
-}
-
-.marduk-text--dark:where(.marduk-text--variant-default) {
-  --text-color: var(--marduk-color-dark-text-primary);
-}
-
-.marduk-text--dark:where(.marduk-text--variant-primary) {
-  --text-color: var(--marduk-color-primary-300);
-}
-
-.marduk-text--dark:where(.marduk-text--variant-secondary) {
-  --text-color: var(--marduk-color-dark-text-secondary);
-}
-
-.marduk-text--dark:where(.marduk-text--variant-success) {
-  --text-color: var(--marduk-color-success-300);
-}
-
-.marduk-text--dark:where(.marduk-text--variant-danger) {
-  --text-color: var(--marduk-color-error-200);
-}
-
-.marduk-text--dark:where(.marduk-text--variant-warning) {
-  --text-color: var(--marduk-color-warning-200);
-}
-
-.marduk-text--dark:where(.marduk-text--variant-muted) {
-  --text-color: var(--marduk-color-dark-text-tertiary);
-}
-
 .marduk-text:where(.marduk-text--custom-color) {
   --text-color: var(--marduk-text-custom-color);
 }
 
-/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .marduk-text:where(*) {
     transition: none;
@@ -295,14 +234,6 @@
   }
 
   .marduk-text--custom-color {
-    border-left: var(--text-high-contrast-border-width) solid currentColor;
-    padding-left: var(--text-high-contrast-padding-left);
-  }
-
-  .marduk-text--variant-primary,
-  .marduk-text--variant-success,
-  .marduk-text--variant-warning,
-  .marduk-text--variant-danger {
     border-left: var(--text-high-contrast-border-width) solid currentColor;
     padding-left: var(--text-high-contrast-padding-left);
   }

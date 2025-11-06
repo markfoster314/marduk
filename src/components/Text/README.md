@@ -6,7 +6,7 @@
 
 _"Mmm."_
 
-Typography component for body text
+Polymorphic text component with preset system
 
 If you have any ideas for things to add to this component feel free to [Open an issue](https://github.com/markfoster314/marduk/issues/new)
 
@@ -15,245 +15,156 @@ If you have any ideas for things to add to this component feel free to [Open an 
 ```tsx
 import { Text } from "@markfoster314/marduk";
 
-<Text>Some body text</Text>;
+<Text preset={["primary"]}>Primary text</Text>;
+```
+
+## Presets
+
+Text supports the library's preset system for color variants. See the [main README](../../README.md#presets-system) for detailed documentation on using presets, creating custom presets, and TypeScript support.
+
+### Built-in Text Presets
+
+**Light mode:**
+
+- `default` - Default text color
+- `primary` - Primary color
+- `secondary` - Secondary color
+- `success` - Success/green
+- `danger` - Danger/red
+- `warning` - Warning/yellow
+- `muted` - Muted/gray
+
+**Dark mode:**
+
+- `defaultDark` - Default text in dark mode
+- `primaryDark` - Primary color dark mode
+- `secondaryDark` - Secondary color dark mode
+- `successDark` - Success dark mode
+- `dangerDark` - Danger dark mode
+- `warningDark` - Warning dark mode
+- `mutedDark` - Muted dark mode
+
+### Quick Examples
+
+```tsx
+<Text preset={["primary"]}>Primary text</Text>
+
+<Text preset={["primaryDark"]}>Primary in dark mode</Text>
+
+<Text preset={["primary"]} size="lg" weight="bold">
+  Primary with overrides
+</Text>
 ```
 
 ## Sizes
 
-Current sizes: `xs`, `sm`, `md` (default), `lg`, or `xl`.
-
 ```tsx
-<Text size="xs">Extra small text</Text>
-<Text size="sm">Small text</Text>
-<Text size="md">Medium text (default)</Text>
-<Text size="lg">Large text</Text>
-<Text size="xl">Extra large text</Text>
+<Text size="xs">Extra small</Text>
+<Text size="sm">Small</Text>
+<Text size="md">Medium (default)</Text>
+<Text size="lg">Large</Text>
+<Text size="xl">Extra large</Text>
 ```
 
-## Variants
+Responsive - scales up at 768px and 1024px breakpoints.
 
-Current variants: `default`, `primary`, `secondary`, `success`, `warning`, `danger`, or `muted`.
-
-```tsx
-<Text variant="primary">Primary text</Text>
-<Text variant="success">Success message</Text>
-<Text variant="muted">Muted text</Text>
-```
-
-## Text Alignment
-
-`left` (default), `center`, or `right`.
+## Typography
 
 ```tsx
-<Text align="center">Centered text</Text>
-<Text align="right">Right aligned</Text>
-```
-
-## Font Weight
-
-Weight options: `normal` (default), `medium`, `semibold`, or `bold`.
-
-```tsx
-<Text weight="medium">Medium weight</Text>
 <Text weight="bold">Bold text</Text>
+<Text italic>Italic text</Text>
+<Text underlined underlineStyle="wavy">Wavy underline</Text>
+<Text lineHeight="loose">Loose line height</Text>
+<Text spacing="wide">Wide letter spacing</Text>
 ```
 
-## Line Height
-
-Line height presets: `tight`, `normal` (default), `relaxed`, or `loose`.
+## Truncation
 
 ```tsx
-<Text lineHeight="tight">
-  Tight line height for compact text blocks.
-</Text>
-
-<Text lineHeight="relaxed">
-  Relaxed line height for easier reading over longer paragraphs.
-</Text>
-```
-
-## Text Truncation
-
-Truncate long text with single-line or multi-line clamping.
-
-NOTE: clamp requires -webkit-line-clamp support (Chrome, Safari, Edge, Firefox 68+)
-
-```tsx
-<Text truncate>Very long text that gets cut off with ellipsis...</Text>;
+<Text truncate>Single line with ellipsis...</Text>
 
 <Text clamp maxLines={3}>
-  Longer text that wraps to three lines before being clamped...
-</Text>;
-```
-
-## Letter Spacing
-
-Spacing presets: `tight`, `normal`, or `wide`.
-
-```tsx
-<Text spacing="wide">WIDE SPACING</Text>
-<Text spacing="tight">Tight Spacing</Text>
-```
-
-## Underline Decoration
-
-Available styles: `solid`, `double`, `dotted`, `dashed`, `wavy`
-
-```tsx
-<Text underlined underlineStyle="solid">
-  Solid underline
-</Text>
-
-<Text underlined underlineStyle="wavy">
-  Wavy underline
-</Text>
-
-<Text underlined underlineStyle="dotted">
-  Dotted underline
+  Multi-line text clamped to 3 lines with ellipsis at the end
 </Text>
 ```
 
-## Polymorphic
-
-Render as anything using the `as` prop while maintaining text styles.
+## Alignment
 
 ```tsx
-<Text as="span">Renders as span</Text>
-
-<Text as="a" href="#section">
-  Renders as link
-</Text>
-
-<Text as="label" htmlFor="input">
-  Renders as label
-</Text>
+<Text align="left">Left aligned (default)</Text>
+<Text align="center">Center aligned</Text>
+<Text align="right">Right aligned</Text>
+<Text align="justify">Justified text</Text>
 ```
 
-## Dark Mode
+## Polymorphic Rendering
 
 ```tsx
-<Text darkMode variant="primary">
-  Dark mode text
-</Text>
-```
-
-## Custom Colors
-
-```tsx
-<Text color="#ff6b6b">
-  Custom color text
-</Text>
-
-<Text color="var(--my-custom-color)">
-  CSS variable color
-</Text>
+<Text as="span">Inline span</Text>
+<Text as="div">Block div</Text>
+<Text as="label" htmlFor="input">Label element</Text>
+<Text as="a" href="/link">Link element</Text>
 ```
 
 ## Customization
 
-Override CSS variables for custom styling.
+Override CSS variables or use inline styles:
 
 ```tsx
 <Text
-  style={
-    {
-      "--text-font-size": "1.125rem",
-      "--text-line-height": "2",
-      "--text-letter-spacing": "0.05em",
-    } as React.CSSProperties
-  }
+  preset={["primary"]}
+  style={{
+    "--text-font-size": "24px",
+    fontFamily: "monospace",
+  }}
 >
-  Custom styled text
+  Fully customized
 </Text>
 ```
 
-### Available CSS Variables
-
-**Base Variables:**
-
-- `--text-color`
-- `--text-font-family`
-- `--text-font-size`
-- `--text-font-weight`
-- `--text-line-height`
-- `--text-letter-spacing`
-- `--text-text-align`
-- `--text-margin`
-
-**Underline Variables:**
-
-- `--text-underline-thickness`
-- `--text-underline-offset`
-- `--text-underline-double-thickness`
-
-**High Contrast Variables:**
-
-- `--text-high-contrast-underline-thickness`
-- `--text-high-contrast-underline-offset`
-- `--text-high-contrast-double-thickness`
-- `--text-high-contrast-border-width`
-- `--text-high-contrast-padding-left`
+Available variables: `--text-color`, `--text-font-size`, `--text-font-weight`, `--text-line-height`, `--text-letter-spacing`, `--text-text-align`
 
 ## Props
 
-| Prop             | Type                                                                       | Default   | Description                          |
-| ---------------- | -------------------------------------------------------------------------- | --------- | ------------------------------------ |
-| `size`           | `xs \| sm \| md \| lg \| xl`                                               | `md`      | Text size                            |
-| `variant`        | `default \| primary \| secondary \| success \| warning \| danger \| muted` | `default` | Color variant                        |
-| `align`          | `left \| center \| right`                                                  | `left`    | Text alignment                       |
-| `weight`         | `normal \| medium \| semibold \| bold`                                     | `normal`  | Font weight                          |
-| `lineHeight`     | `tight \| normal \| relaxed \| loose`                                      | `normal`  | Line height preset                   |
-| `truncate`       | `boolean`                                                                  | `false`   | Single-line truncation with ellipsis |
-| `clamp`          | `boolean`                                                                  | `false`   | Multi-line truncation                |
-| `maxLines`       | `number`                                                                   | `2`       | Max lines when clamping              |
-| `spacing`        | `tight \| normal \| wide`                                                  | -         | Letter spacing preset                |
-| `underlined`     | `boolean`                                                                  | `false`   | Add underline decoration             |
-| `underlineStyle` | `solid \| double \| dotted \| dashed \| wavy`                              | `solid`   | Underline style                      |
-| `darkMode`       | `boolean`                                                                  | `false`   | Dark mode styling                    |
-| `color`          | `string`                                                                   | -         | Custom color (hex, rgb, CSS var)     |
-| `as`             | `ElementType`                                                              | `p`       | Render as different element          |
+| Prop             | Type                                          | Default | Description            |
+| ---------------- | --------------------------------------------- | ------- | ---------------------- |
+| `as`             | `ElementType`                                 | `p`     | HTML element to render |
+| `preset`         | `string[]`                                    | -       | Text preset name(s)    |
+| `size`           | `xs \| sm \| md \| lg \| xl`                  | `md`    | Text size              |
+| `align`          | `left \| center \| right \| justify`          | `left`  | Text alignment         |
+| `weight`         | `normal \| medium \| semibold \| bold`        | -       | Font weight            |
+| `lineHeight`     | `tight \| normal \| relaxed \| loose`         | -       | Line height            |
+| `spacing`        | `tight \| normal \| wide`                     | -       | Letter spacing         |
+| `truncate`       | `boolean`                                     | `false` | Single line truncation |
+| `clamp`          | `boolean`                                     | `false` | Multi-line truncation  |
+| `maxLines`       | `number`                                      | `2`     | Lines for clamp        |
+| `italic`         | `boolean`                                     | `false` | Italic text            |
+| `underlined`     | `boolean`                                     | `false` | Underline text         |
+| `underlineStyle` | `solid \| double \| dotted \| dashed \| wavy` | `solid` | Underline style        |
+| `color`          | `string`                                      | -       | Custom color           |
+| `style`          | `CSSProperties`                               | -       | Custom inline styles   |
+| `className`      | `string`                                      | -       | Additional CSS classes |
 
-Plus all standard paragraph/element props.
-
-## Accessibility
-
-- Semantic HTML with `<p>` as default element
-- Polymorphic rendering with proper element semantics
-- High contrast mode support (enhanced font weight, thicker underlines, automatic link underlines)
-- Reduced motion support (disables transitions)
-- WCAG 2.1 compliant
-
-## Responsive Design
-
-Like the rest of the project, the text component handles these three screen sizes responsiveness automatically.
-
-- **Mobile** (0-767px): Base sizes
-- **Tablet** (768px+): Larger sizes
-- **Desktop** (1024px+): Largest sizes
-
-Example sizing:
-
-- `xs`: 10px (mobile) → 11px (tablet) → 12px (desktop)
-- `sm`: 12px (mobile) → 13px (tablet) → 14px (desktop)
-- `md`: 14px (mobile) → 15px (tablet) → 16px (desktop)
-- `lg`: 16px (mobile) → 17px (tablet) → 18px (desktop)
-- `xl`: 18px (mobile) → 19px (tablet) → 20px (desktop)
-
-No configuration needed
+Plus all standard HTML element props based on the `as` prop.
 
 ## Testing
 
-Data attributes are included for E2E testing:
+Data attributes included for E2E testing: `data-preset`, `data-size`, `data-align`, `data-weight`, `data-line-height`, `data-spacing`, `data-truncate`, `data-clamp`, `data-max-lines`, `data-italic`, `data-underlined`, `data-underline-style`, `data-custom-color`
 
 ```tsx
-<Text size="lg" variant="primary" align="center" truncate />
+<Text preset={["primary"]} size="lg">
+  Content
+</Text>
+// data-preset="primary"
 // data-size="lg"
-// data-variant="primary"
-// data-align="center"
-// data-truncate="true"
 ```
 
-Available attributes: `data-size`, `data-variant`, `data-align`, `data-weight`, `data-line-height`, `data-dark-mode`, `data-custom-color`, `data-truncate`, `data-clamp`, `data-max-lines`, `data-spacing`, `data-underlined`, `data-underline-style`
+## Accessibility
+
+- Fully polymorphic - use semantic HTML elements
+- Transitions disabled when `prefers-reduced-motion` is set
+- Enhanced styling in high contrast mode
+- Forwards all aria attributes and custom props
 
 ---
 
