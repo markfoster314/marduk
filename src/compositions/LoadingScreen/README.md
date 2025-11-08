@@ -8,8 +8,6 @@ _"Okay, let me ask you, are you sure? 'Cause I've seen this once before"_
 
 Full-screen loading overlay
 
-Got any ideas for stuff to add? [Open an issue](https://github.com/markfoster314/marduk/issues/new)
-
 ## Basic Usage
 
 ```tsx

@@ -8,8 +8,6 @@ _"Mmm."_
 
 Polymorphic text component with preset system
 
-If you have any ideas for things to add to this component feel free to [Open an issue](https://github.com/markfoster314/marduk/issues/new)
-
 ## Basic Usage
 
 ```tsx

@@ -8,8 +8,6 @@ _"There's no way back"_
 
 Icon library with individual components and a generic loader
 
-Got any ideas for stuff to add? [Open an issue](https://github.com/markfoster314/marduk/issues/new)
-
 ## Basic Usage
 
 ```tsx

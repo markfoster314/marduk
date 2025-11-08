@@ -8,8 +8,6 @@ _"It's hard to tell what you could do"_
 
 Contextual feedback messages for user actions and system updates
 
-Got any ideas for stuff to add? [Open an issue](https://github.com/markfoster314/marduk/issues/new)
-
 ## Basic Usage
 
 ```tsx
