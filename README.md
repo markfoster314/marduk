@@ -34,7 +34,7 @@ Start with primitives for full control, use compositions for speed, or drop in t
 
 ## Philosophy
 
-Stop rebuilding the same components and patterns on every project. Marduk provides:
+Stop rebuilding the same components and patterns on every project.
 
 1. **Flexible primitives** - Highly customizable base components with preset system
 2. **Ready-to-use compositions** - Common UI patterns that work out of the box
