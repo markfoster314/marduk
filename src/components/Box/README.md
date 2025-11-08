@@ -8,8 +8,6 @@ _"Cool, I only get weekends off."_
 
 Polymorphic layout primitive
 
-Got any ideas for stuff to add? [Open an issue](https://github.com/markfoster314/marduk/issues/new)
-
 ## Basic Usage
 
 ```tsx

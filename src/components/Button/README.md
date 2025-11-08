@@ -8,8 +8,6 @@ _"Oh!"_
 
 A flexible, accessible button component
 
-Got any ideas for stuff to add? [Open an issue](https://github.com/markfoster314/marduk/issues/new)
-
 ## Basic Usage
 
 ```tsx

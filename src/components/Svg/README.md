@@ -8,8 +8,6 @@ _"I guess power comes at a price in every world."_
 
 SVG icon component with animations and transformations
 
-Got any ideas for stuff to add? [Open an issue](https://github.com/markfoster314/marduk/issues/new)
-
 ## Basic Usage
 
 ```tsx

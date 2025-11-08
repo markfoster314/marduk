@@ -254,7 +254,9 @@ const MyButton = ({ isLoading, ...props }: CustomButtonProps) => (
 
 **Contributions are welcome!** Read our [Contributing Guide](./CONTRIBUTING.md) for detailed information about our development process, code standards, and how to submit pull requests.
 
-[Open an issue](https://github.com/markfoster314/marduk/issues) if you find bugs.
+- [Report a bug](https://github.com/markfoster314/marduk/issues/new?template=bug_report.md)
+- [Request a feature](https://github.com/markfoster314/marduk/issues/new?template=feature_request.md)
+- [General discussion](https://github.com/markfoster314/marduk/issues)
 
 ## License
 
