@@ -63,23 +63,17 @@ describe("Checkbox", () => {
   describe("Sizes", () => {
     it("applies medium size by default", () => {
       render(<Checkbox />);
-      expect(screen.getByRole("checkbox")).toHaveClass(
-        "marduk-checkbox--medium"
-      );
+      expect(screen.getByRole("checkbox")).toHaveClass("marduk-checkbox--medium");
     });
 
     it("applies small size class", () => {
       render(<Checkbox size="small" />);
-      expect(screen.getByRole("checkbox")).toHaveClass(
-        "marduk-checkbox--small"
-      );
+      expect(screen.getByRole("checkbox")).toHaveClass("marduk-checkbox--small");
     });
 
     it("applies large size class", () => {
       render(<Checkbox size="large" />);
-      expect(screen.getByRole("checkbox")).toHaveClass(
-        "marduk-checkbox--large"
-      );
+      expect(screen.getByRole("checkbox")).toHaveClass("marduk-checkbox--large");
     });
   });
 
@@ -96,9 +90,7 @@ describe("Checkbox", () => {
 
     it("applies disabled class", () => {
       render(<Checkbox disabled />);
-      expect(screen.getByRole("checkbox")).toHaveClass(
-        "marduk-checkbox--disabled"
-      );
+      expect(screen.getByRole("checkbox")).toHaveClass("marduk-checkbox--disabled");
     });
   });
 
@@ -123,9 +115,7 @@ describe("Checkbox", () => {
 
     it("applies error class when error is present", () => {
       render(<Checkbox error="Error" />);
-      expect(screen.getByRole("checkbox")).toHaveClass(
-        "marduk-checkbox--error"
-      );
+      expect(screen.getByRole("checkbox")).toHaveClass("marduk-checkbox--error");
     });
   });
 
@@ -165,9 +155,7 @@ describe("Checkbox", () => {
 
     it("toggles checked state when clicked", async () => {
       const user = userEvent.setup();
-      const { rerender } = render(
-        <Checkbox checked={false} onChange={() => {}} />
-      );
+      const { rerender } = render(<Checkbox checked={false} onChange={() => {}} />);
 
       const checkbox = screen.getByRole("checkbox");
       expect(checkbox).not.toBeChecked();
@@ -193,9 +181,7 @@ describe("Checkbox", () => {
 
   describe("Additional Props", () => {
     it("forwards additional props to checkbox element", () => {
-      render(
-        <Checkbox data-testid="custom-checkbox" aria-label="Custom Checkbox" />
-      );
+      render(<Checkbox data-testid="custom-checkbox" aria-label="Custom Checkbox" />);
 
       const checkbox = screen.getByTestId("custom-checkbox");
       expect(checkbox).toHaveAttribute("aria-label", "Custom Checkbox");
@@ -203,10 +189,7 @@ describe("Checkbox", () => {
 
     it("can have custom id", () => {
       render(<Checkbox id="terms-checkbox" />);
-      expect(screen.getByRole("checkbox")).toHaveAttribute(
-        "id",
-        "terms-checkbox"
-      );
+      expect(screen.getByRole("checkbox")).toHaveAttribute("id", "terms-checkbox");
     });
 
     it("can have custom name", () => {
@@ -249,9 +232,7 @@ describe("Checkbox", () => {
 
   describe("Controlled Component", () => {
     it("works as controlled component", () => {
-      const { rerender } = render(
-        <Checkbox checked={false} onChange={() => {}} />
-      );
+      const { rerender } = render(<Checkbox checked={false} onChange={() => {}} />);
       expect(screen.getByRole("checkbox")).not.toBeChecked();
 
       rerender(<Checkbox checked={true} onChange={() => {}} />);

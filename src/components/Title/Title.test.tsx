@@ -56,44 +56,32 @@ describe("Title", () => {
   describe("Variants", () => {
     it("applies default variant by default", () => {
       render(<Title>Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass(
-        "marduk-title--variant-default"
-      );
+      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-default");
     });
 
     it("applies primary variant class", () => {
       render(<Title variant="primary">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass(
-        "marduk-title--variant-primary"
-      );
+      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-primary");
     });
 
     it("applies secondary variant class", () => {
       render(<Title variant="secondary">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass(
-        "marduk-title--variant-secondary"
-      );
+      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-secondary");
     });
 
     it("applies success variant class", () => {
       render(<Title variant="success">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass(
-        "marduk-title--variant-success"
-      );
+      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-success");
     });
 
     it("applies warning variant class", () => {
       render(<Title variant="warning">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass(
-        "marduk-title--variant-warning"
-      );
+      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-warning");
     });
 
     it("applies danger variant class", () => {
       render(<Title variant="danger">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass(
-        "marduk-title--variant-danger"
-      );
+      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-danger");
     });
   });
 
@@ -105,9 +93,7 @@ describe("Title", () => {
 
     it("applies center alignment class", () => {
       render(<Title align="center">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass(
-        "marduk-title--align-center"
-      );
+      expect(screen.getByText("Test")).toHaveClass("marduk-title--align-center");
     });
 
     it("applies right alignment class", () => {
@@ -148,23 +134,17 @@ describe("Title", () => {
 
     it("applies normal weight class", () => {
       render(<Title weight="normal">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass(
-        "marduk-title--weight-normal"
-      );
+      expect(screen.getByText("Test")).toHaveClass("marduk-title--weight-normal");
     });
 
     it("applies medium weight class", () => {
       render(<Title weight="medium">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass(
-        "marduk-title--weight-medium"
-      );
+      expect(screen.getByText("Test")).toHaveClass("marduk-title--weight-medium");
     });
 
     it("applies semibold weight class", () => {
       render(<Title weight="semibold">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass(
-        "marduk-title--weight-semibold"
-      );
+      expect(screen.getByText("Test")).toHaveClass("marduk-title--weight-semibold");
     });
 
     it("applies bold weight class", () => {
@@ -178,7 +158,7 @@ describe("Title", () => {
       render(
         <Title data-testid="custom-title" id="main-title">
           Test
-        </Title>
+        </Title>,
       );
       const title = screen.getByTestId("custom-title");
       expect(title).toHaveAttribute("id", "main-title");
@@ -217,16 +197,14 @@ describe("Title", () => {
     it("applies marduk-title class for high contrast targeting", () => {
       render(<Title variant="primary">Test</Title>);
       expect(screen.getByText("Test")).toHaveClass("marduk-title");
-      expect(screen.getByText("Test")).toHaveClass(
-        "marduk-title--variant-primary"
-      );
+      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-primary");
     });
 
     it("renders with href for link testing", () => {
       const { container } = render(
         <Title as="a" href="#test">
           Link Title
-        </Title>
+        </Title>,
       );
       const link = container.querySelector("a[href]");
       expect(link).toBeInTheDocument();
@@ -235,16 +213,12 @@ describe("Title", () => {
 
     it("applies custom color class for high contrast targeting", () => {
       render(<Title color="#ff0000">Custom</Title>);
-      expect(screen.getByText("Custom")).toHaveClass(
-        "marduk-title--custom-color"
-      );
+      expect(screen.getByText("Custom")).toHaveClass("marduk-title--custom-color");
     });
 
     it("applies underlined class for high contrast targeting", () => {
       render(<Title underlined>Underlined</Title>);
-      expect(screen.getByText("Underlined")).toHaveClass(
-        "marduk-title--underlined"
-      );
+      expect(screen.getByText("Underlined")).toHaveClass("marduk-title--underlined");
     });
   });
 
@@ -269,7 +243,7 @@ describe("Title", () => {
       const { rerender } = render(
         <Title darkMode variant="primary">
           Test
-        </Title>
+        </Title>,
       );
       let element = screen.getByText("Test");
       expect(element).toHaveClass("marduk-title--dark");
@@ -278,7 +252,7 @@ describe("Title", () => {
       rerender(
         <Title darkMode variant="success">
           Test
-        </Title>
+        </Title>,
       );
       element = screen.getByText("Test");
       expect(element).toHaveClass("marduk-title--dark");
@@ -314,7 +288,7 @@ describe("Title", () => {
       render(
         <Title color="#ff0000" style={{ fontSize: "20px" }}>
           Test
-        </Title>
+        </Title>,
       );
       const title = screen.getByText("Test");
       expect(title).toHaveClass("marduk-title--custom-color");
@@ -328,7 +302,7 @@ describe("Title", () => {
       render(
         <Title variant="primary" color="#00ff00">
           Test
-        </Title>
+        </Title>,
       );
       const title = screen.getByText("Test");
       expect(title).toHaveClass("marduk-title--variant-primary");
@@ -358,7 +332,7 @@ describe("Title", () => {
       const { rerender } = render(
         <Title level={1} color="#ff0000">
           Test
-        </Title>
+        </Title>,
       );
       let title = screen.getByRole("heading", { level: 1 });
       expect(title).toHaveClass("marduk-title--custom-color");
@@ -367,7 +341,7 @@ describe("Title", () => {
       rerender(
         <Title level={6} color="#00ff00">
           Test
-        </Title>
+        </Title>,
       );
       title = screen.getByRole("heading", { level: 6 });
       expect(title).toHaveClass("marduk-title--custom-color");
@@ -378,15 +352,9 @@ describe("Title", () => {
   describe("Combined Props", () => {
     it("applies multiple prop classes together", () => {
       render(
-        <Title
-          level={3}
-          variant="primary"
-          align="center"
-          size="large"
-          weight="bold"
-        >
+        <Title level={3} variant="primary" align="center" size="large" weight="bold">
           Combined
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Combined");
       expect(element).toHaveClass("marduk-title--level-3");
@@ -400,7 +368,7 @@ describe("Title", () => {
       render(
         <Title level={2} variant="primary" darkMode>
           Dark Title
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Dark Title");
       expect(element).toHaveClass("marduk-title--level-2");
@@ -417,10 +385,7 @@ describe("Title", () => {
 
     it("applies data-variant attribute", () => {
       render(<Title variant="primary">Test</Title>);
-      expect(screen.getByText("Test")).toHaveAttribute(
-        "data-variant",
-        "primary"
-      );
+      expect(screen.getByText("Test")).toHaveAttribute("data-variant", "primary");
     });
 
     it("applies data-align attribute", () => {
@@ -450,10 +415,7 @@ describe("Title", () => {
 
     it("applies data-dark-mode when darkMode is true", () => {
       render(<Title darkMode>Test</Title>);
-      expect(screen.getByText("Test")).toHaveAttribute(
-        "data-dark-mode",
-        "true"
-      );
+      expect(screen.getByText("Test")).toHaveAttribute("data-dark-mode", "true");
     });
 
     it("does not apply data-dark-mode when darkMode is false", () => {
@@ -463,10 +425,7 @@ describe("Title", () => {
 
     it("applies data-custom-color when color prop is provided", () => {
       render(<Title color="#ff0000">Test</Title>);
-      expect(screen.getByText("Test")).toHaveAttribute(
-        "data-custom-color",
-        "true"
-      );
+      expect(screen.getByText("Test")).toHaveAttribute("data-custom-color", "true");
     });
 
     it("does not apply data-custom-color when color prop is not provided", () => {
@@ -486,7 +445,7 @@ describe("Title", () => {
           color="#00ff00"
         >
           Full Test
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Full Test");
       expect(element).toHaveAttribute("data-level", "2");
@@ -524,7 +483,7 @@ describe("Title", () => {
       const { container } = render(
         <Title as="div" level={2}>
           Div Title
-        </Title>
+        </Title>,
       );
       expect(container.querySelector("div.marduk-title")).toBeInTheDocument();
       expect(screen.getByText("Div Title").tagName).toBe("DIV");
@@ -534,7 +493,7 @@ describe("Title", () => {
       const { container } = render(
         <Title as="span" level={4}>
           Span Title
-        </Title>
+        </Title>,
       );
       expect(container.querySelector("span.marduk-title")).toBeInTheDocument();
       expect(screen.getByText("Span Title").tagName).toBe("SPAN");
@@ -544,7 +503,7 @@ describe("Title", () => {
       const { container } = render(
         <Title as="p" level={3}>
           Paragraph Title
-        </Title>
+        </Title>,
       );
       expect(container.querySelector("p.marduk-title")).toBeInTheDocument();
       expect(screen.getByText("Paragraph Title").tagName).toBe("P");
@@ -554,7 +513,7 @@ describe("Title", () => {
       render(
         <Title as="div" level={2}>
           Non-Heading
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Non-Heading");
       expect(element).toHaveAttribute("aria-level", "2");
@@ -572,7 +531,7 @@ describe("Title", () => {
       render(
         <Title as="div" level={2} variant="primary" align="center" size="large">
           Styled Div
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Styled Div");
       expect(element).toHaveClass("marduk-title");
@@ -586,7 +545,7 @@ describe("Title", () => {
       render(
         <Title as="div" className="custom-class">
           Custom
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Custom");
       expect(element).toHaveClass("marduk-title");
@@ -597,7 +556,7 @@ describe("Title", () => {
       render(
         <Title as="div" data-testid="custom-div" id="test-id">
           Test
-        </Title>
+        </Title>,
       );
       const element = screen.getByTestId("custom-div");
       expect(element).toHaveAttribute("id", "test-id");
@@ -607,7 +566,7 @@ describe("Title", () => {
       render(
         <Title as="span" darkMode>
           Dark Span
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Dark Span");
       expect(element).toHaveClass("marduk-title--dark");
@@ -618,7 +577,7 @@ describe("Title", () => {
       render(
         <Title as="p" color="#ff0000">
           Colored Para
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Colored Para");
       expect(element).toHaveClass("marduk-title--custom-color");
@@ -629,7 +588,7 @@ describe("Title", () => {
       render(
         <Title as="div" level={1}>
           H1 Styled Div
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("H1 Styled Div");
       expect(element).toHaveClass("marduk-title--level-1");
@@ -640,7 +599,7 @@ describe("Title", () => {
       const { container } = render(
         <Title as="a" href="#section" level={3}>
           Link Title
-        </Title>
+        </Title>,
       );
       const link = container.querySelector("a");
       expect(link).toBeInTheDocument();
@@ -652,7 +611,7 @@ describe("Title", () => {
       const { container } = render(
         <Title as="div" level={6}>
           Override
-        </Title>
+        </Title>,
       );
       expect(container.querySelector("div")).toBeInTheDocument();
       expect(container.querySelector("h6")).not.toBeInTheDocument();
@@ -689,7 +648,7 @@ describe("Title", () => {
       render(
         <Title clamp maxLines={3}>
           Clamped Title
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Clamped Title");
       expect(element.getAttribute("style")).toContain("--title-max-lines: 3");
@@ -699,7 +658,7 @@ describe("Title", () => {
       render(
         <Title clamp maxLines={1}>
           Single Line Clamp
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Single Line Clamp");
       expect(element.getAttribute("style")).toContain("--title-max-lines: 1");
@@ -709,7 +668,7 @@ describe("Title", () => {
       render(
         <Title clamp maxLines={5}>
           Five Line Clamp
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Five Line Clamp");
       expect(element.getAttribute("style")).toContain("--title-max-lines: 5");
@@ -719,7 +678,7 @@ describe("Title", () => {
       render(
         <Title truncate clamp>
           Both Props
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Both Props");
       expect(element).toHaveClass("marduk-title--truncate");
@@ -728,10 +687,7 @@ describe("Title", () => {
 
     it("applies data-truncate when truncate is true", () => {
       render(<Title truncate>Truncated</Title>);
-      expect(screen.getByText("Truncated")).toHaveAttribute(
-        "data-truncate",
-        "true"
-      );
+      expect(screen.getByText("Truncated")).toHaveAttribute("data-truncate", "true");
     });
 
     it("does not apply data-truncate when truncate is false", () => {
@@ -753,12 +709,9 @@ describe("Title", () => {
       render(
         <Title clamp maxLines={4}>
           Clamped
-        </Title>
+        </Title>,
       );
-      expect(screen.getByText("Clamped")).toHaveAttribute(
-        "data-max-lines",
-        "4"
-      );
+      expect(screen.getByText("Clamped")).toHaveAttribute("data-max-lines", "4");
     });
 
     it("does not apply data-max-lines when clamp is false", () => {
@@ -770,7 +723,7 @@ describe("Title", () => {
       render(
         <Title truncate variant="primary">
           Truncated Primary
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Truncated Primary");
       expect(element).toHaveClass("marduk-title--truncate");
@@ -781,7 +734,7 @@ describe("Title", () => {
       render(
         <Title clamp level={3} maxLines={3}>
           Clamped H3
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Clamped H3");
       expect(element).toHaveClass("marduk-title--clamp");
@@ -793,7 +746,7 @@ describe("Title", () => {
       render(
         <Title as="div" truncate>
           Truncated Div
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Truncated Div");
       expect(element.tagName).toBe("DIV");
@@ -804,7 +757,7 @@ describe("Title", () => {
       render(
         <Title clamp maxLines={2} darkMode>
           Dark Clamped
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Dark Clamped");
       expect(element).toHaveClass("marduk-title--clamp");
@@ -821,23 +774,17 @@ describe("Title", () => {
 
     it("applies tight spacing class", () => {
       render(<Title spacing="tight">Tight</Title>);
-      expect(screen.getByText("Tight")).toHaveClass(
-        "marduk-title--spacing-tight"
-      );
+      expect(screen.getByText("Tight")).toHaveClass("marduk-title--spacing-tight");
     });
 
     it("applies normal spacing class", () => {
       render(<Title spacing="normal">Normal</Title>);
-      expect(screen.getByText("Normal")).toHaveClass(
-        "marduk-title--spacing-normal"
-      );
+      expect(screen.getByText("Normal")).toHaveClass("marduk-title--spacing-normal");
     });
 
     it("applies wide spacing class", () => {
       render(<Title spacing="wide">Wide</Title>);
-      expect(screen.getByText("Wide")).toHaveClass(
-        "marduk-title--spacing-wide"
-      );
+      expect(screen.getByText("Wide")).toHaveClass("marduk-title--spacing-wide");
     });
 
     it("applies data-spacing attribute", () => {
@@ -854,7 +801,7 @@ describe("Title", () => {
       render(
         <Title spacing="wide" variant="primary">
           Wide Primary
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Wide Primary");
       expect(element).toHaveClass("marduk-title--spacing-wide");
@@ -865,7 +812,7 @@ describe("Title", () => {
       render(
         <Title as="div" spacing="tight">
           Tight Div
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Tight Div");
       expect(element.tagName).toBe("DIV");
@@ -882,9 +829,7 @@ describe("Title", () => {
 
     it("applies underlined class when underlined is true", () => {
       render(<Title underlined>Underlined</Title>);
-      expect(screen.getByText("Underlined")).toHaveClass(
-        "marduk-title--underlined"
-      );
+      expect(screen.getByText("Underlined")).toHaveClass("marduk-title--underlined");
     });
 
     it("applies solid underline style by default", () => {
@@ -898,7 +843,7 @@ describe("Title", () => {
       render(
         <Title underlined underlineStyle="double">
           Double
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Double");
       expect(element).toHaveClass("marduk-title--underlined");
@@ -909,7 +854,7 @@ describe("Title", () => {
       render(
         <Title underlined underlineStyle="dotted">
           Dotted
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Dotted");
       expect(element).toHaveClass("marduk-title--underlined");
@@ -920,7 +865,7 @@ describe("Title", () => {
       render(
         <Title underlined underlineStyle="dashed">
           Dashed
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Dashed");
       expect(element).toHaveClass("marduk-title--underlined");
@@ -931,7 +876,7 @@ describe("Title", () => {
       render(
         <Title underlined underlineStyle="wavy">
           Wavy
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Wavy");
       expect(element).toHaveClass("marduk-title--underlined");
@@ -940,10 +885,7 @@ describe("Title", () => {
 
     it("applies data-underlined attribute", () => {
       render(<Title underlined>Test</Title>);
-      expect(screen.getByText("Test")).toHaveAttribute(
-        "data-underlined",
-        "true"
-      );
+      expect(screen.getByText("Test")).toHaveAttribute("data-underlined", "true");
     });
 
     it("does not apply data-underlined when not underlined", () => {
@@ -955,12 +897,9 @@ describe("Title", () => {
       render(
         <Title underlined underlineStyle="wavy">
           Test
-        </Title>
+        </Title>,
       );
-      expect(screen.getByText("Test")).toHaveAttribute(
-        "data-underline-style",
-        "wavy"
-      );
+      expect(screen.getByText("Test")).toHaveAttribute("data-underline-style", "wavy");
     });
 
     it("does not apply underline style classes when not underlined", () => {
@@ -974,7 +913,7 @@ describe("Title", () => {
       render(
         <Title underlined underlineStyle="wavy" variant="primary">
           Underlined Primary
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Underlined Primary");
       expect(element).toHaveClass("marduk-title--underlined");
@@ -986,7 +925,7 @@ describe("Title", () => {
       render(
         <Title underlined underlineStyle="double" color="#ff0000">
           Underlined Custom
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Underlined Custom");
       expect(element).toHaveClass("marduk-title--underlined");
@@ -998,7 +937,7 @@ describe("Title", () => {
       render(
         <Title as="div" underlined underlineStyle="dashed">
           Underlined Div
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Underlined Div");
       expect(element.tagName).toBe("DIV");
@@ -1012,7 +951,7 @@ describe("Title", () => {
       render(
         <Title spacing="wide" underlined underlineStyle="wavy">
           Combined
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Combined");
       expect(element).toHaveClass("marduk-title--spacing-wide");
@@ -1024,7 +963,7 @@ describe("Title", () => {
       render(
         <Title truncate spacing="tight">
           Truncated Tight
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("Truncated Tight");
       expect(element).toHaveClass("marduk-title--truncate");
@@ -1043,7 +982,7 @@ describe("Title", () => {
           size="large"
         >
           All Features
-        </Title>
+        </Title>,
       );
       const element = screen.getByText("All Features");
       expect(element).toHaveClass("marduk-title--level-2");

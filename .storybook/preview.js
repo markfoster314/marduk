@@ -47,7 +47,7 @@ const preview = {
 
     options: {
       storySort: {
-        order: ["Components", "*"],
+        order: ["Components", "Compositions", "Icons", "*"],
       },
     },
   },

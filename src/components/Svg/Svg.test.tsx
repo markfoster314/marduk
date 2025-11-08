@@ -3,16 +3,14 @@ import "@testing-library/jest-dom";
 import { Svg } from "./Svg";
 
 describe("Svg", () => {
-  const TestIcon = () => (
-    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-  );
+  const TestIcon = () => <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />;
 
   describe("Core Rendering", () => {
     it("renders svg element", () => {
       const { container } = render(
         <Svg>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       expect(container.querySelector("svg")).toBeInTheDocument();
     });
@@ -21,7 +19,7 @@ describe("Svg", () => {
       const { container } = render(
         <Svg>
           <circle cx="12" cy="12" r="10" />
-        </Svg>
+        </Svg>,
       );
       expect(container.querySelector("circle")).toBeInTheDocument();
     });
@@ -30,7 +28,7 @@ describe("Svg", () => {
       const { container } = render(
         <Svg>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       expect(container.querySelector("svg")).toHaveClass("marduk-svg");
     });
@@ -39,7 +37,7 @@ describe("Svg", () => {
       render(
         <Svg data-testid="custom-svg" aria-label="Custom Icon">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       const svg = screen.getByTestId("custom-svg");
       expect(svg).toHaveAttribute("aria-label", "Custom Icon");
@@ -49,7 +47,7 @@ describe("Svg", () => {
       const { container } = render(
         <Svg className="custom-class">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       const svg = container.querySelector("svg");
       expect(svg).toHaveClass("marduk-svg");
@@ -63,7 +61,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).toHaveClass("marduk-svg--size-medium");
@@ -80,7 +78,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg size={size as any}>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).toHaveClass(expectedClass);
@@ -92,7 +90,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg size={48}>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).not.toHaveClass("marduk-svg--size-xs");
@@ -108,7 +106,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg size={64}>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).toHaveStyle({ "--svg-custom-size": "64px" });
@@ -120,7 +118,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg size={48}>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).not.toHaveClass("marduk-svg--responsive");
@@ -130,7 +128,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg size={48} responsive>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).toHaveClass("marduk-svg--responsive");
@@ -140,7 +138,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg size="medium" responsive>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).not.toHaveClass("marduk-svg--responsive");
@@ -154,24 +152,18 @@ describe("Svg", () => {
       const { container } = render(
         <Svg>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "viewBox",
-        "0 0 24 24"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("viewBox", "0 0 24 24");
     });
 
     it("applies custom viewBox", () => {
       const { container } = render(
         <Svg viewBox="0 0 100 100">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "viewBox",
-        "0 0 100 100"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("viewBox", "0 0 100 100");
     });
   });
 
@@ -181,35 +173,29 @@ describe("Svg", () => {
         const { container } = render(
           <Svg>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
-        expect(container.querySelector("svg")).toHaveAttribute(
-          "fill",
-          "currentColor"
-        );
+        expect(container.querySelector("svg")).toHaveAttribute("fill", "currentColor");
       });
 
       it("applies custom color", () => {
         const { container } = render(
           <Svg color="#ff0000">
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
-        expect(container.querySelector("svg")).toHaveAttribute(
-          "fill",
-          "#ff0000"
-        );
+        expect(container.querySelector("svg")).toHaveAttribute("fill", "#ff0000");
       });
 
       it("applies color variable", () => {
         const { container } = render(
           <Svg color="var(--marduk-color-primary-500)">
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         expect(container.querySelector("svg")).toHaveAttribute(
           "fill",
-          "var(--marduk-color-primary-500)"
+          "var(--marduk-color-primary-500)",
         );
       });
     });
@@ -219,18 +205,16 @@ describe("Svg", () => {
         const { container } = render(
           <Svg>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
-        expect(container.querySelector("svg")).not.toHaveClass(
-          "marduk-svg--dark"
-        );
+        expect(container.querySelector("svg")).not.toHaveClass("marduk-svg--dark");
       });
 
       it("applies dark class when darkMode is true", () => {
         const { container } = render(
           <Svg darkMode>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         expect(container.querySelector("svg")).toHaveClass("marduk-svg--dark");
       });
@@ -241,7 +225,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).not.toHaveClass("marduk-svg--align-left");
@@ -257,7 +241,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg align={align as any}>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         expect(container.querySelector("svg")).toHaveClass(expectedClass);
       });
@@ -268,29 +252,25 @@ describe("Svg", () => {
         const { container } = render(
           <Svg>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
-        expect(container.querySelector("svg")).not.toHaveClass(
-          "marduk-svg--hoverable"
-        );
+        expect(container.querySelector("svg")).not.toHaveClass("marduk-svg--hoverable");
       });
 
       it("applies hoverable class when hoverColor is set", () => {
         const { container } = render(
           <Svg hoverColor="#ff0000">
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
-        expect(container.querySelector("svg")).toHaveClass(
-          "marduk-svg--hoverable"
-        );
+        expect(container.querySelector("svg")).toHaveClass("marduk-svg--hoverable");
       });
 
       it("sets CSS variable for hover color", () => {
         const { container } = render(
           <Svg hoverColor="#ff0000">
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).toHaveStyle({ "--hover-color": "#ff0000" });
@@ -304,7 +284,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).not.toHaveClass("marduk-svg--rotate-90");
@@ -320,7 +300,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg rotate={degrees as any}>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         expect(container.querySelector("svg")).toHaveClass(expectedClass);
       });
@@ -329,7 +309,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg rotate={0}>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).not.toHaveClass("marduk-svg--rotate-0");
@@ -341,7 +321,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).not.toHaveClass("marduk-svg--flip-horizontal");
@@ -360,7 +340,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg flip={direction as any}>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         expect(container.querySelector("svg")).toHaveClass(expectedClass);
       });
@@ -373,18 +353,16 @@ describe("Svg", () => {
         const { container } = render(
           <Svg>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
-        expect(container.querySelector("svg")).not.toHaveClass(
-          "marduk-svg--spin"
-        );
+        expect(container.querySelector("svg")).not.toHaveClass("marduk-svg--spin");
       });
 
       it("applies spin class when spin is true", () => {
         const { container } = render(
           <Svg spin>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         expect(container.querySelector("svg")).toHaveClass("marduk-svg--spin");
       });
@@ -393,11 +371,9 @@ describe("Svg", () => {
         const { container } = render(
           <Svg spin>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
-        expect(container.querySelector("svg")).toHaveClass(
-          "marduk-svg--spin-normal"
-        );
+        expect(container.querySelector("svg")).toHaveClass("marduk-svg--spin-normal");
       });
 
       test.each([
@@ -407,7 +383,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg spin spinSpeed={speed as any}>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         expect(container.querySelector("svg")).toHaveClass(expectedClass);
       });
@@ -418,22 +394,18 @@ describe("Svg", () => {
         const { container } = render(
           <Svg>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
-        expect(container.querySelector("svg")).not.toHaveClass(
-          "marduk-svg--animation-heartpulse"
-        );
+        expect(container.querySelector("svg")).not.toHaveClass("marduk-svg--animation-heartpulse");
       });
 
       it("applies heartpulse animation class", () => {
         const { container } = render(
           <Svg animation="heartpulse">
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
-        expect(container.querySelector("svg")).toHaveClass(
-          "marduk-svg--animation-heartpulse"
-        );
+        expect(container.querySelector("svg")).toHaveClass("marduk-svg--animation-heartpulse");
       });
     });
   });
@@ -443,48 +415,36 @@ describe("Svg", () => {
       const { container } = render(
         <Svg strokeWidth={2}>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "stroke-width",
-        "2"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("stroke-width", "2");
     });
 
     it("applies strokeLinecap", () => {
       const { container } = render(
         <Svg strokeWidth={2} strokeLinecap="round">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "stroke-linecap",
-        "round"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("stroke-linecap", "round");
     });
 
     it("applies strokeLinejoin", () => {
       const { container } = render(
         <Svg strokeWidth={2} strokeLinejoin="round">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "stroke-linejoin",
-        "round"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("stroke-linejoin", "round");
     });
 
     it("applies stroke when strokeWidth is set", () => {
       const { container } = render(
         <Svg strokeWidth={2} color="#ff0000">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "stroke",
-        "#ff0000"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("stroke", "#ff0000");
     });
   });
 
@@ -493,7 +453,7 @@ describe("Svg", () => {
       const { container } = render(
         <Svg>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       const svg = container.querySelector("svg");
       expect(svg).not.toHaveAttribute("data-filter");
@@ -516,7 +476,7 @@ describe("Svg", () => {
       const { container } = render(
         <Svg filter={filter}>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("data-filter", "true");
@@ -527,7 +487,7 @@ describe("Svg", () => {
       const { container } = render(
         <Svg filter="grayscale(50%) blur(1px)">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       const svg = container.querySelector("svg");
       expect(svg).toHaveStyle({ filter: "grayscale(50%) blur(1px)" });
@@ -539,31 +499,25 @@ describe("Svg", () => {
       const { container } = render(
         <Svg>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "xmlns",
-        "http://www.w3.org/2000/svg"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("xmlns", "http://www.w3.org/2000/svg");
     });
 
     it("supports aria-label", () => {
       const { container } = render(
         <Svg aria-label="Home icon">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "aria-label",
-        "Home icon"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("aria-label", "Home icon");
     });
 
     it("renders title element when title prop is provided", () => {
       const { container } = render(
         <Svg title="Home Icon">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       expect(container.querySelector("title")).toHaveTextContent("Home Icon");
     });
@@ -572,30 +526,25 @@ describe("Svg", () => {
       const { container } = render(
         <Svg description="Navigate to home page">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("desc")).toHaveTextContent(
-        "Navigate to home page"
-      );
+      expect(container.querySelector("desc")).toHaveTextContent("Navigate to home page");
     });
 
     it("sets aria-hidden when decorative is true", () => {
       const { container } = render(
         <Svg decorative>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "aria-hidden",
-        "true"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
     });
 
     it("does not set role when decorative is true", () => {
       const { container } = render(
         <Svg decorative title="Home">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       expect(container.querySelector("svg")).not.toHaveAttribute("role");
     });
@@ -604,7 +553,7 @@ describe("Svg", () => {
       const { container } = render(
         <Svg>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       expect(container.querySelector("svg")).not.toHaveAttribute("aria-hidden");
     });
@@ -613,12 +562,10 @@ describe("Svg", () => {
       const { container } = render(
         <Svg title="Home Icon" description="Navigate to home page">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       expect(container.querySelector("title")).toHaveTextContent("Home Icon");
-      expect(container.querySelector("desc")).toHaveTextContent(
-        "Navigate to home page"
-      );
+      expect(container.querySelector("desc")).toHaveTextContent("Navigate to home page");
     });
 
     describe("Reduced Motion", () => {
@@ -626,7 +573,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg spin>
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).toHaveClass("marduk-svg--spin");
@@ -636,7 +583,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg animation="heartpulse">
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).toHaveClass("marduk-svg--animation-heartpulse");
@@ -648,7 +595,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg hoverColor="#ff0000">
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).toHaveClass("marduk-svg--hoverable");
@@ -660,7 +607,7 @@ describe("Svg", () => {
         const { container } = render(
           <Svg color="#ff0000">
             <TestIcon />
-          </Svg>
+          </Svg>,
         );
         const svg = container.querySelector("svg");
         expect(svg).toHaveAttribute("fill", "#ff0000");
@@ -673,19 +620,16 @@ describe("Svg", () => {
       const { container } = render(
         <Svg size="large">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "data-size",
-        "large"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("data-size", "large");
     });
 
     it("sets data-size to custom and data-custom-size for numeric sizes", () => {
       const { container } = render(
         <Svg size={48}>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("data-size", "custom");
@@ -702,7 +646,7 @@ describe("Svg", () => {
       const { container } = render(
         <Svg {...{ [prop]: propValue }}>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       expect(container.querySelector("svg")).toHaveAttribute(attr, "true");
     });
@@ -720,7 +664,7 @@ describe("Svg", () => {
       const { container } = render(
         <Svg {...{ [prop]: value }}>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       expect(container.querySelector("svg")).toHaveAttribute(attr, expected);
     });
@@ -729,7 +673,7 @@ describe("Svg", () => {
       const { container } = render(
         <Svg spin spinSpeed="fast">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("data-spin", "true");
@@ -740,48 +684,36 @@ describe("Svg", () => {
       const { container } = render(
         <Svg animation="heartpulse">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "data-animation",
-        "heartpulse"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("data-animation", "heartpulse");
     });
 
     it("sets data-responsive when responsive=true with custom size", () => {
       const { container } = render(
         <Svg size={48} responsive>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "data-responsive",
-        "true"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("data-responsive", "true");
     });
 
     it("sets data-stroke-width when strokeWidth is provided", () => {
       const { container } = render(
         <Svg strokeWidth={2}>
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "data-stroke-width",
-        "2"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("data-stroke-width", "2");
     });
 
     it("sets data-stroke-width with string value", () => {
       const { container } = render(
         <Svg strokeWidth="1.5">
           <TestIcon />
-        </Svg>
+        </Svg>,
       );
-      expect(container.querySelector("svg")).toHaveAttribute(
-        "data-stroke-width",
-        "1.5"
-      );
+      expect(container.querySelector("svg")).toHaveAttribute("data-stroke-width", "1.5");
     });
   });
 });

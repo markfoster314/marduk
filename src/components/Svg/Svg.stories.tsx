@@ -1,15 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { Text } from "../Text/Text";
 import { Svg } from "./Svg";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Svg> = {
   title: "Components/Svg",
   component: Svg,
   parameters: {
     layout: "centered",
+    docs: {
+      subtitle: STORYBOOK_STATUS.WIP,
+    },
   },
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:wip"],
   argTypes: {
     size: {
       control: { type: "select" },
@@ -191,11 +194,7 @@ export const Transformations: Story = {
 export const Animations: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "20px" }}>
-      <Svg
-        size="xl"
-        animation="heartpulse"
-        color="var(--marduk-color-danger-500)"
-      >
+      <Svg size="xl" animation="heartpulse" color="var(--marduk-color-danger-500)">
         <HeartIcon />
       </Svg>
     </div>
@@ -227,12 +226,9 @@ export const Responsive: Story = {
       <Svg size={64} responsive color="var(--marduk-color-primary-500)">
         <StarIcon />
       </Svg>
-      <Text
-        as="div"
-        style={{ fontSize: "14px", color: "#666", maxWidth: "400px" }}
-      >
-        Resize viewport to see responsive scaling at 768px and 1024px
-        breakpoints (custom size with responsive prop enabled)
+      <Text as="div" style={{ fontSize: "14px", color: "#666", maxWidth: "400px" }}>
+        Resize viewport to see responsive scaling at 768px and 1024px breakpoints (custom size with
+        responsive prop enabled)
       </Text>
     </div>
   ),
@@ -241,18 +237,10 @@ export const Responsive: Story = {
 export const Interactive: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "20px" }}>
-      <Svg
-        size="xl"
-        hoverColor="var(--marduk-color-primary-500)"
-        style={{ cursor: "pointer" }}
-      >
+      <Svg size="xl" hoverColor="var(--marduk-color-primary-500)" style={{ cursor: "pointer" }}>
         <HeartIcon />
       </Svg>
-      <Svg
-        size="xl"
-        hoverColor="var(--marduk-color-success-500)"
-        style={{ cursor: "pointer" }}
-      >
+      <Svg size="xl" hoverColor="var(--marduk-color-success-500)" style={{ cursor: "pointer" }}>
         <CheckIcon />
       </Svg>
     </div>

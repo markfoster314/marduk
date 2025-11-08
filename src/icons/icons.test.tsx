@@ -66,9 +66,7 @@ describe("Icon (Generic Component)", () => {
     });
 
     it("forwards all Svg props", () => {
-      const { container } = render(
-        <Icon name="user" rotate={90} flip="horizontal" />
-      );
+      const { container } = render(<Icon name="user" rotate={90} flip="horizontal" />);
       const svg = container.querySelector("svg");
       expect(svg).toHaveClass("marduk-svg--rotate-90");
       expect(svg).toHaveClass("marduk-svg--flip-horizontal");
@@ -123,54 +121,52 @@ describe("Individual Icon Components", () => {
     },
   ];
 
-  iconComponents.forEach(
-    ({ name, Component, expectedViewBox, expectedPathCount, testColor }) => {
-      describe(name, () => {
-        it("renders correctly", () => {
-          const { container } = render(<Component />);
-          expect(container.querySelector("svg")).toBeInTheDocument();
-        });
-
-        it(`renders with viewBox ${expectedViewBox}`, () => {
-          const { container } = render(<Component />);
-          const svg = container.querySelector("svg");
-          expect(svg).toHaveAttribute("viewBox", expectedViewBox);
-        });
-
-        it(`renders ${expectedPathCount} path element(s)`, () => {
-          const { container } = render(<Component />);
-          const paths = container.querySelectorAll("path");
-          expect(paths.length).toBe(expectedPathCount);
-        });
-
-        it("accepts size prop", () => {
-          const { container } = render(<Component size="large" />);
-          const svg = container.querySelector("svg");
-          expect(svg).toHaveClass("marduk-svg--size-large");
-          expect(svg).not.toHaveAttribute("width");
-          expect(svg).not.toHaveAttribute("height");
-        });
-
-        it("accepts color prop", () => {
-          const { container } = render(<Component color={testColor} />);
-          const svg = container.querySelector("svg");
-          expect(svg).toHaveAttribute("fill", testColor);
-        });
-
-        it("supports rotation", () => {
-          const { container } = render(<Component rotate={90} />);
-          const svg = container.querySelector("svg");
-          expect(svg).toHaveClass("marduk-svg--rotate-90");
-        });
-
-        it("supports flip transformations", () => {
-          const { container } = render(<Component flip="horizontal" />);
-          const svg = container.querySelector("svg");
-          expect(svg).toHaveClass("marduk-svg--flip-horizontal");
-        });
+  iconComponents.forEach(({ name, Component, expectedViewBox, expectedPathCount, testColor }) => {
+    describe(name, () => {
+      it("renders correctly", () => {
+        const { container } = render(<Component />);
+        expect(container.querySelector("svg")).toBeInTheDocument();
       });
-    }
-  );
+
+      it(`renders with viewBox ${expectedViewBox}`, () => {
+        const { container } = render(<Component />);
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveAttribute("viewBox", expectedViewBox);
+      });
+
+      it(`renders ${expectedPathCount} path element(s)`, () => {
+        const { container } = render(<Component />);
+        const paths = container.querySelectorAll("path");
+        expect(paths.length).toBe(expectedPathCount);
+      });
+
+      it("accepts size prop", () => {
+        const { container } = render(<Component size="large" />);
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveClass("marduk-svg--size-large");
+        expect(svg).not.toHaveAttribute("width");
+        expect(svg).not.toHaveAttribute("height");
+      });
+
+      it("accepts color prop", () => {
+        const { container } = render(<Component color={testColor} />);
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveAttribute("fill", testColor);
+      });
+
+      it("supports rotation", () => {
+        const { container } = render(<Component rotate={90} />);
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveClass("marduk-svg--rotate-90");
+      });
+
+      it("supports flip transformations", () => {
+        const { container } = render(<Component flip="horizontal" />);
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveClass("marduk-svg--flip-horizontal");
+      });
+    });
+  });
 });
 
 describe("Accessibility", () => {
@@ -180,12 +176,8 @@ describe("Accessibility", () => {
   });
 
   it("supports description prop", () => {
-    const { container } = render(
-      <Icon name="user" description="View user profile" />
-    );
-    expect(container.querySelector("desc")).toHaveTextContent(
-      "View user profile"
-    );
+    const { container } = render(<Icon name="user" description="View user profile" />);
+    expect(container.querySelector("desc")).toHaveTextContent("View user profile");
   });
 
   it("supports decorative prop", () => {

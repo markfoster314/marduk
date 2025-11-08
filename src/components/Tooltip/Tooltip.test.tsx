@@ -1,10 +1,4 @@
-import {
-  render,
-  screen,
-  fireEvent,
-  waitFor,
-  act,
-} from "@testing-library/react";
+import { render, screen, fireEvent, waitFor, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Tooltip } from "./Tooltip";
 
@@ -23,7 +17,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Tooltip text">
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       expect(screen.getByText("Hover me")).toBeInTheDocument();
@@ -33,7 +27,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Tooltip text">
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
@@ -45,7 +39,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Tooltip text" delay={200}>
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText("Hover me");
@@ -67,7 +61,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Tooltip text" delay={0}>
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText("Hover me");
@@ -92,7 +86,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Tooltip text" delay={500}>
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText("Hover me");
@@ -117,7 +111,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Tooltip text" delay={200}>
           <button>Focus me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText("Focus me");
@@ -136,7 +130,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Tooltip text" delay={0}>
           <button>Focus me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText("Focus me");
@@ -163,7 +157,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Tooltip text" delay={0}>
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText("Hover me");
@@ -186,7 +180,7 @@ describe("Tooltip", () => {
         const { unmount } = render(
           <Tooltip content="Tooltip text" position={position} delay={0}>
             <button>Hover me</button>
-          </Tooltip>
+          </Tooltip>,
         );
 
         const trigger = screen.getByText("Hover me");
@@ -211,7 +205,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Tooltip text">
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText("Hover me");
@@ -235,7 +229,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Tooltip text" delay={500}>
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText("Hover me");
@@ -259,7 +253,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Tooltip text" delay={0}>
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText("Hover me");
@@ -280,7 +274,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Simple text" delay={0}>
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText("Hover me");
@@ -299,7 +293,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content={<strong>Bold text</strong>} delay={0}>
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText("Hover me");
@@ -321,7 +315,7 @@ describe("Tooltip", () => {
       render(
         <Tooltip content="Tooltip text" delay={0}>
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText("Hover me");

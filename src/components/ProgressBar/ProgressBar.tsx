@@ -26,9 +26,7 @@ export const ProgressBar = ({
 }: ProgressBarProps) => {
   const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
 
-  const wrapperClasses = ["marduk-progress-wrapper", className]
-    .filter(Boolean)
-    .join(" ");
+  const wrapperClasses = ["marduk-progress-wrapper", className].filter(Boolean).join(" ");
 
   const barClasses = ["marduk-progress-bar", `marduk-progress-bar--${size}`]
     .filter(Boolean)
@@ -49,9 +47,7 @@ export const ProgressBar = ({
         <div className="marduk-progress-label-container">
           {label && <span className="marduk-progress-label">{label}</span>}
           {showLabel && (
-            <span className="marduk-progress-percentage">
-              {Math.round(percentage)}%
-            </span>
+            <span className="marduk-progress-percentage">{Math.round(percentage)}%</span>
           )}
         </div>
       )}

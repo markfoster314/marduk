@@ -1,11 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ProgressBar } from "./ProgressBar";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof ProgressBar> = {
   title: "Components/ProgressBar",
   component: ProgressBar,
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:barebones"],
+  parameters: {
+    docs: {
+      subtitle: STORYBOOK_STATUS.BAREBONES,
+    },
+  },
   argTypes: {
     variant: {
       control: "select",
@@ -129,31 +135,27 @@ export const AllVariants: Story = {
   ),
 };
 
+const AnimatedProgressComponent = () => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) return 0;
+        return prev + 1;
+      });
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div style={{ maxWidth: "500px" }}>
+      <ProgressBar value={progress} label="Loading..." showLabel striped animated />
+    </div>
+  );
+};
+
 export const AnimatedProgress: Story = {
-  render: () => {
-    const [progress, setProgress] = useState(0);
-
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= 100) return 0;
-          return prev + 1;
-        });
-      }, 50);
-
-      return () => clearInterval(interval);
-    }, []);
-
-    return (
-      <div style={{ maxWidth: "500px" }}>
-        <ProgressBar
-          value={progress}
-          label="Loading..."
-          showLabel
-          striped
-          animated
-        />
-      </div>
-    );
-  },
+  render: () => <AnimatedProgressComponent />,
 };

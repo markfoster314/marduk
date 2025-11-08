@@ -1,14 +1,7 @@
-import {
-  ChangeEvent,
-  useState,
-  useEffect,
-  useRef,
-  InputHTMLAttributes,
-} from "react";
+import { ChangeEvent, useState, useEffect, useRef, InputHTMLAttributes } from "react";
 import "./Toggle.css";
 
-export interface ToggleProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
+export interface ToggleProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
   label?: string;
   checked?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -112,13 +105,9 @@ export const Toggle = ({
 
   return (
     <label className={labelClasses}>
-      {label && labelPosition === "left" && (
-        <span className="marduk-toggle-text">{label}</span>
-      )}
+      {label && labelPosition === "left" && <span className="marduk-toggle-text">{label}</span>}
       <div className={toggleClasses}>{toggleContent}</div>
-      {label && labelPosition === "right" && (
-        <span className="marduk-toggle-text">{label}</span>
-      )}
+      {label && labelPosition === "right" && <span className="marduk-toggle-text">{label}</span>}
     </label>
   );
 };

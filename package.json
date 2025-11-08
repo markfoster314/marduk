@@ -1,6 +1,6 @@
 {
   "name": "@markfoster314/marduk",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "TypeScript React components library configured specifically for Mark and his pals",
   "author": "Mark L Foster (https://github.com/markfoster314)",
   "license": "MIT",
@@ -24,7 +24,15 @@
     "design-system",
     "accessible",
     "no-dependencies",
-    "typescript-library"
+    "zero-dependencies",
+    "typescript-library",
+    "presets",
+    "css-variables",
+    "theming",
+    "storybook",
+    "polymorphic-components",
+    "react-19",
+    "a11y"
   ],
   "funding": {
     "type": "individual",
@@ -48,28 +56,46 @@
   ],
   "files": [
     "dist",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE"
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "clean": "rimraf dist",
-    "prebuild": "npm run type-check && npm test",
-    "build:declarations": "tsc --noEmit false --declaration --emitDeclarationOnly --outDir dist/esm",
+    "clean:extras": "rimraf dist/bundle-analysis.html dist/tsconfig.tsbuildinfo dist/tsconfig.build.tsbuildinfo",
+    "prebuild:ci": "npm run type-check && npm test",
+    "build:declarations": "tsc --project tsconfig.build.json --noEmit false --declaration --emitDeclarationOnly --outDir dist/esm",
     "build:rollup": "rollup -c",
-    "build": "npm run clean && npm run build:declarations && npm run build:rollup",
+    "build": "npm run clean && npm run build:declarations && npm run build:rollup && npm run clean:extras",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "storybook": "storybook dev -p 2015",
     "build-storybook": "storybook build",
-    "prepublishOnly": "npm run build",
-    "type-check": "tsc --noEmit"
+    "prepublishOnly": "npm run prebuild:ci && npm run build",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "prepare": "husky"
   },
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=7.0.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "eslint --max-warnings 0"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -80,6 +106,10 @@
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
     "@babel/preset-typescript": "^7.28.5",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@eslint/js": "^9.39.1",
+    "@rollup/plugin-alias": "^6.0.0",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
@@ -96,12 +126,22 @@
     "@types/jest": "^30.0.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
+    "@typescript-eslint/eslint-plugin": "^8.46.3",
+    "@typescript-eslint/parser": "^8.46.3",
     "babel-loader": "^10.0.0",
     "css-loader": "^7.1.2",
+    "eslint": "^9.39.1",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "husky": "^9.1.7",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^30.2.0",
     "jest-environment-jsdom": "^30.2.0",
     "jest-watch-typeahead": "^3.0.1",
+    "lint-staged": "^16.2.6",
+    "prettier": "^3.6.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "rimraf": "^6.1.0",
@@ -114,6 +154,7 @@
     "style-loader": "^4.0.0",
     "ts-jest": "^29.4.5",
     "tslib": "^2.6.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.3"
   }
 }

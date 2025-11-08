@@ -2,14 +2,18 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Title } from "./Title";
 import { Text } from "../Text/Text";
 import React from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
   component: Title,
   parameters: {
     layout: "centered",
+    docs: {
+      subtitle: STORYBOOK_STATUS.WIP,
+    },
   },
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:wip"],
   argTypes: {
     as: {
       control: { type: "select" },
@@ -23,14 +27,7 @@ const meta: Meta<typeof Title> = {
     },
     variant: {
       control: { type: "select" },
-      options: [
-        "default",
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "danger",
-      ],
+      options: ["default", "primary", "secondary", "success", "warning", "danger"],
       description: "Color variant",
     },
     align: {
@@ -205,7 +202,7 @@ export const Truncation: Story = {
       }}
     >
       <div>
-        <Text size="xs" variant="muted" style={{ marginBottom: "8px" }}>
+        <Text size="xs" style={{ marginBottom: "8px" }}>
           Single-line truncate:
         </Text>
         <Title level={3} truncate>
@@ -213,12 +210,12 @@ export const Truncation: Story = {
         </Title>
       </div>
       <div>
-        <Text size="xs" variant="muted" style={{ marginBottom: "8px" }}>
+        <Text size="xs" style={{ marginBottom: "8px" }}>
           Multi-line clamp (2 lines):
         </Text>
         <Title level={3} clamp maxLines={2}>
-          This is a longer title that will be clamped to exactly 2 lines with an
-          ellipsis at the end when it exceeds the specified number of lines
+          This is a longer title that will be clamped to exactly 2 lines with an ellipsis at the end
+          when it exceeds the specified number of lines
         </Title>
       </div>
     </div>
@@ -273,9 +270,9 @@ export const Responsive: Story = {
       <Title level={1} style={{ marginBottom: "12px" }}>
         Responsive Heading
       </Title>
-      <Text variant="muted" size="sm">
-        Resize your viewport to see responsive sizing at 768px and 1024px
-        breakpoints. Titles scale automatically for better readability.
+      <Text size="sm">
+        Resize your viewport to see responsive sizing at 768px and 1024px breakpoints. Titles scale
+        automatically for better readability.
       </Text>
     </div>
   ),

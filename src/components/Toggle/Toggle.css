@@ -87,36 +87,23 @@
   background-color: var(--marduk-color-primary-500);
 }
 
-.marduk-toggle--small
-  .marduk-toggle-input:checked
-  ~ .marduk-toggle-track
-  .marduk-toggle-thumb {
+.marduk-toggle--small .marduk-toggle-input:checked ~ .marduk-toggle-track .marduk-toggle-thumb {
   transform: translateX(16px);
 }
 
-.marduk-toggle--medium
-  .marduk-toggle-input:checked
-  ~ .marduk-toggle-track
-  .marduk-toggle-thumb {
+.marduk-toggle--medium .marduk-toggle-input:checked ~ .marduk-toggle-track .marduk-toggle-thumb {
   transform: translateX(20px);
 }
 
-.marduk-toggle--large
-  .marduk-toggle-input:checked
-  ~ .marduk-toggle-track
-  .marduk-toggle-thumb {
+.marduk-toggle--large .marduk-toggle-input:checked ~ .marduk-toggle-track .marduk-toggle-thumb {
   transform: translateX(24px);
 }
 
-.marduk-toggle-label:hover
-  .marduk-toggle-input:not(:disabled)
-  + .marduk-toggle-track {
+.marduk-toggle-label:hover .marduk-toggle-input:not(:disabled) + .marduk-toggle-track {
   background-color: var(--marduk-color-gray-400);
 }
 
-.marduk-toggle-label:hover
-  .marduk-toggle-input:not(:disabled):checked
-  + .marduk-toggle-track {
+.marduk-toggle-label:hover .marduk-toggle-input:not(:disabled):checked + .marduk-toggle-track {
   background-color: var(--marduk-color-primary-600);
 }
 

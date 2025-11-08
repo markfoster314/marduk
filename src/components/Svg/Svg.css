@@ -29,9 +29,12 @@
   display: inline-block;
   vertical-align: middle;
   flex-shrink: 0;
-  transition: fill var(--marduk-transition-fast),
-    opacity var(--marduk-transition-fast), height var(--marduk-transition-fast),
-    width var(--marduk-transition-fast), transform var(--marduk-transition-fast);
+  transition:
+    fill var(--marduk-transition-fast),
+    opacity var(--marduk-transition-fast),
+    height var(--marduk-transition-fast),
+    width var(--marduk-transition-fast),
+    transform var(--marduk-transition-fast);
   color: var(--marduk-color-text-primary);
 }
 
@@ -130,12 +133,8 @@
 /* Responsive scaling for custom sizes */
 .marduk-svg--responsive {
   --svg-responsive-scale: 1;
-  width: calc(
-    var(--svg-custom-size, var(--svg-size)) * var(--svg-responsive-scale)
-  );
-  height: calc(
-    var(--svg-custom-size, var(--svg-size)) * var(--svg-responsive-scale)
-  );
+  width: calc(var(--svg-custom-size, var(--svg-size)) * var(--svg-responsive-scale));
+  height: calc(var(--svg-custom-size, var(--svg-size)) * var(--svg-responsive-scale));
 }
 
 @media (min-width: 768px) {
@@ -240,16 +239,14 @@
   100% {
     transform: scale(var(--svg-heartpulse-scale-start));
     filter: drop-shadow(
-      0 var(--svg-heartpulse-shadow-offset-mobile)
-        var(--svg-heartpulse-shadow-offset-mobile)
+      0 var(--svg-heartpulse-shadow-offset-mobile) var(--svg-heartpulse-shadow-offset-mobile)
         var(--svg-heartpulse-shadow-dark)
     );
   }
   50% {
     transform: scale(var(--svg-heartpulse-scale-peak));
     filter: drop-shadow(
-      0 var(--svg-heartpulse-shadow-peak-mobile)
-        var(--svg-heartpulse-shadow-peak-mobile)
+      0 var(--svg-heartpulse-shadow-peak-mobile) var(--svg-heartpulse-shadow-peak-mobile)
         var(--svg-heartpulse-shadow-light)
     );
   }
@@ -260,16 +257,14 @@
   100% {
     transform: scale(var(--svg-heartpulse-scale-start));
     filter: drop-shadow(
-      0 var(--svg-heartpulse-shadow-offset-tablet)
-        var(--svg-heartpulse-shadow-offset-tablet)
+      0 var(--svg-heartpulse-shadow-offset-tablet) var(--svg-heartpulse-shadow-offset-tablet)
         var(--svg-heartpulse-shadow-dark)
     );
   }
   50% {
     transform: scale(var(--svg-heartpulse-scale-peak));
     filter: drop-shadow(
-      0 var(--svg-heartpulse-shadow-peak-tablet)
-        var(--svg-heartpulse-shadow-peak-tablet)
+      0 var(--svg-heartpulse-shadow-peak-tablet) var(--svg-heartpulse-shadow-peak-tablet)
         var(--svg-heartpulse-shadow-light)
     );
   }
@@ -280,37 +275,34 @@
   100% {
     transform: scale(var(--svg-heartpulse-scale-start));
     filter: drop-shadow(
-      0 var(--svg-heartpulse-shadow-offset-desktop)
-        var(--svg-heartpulse-shadow-offset-desktop)
+      0 var(--svg-heartpulse-shadow-offset-desktop) var(--svg-heartpulse-shadow-offset-desktop)
         var(--svg-heartpulse-shadow-dark)
     );
   }
   50% {
     transform: scale(var(--svg-heartpulse-scale-peak));
     filter: drop-shadow(
-      0 var(--svg-heartpulse-shadow-peak-desktop)
-        var(--svg-heartpulse-shadow-peak-desktop)
+      0 var(--svg-heartpulse-shadow-peak-desktop) var(--svg-heartpulse-shadow-peak-desktop)
         var(--svg-heartpulse-shadow-light)
     );
   }
 }
 
 .marduk-svg--animation-heartpulse {
-  animation: marduk-heartpulse-mobile var(--svg-animation-heartpulse-duration)
-    ease-in-out infinite;
+  animation: marduk-heartpulse-mobile var(--svg-animation-heartpulse-duration) ease-in-out infinite;
 }
 
 @media (min-width: 768px) {
   .marduk-svg--animation-heartpulse {
-    animation: marduk-heartpulse-tablet var(--svg-animation-heartpulse-duration)
-      ease-in-out infinite;
+    animation: marduk-heartpulse-tablet var(--svg-animation-heartpulse-duration) ease-in-out
+      infinite;
   }
 }
 
 @media (min-width: 1024px) {
   .marduk-svg--animation-heartpulse {
-    animation: marduk-heartpulse-desktop
-      var(--svg-animation-heartpulse-duration) ease-in-out infinite;
+    animation: marduk-heartpulse-desktop var(--svg-animation-heartpulse-duration) ease-in-out
+      infinite;
   }
 }
 
@@ -332,7 +324,8 @@
 
 .marduk-svg--hoverable {
   cursor: pointer;
-  transition: fill var(--marduk-transition-fast),
+  transition:
+    fill var(--marduk-transition-fast),
     opacity var(--marduk-transition-fast),
     transform var(--marduk-transition-fast);
 }

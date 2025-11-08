@@ -47,10 +47,7 @@ export const RadioButtons = ({
     onChange?.(optionValue);
   };
 
-  const groupClasses = [
-    "marduk-radio-group",
-    `marduk-radio-group--${direction}`,
-  ]
+  const groupClasses = ["marduk-radio-group", `marduk-radio-group--${direction}`]
     .filter(Boolean)
     .join(" ");
 
@@ -95,9 +92,7 @@ export const RadioButtons = ({
         })}
       </div>
       {error && <span className="marduk-radio-error-text">{error}</span>}
-      {helperText && !error && (
-        <span className="marduk-radio-helper-text">{helperText}</span>
-      )}
+      {helperText && !error && <span className="marduk-radio-helper-text">{helperText}</span>}
     </div>
   );
 };

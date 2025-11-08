@@ -41,41 +41,29 @@ describe("Toggle", () => {
   describe("Sizes", () => {
     it("applies medium size by default", () => {
       const { container } = render(<Toggle />);
-      expect(
-        container.querySelector(".marduk-toggle--medium")
-      ).toBeInTheDocument();
+      expect(container.querySelector(".marduk-toggle--medium")).toBeInTheDocument();
     });
 
     it("applies small size class", () => {
       const { container } = render(<Toggle size="small" />);
-      expect(
-        container.querySelector(".marduk-toggle--small")
-      ).toBeInTheDocument();
+      expect(container.querySelector(".marduk-toggle--small")).toBeInTheDocument();
     });
 
     it("applies large size class", () => {
       const { container } = render(<Toggle size="large" />);
-      expect(
-        container.querySelector(".marduk-toggle--large")
-      ).toBeInTheDocument();
+      expect(container.querySelector(".marduk-toggle--large")).toBeInTheDocument();
     });
   });
 
   describe("Label Position", () => {
     it("positions label on right by default", () => {
       const { container } = render(<Toggle label="Test" />);
-      expect(
-        container.querySelector(".marduk-toggle-label--right")
-      ).toBeInTheDocument();
+      expect(container.querySelector(".marduk-toggle-label--right")).toBeInTheDocument();
     });
 
     it("can position label on left", () => {
-      const { container } = render(
-        <Toggle label="Test" labelPosition="left" />
-      );
-      expect(
-        container.querySelector(".marduk-toggle-label--left")
-      ).toBeInTheDocument();
+      const { container } = render(<Toggle label="Test" labelPosition="left" />);
+      expect(container.querySelector(".marduk-toggle-label--left")).toBeInTheDocument();
     });
   });
 
@@ -92,9 +80,7 @@ describe("Toggle", () => {
 
     it("applies disabled class", () => {
       const { container } = render(<Toggle disabled />);
-      expect(
-        container.querySelector(".marduk-toggle--disabled")
-      ).toBeInTheDocument();
+      expect(container.querySelector(".marduk-toggle--disabled")).toBeInTheDocument();
     });
   });
 
@@ -134,9 +120,7 @@ describe("Toggle", () => {
 
     it("toggles state when clicked", async () => {
       const user = userEvent.setup();
-      const { rerender } = render(
-        <Toggle checked={false} onChange={() => {}} />
-      );
+      const { rerender } = render(<Toggle checked={false} onChange={() => {}} />);
 
       const toggle = screen.getByRole("checkbox");
       expect(toggle).not.toBeChecked();
@@ -175,9 +159,7 @@ describe("Toggle", () => {
 
   describe("Controlled Mode", () => {
     it("works as controlled component", () => {
-      const { rerender } = render(
-        <Toggle checked={false} onChange={() => {}} />
-      );
+      const { rerender } = render(<Toggle checked={false} onChange={() => {}} />);
       expect(screen.getByRole("checkbox")).not.toBeChecked();
 
       rerender(<Toggle checked={true} onChange={() => {}} />);
@@ -195,18 +177,12 @@ describe("Toggle", () => {
 
     it("can have custom id", () => {
       render(<Toggle id="feature-toggle" />);
-      expect(screen.getByRole("checkbox")).toHaveAttribute(
-        "id",
-        "feature-toggle"
-      );
+      expect(screen.getByRole("checkbox")).toHaveAttribute("id", "feature-toggle");
     });
 
     it("can have custom name", () => {
       render(<Toggle name="notifications" />);
-      expect(screen.getByRole("checkbox")).toHaveAttribute(
-        "name",
-        "notifications"
-      );
+      expect(screen.getByRole("checkbox")).toHaveAttribute("name", "notifications");
     });
   });
 

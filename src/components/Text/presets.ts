@@ -92,9 +92,7 @@ export const builtInPresets: TextPresets = {
   },
 };
 
-export function defineTextPresets(
-  presets: Record<string, TextPresetConfig>
-): void {
+export function defineTextPresets(presets: Record<string, TextPresetConfig>): void {
   customPresets = { ...customPresets, ...presets };
 }
 

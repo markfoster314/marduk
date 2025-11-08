@@ -1,12 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Toggle } from "./Toggle";
 import { useState } from "react";
-import React from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Toggle> = {
   title: "Components/Toggle",
   component: Toggle,
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:barebones"],
+  parameters: {
+    docs: {
+      subtitle: STORYBOOK_STATUS.BAREBONES,
+    },
+  },
   argTypes: {
     size: {
       control: { type: "select" },
@@ -132,113 +137,109 @@ export const AllStates: Story = {
   ),
 };
 
-export const Interactive: Story = {
-  render: () => {
-    const [isEnabled, setIsEnabled] = useState(false);
+const InteractiveComponent = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
 
-    return (
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        maxWidth: "400px",
+      }}
+    >
+      <Toggle
+        label={isEnabled ? "Notifications Enabled" : "Notifications Disabled"}
+        checked={isEnabled}
+        onChange={(e) => setIsEnabled(e.target.checked)}
+      />
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "16px",
-          maxWidth: "400px",
+          padding: "12px",
+          backgroundColor: isEnabled ? "#c6f6d5" : "#fed7d7",
+          borderRadius: "4px",
         }}
       >
-        <Toggle
-          label={isEnabled ? "Notifications Enabled" : "Notifications Disabled"}
-          checked={isEnabled}
-          onChange={(e) => setIsEnabled(e.target.checked)}
-        />
-        <div
-          style={{
-            padding: "12px",
-            backgroundColor: isEnabled ? "#c6f6d5" : "#fed7d7",
-            borderRadius: "4px",
-          }}
-        >
-          <strong>Status:</strong> {isEnabled ? "✓ Enabled" : "✗ Disabled"}
-        </div>
+        <strong>Status:</strong> {isEnabled ? "✓ Enabled" : "✗ Disabled"}
       </div>
-    );
-  },
+    </div>
+  );
+};
+
+export const Interactive: Story = {
+  render: () => <InteractiveComponent />,
+};
+
+const SettingsPanelComponent = () => {
+  const [settings, setSettings] = useState({
+    notifications: true,
+    darkMode: false,
+    autoSave: true,
+    analytics: false,
+  });
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+        maxWidth: "400px",
+        padding: "20px",
+        backgroundColor: "#f7fafc",
+        borderRadius: "8px",
+      }}
+    >
+      <h3 style={{ margin: "0 0 8px 0" }}>Settings</h3>
+
+      <Toggle
+        label="Enable Notifications"
+        checked={settings.notifications}
+        onChange={(e) => setSettings({ ...settings, notifications: e.target.checked })}
+      />
+
+      <Toggle
+        label="Dark Mode"
+        checked={settings.darkMode}
+        onChange={(e) => setSettings({ ...settings, darkMode: e.target.checked })}
+      />
+
+      <Toggle
+        label="Auto-save"
+        checked={settings.autoSave}
+        onChange={(e) => setSettings({ ...settings, autoSave: e.target.checked })}
+      />
+
+      <Toggle
+        label="Analytics"
+        checked={settings.analytics}
+        onChange={(e) => setSettings({ ...settings, analytics: e.target.checked })}
+      />
+
+      <div
+        style={{
+          marginTop: "12px",
+          padding: "12px",
+          backgroundColor: "white",
+          borderRadius: "4px",
+          fontSize: "14px",
+        }}
+      >
+        <strong>Active Settings:</strong>
+        <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
+          {settings.notifications && <li>Notifications</li>}
+          {settings.darkMode && <li>Dark Mode</li>}
+          {settings.autoSave && <li>Auto-save</li>}
+          {settings.analytics && <li>Analytics</li>}
+        </ul>
+      </div>
+    </div>
+  );
 };
 
 export const SettingsPanel: Story = {
-  render: () => {
-    const [settings, setSettings] = useState({
-      notifications: true,
-      darkMode: false,
-      autoSave: true,
-      analytics: false,
-    });
-
-    return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "20px",
-          maxWidth: "400px",
-          padding: "20px",
-          backgroundColor: "#f7fafc",
-          borderRadius: "8px",
-        }}
-      >
-        <h3 style={{ margin: "0 0 8px 0" }}>Settings</h3>
-
-        <Toggle
-          label="Enable Notifications"
-          checked={settings.notifications}
-          onChange={(e) =>
-            setSettings({ ...settings, notifications: e.target.checked })
-          }
-        />
-
-        <Toggle
-          label="Dark Mode"
-          checked={settings.darkMode}
-          onChange={(e) =>
-            setSettings({ ...settings, darkMode: e.target.checked })
-          }
-        />
-
-        <Toggle
-          label="Auto-save"
-          checked={settings.autoSave}
-          onChange={(e) =>
-            setSettings({ ...settings, autoSave: e.target.checked })
-          }
-        />
-
-        <Toggle
-          label="Analytics"
-          checked={settings.analytics}
-          onChange={(e) =>
-            setSettings({ ...settings, analytics: e.target.checked })
-          }
-        />
-
-        <div
-          style={{
-            marginTop: "12px",
-            padding: "12px",
-            backgroundColor: "white",
-            borderRadius: "4px",
-            fontSize: "14px",
-          }}
-        >
-          <strong>Active Settings:</strong>
-          <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
-            {settings.notifications && <li>Notifications</li>}
-            {settings.darkMode && <li>Dark Mode</li>}
-            {settings.autoSave && <li>Auto-save</li>}
-            {settings.analytics && <li>Analytics</li>}
-          </ul>
-        </div>
-      </div>
-    );
-  },
+  render: () => <SettingsPanelComponent />,
 };
 
 export const LabelPositions: Story = {

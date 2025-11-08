@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+out/
+
+# Build cache
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# GitHub
+.github/
+
+# Storybook
+storybook-static/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Changelog
+CHANGELOG.md
+
+# Config files
+.editorconfig
+
+# Cache
+.cache/
+.parcel-cache/
+.rollup.cache/
+.eslintcache
+
+# Logs
+*.log
+

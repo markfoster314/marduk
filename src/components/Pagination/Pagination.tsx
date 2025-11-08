@@ -43,10 +43,7 @@ export const Pagination = ({
       } else if (showLeftEllipsis && !showRightEllipsis) {
         pages.push(1);
         pages.push("...");
-        const rightPages = Math.min(
-          maxVisible - 2,
-          totalPages - currentPage + 2
-        );
+        const rightPages = Math.min(maxVisible - 2, totalPages - currentPage + 2);
         for (let i = totalPages - rightPages + 1; i <= totalPages; i++) {
           pages.push(i);
         }
@@ -117,7 +114,7 @@ export const Pagination = ({
             <li key={`ellipsis-${index}`}>
               <span className="marduk-pagination-ellipsis">...</span>
             </li>
-          )
+          ),
         )}
         <li>
           <button

@@ -70,7 +70,7 @@ describe("Button", () => {
       render(
         <Button variant="success" appearance="text">
           Success Text
-        </Button>
+        </Button>,
       );
       const button = screen.getByRole("button");
       expect(button).toHaveClass("marduk-button--success");
@@ -149,9 +149,7 @@ describe("Button", () => {
 
     it("hides content when loading", () => {
       const { container } = render(<Button loading>Loading Text</Button>);
-      const content = container.querySelector(
-        ".marduk-button-content--loading"
-      );
+      const content = container.querySelector(".marduk-button-content--loading");
       expect(content).toBeInTheDocument();
       expect(content).toHaveTextContent("Loading Text");
     });
@@ -161,7 +159,7 @@ describe("Button", () => {
       render(
         <Button onClick={handleClick} loading>
           Loading
-        </Button>
+        </Button>,
       );
 
       fireEvent.click(screen.getByRole("button"));
@@ -169,19 +167,21 @@ describe("Button", () => {
     });
 
     it("works with all variants", () => {
-      const variants: Array<
-        "primary" | "secondary" | "success" | "warning" | "danger"
-      > = ["primary", "secondary", "success", "warning", "danger"];
+      const variants: Array<"primary" | "secondary" | "success" | "warning" | "danger"> = [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+      ];
 
       variants.forEach((variant) => {
         const { container } = render(
           <Button variant={variant} loading>
             Loading
-          </Button>
+          </Button>,
         );
-        expect(
-          container.querySelector(".marduk-button-spinner")
-        ).toBeInTheDocument();
+        expect(container.querySelector(".marduk-button-spinner")).toBeInTheDocument();
       });
     });
 
@@ -189,7 +189,7 @@ describe("Button", () => {
       render(
         <Button loading loadingText="Saving...">
           Save
-        </Button>
+        </Button>,
       );
       expect(screen.getByText("Saving...")).toBeInTheDocument();
       expect(screen.queryByText("Save")).not.toBeInTheDocument();
@@ -204,7 +204,7 @@ describe("Button", () => {
       render(
         <Button loading={false} loadingText="Saving...">
           Save
-        </Button>
+        </Button>,
       );
       expect(screen.getByText("Save")).toBeInTheDocument();
       expect(screen.queryByText("Saving...")).not.toBeInTheDocument();
@@ -242,7 +242,7 @@ describe("Button", () => {
       render(
         <Button onClick={handleClick} disabled>
           Disabled
-        </Button>
+        </Button>,
       );
 
       fireEvent.click(screen.getByRole("button"));
@@ -263,7 +263,7 @@ describe("Button", () => {
       render(
         <Button data-testid="custom-button" aria-label="Custom Button">
           Test
-        </Button>
+        </Button>,
       );
 
       const button = screen.getByTestId("custom-button");
@@ -283,35 +283,23 @@ describe("Button", () => {
   describe("Icon Support", () => {
     it("renders without icons by default", () => {
       const { container } = render(<Button>No Icons</Button>);
-      expect(
-        container.querySelector(".marduk-button-icon-left")
-      ).not.toBeInTheDocument();
-      expect(
-        container.querySelector(".marduk-button-icon-right")
-      ).not.toBeInTheDocument();
+      expect(container.querySelector(".marduk-button-icon-left")).not.toBeInTheDocument();
+      expect(container.querySelector(".marduk-button-icon-right")).not.toBeInTheDocument();
     });
 
     it("renders left icon", () => {
       const { container } = render(
-        <Button leftIcon={<span data-testid="left-icon">←</span>}>
-          Left Icon
-        </Button>
+        <Button leftIcon={<span data-testid="left-icon">←</span>}>Left Icon</Button>,
       );
-      expect(
-        container.querySelector(".marduk-button-icon-left")
-      ).toBeInTheDocument();
+      expect(container.querySelector(".marduk-button-icon-left")).toBeInTheDocument();
       expect(screen.getByTestId("left-icon")).toBeInTheDocument();
     });
 
     it("renders right icon", () => {
       const { container } = render(
-        <Button rightIcon={<span data-testid="right-icon">→</span>}>
-          Right Icon
-        </Button>
+        <Button rightIcon={<span data-testid="right-icon">→</span>}>Right Icon</Button>,
       );
-      expect(
-        container.querySelector(".marduk-button-icon-right")
-      ).toBeInTheDocument();
+      expect(container.querySelector(".marduk-button-icon-right")).toBeInTheDocument();
       expect(screen.getByTestId("right-icon")).toBeInTheDocument();
     });
 
@@ -322,7 +310,7 @@ describe("Button", () => {
           rightIcon={<span data-testid="right-icon">→</span>}
         >
           Both Icons
-        </Button>
+        </Button>,
       );
       expect(screen.getByTestId("left-icon")).toBeInTheDocument();
       expect(screen.getByTestId("right-icon")).toBeInTheDocument();
@@ -338,7 +326,7 @@ describe("Button", () => {
       const { container } = render(
         <Button iconOnly leftIcon={<span>×</span>}>
           Close
-        </Button>
+        </Button>,
       );
       const text = container.querySelector(".marduk-button-text--icon-only");
       expect(text).toBeInTheDocument();
@@ -378,7 +366,7 @@ describe("Button", () => {
       const { container } = render(
         <Button iconOnly leftIcon={<span>×</span>}>
           Close Dialog
-        </Button>
+        </Button>,
       );
       expect(container).toHaveTextContent("Close Dialog");
     });
@@ -419,7 +407,7 @@ describe("Button", () => {
       render(
         <Button iconOnly leftIcon={<span>X</span>}>
           Test
-        </Button>
+        </Button>,
       );
       const button = screen.getByRole("button");
       expect(button).toHaveAttribute("data-icon-only", "true");
@@ -462,7 +450,7 @@ describe("Button", () => {
         () =>
           new Promise<void>((resolve) => {
             resolvePromise = resolve;
-          })
+          }),
       );
 
       render(<Button onClickAsync={asyncFunction}>Async Button</Button>);
@@ -490,7 +478,7 @@ describe("Button", () => {
       render(
         <Button onClickAsync={mockAsync} onClick={mockClick}>
           Both Handlers
-        </Button>
+        </Button>,
       );
 
       fireEvent.click(screen.getByRole("button"));
@@ -514,7 +502,7 @@ describe("Button", () => {
       await waitFor(() => {
         expect(consoleSpy).toHaveBeenCalledWith(
           "Error when calling button's onClickAsync method:",
-          expect.any(Error)
+          expect.any(Error),
         );
       });
 
@@ -546,13 +534,13 @@ describe("Button", () => {
         () =>
           new Promise<void>((resolve) => {
             resolvePromise = resolve;
-          })
+          }),
       );
 
       render(
         <Button onClickAsync={asyncFunction} loadingText="Processing...">
           Submit
-        </Button>
+        </Button>,
       );
 
       expect(screen.getByText("Submit")).toBeInTheDocument();
@@ -575,7 +563,7 @@ describe("Button", () => {
       render(
         <Button onClickAsync={mockAsync} loading>
           Async Button
-        </Button>
+        </Button>,
       );
 
       const button = screen.getByRole("button");
@@ -594,7 +582,7 @@ describe("Button", () => {
       const { container } = render(
         <Button as="a" href="/test">
           Link
-        </Button>
+        </Button>,
       );
       expect(container.querySelector("a")).toBeInTheDocument();
       expect(container.querySelector("a")).toHaveAttribute("href", "/test");
@@ -609,7 +597,7 @@ describe("Button", () => {
       const { container } = render(
         <Button as="a" href="/page" target="_blank" rel="noopener">
           External Link
-        </Button>
+        </Button>,
       );
       const link = container.querySelector("a");
       expect(link).toHaveAttribute("href", "/page");
@@ -621,7 +609,7 @@ describe("Button", () => {
       const { container } = render(
         <Button as="a" href="/test">
           Link
-        </Button>
+        </Button>,
       );
       const link = container.querySelector("a");
       expect(link).not.toHaveAttribute("type");
@@ -631,7 +619,7 @@ describe("Button", () => {
       const { container } = render(
         <Button as="a" href="/test" disabled>
           Disabled Link
-        </Button>
+        </Button>,
       );
       const link = container.querySelector("a");
       expect(link).toHaveAttribute("aria-disabled", "true");
@@ -641,7 +629,7 @@ describe("Button", () => {
       const { container } = render(
         <Button as="a" variant="success" size="large">
           Styled Link
-        </Button>
+        </Button>,
       );
       const link = container.querySelector("a");
       expect(link).toHaveClass("marduk-button");
@@ -653,11 +641,9 @@ describe("Button", () => {
       const { container } = render(
         <Button as="a" href="/profile" leftIcon={<span>→</span>}>
           Profile
-        </Button>
+        </Button>,
       );
-      expect(
-        container.querySelector(".marduk-button-icon-left")
-      ).toBeInTheDocument();
+      expect(container.querySelector(".marduk-button-icon-left")).toBeInTheDocument();
     });
   });
 });

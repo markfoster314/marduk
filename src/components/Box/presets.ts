@@ -92,9 +92,7 @@ export const builtInPresets: BoxPresets = {
   },
 };
 
-export function defineBoxPresets<T extends Record<string, BoxPresetConfig>>(
-  presets: T
-): void {
+export function defineBoxPresets<T extends Record<string, BoxPresetConfig>>(presets: T): void {
   customPresets = { ...customPresets, ...presets };
 }
 

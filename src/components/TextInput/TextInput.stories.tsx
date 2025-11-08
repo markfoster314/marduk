@@ -1,11 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { TextInput } from "./TextInput";
-import React from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof TextInput> = {
   title: "Components/TextInput",
   component: TextInput,
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:barebones"],
+  parameters: {
+    docs: {
+      subtitle: STORYBOOK_STATUS.BAREBONES,
+    },
+  },
   argTypes: {
     size: {
       control: { type: "select" },
@@ -110,11 +115,7 @@ export const DifferentTypes: Story = {
     >
       <TextInput label="Text" type="text" placeholder="Enter text" />
       <TextInput label="Email" type="email" placeholder="Enter email" />
-      <TextInput
-        label="Password"
-        type="password"
-        placeholder="Enter password"
-      />
+      <TextInput label="Password" type="password" placeholder="Enter password" />
       <TextInput label="Number" type="number" placeholder="Enter number" />
       <TextInput label="Telephone" type="tel" placeholder="Enter phone" />
       <TextInput label="URL" type="url" placeholder="Enter URL" />

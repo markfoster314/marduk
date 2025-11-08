@@ -1,14 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Text } from "./Text";
 import React from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Text> = {
   title: "Components/Text",
   component: Text,
   parameters: {
     layout: "centered",
+    docs: {
+      subtitle: STORYBOOK_STATUS.READY,
+    },
   },
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:ready"],
   argTypes: {
     preset: {
       control: { type: "select" },
@@ -141,8 +145,8 @@ export const Alignment: Story = {
       <Text align="center">Center aligned text</Text>
       <Text align="right">Right aligned text</Text>
       <Text align="justify">
-        Justified text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Sed do eiusmod tempor incididunt ut labore.
+        Justified text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+        tempor incididunt ut labore.
       </Text>
     </div>
   ),
@@ -191,8 +195,8 @@ export const Truncation: Story = {
           Single-line truncate:
         </Text>
         <Text truncate>
-          This is a very long text that will be truncated with an ellipsis when
-          it exceeds the container width
+          This is a very long text that will be truncated with an ellipsis when it exceeds the
+          container width
         </Text>
       </div>
       <div>
@@ -200,10 +204,9 @@ export const Truncation: Story = {
           Multi-line clamp (3 lines):
         </Text>
         <Text clamp maxLines={3}>
-          This is a longer text that will be clamped to exactly 3 lines with an
-          ellipsis at the end. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam.
+          This is a longer text that will be clamped to exactly 3 lines with an ellipsis at the end.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam.
         </Text>
       </div>
     </div>
@@ -256,12 +259,11 @@ export const Responsive: Story = {
   render: () => (
     <div style={{ maxWidth: "600px" }}>
       <Text size="md" style={{ marginBottom: "12px" }}>
-        Resize your viewport to see responsive sizing at 768px and 1024px
-        breakpoints.
+        Resize your viewport to see responsive sizing at 768px and 1024px breakpoints.
       </Text>
       <Text preset={["muted"]} size="sm">
-        Note: The text component scales automatically at tablet (768px) and
-        desktop (1024px) breakpoints.
+        Note: The text component scales automatically at tablet (768px) and desktop (1024px)
+        breakpoints.
       </Text>
     </div>
   ),

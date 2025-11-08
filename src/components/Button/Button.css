@@ -36,7 +36,8 @@
   border-radius: var(--button-border-radius);
   cursor: pointer;
   font-weight: var(--button-font-weight);
-  transition: background-color var(--marduk-transition-fast),
+  transition:
+    background-color var(--marduk-transition-fast),
     color var(--marduk-transition-fast),
     border-color var(--marduk-transition-fast),
     transform var(--marduk-transition-fast),
@@ -52,8 +53,7 @@
 }
 
 .marduk-button:where(:focus) {
-  outline: var(--button-focus-outline-width) solid
-    var(--button-focus-outline-color);
+  outline: var(--button-focus-outline-width) solid var(--button-focus-outline-color);
   outline-offset: var(--button-focus-outline-offset);
 }
 

@@ -9,6 +9,7 @@ const config = {
 
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
 
   collectCoverageFrom: [
@@ -19,6 +20,8 @@ const config = {
     "!src/setupTests.ts",
     "!src/**/__tests__/**",
     "!src/types/**",
+    "!src/**/augmentation.ts",
+    "!src/utils/**",
   ],
   coverageReporters: ["text", "text-summary", "html", "lcov"],
   coverageDirectory: "coverage",
@@ -41,10 +44,7 @@ const config = {
   verbose: true,
   detectOpenHandles: true,
 
-  watchPlugins: [
-    "jest-watch-typeahead/filename",
-    "jest-watch-typeahead/testname",
-  ],
+  watchPlugins: ["jest-watch-typeahead/filename", "jest-watch-typeahead/testname"],
 };
 
 module.exports = config;

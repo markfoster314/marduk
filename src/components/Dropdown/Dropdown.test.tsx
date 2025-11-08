@@ -17,13 +17,7 @@ describe("Dropdown", () => {
     });
 
     it("renders with label", () => {
-      render(
-        <Dropdown
-          label="Select Option"
-          options={mockOptions}
-          onChange={() => {}}
-        />
-      );
+      render(<Dropdown label="Select Option" options={mockOptions} onChange={() => {}} />);
       expect(screen.getByText("Select Option")).toBeInTheDocument();
     });
 
@@ -34,13 +28,7 @@ describe("Dropdown", () => {
     });
 
     it("renders placeholder option", () => {
-      render(
-        <Dropdown
-          options={mockOptions}
-          placeholder="Choose..."
-          onChange={() => {}}
-        />
-      );
+      render(<Dropdown options={mockOptions} placeholder="Choose..." onChange={() => {}} />);
       expect(screen.getByText("Choose...")).toBeInTheDocument();
     });
   });
@@ -48,40 +36,23 @@ describe("Dropdown", () => {
   describe("Sizes", () => {
     it("applies medium size by default", () => {
       render(<Dropdown options={mockOptions} onChange={() => {}} />);
-      expect(screen.getByRole("combobox")).toHaveClass(
-        "marduk-dropdown--medium"
-      );
+      expect(screen.getByRole("combobox")).toHaveClass("marduk-dropdown--medium");
     });
 
     it("applies small size class", () => {
-      render(
-        <Dropdown options={mockOptions} size="small" onChange={() => {}} />
-      );
-      expect(screen.getByRole("combobox")).toHaveClass(
-        "marduk-dropdown--small"
-      );
+      render(<Dropdown options={mockOptions} size="small" onChange={() => {}} />);
+      expect(screen.getByRole("combobox")).toHaveClass("marduk-dropdown--small");
     });
 
     it("applies large size class", () => {
-      render(
-        <Dropdown options={mockOptions} size="large" onChange={() => {}} />
-      );
-      expect(screen.getByRole("combobox")).toHaveClass(
-        "marduk-dropdown--large"
-      );
+      render(<Dropdown options={mockOptions} size="large" onChange={() => {}} />);
+      expect(screen.getByRole("combobox")).toHaveClass("marduk-dropdown--large");
     });
   });
 
   describe("Required Field", () => {
     it("shows asterisk when required", () => {
-      render(
-        <Dropdown
-          label="Select"
-          options={mockOptions}
-          required
-          onChange={() => {}}
-        />
-      );
+      render(<Dropdown label="Select" options={mockOptions} required onChange={() => {}} />);
       expect(screen.getByText("*")).toBeInTheDocument();
     });
 
@@ -93,13 +64,7 @@ describe("Dropdown", () => {
 
   describe("Helper Text", () => {
     it("displays helper text", () => {
-      render(
-        <Dropdown
-          options={mockOptions}
-          helperText="Choose wisely"
-          onChange={() => {}}
-        />
-      );
+      render(<Dropdown options={mockOptions} helperText="Choose wisely" onChange={() => {}} />);
       expect(screen.getByText("Choose wisely")).toBeInTheDocument();
     });
 
@@ -110,7 +75,7 @@ describe("Dropdown", () => {
           helperText="Helper"
           error="Error message"
           onChange={() => {}}
-        />
+        />,
       );
       expect(screen.queryByText("Helper")).not.toBeInTheDocument();
       expect(screen.getByText("Error message")).toBeInTheDocument();
@@ -119,23 +84,13 @@ describe("Dropdown", () => {
 
   describe("Error State", () => {
     it("displays error message", () => {
-      render(
-        <Dropdown
-          options={mockOptions}
-          error="Selection required"
-          onChange={() => {}}
-        />
-      );
+      render(<Dropdown options={mockOptions} error="Selection required" onChange={() => {}} />);
       expect(screen.getByText("Selection required")).toBeInTheDocument();
     });
 
     it("applies error class", () => {
-      render(
-        <Dropdown options={mockOptions} error="Error" onChange={() => {}} />
-      );
-      expect(screen.getByRole("combobox")).toHaveClass(
-        "marduk-dropdown--error"
-      );
+      render(<Dropdown options={mockOptions} error="Error" onChange={() => {}} />);
+      expect(screen.getByRole("combobox")).toHaveClass("marduk-dropdown--error");
     });
   });
 
@@ -147,9 +102,7 @@ describe("Dropdown", () => {
 
     it("applies disabled class", () => {
       render(<Dropdown options={mockOptions} disabled onChange={() => {}} />);
-      expect(screen.getByRole("combobox")).toHaveClass(
-        "marduk-dropdown--disabled"
-      );
+      expect(screen.getByRole("combobox")).toHaveClass("marduk-dropdown--disabled");
     });
   });
 
@@ -172,9 +125,7 @@ describe("Dropdown", () => {
 
   describe("Selection", () => {
     it("handles controlled value", () => {
-      render(
-        <Dropdown options={mockOptions} value="option2" onChange={() => {}} />
-      );
+      render(<Dropdown options={mockOptions} value="option2" onChange={() => {}} />);
       const select = screen.getByRole("combobox") as HTMLSelectElement;
       expect(select.value).toBe("option2");
     });
@@ -211,7 +162,7 @@ describe("Dropdown", () => {
           data-testid="custom-dropdown"
           aria-label="Custom Dropdown"
           onChange={() => {}}
-        />
+        />,
       );
       const select = screen.getByTestId("custom-dropdown");
       expect(select).toHaveAttribute("aria-label", "Custom Dropdown");

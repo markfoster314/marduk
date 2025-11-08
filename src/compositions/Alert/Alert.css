@@ -158,8 +158,7 @@
 }
 
 .marduk-alert--animation-slideInRight {
-  animation: marduk-alert-slideInRight var(--alert-animation-slide-duration)
-    ease-out;
+  animation: marduk-alert-slideInRight var(--alert-animation-slide-duration) ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,12 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Pagination } from "./Pagination";
 import { useState } from "react";
-import React from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Pagination> = {
   title: "Components/Pagination",
   component: Pagination,
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:barebones"],
+  parameters: {
+    docs: {
+      subtitle: STORYBOOK_STATUS.BAREBONES,
+    },
+  },
   argTypes: {
     size: {
       control: "select",
@@ -86,44 +91,37 @@ export const Large: Story = {
   },
 };
 
-export const Interactive: Story = {
-  render: () => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = 20;
-    const itemsPerPage = 10;
+const InteractiveComponent = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 20;
+  const itemsPerPage = 10;
 
-    const startItem = (currentPage - 1) * itemsPerPage + 1;
-    const endItem = Math.min(
-      currentPage * itemsPerPage,
-      totalPages * itemsPerPage
-    );
+  const startItem = (currentPage - 1) * itemsPerPage + 1;
+  const endItem = Math.min(currentPage * itemsPerPage, totalPages * itemsPerPage);
 
-    return (
-      <div style={{ maxWidth: "600px" }}>
-        <div
-          style={{
-            marginBottom: "24px",
-            padding: "16px",
-            backgroundColor: "#f7fafc",
-            borderRadius: "4px",
-          }}
-        >
-          <p style={{ margin: 0, fontSize: "14px", color: "#2d3748" }}>
-            Showing items {startItem} - {endItem} of {totalPages * itemsPerPage}
-          </p>
-          <p
-            style={{ margin: "8px 0 0 0", fontSize: "14px", color: "#718096" }}
-          >
-            Current page: <strong>{currentPage}</strong> of {totalPages}
-          </p>
-        </div>
-
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-        />
+  return (
+    <div style={{ maxWidth: "600px" }}>
+      <div
+        style={{
+          marginBottom: "24px",
+          padding: "16px",
+          backgroundColor: "#f7fafc",
+          borderRadius: "4px",
+        }}
+      >
+        <p style={{ margin: 0, fontSize: "14px", color: "#2d3748" }}>
+          Showing items {startItem} - {endItem} of {totalPages * itemsPerPage}
+        </p>
+        <p style={{ margin: "8px 0 0 0", fontSize: "14px", color: "#718096" }}>
+          Current page: <strong>{currentPage}</strong> of {totalPages}
+        </p>
       </div>
-    );
-  },
+
+      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+    </div>
+  );
+};
+
+export const Interactive: Story = {
+  render: () => <InteractiveComponent />,
 };

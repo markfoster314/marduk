@@ -7,8 +7,7 @@ export interface DropdownOption {
   disabled?: boolean;
 }
 
-export interface DropdownProps
-  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "size"> {
+export interface DropdownProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "size"> {
   label?: string;
   options: DropdownOption[];
   value?: string;
@@ -78,11 +77,7 @@ export const Dropdown = ({
             </option>
           )}
           {options.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-              disabled={option.disabled}
-            >
+            <option key={option.value} value={option.value} disabled={option.disabled}>
               {option.label}
             </option>
           ))}
@@ -90,9 +85,7 @@ export const Dropdown = ({
         <span className="marduk-dropdown-arrow">▼</span>
       </div>
       {error && <span className="marduk-dropdown-error-text">{error}</span>}
-      {helperText && !error && (
-        <span className="marduk-dropdown-helper-text">{helperText}</span>
-      )}
+      {helperText && !error && <span className="marduk-dropdown-helper-text">{helperText}</span>}
     </div>
   );
 };

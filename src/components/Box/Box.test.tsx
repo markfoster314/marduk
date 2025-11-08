@@ -80,7 +80,7 @@ describe("Box", () => {
       render(
         <Box display="flex" direction="column" justify="center" align="center">
           Test
-        </Box>
+        </Box>,
       );
       const box = screen.getByText("Test");
       expect(box).toHaveClass("marduk-box--display-flex");
@@ -101,7 +101,7 @@ describe("Box", () => {
       render(
         <Box display="flex" gap={size}>
           Test
-        </Box>
+        </Box>,
       );
       expect(screen.getByText("Test")).toHaveClass(expectedClass);
     });
@@ -114,7 +114,7 @@ describe("Box", () => {
       render(
         <Box display="flex" wrap={wrap}>
           Test
-        </Box>
+        </Box>,
       );
       expect(screen.getByText("Test")).toHaveClass(expectedClass);
     });
@@ -137,7 +137,7 @@ describe("Box", () => {
       render(
         <Box width="50%" height="auto">
           Test
-        </Box>
+        </Box>,
       );
       const box = screen.getByText("Test");
       expect(box).toHaveStyle({ width: "50%", height: "auto" });
@@ -172,7 +172,7 @@ describe("Box", () => {
           }
         >
           Test
-        </Box>
+        </Box>,
       );
       const box = screen.getByText("Test");
       expect(box).toHaveStyle({
@@ -194,7 +194,7 @@ describe("Box", () => {
       render(
         <Box padding="md" margin="lg">
           Test
-        </Box>
+        </Box>,
       );
       const box = screen.getByText("Test");
       expect(box).toHaveAttribute("data-padding", "md");
@@ -226,7 +226,7 @@ describe("Box", () => {
       render(
         <Box aria-label="Test box" role="region">
           Test
-        </Box>
+        </Box>,
       );
       const box = screen.getByText("Test");
       expect(box).toHaveAttribute("aria-label", "Test box");
@@ -245,18 +245,8 @@ describe("Box", () => {
     });
 
     test.each([
-      [
-        "stack",
-        "marduk-box--display-flex",
-        "marduk-box--flex-column",
-        "marduk-box--gap-md",
-      ],
-      [
-        "hstack",
-        "marduk-box--display-flex",
-        "marduk-box--flex-row",
-        "marduk-box--align-center",
-      ],
+      ["stack", "marduk-box--display-flex", "marduk-box--flex-column", "marduk-box--gap-md"],
+      ["hstack", "marduk-box--display-flex", "marduk-box--flex-row", "marduk-box--align-center"],
       [
         "center",
         "marduk-box--display-flex",
@@ -264,37 +254,29 @@ describe("Box", () => {
         "marduk-box--align-center",
       ],
       ["card", "marduk-box--padding-lg", "marduk-box--radius-md", undefined],
-      [
-        "darkCard",
-        "marduk-box--padding-lg",
-        "marduk-box--radius-md",
-        undefined,
-      ],
+      ["darkCard", "marduk-box--padding-lg", "marduk-box--radius-md", undefined],
       [
         "spaceBetween",
         "marduk-box--display-flex",
         "marduk-box--justify-between",
         "marduk-box--align-center",
       ],
-    ] as const)(
-      "applies %s preset correctly",
-      (preset, class1, class2, class3) => {
-        render(<Box preset={[preset]}>Test</Box>);
-        const box = screen.getByText("Test");
-        expect(box).toHaveClass(class1);
-        expect(box).toHaveClass(class2);
-        if (class3) {
-          expect(box).toHaveClass(class3);
-        }
-        expect(box).toHaveAttribute("data-preset", preset);
+    ] as const)("applies %s preset correctly", (preset, class1, class2, class3) => {
+      render(<Box preset={[preset]}>Test</Box>);
+      const box = screen.getByText("Test");
+      expect(box).toHaveClass(class1);
+      expect(box).toHaveClass(class2);
+      if (class3) {
+        expect(box).toHaveClass(class3);
       }
-    );
+      expect(box).toHaveAttribute("data-preset", preset);
+    });
 
     it("props override preset values", () => {
       render(
         <Box preset={["stack"]} gap="xl">
           Test
-        </Box>
+        </Box>,
       );
       const box = screen.getByText("Test");
       expect(box).toHaveClass("marduk-box--gap-xl");
@@ -305,7 +287,7 @@ describe("Box", () => {
       render(
         <Box preset={["hstack"]} direction="column" gap="3xl" align="start">
           Test
-        </Box>
+        </Box>,
       );
       const box = screen.getByText("Test");
       expect(box).toHaveClass("marduk-box--flex-column");
@@ -355,7 +337,7 @@ describe("Box", () => {
       render(
         <Box preset={["grid3"]} style={{ border: "1px solid red" }}>
           Test
-        </Box>
+        </Box>,
       );
       const box = screen.getByText("Test");
       expect(box).toHaveStyle({
@@ -415,7 +397,7 @@ describe("Box", () => {
       render(
         <Box preset={["stack", "card"]} gap="xl">
           Test
-        </Box>
+        </Box>,
       );
       const box = screen.getByText("Test");
       expect(box).toHaveClass("marduk-box--gap-xl");
@@ -424,10 +406,7 @@ describe("Box", () => {
 
     it("data-preset shows comma-separated list", () => {
       render(<Box preset={["stack", "card", "center"]}>Test</Box>);
-      expect(screen.getByText("Test")).toHaveAttribute(
-        "data-preset",
-        "stack,card,center"
-      );
+      expect(screen.getByText("Test")).toHaveAttribute("data-preset", "stack,card,center");
     });
 
     it("handles empty array gracefully", () => {

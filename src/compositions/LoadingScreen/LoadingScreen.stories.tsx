@@ -1,14 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { LoadingScreen } from "./LoadingScreen";
 import React from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof LoadingScreen> = {
-  title: "Components/LoadingScreen",
+  title: "Compositions/LoadingScreen",
   component: LoadingScreen,
   parameters: {
     layout: "fullscreen",
+    docs: {
+      subtitle: STORYBOOK_STATUS.WIP_FUNCTIONAL,
+    },
   },
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:wip"],
   argTypes: {
     animation: {
       control: { type: "select" },
@@ -40,15 +44,7 @@ const meta: Meta<typeof LoadingScreen> = {
     },
     textVariant: {
       control: { type: "select" },
-      options: [
-        "default",
-        "primary",
-        "secondary",
-        "success",
-        "danger",
-        "warning",
-        "muted",
-      ],
+      options: ["default", "primary", "secondary", "success", "danger", "warning", "muted"],
       description: "Text color variant",
     },
   },
@@ -78,13 +74,7 @@ export const Bounce: Story = {
 };
 
 export const CustomText: Story = {
-  render: () => (
-    <LoadingScreen
-      animation="breathe"
-      text="Please wait"
-      textVariant="primary"
-    />
-  ),
+  render: () => <LoadingScreen animation="breathe" text="Please wait" textVariant="primary" />,
 };
 
 export const NoText: Story = {
@@ -92,9 +82,7 @@ export const NoText: Story = {
 };
 
 export const DarkMode: Story = {
-  render: () => (
-    <LoadingScreen animation="pulse" darkMode textVariant="primary" />
-  ),
+  render: () => <LoadingScreen animation="pulse" darkMode textVariant="primary" />,
 };
 
 export const CustomStyling: Story = {

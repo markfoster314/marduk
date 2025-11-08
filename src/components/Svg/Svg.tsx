@@ -1,11 +1,6 @@
 import { SVGAttributes, ReactNode, CSSProperties } from "react";
-import {
-  RotationAngle,
-  FlipDirection,
-  SpinSpeed,
-  SvgAnimation,
-} from "./Svg.types";
-import { Alignment } from "../../types/components";
+import { RotationAngle, FlipDirection, SpinSpeed, SvgAnimation } from "./Svg.types";
+import { Alignment } from "@/types/components";
 import "./Svg.css";
 
 export interface SvgProps extends SVGAttributes<SVGSVGElement> {

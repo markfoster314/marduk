@@ -5,10 +5,10 @@ import {
   TriangleExclamationIcon,
   ThumbsUpIcon,
   CircleInfoIcon,
-} from "../../icons";
-import { Text } from "../Text/Text";
-import { Title } from "../Title/Title";
-import { Button } from "../Button/Button";
+} from "@/icons";
+import { Text } from "@/components/Text/Text";
+import { Title } from "@/components/Title/Title";
+import { Button } from "@/components/Button/Button";
 import "./Alert.css";
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
@@ -141,11 +141,7 @@ export const Alert = ({
             {title}
           </Title>
         )}
-        <Text
-          preset={[getTextPreset()]}
-          className="marduk-alert-message"
-          size="sm"
-        >
+        <Text preset={[getTextPreset()]} className="marduk-alert-message" size="sm">
           {children}
         </Text>
       </div>

@@ -2,11 +2,16 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
+import alias from "@rollup/plugin-alias";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import { visualizer } from "rollup-plugin-visualizer";
 import filesize from "rollup-plugin-filesize";
 import { readFileSync } from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const pkg = JSON.parse(readFileSync("./package.json", "utf-8"));
 
@@ -39,6 +44,9 @@ export default {
     },
   ],
   plugins: [
+    alias({
+      entries: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
+    }),
     peerDepsExternal(),
     resolve({
       extensions: [".js", ".jsx", ".ts", ".tsx"],
@@ -60,6 +68,7 @@ export default {
         "**/*.stories.ts",
         "**/*.stories.tsx",
         "**/setupTests.ts",
+        "**/augmentation.ts",
       ],
     }),
     commonjs(),
@@ -73,7 +82,7 @@ export default {
     terser({
       compress: {
         drop_debugger: true,
-        drop_console: false,
+        drop_console: true,
       },
       output: {
         comments: /^!/,

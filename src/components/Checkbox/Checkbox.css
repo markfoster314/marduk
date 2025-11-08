@@ -51,9 +51,7 @@
   width: 24px;
 }
 
-.marduk-checkbox-label:hover
-  .marduk-checkbox:not(:disabled)
-  + .marduk-checkbox-checkmark {
+.marduk-checkbox-label:hover .marduk-checkbox:not(:disabled) + .marduk-checkbox-checkmark {
   border-color: var(--marduk-color-primary-500);
 }
 
@@ -103,8 +101,7 @@
   border-color: var(--marduk-color-primary-500);
 }
 
-.marduk-checkbox--small.marduk-checkbox--indeterminate
-  + .marduk-checkbox-checkmark::after {
+.marduk-checkbox--small.marduk-checkbox--indeterminate + .marduk-checkbox-checkmark::after {
   content: "";
   position: absolute;
   left: 3px;
@@ -116,8 +113,7 @@
   transform: none;
 }
 
-.marduk-checkbox--medium.marduk-checkbox--indeterminate
-  + .marduk-checkbox-checkmark::after {
+.marduk-checkbox--medium.marduk-checkbox--indeterminate + .marduk-checkbox-checkmark::after {
   content: "";
   position: absolute;
   left: 4px;
@@ -129,8 +125,7 @@
   transform: none;
 }
 
-.marduk-checkbox--large.marduk-checkbox--indeterminate
-  + .marduk-checkbox-checkmark::after {
+.marduk-checkbox--large.marduk-checkbox--indeterminate + .marduk-checkbox-checkmark::after {
   content: "";
   position: absolute;
   left: 5px;
@@ -146,8 +141,7 @@
   box-shadow: var(--marduk-shadow-focus);
 }
 
-.marduk-checkbox--focus-fading.marduk-checkbox:focus
-  + .marduk-checkbox-checkmark {
+.marduk-checkbox--focus-fading.marduk-checkbox:focus + .marduk-checkbox-checkmark {
   box-shadow: 0 0 0 3px var(--marduk-color-focus-transparent);
   transition: box-shadow var(--marduk-transition-slow);
 }

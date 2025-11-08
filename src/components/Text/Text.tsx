@@ -1,16 +1,6 @@
-import {
-  ElementType,
-  ComponentPropsWithoutRef,
-  ReactNode,
-  CSSProperties,
-} from "react";
+import { ElementType, ComponentPropsWithoutRef, ReactNode, CSSProperties } from "react";
 import { TextSize, TextAlignment } from "./Text.types";
-import {
-  FontWeight,
-  LineHeight,
-  LetterSpacing,
-  UnderlineStyle,
-} from "../../types/components";
+import { FontWeight, LineHeight, LetterSpacing, UnderlineStyle } from "@/types/components";
 import { getPreset, TextPresets, TextPresetConfig } from "./presets";
 import "./Text.css";
 
@@ -36,14 +26,7 @@ type TextOwnProps<E extends ElementType = ElementType> = {
 export type TextProps<E extends ElementType = "p"> = TextOwnProps<E> &
   Omit<ComponentPropsWithoutRef<E>, keyof TextOwnProps>;
 
-export type {
-  TextSize,
-  TextAlignment,
-  FontWeight,
-  LineHeight,
-  LetterSpacing,
-  UnderlineStyle,
-};
+export type { TextSize, TextAlignment, FontWeight, LineHeight, LetterSpacing, UnderlineStyle };
 
 const defaultElement = "p";
 
@@ -96,10 +79,8 @@ export const Text = <E extends ElementType = typeof defaultElement>({
   const resolvedClamp = clamp ?? mergedPresetConfig.clamp ?? false;
   const resolvedMaxLines = maxLines ?? mergedPresetConfig.maxLines ?? 2;
   const resolvedItalic = italic ?? mergedPresetConfig.italic ?? false;
-  const resolvedUnderlined =
-    underlined ?? mergedPresetConfig.underlined ?? false;
-  const resolvedUnderlineStyle =
-    underlineStyle ?? mergedPresetConfig.underlineStyle ?? "solid";
+  const resolvedUnderlined = underlined ?? mergedPresetConfig.underlined ?? false;
+  const resolvedUnderlineStyle = underlineStyle ?? mergedPresetConfig.underlineStyle ?? "solid";
   const resolvedColor = color ?? mergedPresetConfig.color;
 
   const classNames = [
@@ -126,9 +107,7 @@ export const Text = <E extends ElementType = typeof defaultElement>({
   const combinedStyle = {
     ...presetStyle,
     ...style,
-    ...(resolvedColor
-      ? ({ "--marduk-text-custom-color": resolvedColor } as CSSProperties)
-      : {}),
+    ...(resolvedColor ? ({ "--marduk-text-custom-color": resolvedColor } as CSSProperties) : {}),
     ...(resolvedClamp && resolvedMaxLines
       ? ({ "--text-max-lines": resolvedMaxLines } as CSSProperties)
       : {}),
@@ -143,8 +122,7 @@ export const Text = <E extends ElementType = typeof defaultElement>({
     ...(resolvedSpacing && { "data-spacing": resolvedSpacing }),
     ...(resolvedTruncate && { "data-truncate": true }),
     ...(resolvedClamp && { "data-clamp": true }),
-    ...(resolvedClamp &&
-      resolvedMaxLines && { "data-max-lines": resolvedMaxLines }),
+    ...(resolvedClamp && resolvedMaxLines && { "data-max-lines": resolvedMaxLines }),
     ...(resolvedItalic && { "data-italic": true }),
     ...(resolvedUnderlined && { "data-underlined": true }),
     ...(resolvedUnderlined &&
@@ -155,12 +133,7 @@ export const Text = <E extends ElementType = typeof defaultElement>({
   };
 
   return (
-    <Component
-      className={classNames}
-      style={combinedStyle}
-      {...dataAttributes}
-      {...props}
-    >
+    <Component className={classNames} style={combinedStyle} {...dataAttributes} {...props}>
       {children}
     </Component>
   );

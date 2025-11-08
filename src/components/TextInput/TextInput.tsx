@@ -1,8 +1,7 @@
 import { useState, ChangeEvent, InputHTMLAttributes } from "react";
 import "./TextInput.css";
 
-export interface TextInputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
+export interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   label?: string;
   placeholder?: string;
   value?: string;
@@ -61,9 +60,7 @@ export const TextInput = ({
         {...props}
       />
       {error && <span className="marduk-input-error-text">{error}</span>}
-      {helperText && !error && (
-        <span className="marduk-input-helper-text">{helperText}</span>
-      )}
+      {helperText && !error && <span className="marduk-input-helper-text">{helperText}</span>}
     </div>
   );
 };

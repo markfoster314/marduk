@@ -20,16 +20,12 @@ describe("RadioButtons", () => {
     });
 
     it("renders with label", () => {
-      render(
-        <RadioButtons name="size" options={mockOptions} label="Choose Size" />
-      );
+      render(<RadioButtons name="size" options={mockOptions} label="Choose Size" />);
       expect(screen.getByText("Choose Size")).toBeInTheDocument();
     });
 
     it("renders required asterisk when required", () => {
-      render(
-        <RadioButtons name="size" options={mockOptions} label="Size" required />
-      );
+      render(<RadioButtons name="size" options={mockOptions} label="Size" required />);
       expect(screen.getByText("*")).toBeInTheDocument();
     });
 
@@ -42,13 +38,7 @@ describe("RadioButtons", () => {
   describe("Selection", () => {
     it("selects radio button when clicked", () => {
       const handleChange = jest.fn();
-      render(
-        <RadioButtons
-          name="size"
-          options={mockOptions}
-          onChange={handleChange}
-        />
-      );
+      render(<RadioButtons name="size" options={mockOptions} onChange={handleChange} />);
 
       const mediumRadio = screen.getByLabelText("Medium") as HTMLInputElement;
       fireEvent.click(mediumRadio);
@@ -58,16 +48,12 @@ describe("RadioButtons", () => {
     });
 
     it("works as controlled component", () => {
-      const { rerender } = render(
-        <RadioButtons name="size" options={mockOptions} value="small" />
-      );
+      const { rerender } = render(<RadioButtons name="size" options={mockOptions} value="small" />);
 
       const smallRadio = screen.getByLabelText("Small") as HTMLInputElement;
       expect(smallRadio.checked).toBe(true);
 
-      rerender(
-        <RadioButtons name="size" options={mockOptions} value="large" />
-      );
+      rerender(<RadioButtons name="size" options={mockOptions} value="large" />);
 
       const largeRadio = screen.getByLabelText("Large") as HTMLInputElement;
       expect(largeRadio.checked).toBe(true);
@@ -92,13 +78,7 @@ describe("RadioButtons", () => {
     });
 
     it("applies horizontal direction", () => {
-      render(
-        <RadioButtons
-          name="size"
-          options={mockOptions}
-          direction="horizontal"
-        />
-      );
+      render(<RadioButtons name="size" options={mockOptions} direction="horizontal" />);
       const group = screen.getByRole("radiogroup");
       expect(group.className).toContain("horizontal");
     });
@@ -150,14 +130,7 @@ describe("RadioButtons", () => {
 
     it("does not call onChange when disabled", () => {
       const handleChange = jest.fn();
-      render(
-        <RadioButtons
-          name="size"
-          options={mockOptions}
-          disabled
-          onChange={handleChange}
-        />
-      );
+      render(<RadioButtons name="size" options={mockOptions} disabled onChange={handleChange} />);
 
       const mediumRadio = screen.getByLabelText("Medium");
       fireEvent.click(mediumRadio);
@@ -168,24 +141,12 @@ describe("RadioButtons", () => {
 
   describe("Helper Text and Errors", () => {
     it("renders helper text", () => {
-      render(
-        <RadioButtons
-          name="size"
-          options={mockOptions}
-          helperText="Choose your size"
-        />
-      );
+      render(<RadioButtons name="size" options={mockOptions} helperText="Choose your size" />);
       expect(screen.getByText("Choose your size")).toBeInTheDocument();
     });
 
     it("renders error text", () => {
-      render(
-        <RadioButtons
-          name="size"
-          options={mockOptions}
-          error="Size is required"
-        />
-      );
+      render(<RadioButtons name="size" options={mockOptions} error="Size is required" />);
       expect(screen.getByText("Size is required")).toBeInTheDocument();
     });
 
@@ -196,7 +157,7 @@ describe("RadioButtons", () => {
           options={mockOptions}
           error="Size is required"
           helperText="Choose your size"
-        />
+        />,
       );
 
       expect(screen.getByText("Size is required")).toBeInTheDocument();
@@ -211,9 +172,7 @@ describe("RadioButtons", () => {
     });
 
     it("associates label with radiogroup", () => {
-      render(
-        <RadioButtons name="size" options={mockOptions} label="Choose Size" />
-      );
+      render(<RadioButtons name="size" options={mockOptions} label="Choose Size" />);
       const group = screen.getByRole("radiogroup");
       expect(group).toHaveAttribute("aria-label", "Choose Size");
     });

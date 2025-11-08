@@ -5,11 +5,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## Planned
 
-### Planned
+- v0.3.0 → All primitives production-ready
+- v0.4.0 → Core compositions production-ready
+- v0.5.0 → First templates added
+- v1.0.0 → API stable, proven in production
 
-- Literally whatever I wind up using when building my react sites will be added as time goes on
+## [0.2.0] - 2025-11-08
+
+### Added
+
+- Path alias support (`@/`) for cleaner imports across the codebase
+- Separated compositions into dedicated directory structure
+- Enhanced Storybook configuration for ES modules
+
+### Changed
+
+- **BREAKING:** Migrated composition components (Alert, LoadingScreen, Modal) from `components/` to `compositions/` directory
+- Updated all internal imports to use `@/` path alias
+- Improved TypeScript configuration with `bundler` module resolution for better compatibility with modern tooling
+- Updated ESLint rules to enforce path alias usage
+
+### Fixed
+
+- React 19 compatibility issues in story files (removed unnecessary React imports)
+- React Hooks violations in interactive Storybook stories
+- Module resolution issues with Storybook 10
+- Build errors with module augmentation files
+- Type safety improvements (removed `any` usage in polymorphic components)
+
+### Technical
+
+- Configured path aliases across TypeScript, Jest, Storybook, and Rollup
+- All tests passing (822 tests)
+- Zero linting errors with stricter rules
 
 ## [0.1.4] - 2024-11-05
 

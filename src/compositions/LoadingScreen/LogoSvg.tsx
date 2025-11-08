@@ -1,4 +1,4 @@
-import { Svg } from "../Svg/Svg";
+import { Svg } from "@/components/Svg/Svg";
 
 export interface LogoSvgProps {
   size?: number;
@@ -27,10 +27,7 @@ export const LogoSvg = ({
     >
       <defs>
         <clipPath id="b2fcc115ec">
-          <path
-            d="M 47 0 L 80 0 L 80 32 L 47 32 Z M 47 0 "
-            clipRule="nonzero"
-          />
+          <path d="M 47 0 L 80 0 L 80 32 L 47 32 Z M 47 0 " clipRule="nonzero" />
         </clipPath>
         <clipPath id="350c25dd90">
           <path
@@ -54,10 +51,7 @@ export const LogoSvg = ({
           <rect x="0" width="33" y="0" height="32" />
         </clipPath>
         <clipPath id="0a299427d4">
-          <path
-            d="M 95 47 L 127 47 L 127 80 L 95 80 Z M 95 47 "
-            clipRule="nonzero"
-          />
+          <path d="M 95 47 L 127 47 L 127 80 L 95 80 Z M 95 47 " clipRule="nonzero" />
         </clipPath>
         <clipPath id="fc95a6a5db">
           <path
@@ -81,10 +75,7 @@ export const LogoSvg = ({
           <rect x="0" width="32" y="0" height="33" />
         </clipPath>
         <clipPath id="f7eef69608">
-          <path
-            d="M 0 47 L 32 47 L 32 80 L 0 80 Z M 0 47 "
-            clipRule="nonzero"
-          />
+          <path d="M 0 47 L 32 47 L 32 80 L 0 80 Z M 0 47 " clipRule="nonzero" />
         </clipPath>
         <clipPath id="ecf338379b">
           <path
@@ -108,10 +99,7 @@ export const LogoSvg = ({
           <rect x="0" width="32" y="0" height="33" />
         </clipPath>
         <clipPath id="f272e29f86">
-          <path
-            d="M 47 95 L 80 95 L 80 127 L 47 127 Z M 47 95 "
-            clipRule="nonzero"
-          />
+          <path d="M 47 95 L 80 95 L 80 127 L 47 127 Z M 47 95 " clipRule="nonzero" />
         </clipPath>
         <clipPath id="3549c69e92">
           <path
@@ -135,10 +123,7 @@ export const LogoSvg = ({
           <rect x="0" width="33" y="0" height="32" />
         </clipPath>
         <clipPath id="b13103f923">
-          <path
-            d="M 47 52 L 80 52 L 80 85 L 47 85 Z M 47 52 "
-            clipRule="nonzero"
-          />
+          <path d="M 47 52 L 80 52 L 80 85 L 47 85 Z M 47 52 " clipRule="nonzero" />
         </clipPath>
         <clipPath id="322ac8ede7">
           <path
@@ -162,10 +147,7 @@ export const LogoSvg = ({
           <rect x="0" width="33" y="0" height="33" />
         </clipPath>
         <clipPath id="eb534bb1ee">
-          <path
-            d="M 47 47 L 80 47 L 80 80 L 47 80 Z M 47 47 "
-            clipRule="nonzero"
-          />
+          <path d="M 47 47 L 80 47 L 80 80 L 47 80 Z M 47 47 " clipRule="nonzero" />
         </clipPath>
         <clipPath id="a1754da0ac">
           <path
@@ -189,10 +171,7 @@ export const LogoSvg = ({
           <rect x="0" width="33" y="0" height="33" />
         </clipPath>
         <clipPath id="26c637e412">
-          <path
-            d="M 47 42 L 80 42 L 80 74 L 47 74 Z M 47 42 "
-            clipRule="nonzero"
-          />
+          <path d="M 47 42 L 80 42 L 80 74 L 47 74 Z M 47 42 " clipRule="nonzero" />
         </clipPath>
         <clipPath id="efd1fd5d9d">
           <path

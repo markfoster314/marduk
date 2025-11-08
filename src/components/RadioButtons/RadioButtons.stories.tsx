@@ -1,11 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { RadioButtons } from "./RadioButtons";
-import React, { useState } from "react";
+import { useState } from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof RadioButtons> = {
   title: "Components/RadioButtons",
   component: RadioButtons,
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:barebones"],
+  parameters: {
+    docs: {
+      subtitle: STORYBOOK_STATUS.BAREBONES,
+    },
+  },
   argTypes: {
     direction: {
       control: "select",
@@ -135,47 +141,48 @@ export const Large: Story = {
   },
 };
 
-export const Interactive: Story = {
-  render: () => {
-    const [selectedSize, setSelectedSize] = useState("medium");
-    const [selectedColor, setSelectedColor] = useState("");
+const InteractiveComponent = () => {
+  const [selectedSize, setSelectedSize] = useState("medium");
+  const [selectedColor, setSelectedColor] = useState("");
 
-    return (
-      <div style={{ maxWidth: "400px" }}>
+  return (
+    <div style={{ maxWidth: "400px" }}>
+      <RadioButtons
+        name="interactive-size"
+        options={sizeOptions}
+        label="T-Shirt Size"
+        value={selectedSize}
+        onChange={setSelectedSize}
+        helperText="Choose your preferred size"
+      />
+
+      <div style={{ marginTop: "24px" }}>
         <RadioButtons
-          name="interactive-size"
-          options={sizeOptions}
-          label="T-Shirt Size"
-          value={selectedSize}
-          onChange={setSelectedSize}
-          helperText="Choose your preferred size"
+          name="interactive-color"
+          options={colorOptions}
+          label="Color"
+          value={selectedColor}
+          onChange={setSelectedColor}
+          direction="horizontal"
         />
-
-        <div style={{ marginTop: "24px" }}>
-          <RadioButtons
-            name="interactive-color"
-            options={colorOptions}
-            label="Color"
-            value={selectedColor}
-            onChange={setSelectedColor}
-            direction="horizontal"
-          />
-        </div>
-
-        <div
-          style={{
-            marginTop: "24px",
-            padding: "16px",
-            backgroundColor: "#f7fafc",
-            borderRadius: "4px",
-          }}
-        >
-          <p style={{ margin: 0, fontSize: "14px", color: "#2d3748" }}>
-            <strong>Selected:</strong> {selectedSize}{" "}
-            {selectedColor || "(no color selected)"}
-          </p>
-        </div>
       </div>
-    );
-  },
+
+      <div
+        style={{
+          marginTop: "24px",
+          padding: "16px",
+          backgroundColor: "#f7fafc",
+          borderRadius: "4px",
+        }}
+      >
+        <p style={{ margin: 0, fontSize: "14px", color: "#2d3748" }}>
+          <strong>Selected:</strong> {selectedSize} {selectedColor || "(no color selected)"}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export const Interactive: Story = {
+  render: () => <InteractiveComponent />,
 };

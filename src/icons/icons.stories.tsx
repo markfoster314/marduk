@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Icon } from "./Icon";
 import { iconData } from "./data";
-import React from "react";
 import {
   UserIcon,
   SkullCrossbonesIcon,

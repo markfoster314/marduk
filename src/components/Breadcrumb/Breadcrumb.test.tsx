@@ -24,20 +24,14 @@ describe("Breadcrumb", () => {
 
     it("renders with default separator", () => {
       const { container } = render(<Breadcrumb items={sampleItems} />);
-      const separators = container.querySelectorAll(
-        ".marduk-breadcrumb-separator"
-      );
+      const separators = container.querySelectorAll(".marduk-breadcrumb-separator");
       expect(separators).toHaveLength(2); // n-1 separators for n items
       expect(separators[0]).toHaveTextContent("/");
     });
 
     it("renders with custom separator", () => {
-      const { container } = render(
-        <Breadcrumb items={sampleItems} separator=">" />
-      );
-      const separators = container.querySelectorAll(
-        ".marduk-breadcrumb-separator"
-      );
+      const { container } = render(<Breadcrumb items={sampleItems} separator=">" />);
+      const separators = container.querySelectorAll(".marduk-breadcrumb-separator");
       expect(separators[0]).toHaveTextContent(">");
     });
   });
@@ -68,17 +62,13 @@ describe("Breadcrumb", () => {
   describe("Active Item", () => {
     it("applies active class to last item", () => {
       render(<Breadcrumb items={sampleItems} />);
-      const lastItem = screen
-        .getByText("Electronics")
-        .closest(".marduk-breadcrumb-item");
+      const lastItem = screen.getByText("Electronics").closest(".marduk-breadcrumb-item");
       expect(lastItem).toHaveClass("marduk-breadcrumb-item--active");
     });
 
     it("does not apply active class to non-last items", () => {
       render(<Breadcrumb items={sampleItems} />);
-      const firstItem = screen
-        .getByText("Home")
-        .closest(".marduk-breadcrumb-item");
+      const firstItem = screen.getByText("Home").closest(".marduk-breadcrumb-item");
       expect(firstItem).not.toHaveClass("marduk-breadcrumb-item--active");
     });
   });
@@ -108,18 +98,14 @@ describe("Breadcrumb", () => {
         { label: "Details" },
       ];
 
-      render(
-        <Breadcrumb items={itemsWithDisabled} onItemClick={handleClick} />
-      );
+      render(<Breadcrumb items={itemsWithDisabled} onItemClick={handleClick} />);
       fireEvent.click(screen.getByText("Products"));
       expect(handleClick).not.toHaveBeenCalled();
     });
 
     it("applies clickable class to clickable items", () => {
       render(<Breadcrumb items={sampleItems} onItemClick={() => {}} />);
-      const firstItem = screen
-        .getByText("Home")
-        .closest(".marduk-breadcrumb-item");
+      const firstItem = screen.getByText("Home").closest(".marduk-breadcrumb-item");
       expect(firstItem).toHaveClass("marduk-breadcrumb-item--clickable");
     });
   });
@@ -179,17 +165,13 @@ describe("Breadcrumb", () => {
 
     it("clickable items have proper role", () => {
       render(<Breadcrumb items={sampleItems} onItemClick={() => {}} />);
-      const firstItem = screen
-        .getByText("Home")
-        .closest(".marduk-breadcrumb-item");
+      const firstItem = screen.getByText("Home").closest(".marduk-breadcrumb-item");
       expect(firstItem).toHaveAttribute("role", "button");
     });
 
     it("clickable items have tabIndex", () => {
       render(<Breadcrumb items={sampleItems} onItemClick={() => {}} />);
-      const firstItem = screen
-        .getByText("Home")
-        .closest(".marduk-breadcrumb-item");
+      const firstItem = screen.getByText("Home").closest(".marduk-breadcrumb-item");
       expect(firstItem).toHaveAttribute("tabIndex", "0");
     });
   });
@@ -203,9 +185,7 @@ describe("Breadcrumb", () => {
 
     it("applies disabled class to disabled items", () => {
       render(<Breadcrumb items={itemsWithDisabled} />);
-      const disabledItem = screen
-        .getByText("Disabled")
-        .closest(".marduk-breadcrumb-item");
+      const disabledItem = screen.getByText("Disabled").closest(".marduk-breadcrumb-item");
       expect(disabledItem).toHaveClass("marduk-breadcrumb-item--disabled");
     });
   });
@@ -224,9 +204,7 @@ describe("Breadcrumb", () => {
 
   describe("Additional Props", () => {
     it("forwards additional props to nav element", () => {
-      render(
-        <Breadcrumb items={sampleItems} data-testid="custom-breadcrumb" />
-      );
+      render(<Breadcrumb items={sampleItems} data-testid="custom-breadcrumb" />);
       expect(screen.getByTestId("custom-breadcrumb")).toBeInTheDocument();
     });
   });

@@ -4,14 +4,21 @@
     "lib": ["ES2020", "DOM"],
     "jsx": "react-jsx",
 
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
 
+    "rootDir": "./src",
     "outDir": "./dist/esm",
     "declarationDir": "./dist/esm",
 
     "declaration": true,
+    "declarationMap": true,
     "sourceMap": true,
     "removeComments": true,
     "importHelpers": false, // we want zero dependencies, this adds tslib if true, small increase in bundle size
@@ -34,12 +41,5 @@
     "incremental": true
   },
   "include": ["src/**/*"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.stories.tsx",
-    "**/*.stories.ts",
-    "coverage",
-    "storybook-static"
-  ]
+  "exclude": ["node_modules", "dist", "coverage", "storybook-static"]
 }

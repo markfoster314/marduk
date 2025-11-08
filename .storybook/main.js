@@ -1,12 +1,13 @@
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
   stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
 
-  addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-docs",
-    "@storybook/addon-a11y",
-  ],
+  addons: ["@storybook/addon-links", "@storybook/addon-docs", "@storybook/addon-a11y"],
 
   framework: {
     name: "@storybook/react-webpack5",
@@ -22,13 +23,17 @@ const config = {
     reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) =>
-        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
   },
 
   webpackFinal: async (config) => {
     config.resolve.extensions.push(".ts", ".tsx");
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@": path.resolve(__dirname, "../src"),
+    };
 
     config.module.rules.push({
       test: /\.(ts|tsx)$/,

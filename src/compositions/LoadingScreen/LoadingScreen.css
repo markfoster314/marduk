@@ -104,13 +104,14 @@
 .marduk-loading-screen-icon {
   width: var(--loading-screen-icon-size);
   height: var(--loading-screen-icon-size);
-  transition: width var(--marduk-transition-fast),
+  transition:
+    width var(--marduk-transition-fast),
     height var(--marduk-transition-fast);
 }
 
 .marduk-loading-screen-logo--pulse svg {
-  animation: marduk-loading-screen-pulse-scale
-    var(--loading-screen-pulse-duration) ease-in-out infinite;
+  animation: marduk-loading-screen-pulse-scale var(--loading-screen-pulse-duration) ease-in-out
+    infinite;
   filter: drop-shadow(0 0 20px var(--loading-screen-shadow-color));
 }
 
@@ -127,8 +128,7 @@
 }
 
 .marduk-loading-screen-logo--rotate svg {
-  animation: marduk-loading-screen-rotate-spin
-    var(--loading-screen-rotate-duration) linear infinite;
+  animation: marduk-loading-screen-rotate-spin var(--loading-screen-rotate-duration) linear infinite;
   filter: drop-shadow(0 4px 20px var(--loading-screen-shadow-color-light));
 }
 
@@ -142,8 +142,8 @@
 }
 
 .marduk-loading-screen-logo--breathe svg {
-  animation: marduk-loading-screen-breathe
-    var(--loading-screen-breathe-duration) ease-in-out infinite;
+  animation: marduk-loading-screen-breathe var(--loading-screen-breathe-duration) ease-in-out
+    infinite;
   filter: drop-shadow(0 0 15px var(--loading-screen-shadow-color-medium));
 }
 
@@ -164,8 +164,8 @@
 }
 
 .marduk-loading-screen-logo--glitch svg {
-  animation: marduk-loading-screen-glitch-main
-    var(--loading-screen-glitch-duration) ease-in-out infinite;
+  animation: marduk-loading-screen-glitch-main var(--loading-screen-glitch-duration) ease-in-out
+    infinite;
 }
 
 .marduk-loading-screen-logo--glitch::before,
@@ -180,15 +180,15 @@
 }
 
 .marduk-loading-screen-logo--glitch::before {
-  animation: marduk-loading-screen-glitch-before
-    var(--loading-screen-glitch-duration) ease-in-out infinite;
+  animation: marduk-loading-screen-glitch-before var(--loading-screen-glitch-duration) ease-in-out
+    infinite;
   background: var(--loading-screen-glitch-bg-red);
   transform: translateX(calc(var(--loading-screen-shake-distance) * -1));
 }
 
 .marduk-loading-screen-logo--glitch::after {
-  animation: marduk-loading-screen-glitch-after
-    var(--loading-screen-glitch-duration) ease-in-out infinite;
+  animation: marduk-loading-screen-glitch-after var(--loading-screen-glitch-duration) ease-in-out
+    infinite;
   background: var(--loading-screen-glitch-bg-cyan);
   transform: translateX(var(--loading-screen-shake-distance));
 }
@@ -250,8 +250,8 @@
 }
 
 .marduk-loading-screen-logo--ripple svg {
-  animation: marduk-loading-screen-ripple-float
-    var(--loading-screen-ripple-float-duration) ease-in-out infinite;
+  animation: marduk-loading-screen-ripple-float var(--loading-screen-ripple-float-duration)
+    ease-in-out infinite;
   position: relative;
   z-index: 2;
 }
@@ -263,11 +263,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: var(--loading-screen-ripple-border-width) solid
-    var(--loading-screen-ripple-border-color);
+  border: var(--loading-screen-ripple-border-width) solid var(--loading-screen-ripple-border-color);
   border-radius: 50%;
-  animation: marduk-loading-screen-ripple-expand
-    var(--loading-screen-ripple-expand-duration) ease-out infinite;
+  animation: marduk-loading-screen-ripple-expand var(--loading-screen-ripple-expand-duration)
+    ease-out infinite;
 }
 
 .marduk-loading-screen-logo--ripple::after {
@@ -309,15 +308,13 @@
     transform: translateY(0) scale(1);
   }
   25% {
-    transform: translateY(var(--loading-screen-bounce-height-high))
-      scale(1, 0.95);
+    transform: translateY(var(--loading-screen-bounce-height-high)) scale(1, 0.95);
   }
   50% {
     transform: translateY(0) scale(1);
   }
   60% {
-    transform: translateY(var(--loading-screen-bounce-height-low))
-      scale(1, 0.98);
+    transform: translateY(var(--loading-screen-bounce-height-low)) scale(1, 0.98);
   }
   75% {
     transform: translateY(0) scale(1);
@@ -329,8 +326,7 @@
 }
 
 .marduk-loading-screen-logo--swing svg {
-  animation: marduk-loading-screen-swing var(--loading-screen-swing-duration)
-    ease-in-out infinite;
+  animation: marduk-loading-screen-swing var(--loading-screen-swing-duration) ease-in-out infinite;
   filter: drop-shadow(0 4px 15px var(--loading-screen-shadow-color-light));
 }
 
@@ -354,8 +350,7 @@
 }
 
 .marduk-loading-screen-logo--flip svg {
-  animation: marduk-loading-screen-flip-3d var(--loading-screen-flip-duration)
-    ease-in-out infinite;
+  animation: marduk-loading-screen-flip-3d var(--loading-screen-flip-duration) ease-in-out infinite;
   filter: drop-shadow(0 4px 15px var(--loading-screen-shadow-color));
   transform-style: preserve-3d;
 }
@@ -377,10 +372,10 @@
 }
 
 .marduk-loading-screen-logo--orbit svg {
-  animation: marduk-loading-screen-orbit-move
-      var(--loading-screen-orbit-move-duration) linear infinite,
-    marduk-loading-screen-orbit-rotate
-      var(--loading-screen-orbit-rotate-duration) linear infinite reverse;
+  animation:
+    marduk-loading-screen-orbit-move var(--loading-screen-orbit-move-duration) linear infinite,
+    marduk-loading-screen-orbit-rotate var(--loading-screen-orbit-rotate-duration) linear infinite
+      reverse;
   filter: drop-shadow(0 4px 15px var(--loading-screen-shadow-color));
 }
 
@@ -412,8 +407,8 @@
 }
 
 .marduk-loading-screen-logo--shake svg {
-  animation: marduk-loading-screen-shake-intense
-    var(--loading-screen-shake-duration) ease-in-out infinite;
+  animation: marduk-loading-screen-shake-intense var(--loading-screen-shake-duration) ease-in-out
+    infinite;
   filter: drop-shadow(0 4px 15px var(--loading-screen-shadow-color));
 }
 
@@ -430,10 +425,7 @@
       rotate(calc(var(--loading-screen-shake-rotation) * -1));
   }
   20% {
-    transform: translate(
-        var(--loading-screen-shake-distance),
-        var(--loading-screen-shake-distance)
-      )
+    transform: translate(var(--loading-screen-shake-distance), var(--loading-screen-shake-distance))
       rotate(var(--loading-screen-shake-rotation));
   }
   30% {
@@ -458,10 +450,7 @@
       rotate(calc(var(--loading-screen-shake-rotation) * -1));
   }
   60% {
-    transform: translate(
-        var(--loading-screen-shake-distance),
-        var(--loading-screen-shake-distance)
-      )
+    transform: translate(var(--loading-screen-shake-distance), var(--loading-screen-shake-distance))
       rotate(var(--loading-screen-shake-rotation));
   }
   70% {
@@ -503,8 +492,8 @@
 }
 
 .marduk-loading-screen-dot {
-  animation: marduk-loading-screen-dot-fade
-    var(--loading-screen-dot-fade-duration) ease-in-out infinite;
+  animation: marduk-loading-screen-dot-fade var(--loading-screen-dot-fade-duration) ease-in-out
+    infinite;
   opacity: 0;
 }
 

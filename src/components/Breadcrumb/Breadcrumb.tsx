@@ -33,11 +33,7 @@ export const Breadcrumb = ({
     if (maxItems && items.length > maxItems) {
       const firstItems = items.slice(0, 1);
       const lastItems = items.slice(-(maxItems - 2));
-      displayItems = [
-        ...firstItems,
-        { label: "...", disabled: true },
-        ...lastItems,
-      ];
+      displayItems = [...firstItems, { label: "...", disabled: true }, ...lastItems];
     }
 
     return displayItems.map((item, index) => {
@@ -67,14 +63,10 @@ export const Breadcrumb = ({
               }
             }}
           >
-            {item.icon && (
-              <span className="marduk-breadcrumb-icon">{item.icon}</span>
-            )}
+            {item.icon && <span className="marduk-breadcrumb-icon">{item.icon}</span>}
             {item.label}
           </span>
-          {!isLast && (
-            <span className="marduk-breadcrumb-separator">{separator}</span>
-          )}
+          {!isLast && <span className="marduk-breadcrumb-separator">{separator}</span>}
         </Fragment>
       );
     });

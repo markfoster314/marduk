@@ -1,16 +1,6 @@
-import {
-  ElementType,
-  ComponentPropsWithoutRef,
-  ReactNode,
-  CSSProperties,
-} from "react";
+import { ElementType, ComponentPropsWithoutRef, ReactNode, CSSProperties } from "react";
 import { TitleVariant, TitleSize } from "./Title.types";
-import {
-  Alignment,
-  FontWeight,
-  LetterSpacing,
-  UnderlineStyle,
-} from "../../types/components";
+import { Alignment, FontWeight, LetterSpacing, UnderlineStyle } from "@/types/components";
 import "./Title.css";
 
 type TitleOwnProps<E extends ElementType = ElementType> = {
@@ -34,18 +24,9 @@ type TitleOwnProps<E extends ElementType = ElementType> = {
 export type TitleProps<E extends ElementType = "h1"> = TitleOwnProps<E> &
   Omit<ComponentPropsWithoutRef<E>, keyof TitleOwnProps>;
 
-export type {
-  TitleVariant,
-  TitleSize,
-  Alignment,
-  FontWeight,
-  LetterSpacing,
-  UnderlineStyle,
-};
+export type { TitleVariant, TitleSize, Alignment, FontWeight, LetterSpacing, UnderlineStyle };
 
-const defaultElement = "h1";
-
-export const Title = <E extends ElementType = typeof defaultElement>({
+export const Title = <E extends ElementType = "h1">({
   children,
   as,
   level = 1,
@@ -78,9 +59,7 @@ export const Title = <E extends ElementType = typeof defaultElement>({
     clamp ? "marduk-title--clamp" : "",
     spacing ? `marduk-title--spacing-${spacing}` : "",
     underlined ? "marduk-title--underlined" : "",
-    underlined && underlineStyle
-      ? `marduk-title--underline-${underlineStyle}`
-      : "",
+    underlined && underlineStyle ? `marduk-title--underline-${underlineStyle}` : "",
     className,
   ]
     .filter(Boolean)
@@ -88,12 +67,8 @@ export const Title = <E extends ElementType = typeof defaultElement>({
 
   const combinedStyle = {
     ...style,
-    ...(color
-      ? ({ "--marduk-title-custom-color": color } as CSSProperties)
-      : {}),
-    ...(clamp && maxLines
-      ? ({ "--title-max-lines": maxLines } as CSSProperties)
-      : {}),
+    ...(color ? ({ "--marduk-title-custom-color": color } as CSSProperties) : {}),
+    ...(clamp && maxLines ? ({ "--title-max-lines": maxLines } as CSSProperties) : {}),
   };
 
   const getDefaultHeadingElement = (): ElementType => {
@@ -115,13 +90,10 @@ export const Title = <E extends ElementType = typeof defaultElement>({
     }
   };
 
-  const Component = as || getDefaultHeadingElement();
+  const Component = (as || getDefaultHeadingElement()) as ElementType;
 
   const isHeadingElement =
-    !as ||
-    ["h1", "h2", "h3", "h4", "h5", "h6"].includes(
-      typeof as === "string" ? as : ""
-    );
+    !as || ["h1", "h2", "h3", "h4", "h5", "h6"].includes(typeof as === "string" ? as : "");
 
   const dataAttributes = {
     "data-level": level,
@@ -136,13 +108,10 @@ export const Title = <E extends ElementType = typeof defaultElement>({
     ...(clamp && maxLines && { "data-max-lines": maxLines }),
     ...(spacing && { "data-spacing": spacing }),
     ...(underlined && { "data-underlined": true }),
-    ...(underlined &&
-      underlineStyle && { "data-underline-style": underlineStyle }),
+    ...(underlined && underlineStyle && { "data-underline-style": underlineStyle }),
   };
 
-  const accessibilityProps = !isHeadingElement
-    ? { "aria-level": level, role: "heading" }
-    : {};
+  const accessibilityProps = !isHeadingElement ? { "aria-level": level, role: "heading" } : {};
 
   const elementProps = {
     className: classNames,

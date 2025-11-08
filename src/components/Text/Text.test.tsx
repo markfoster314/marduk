@@ -55,7 +55,7 @@ describe("Text", () => {
       render(
         <Text preset={["primary"]} size="xl">
           Test
-        </Text>
+        </Text>,
       );
       const text = screen.getByText("Test");
       expect(text).toHaveClass("marduk-text--size-xl");
@@ -65,7 +65,7 @@ describe("Text", () => {
       render(
         <Text preset={["primary"]} size="lg" weight="bold">
           Test
-        </Text>
+        </Text>,
       );
       const text = screen.getByText("Test");
       expect(text).toHaveClass("marduk-text--size-lg");
@@ -110,7 +110,7 @@ describe("Text", () => {
       render(
         <Text preset={["primary"]} style={{ fontFamily: "monospace" }}>
           Test
-        </Text>
+        </Text>,
       );
       const text = screen.getByText("Test");
       expect(text).toHaveStyle({
@@ -176,7 +176,7 @@ describe("Text", () => {
       render(
         <Text preset={["primary", "body"]} size="sm">
           Test
-        </Text>
+        </Text>,
       );
       const text = screen.getByText("Test");
       expect(text).toHaveClass("marduk-text--size-sm");
@@ -184,10 +184,7 @@ describe("Text", () => {
 
     it("data-preset shows comma-separated list", () => {
       render(<Text preset={["primary", "success", "default"]}>Test</Text>);
-      expect(screen.getByText("Test")).toHaveAttribute(
-        "data-preset",
-        "primary,success,default"
-      );
+      expect(screen.getByText("Test")).toHaveAttribute("data-preset", "primary,success,default");
     });
 
     it("handles empty array gracefully", () => {
@@ -211,15 +208,10 @@ describe("Text", () => {
   });
 
   describe("Size", () => {
-    test.each(["xs", "sm", "md", "lg", "xl"] as const)(
-      "applies %s size class",
-      (size) => {
-        render(<Text size={size}>Test</Text>);
-        expect(screen.getByText("Test")).toHaveClass(
-          `marduk-text--size-${size}`
-        );
-      }
-    );
+    test.each(["xs", "sm", "md", "lg", "xl"] as const)("applies %s size class", (size) => {
+      render(<Text size={size}>Test</Text>);
+      expect(screen.getByText("Test")).toHaveClass(`marduk-text--size-${size}`);
+    });
 
     it("applies medium size by default", () => {
       render(<Text>Test</Text>);
@@ -228,15 +220,10 @@ describe("Text", () => {
   });
 
   describe("Alignment", () => {
-    test.each(["left", "center", "right", "justify"] as const)(
-      "applies %s alignment",
-      (align) => {
-        render(<Text align={align}>Test</Text>);
-        expect(screen.getByText("Test")).toHaveClass(
-          `marduk-text--align-${align}`
-        );
-      }
-    );
+    test.each(["left", "center", "right", "justify"] as const)("applies %s alignment", (align) => {
+      render(<Text align={align}>Test</Text>);
+      expect(screen.getByText("Test")).toHaveClass(`marduk-text--align-${align}`);
+    });
 
     it("applies left alignment by default", () => {
       render(<Text>Test</Text>);
@@ -245,15 +232,10 @@ describe("Text", () => {
   });
 
   describe("Weight", () => {
-    test.each(["normal", "medium", "semibold", "bold"] as const)(
-      "applies %s weight",
-      (weight) => {
-        render(<Text weight={weight}>Test</Text>);
-        expect(screen.getByText("Test")).toHaveClass(
-          `marduk-text--weight-${weight}`
-        );
-      }
-    );
+    test.each(["normal", "medium", "semibold", "bold"] as const)("applies %s weight", (weight) => {
+      render(<Text weight={weight}>Test</Text>);
+      expect(screen.getByText("Test")).toHaveClass(`marduk-text--weight-${weight}`);
+    });
 
     it("does not apply weight class when not specified", () => {
       render(<Text>Test</Text>);
@@ -267,23 +249,16 @@ describe("Text", () => {
       "applies %s line height",
       (lineHeight) => {
         render(<Text lineHeight={lineHeight}>Test</Text>);
-        expect(screen.getByText("Test")).toHaveClass(
-          `marduk-text--line-height-${lineHeight}`
-        );
-      }
+        expect(screen.getByText("Test")).toHaveClass(`marduk-text--line-height-${lineHeight}`);
+      },
     );
   });
 
   describe("Letter Spacing", () => {
-    test.each(["tight", "normal", "wide"] as const)(
-      "applies %s spacing",
-      (spacing) => {
-        render(<Text spacing={spacing}>Test</Text>);
-        expect(screen.getByText("Test")).toHaveClass(
-          `marduk-text--spacing-${spacing}`
-        );
-      }
-    );
+    test.each(["tight", "normal", "wide"] as const)("applies %s spacing", (spacing) => {
+      render(<Text spacing={spacing}>Test</Text>);
+      expect(screen.getByText("Test")).toHaveClass(`marduk-text--spacing-${spacing}`);
+    });
   });
 
   describe("Truncation", () => {
@@ -301,7 +276,7 @@ describe("Text", () => {
       render(
         <Text clamp maxLines={3}>
           Test
-        </Text>
+        </Text>,
       );
       const text = screen.getByText("Test");
       expect(text).toHaveAttribute("data-max-lines", "3");
@@ -325,12 +300,10 @@ describe("Text", () => {
         render(
           <Text underlined underlineStyle={style}>
             Test
-          </Text>
+          </Text>,
         );
-        expect(screen.getByText("Test")).toHaveClass(
-          `marduk-text--underline-${style}`
-        );
-      }
+        expect(screen.getByText("Test")).toHaveClass(`marduk-text--underline-${style}`);
+      },
     );
   });
 
@@ -346,7 +319,7 @@ describe("Text", () => {
       render(
         <Text preset={["primary"]} color="#00ff00">
           Test
-        </Text>
+        </Text>,
       );
       const text = screen.getByText("Test");
       expect(text).toHaveStyle({ "--marduk-text-custom-color": "#00ff00" });
@@ -354,19 +327,16 @@ describe("Text", () => {
   });
 
   describe("Polymorphic", () => {
-    test.each(["span", "div", "label", "a"] as const)(
-      "renders as %s element",
-      (element) => {
-        render(<Text as={element}>Test</Text>);
-        expect(screen.getByText("Test").tagName).toBe(element.toUpperCase());
-      }
-    );
+    test.each(["span", "div", "label", "a"] as const)("renders as %s element", (element) => {
+      render(<Text as={element}>Test</Text>);
+      expect(screen.getByText("Test").tagName).toBe(element.toUpperCase());
+    });
 
     it("applies all classes with polymorphic rendering", () => {
       render(
         <Text as="span" preset={["primary"]} size="lg">
           Test
-        </Text>
+        </Text>,
       );
       const text = screen.getByText("Test");
       expect(text).toHaveClass("marduk-text");
@@ -384,25 +354,19 @@ describe("Text", () => {
 
     it("includes preset attribute for single preset", () => {
       render(<Text preset={["primary"]}>Test</Text>);
-      expect(screen.getByText("Test")).toHaveAttribute(
-        "data-preset",
-        "primary"
-      );
+      expect(screen.getByText("Test")).toHaveAttribute("data-preset", "primary");
     });
 
     it("includes comma-separated preset attribute", () => {
       render(<Text preset={["primary", "success"]}>Test</Text>);
-      expect(screen.getByText("Test")).toHaveAttribute(
-        "data-preset",
-        "primary,success"
-      );
+      expect(screen.getByText("Test")).toHaveAttribute("data-preset", "primary,success");
     });
 
     it("includes optional data attributes when specified", () => {
       render(
         <Text weight="bold" lineHeight="tight" spacing="wide">
           Test
-        </Text>
+        </Text>,
       );
       const text = screen.getByText("Test");
       expect(text).toHaveAttribute("data-weight", "bold");
@@ -428,10 +392,7 @@ describe("Text", () => {
   describe("Accessibility", () => {
     it("forwards aria attributes", () => {
       render(<Text aria-label="Custom label">Test</Text>);
-      expect(screen.getByText("Test")).toHaveAttribute(
-        "aria-label",
-        "Custom label"
-      );
+      expect(screen.getByText("Test")).toHaveAttribute("aria-label", "Custom label");
     });
   });
 });

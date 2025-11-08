@@ -1,12 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Breadcrumb, BreadcrumbItem } from "./Breadcrumb";
 import { Title } from "../Title/Title";
-import React from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Breadcrumb> = {
   title: "Components/Breadcrumb",
   component: Breadcrumb,
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:barebones"],
+  parameters: {
+    docs: {
+      subtitle: STORYBOOK_STATUS.BAREBONES,
+    },
+  },
   argTypes: {
     separator: {
       control: { type: "text" },
@@ -115,15 +120,13 @@ export const InteractiveExample: Story = {
       { label: "Laptops", icon: "☖" },
     ];
 
-    const handleClick = (item: BreadcrumbItem, index: number) => {
+    const handleClick = (item: BreadcrumbItem) => {
       console.log(`Navigating to: ${item.label}`);
     };
 
     return (
       <div>
-        <Title level={3}>
-          Click on any breadcrumb item (except the last one)
-        </Title>
+        <Title level={3}>Click on any breadcrumb item (except the last one)</Title>
         <Breadcrumb items={items} onItemClick={handleClick} separator=">" />
       </div>
     );

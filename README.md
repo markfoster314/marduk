@@ -14,18 +14,47 @@ Mark's React Components library
 [![npm](https://img.shields.io/badge/npm-7+-red.svg)](https://www.npmjs.com/)
 [![npm version](https://img.shields.io/npm/v/@markfoster314/marduk.svg)](https://www.npmjs.com/package/@markfoster314/marduk)
 [![License](https://img.shields.io/github/license/markfoster314/marduk.svg)](https://github.com/markfoster314/marduk/blob/main/LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+[![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![CI](https://github.com/markfoster314/marduk/actions/workflows/ci.yml/badge.svg)](https://github.com/markfoster314/marduk/actions)
+[![codecov](https://codecov.io/gh/markfoster314/marduk/branch/main/graph/badge.svg)](https://codecov.io/gh/markfoster314/marduk)
 
 ## What's This?
 
-A lightweight component library built for me and my friends. Zero dependencies (just React), responsive, fully typed, and themeable with CSS variables.
+A lightweight, production-ready React component library built for rapid development. Zero runtime dependencies (just React), fully typed with TypeScript, and themeable with CSS variables. Made for solo devs and startup enthusiasts
 
-## High Level Concept
+**Three layers of abstraction:**
 
-Designed to work out of the box while staying customizable. Clean defaults, presets for common patterns, and full control when wanted. Stylish components with no dependencies.
+- **Primitives** - Base components (Button, Text, Box, TextInput)
+- **Compositions** - Pre-built patterns (LoadingScreen, Alert, Modal)
+- **Templates** _(coming soon)_ - Full page layouts (SignupPage, ProfilePage, DashboardLayout)
 
-**Notes:**
+Start with primitives for full control, use compositions for speed, or drop in templates to ship faster.
 
-- Currently a WIP
+## Philosophy
+
+Stop rebuilding the same components and patterns on every project. Marduk provides:
+
+1. **Flexible primitives** - Highly customizable base components with preset system
+2. **Ready-to-use compositions** - Common UI patterns that work out of the box
+3. **Production templates** _(roadmap)_ - Complete page layouts for auth, profiles, settings, etc.
+
+**Design principles:**
+
+- Zero dependencies - Only React as a peer dependency
+- Preset system - Composable, type-safe styling configurations
+- CSS variables - Theme without rebuilding
+- TypeScript-first - Full type safety and IntelliSense
+- Accessibility - WCAG compliant, keyboard navigation, ARIA labels
+- Polymorphic - Components adapt to your semantic HTML needs
+
+**Current status:**
+
+- **Core primitives:** Production-ready (Box, Text)
+- **Library status:** Beta - actively expanding
+- **Test coverage:** 822 tests passing
+- **Contributions:** Welcome and encouraged!
 
 ## Installation
 
@@ -145,21 +174,17 @@ Props always override preset values:
 </Box>
 ```
 
-**Components with Preset Support:** Box, Text (more coming soon)
+## Production Ready Features
 
-## Components in a ~usable state
+**Primitives:** [Text](src/components/Text/README.md) | [Box](src/components/Box/README.md)
 
-**UI Elements:** [Button](src/components/Button/README.md)
+## In Progress Features
 
-**Typography Elements:** [Title](src/components/Title/README.md) | [Text](src/components/Text/README.md)
+**Primitives:** [Button](src/components/Button/README.md) | [Title](src/components/Title/README.md) | [Svg](src/components/Svg/README.md)
 
-**Layout Elements:** [Box](src/components/Box/README.md)
+**Compositions:** [Alert](src/compositions/Alert/README.md) | [LoadingScreen](src/compositions/LoadingScreen/README.md)
 
-**Icon Elements:** [Svg](src/components/Svg/README.md) | [Icons](src/icons/README.md)
-
-**Feedback Elements:** [Alert](src/components/Alert/README.md)
-
-**Overlay Elements:** [LoadingScreen](src/components/LoadingScreen/README.md)
+[Icons](src/icons/README.md)
 
 ## Development
 
@@ -225,34 +250,11 @@ const MyButton = ({ isLoading, ...props }: CustomButtonProps) => (
 );
 ```
 
-## Storybook
-
-See all components in action:
-
-```bash
-npm run storybook  # localhost:2015
-```
-
-## Testing
-
-```bash
-npm test
-# Test Suites: 19 passed, 19 total
-# Tests:       822 passed, 822 total
-```
-
 ## Contributing
 
-PRs will be more welcome in the future once we're off the ground.
+**Contributions are welcome!** Read our [Contributing Guide](./CONTRIBUTING.md) for detailed information about our development process, code standards, and how to submit pull requests.
 
-For PRs:
-
-- Write tests for updates
-- Run `npm test` and `npm run type-check` before committing
-- Follow existing patterns
-- Update Storybook stories
-
-[Open an issue](https://github.com/markfoster314/marduk/issues) if you have ideas or find bugs.
+[Open an issue](https://github.com/markfoster314/marduk/issues) if you find bugs.
 
 ## License
 

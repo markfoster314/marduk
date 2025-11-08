@@ -7,10 +7,7 @@ export interface IconData {
 export const iconData: Record<string, IconData> = {
   user: {
     name: "User",
-    paths: [
-      "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2",
-      "M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",
-    ],
+    paths: ["M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2", "M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"],
   },
   skullCrossbones: {
     name: "SkullCrossbones",

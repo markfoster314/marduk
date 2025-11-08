@@ -76,9 +76,7 @@
   height: 24px;
 }
 
-.marduk-radio-item:hover
-  .marduk-radio-input:not(:disabled)
-  + .marduk-radio-custom {
+.marduk-radio-item:hover .marduk-radio-input:not(:disabled) + .marduk-radio-custom {
   border-color: var(--marduk-color-primary-500);
 }
 
@@ -87,9 +85,7 @@
   background-color: var(--marduk-color-primary-500);
 }
 
-.marduk-radio-item--small
-  .marduk-radio-input:checked
-  + .marduk-radio-custom::after {
+.marduk-radio-item--small .marduk-radio-input:checked + .marduk-radio-custom::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -101,9 +97,7 @@
   background-color: var(--marduk-color-white);
 }
 
-.marduk-radio-item--medium
-  .marduk-radio-input:checked
-  + .marduk-radio-custom::after {
+.marduk-radio-item--medium .marduk-radio-input:checked + .marduk-radio-custom::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -115,9 +109,7 @@
   background-color: var(--marduk-color-white);
 }
 
-.marduk-radio-item--large
-  .marduk-radio-input:checked
-  + .marduk-radio-custom::after {
+.marduk-radio-item--large .marduk-radio-input:checked + .marduk-radio-custom::after {
   content: "";
   position: absolute;
   top: 50%;

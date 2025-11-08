@@ -14,7 +14,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={false} onClose={mockOnClose}>
           <p>Modal content</p>
-        </Modal>
+        </Modal>,
       );
 
       expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
@@ -24,7 +24,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Modal content</p>
-        </Modal>
+        </Modal>,
       );
 
       expect(screen.getByRole("dialog")).toBeInTheDocument();
@@ -35,7 +35,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose} title="Modal Title">
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       expect(screen.getByText("Modal Title")).toBeInTheDocument();
@@ -45,7 +45,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       expect(screen.queryByRole("heading")).not.toBeInTheDocument();
@@ -55,7 +55,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       expect(screen.getByLabelText("Close modal")).toBeInTheDocument();
@@ -65,7 +65,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose} showCloseButton={false}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       expect(screen.queryByLabelText("Close modal")).not.toBeInTheDocument();
@@ -77,7 +77,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       const modal = document.querySelector(".marduk-modal-content");
@@ -88,7 +88,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose} size="small">
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       const modal = document.querySelector(".marduk-modal-content");
@@ -99,7 +99,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose} size="large">
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       const modal = document.querySelector(".marduk-modal-content");
@@ -112,7 +112,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       const closeButton = screen.getByLabelText("Close modal");
@@ -125,11 +125,11 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
-      const overlay = screen.getByRole("dialog");
-      fireEvent.click(overlay);
+      const overlay = document.querySelector(".marduk-modal-overlay");
+      fireEvent.click(overlay!);
 
       expect(mockOnClose).toHaveBeenCalled();
     });
@@ -138,7 +138,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       const content = screen.getByText("Content");
@@ -151,7 +151,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose} closeOnOverlayClick={false}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       const overlay = screen.getByRole("dialog");
@@ -166,7 +166,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       fireEvent.keyDown(document, { key: "Escape" });
@@ -178,7 +178,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose} closeOnEscape={false}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       fireEvent.keyDown(document, { key: "Escape" });
@@ -190,7 +190,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       fireEvent.keyDown(document, { key: "Enter" });
@@ -205,7 +205,7 @@ describe("Modal", () => {
       const { unmount } = render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       expect(document.body.style.overflow).toBe("hidden");
@@ -219,7 +219,7 @@ describe("Modal", () => {
       const { rerender } = render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       expect(document.body.style.overflow).toBe("hidden");
@@ -227,7 +227,7 @@ describe("Modal", () => {
       rerender(
         <Modal isOpen={false} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       expect(document.body.style.overflow).toBe("unset");
@@ -239,7 +239,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       expect(screen.getByRole("dialog")).toBeInTheDocument();
@@ -249,7 +249,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       const dialog = screen.getByRole("dialog");
@@ -260,7 +260,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose} title="Modal Title">
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       const dialog = screen.getByRole("dialog");
@@ -274,7 +274,7 @@ describe("Modal", () => {
       render(
         <Modal isOpen={true} onClose={mockOnClose}>
           <p>Content</p>
-        </Modal>
+        </Modal>,
       );
 
       expect(screen.getByLabelText("Close modal")).toBeInTheDocument();

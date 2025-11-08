@@ -1,12 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box } from "./Box";
 import { Text } from "../Text/Text";
-import React from "react";
+// import React from "react";
+import type { CSSProperties } from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Box> = {
   title: "Components/Box",
   component: Box,
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:ready"],
+  parameters: {
+    docs: {
+      subtitle: STORYBOOK_STATUS.READY,
+    },
+  },
   argTypes: {
     padding: {
       control: "select",
@@ -46,16 +53,7 @@ const meta: Meta<typeof Box> = {
     },
     preset: {
       control: "select",
-      options: [
-        "stack",
-        "hstack",
-        "center",
-        "card",
-        "darkCard",
-        "grid2",
-        "grid3",
-        "spaceBetween",
-      ],
+      options: ["stack", "hstack", "center", "card", "darkCard", "grid2", "grid3", "spaceBetween"],
     },
   },
 };
@@ -138,7 +136,7 @@ export const CustomStyling: Story = {
           {
             "--box-bg": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
             color: "white",
-          } as React.CSSProperties
+          } as CSSProperties
         }
       >
         <Text as="div">CSS variable override</Text>

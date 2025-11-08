@@ -1,11 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Alert } from "./Alert";
 import React from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Alert> = {
-  title: "Components/Alert",
+  title: "Compositions/Alert",
   component: Alert,
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:wip"],
+  parameters: {
+    docs: {
+      subtitle: STORYBOOK_STATUS.WIP_FUNCTIONAL,
+    },
+  },
   argTypes: {
     variant: {
       control: "select",
@@ -57,7 +63,7 @@ export const WithTitle: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
       <Alert variant="info" title="Information">
-        Here's some helpful information for you.
+        Here&apos;s some helpful information for you.
       </Alert>
       <Alert variant="success" title="Success">
         Your changes have been saved successfully.

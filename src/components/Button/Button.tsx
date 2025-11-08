@@ -1,11 +1,6 @@
-import {
-  ElementType,
-  ComponentPropsWithoutRef,
-  ReactNode,
-  useState,
-} from "react";
+import { ElementType, ComponentPropsWithoutRef, ReactNode, useState } from "react";
 import { ButtonVariant, ButtonAppearance } from "./Button.types";
-import { ComponentSize } from "../../types/components";
+import { ComponentSize } from "@/types/components";
 import "./Button.css";
 
 type ButtonOwnProps<E extends ElementType = ElementType> = {
@@ -58,8 +53,8 @@ export const Button = <E extends ElementType = typeof defaultElement>({
   // Thought: potentially make onClick and onClickAsync props mutually exclusive,
   //       would be a breaking change, so probably keep as is. Sort of cool to
   //       have both anyways
-  const handleClick = async (e: any) => {
-    const clickProps = props as any;
+  const handleClick = async (e: React.MouseEvent<HTMLElement>) => {
+    const clickProps = props as ComponentPropsWithoutRef<E>;
     clickProps.onClick?.(e);
 
     if (onClickAsync) {
@@ -67,10 +62,7 @@ export const Button = <E extends ElementType = typeof defaultElement>({
       try {
         await onClickAsync();
       } catch (error) {
-        console.error(
-          "Error when calling button's onClickAsync method:",
-          error
-        );
+        console.error("Error when calling button's onClickAsync method:", error);
       } finally {
         setAsyncLoading(false);
       }
@@ -95,14 +87,14 @@ export const Button = <E extends ElementType = typeof defaultElement>({
   const buttonSpecificProps =
     Component === "button"
       ? {
-          type: (props as any).type || "button",
+          type: (props as ComponentPropsWithoutRef<"button">).type || "button",
           disabled: disabled || isLoading,
         }
       : {};
 
   // We are removing onClick because if we have a onClickAsync prop,
   // we handle the click differently
-  const { onClick: propsOnClick, ...restProps } = props as any;
+  const { onClick: propsOnClick, ...restProps } = props as ComponentPropsWithoutRef<E>;
 
   const componentProps = {
     className: classNames,
@@ -122,9 +114,7 @@ export const Button = <E extends ElementType = typeof defaultElement>({
 
   return (
     <Component {...componentProps}>
-      {isLoading && (
-        <span className="marduk-button-spinner" aria-hidden="true" />
-      )}
+      {isLoading && <span className="marduk-button-spinner" aria-hidden="true" />}
       <span
         className={[
           "marduk-button-content",
@@ -133,19 +123,11 @@ export const Button = <E extends ElementType = typeof defaultElement>({
           .filter(Boolean)
           .join(" ")}
       >
-        {leftIcon && (
-          <span className="marduk-button-icon-left">{leftIcon}</span>
-        )}
-        <span
-          className={
-            iconOnly ? "marduk-button-text--icon-only" : "marduk-button-text"
-          }
-        >
+        {leftIcon && <span className="marduk-button-icon-left">{leftIcon}</span>}
+        <span className={iconOnly ? "marduk-button-text--icon-only" : "marduk-button-text"}>
           {isLoading && loadingText ? loadingText : children}
         </span>
-        {rightIcon && (
-          <span className="marduk-button-icon-right">{rightIcon}</span>
-        )}
+        {rightIcon && <span className="marduk-button-icon-right">{rightIcon}</span>}
       </span>
     </Component>
   );

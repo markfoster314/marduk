@@ -1,12 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
-import { UserIcon, ThumbsUpIcon, TriangleExclamationIcon } from "../../icons";
+import { UserIcon, ThumbsUpIcon, TriangleExclamationIcon } from "@/icons";
 import React from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:wip"],
+  parameters: {
+    docs: {
+      subtitle: STORYBOOK_STATUS.WIP,
+    },
+  },
   argTypes: {
     variant: {
       control: { type: "select" },
@@ -138,28 +144,13 @@ export const WithIcons: Story = {
 export const IconOnly: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "10px" }}>
-      <Button
-        variant="primary"
-        iconOnly
-        leftIcon={<UserIcon />}
-        aria-label="User profile"
-      >
+      <Button variant="primary" iconOnly leftIcon={<UserIcon />} aria-label="User profile">
         Profile
       </Button>
-      <Button
-        variant="success"
-        iconOnly
-        leftIcon={<ThumbsUpIcon />}
-        aria-label="Like"
-      >
+      <Button variant="success" iconOnly leftIcon={<ThumbsUpIcon />} aria-label="Like">
         Like
       </Button>
-      <Button
-        variant="danger"
-        iconOnly
-        leftIcon={<TriangleExclamationIcon />}
-        aria-label="Warning"
-      >
+      <Button variant="danger" iconOnly leftIcon={<TriangleExclamationIcon />} aria-label="Warning">
         Warning
       </Button>
     </div>
@@ -201,11 +192,7 @@ export const AsyncOnClick: Story = {
         <Button variant="primary" onClickAsync={handleAsync}>
           Click me (2s async)
         </Button>
-        <Button
-          variant="success"
-          onClickAsync={handleAsync}
-          loadingText="Processing..."
-        >
+        <Button variant="success" onClickAsync={handleAsync} loadingText="Processing...">
           Save Data
         </Button>
       </div>

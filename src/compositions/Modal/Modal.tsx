@@ -55,14 +55,17 @@ export const Modal = ({
     .join(" ");
 
   return (
-    <div
-      className="marduk-modal-overlay"
-      onClick={handleOverlayClick}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={title ? "modal-title" : undefined}
-    >
-      <div className={modalClasses} ref={modalRef}>
+    // barebones component, will be refactored
+
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div className="marduk-modal-overlay" onClick={handleOverlayClick}>
+      <div
+        className={modalClasses}
+        ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={title ? "modal-title" : undefined}
+      >
         {(title || showCloseButton) && (
           <div className="marduk-modal-header">
             {title && (

@@ -2,12 +2,17 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Toast } from "./Toast";
 import { useState } from "react";
 import { Button } from "../Button/Button";
-import React from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Toast> = {
   title: "Components/Toast",
   component: Toast,
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:barebones"],
+  parameters: {
+    docs: {
+      subtitle: STORYBOOK_STATUS.BAREBONES,
+    },
+  },
   argTypes: {
     variant: {
       control: "select",
@@ -124,67 +129,54 @@ export const WithAutoDismiss: Story = {
   },
 };
 
-export const Interactive: Story = {
-  render: () => {
-    const [toasts, setToasts] = useState<
-      Array<{
-        id: number;
-        variant: "info" | "success" | "warning" | "error";
-        message: string;
-      }>
-    >([]);
-    let idCounter = 0;
+const InteractiveComponent = () => {
+  const [toasts, setToasts] = useState<
+    Array<{
+      id: number;
+      variant: "info" | "success" | "warning" | "error";
+      message: string;
+    }>
+  >([]);
+  let idCounter = 0;
 
-    const showToast = (
-      variant: "info" | "success" | "warning" | "error",
-      message: string
-    ) => {
-      const id = idCounter++;
-      setToasts((prev) => [...prev, { id, variant, message }]);
-    };
+  const showToast = (variant: "info" | "success" | "warning" | "error", message: string) => {
+    const id = idCounter++;
+    setToasts((prev) => [...prev, { id, variant, message }]);
+  };
 
-    const removeToast = (id: number) => {
-      setToasts((prev) => prev.filter((toast) => toast.id !== id));
-    };
+  const removeToast = (id: number) => {
+    setToasts((prev) => prev.filter((toast) => toast.id !== id));
+  };
 
-    return (
-      <div>
-        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-          <Button onClick={() => showToast("info", "Info notification")}>
-            Show Info
-          </Button>
-          <Button
-            onClick={() =>
-              showToast("success", "Success! Operation completed.")
-            }
-          >
-            Show Success
-          </Button>
-          <Button
-            onClick={() =>
-              showToast("warning", "Warning: Please check your input.")
-            }
-          >
-            Show Warning
-          </Button>
-          <Button
-            onClick={() => showToast("error", "Error: Something went wrong.")}
-          >
-            Show Error
-          </Button>
-        </div>
-
-        {toasts.map((toast, index) => (
-          <Toast
-            key={toast.id}
-            variant={toast.variant}
-            message={toast.message}
-            duration={5000}
-            onClose={() => removeToast(toast.id)}
-            position="top-right"
-          />
-        ))}
+  return (
+    <div>
+      <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+        <Button onClick={() => showToast("info", "Info notification")}>Show Info</Button>
+        <Button onClick={() => showToast("success", "Success! Operation completed.")}>
+          Show Success
+        </Button>
+        <Button onClick={() => showToast("warning", "Warning: Please check your input.")}>
+          Show Warning
+        </Button>
+        <Button onClick={() => showToast("error", "Error: Something went wrong.")}>
+          Show Error
+        </Button>
       </div>
-    );
-  },
+
+      {toasts.map((toast) => (
+        <Toast
+          key={toast.id}
+          variant={toast.variant}
+          message={toast.message}
+          duration={5000}
+          onClose={() => removeToast(toast.id)}
+          position="top-right"
+        />
+      ))}
+    </div>
+  );
+};
+
+export const Interactive: Story = {
+  render: () => <InteractiveComponent />,
 };

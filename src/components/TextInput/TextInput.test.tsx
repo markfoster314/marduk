@@ -156,9 +156,7 @@ describe("TextInput", () => {
 
   describe("Additional Props", () => {
     it("forwards additional props to input element", () => {
-      render(
-        <TextInput data-testid="custom-input" aria-label="Custom Input" />
-      );
+      render(<TextInput data-testid="custom-input" aria-label="Custom Input" />);
 
       const input = screen.getByTestId("custom-input");
       expect(input).toHaveAttribute("aria-label", "Custom Input");

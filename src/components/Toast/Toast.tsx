@@ -43,11 +43,7 @@ export const Toast = ({
 
   if (!isVisible) return null;
 
-  const toastClasses = [
-    "marduk-toast",
-    `marduk-toast--${variant}`,
-    `marduk-toast--${position}`,
-  ]
+  const toastClasses = ["marduk-toast", `marduk-toast--${variant}`, `marduk-toast--${position}`]
     .filter(Boolean)
     .join(" ");
 

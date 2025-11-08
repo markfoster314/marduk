@@ -1,17 +1,10 @@
 import { LogoSvg } from "./LogoSvg";
-import { Text } from "../Text/Text";
+import { Text } from "@/components/Text/Text";
 import { ReactElement, CSSProperties } from "react";
 import { LoadingScreenAnimation } from "./LoadingScreen.types";
 import "./LoadingScreen.css";
 
-type TextVariant =
-  | "default"
-  | "primary"
-  | "secondary"
-  | "success"
-  | "danger"
-  | "warning"
-  | "muted";
+type TextVariant = "default" | "primary" | "secondary" | "success" | "danger" | "warning" | "muted";
 
 export interface LoadingScreenProps {
   animation?: LoadingScreenAnimation;
@@ -33,10 +26,7 @@ const Dots = () => (
   </span>
 );
 
-const getTextPreset = (
-  variant: TextVariant,
-  darkMode: boolean
-): string => {
+const getTextPreset = (variant: TextVariant, darkMode: boolean): string => {
   if (darkMode) {
     return `${variant}Dark`;
   }

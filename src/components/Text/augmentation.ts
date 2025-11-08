@@ -1,6 +1,5 @@
 import type { TextPresetConfig } from "./presets";
 
-// @ts-expect-error - Module augmentation for published package
 declare module "@markfoster314/marduk" {
   interface TextPresets {
     // Built-in presets

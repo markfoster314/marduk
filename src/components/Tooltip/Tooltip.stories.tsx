@@ -1,12 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Tooltip } from "./Tooltip";
 import { Button } from "../Button/Button";
-import React from "react";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Tooltip> = {
   title: "Components/Tooltip",
   component: Tooltip,
-  tags: ["autodocs"],
+  tags: ["autodocs", "status:barebones"],
+  parameters: {
+    docs: {
+      subtitle: STORYBOOK_STATUS.BAREBONES,
+    },
+  },
   argTypes: {
     position: {
       control: "select",
@@ -110,9 +115,7 @@ export const OnText: Story = {
       <p>
         This is a paragraph with{" "}
         <Tooltip content="More information about this" position="top">
-          <span style={{ borderBottom: "1px dashed #3182ce", cursor: "help" }}>
-            a tooltip
-          </span>
+          <span style={{ borderBottom: "1px dashed #3182ce", cursor: "help" }}>a tooltip</span>
         </Tooltip>{" "}
         inline.
       </p>

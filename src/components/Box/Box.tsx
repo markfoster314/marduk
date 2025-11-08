@@ -1,9 +1,4 @@
-import {
-  ElementType,
-  ComponentPropsWithoutRef,
-  ReactNode,
-  CSSProperties,
-} from "react";
+import { ElementType, ComponentPropsWithoutRef, ReactNode, CSSProperties } from "react";
 import {
   SpacingSize,
   DisplayType,
@@ -101,8 +96,7 @@ export const Box = <E extends ElementType = typeof defaultElement>({
   const resolvedWidth = width ?? mergedPresetConfig.width;
   const resolvedHeight = height ?? mergedPresetConfig.height;
   const resolvedBorderRadius = borderRadius ?? mergedPresetConfig.borderRadius;
-  const resolvedBackgroundColor =
-    backgroundColor ?? mergedPresetConfig.backgroundColor;
+  const resolvedBackgroundColor = backgroundColor ?? mergedPresetConfig.backgroundColor;
 
   const classNames = [
     "marduk-box",
@@ -126,9 +120,7 @@ export const Box = <E extends ElementType = typeof defaultElement>({
     ...style,
     ...(resolvedWidth ? { width: resolvedWidth } : {}),
     ...(resolvedHeight ? { height: resolvedHeight } : {}),
-    ...(resolvedBackgroundColor
-      ? ({ "--box-bg": resolvedBackgroundColor } as CSSProperties)
-      : {}),
+    ...(resolvedBackgroundColor ? ({ "--box-bg": resolvedBackgroundColor } as CSSProperties) : {}),
   };
 
   const dataAttributes = {
@@ -140,12 +132,7 @@ export const Box = <E extends ElementType = typeof defaultElement>({
   };
 
   return (
-    <Component
-      className={classNames}
-      style={inlineStyles}
-      {...dataAttributes}
-      {...props}
-    >
+    <Component className={classNames} style={inlineStyles} {...dataAttributes} {...props}>
       {children}
     </Component>
   );

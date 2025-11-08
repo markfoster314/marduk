@@ -1,10 +1,4 @@
-import {
-  ChangeEvent,
-  InputHTMLAttributes,
-  useState,
-  useRef,
-  useEffect,
-} from "react";
+import { ChangeEvent, InputHTMLAttributes, useState, useRef, useEffect } from "react";
 import "./Checkbox.css";
 
 export interface CheckboxProps
@@ -97,10 +91,7 @@ export const Checkbox = ({
     .filter(Boolean)
     .join(" ");
 
-  const labelClasses = [
-    "marduk-checkbox-label",
-    disabled ? "marduk-checkbox-label--disabled" : "",
-  ]
+  const labelClasses = ["marduk-checkbox-label", disabled ? "marduk-checkbox-label--disabled" : ""]
     .filter(Boolean)
     .join(" ");
 
@@ -120,9 +111,7 @@ export const Checkbox = ({
         {label && <span className="marduk-checkbox-text">{label}</span>}
       </label>
       {error && <span className="marduk-checkbox-error-text">{error}</span>}
-      {helperText && !error && (
-        <span className="marduk-checkbox-helper-text">{helperText}</span>
-      )}
+      {helperText && !error && <span className="marduk-checkbox-helper-text">{helperText}</span>}
     </div>
   );
 };

@@ -152,9 +152,9 @@
   --marduk-line-height-relaxed: 1.8;
   --marduk-line-height-loose: 2;
 
-  --marduk-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+  --marduk-font-family-base:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
   --marduk-opacity-disabled: 0.6;
   --marduk-opacity-hover: 0.8;

@@ -50,9 +50,7 @@ describe("Toast", () => {
     });
 
     it("displays correct icon for each variant", () => {
-      const { rerender } = render(
-        <Toast message="Test" variant="info" duration={0} />
-      );
+      const { rerender } = render(<Toast message="Test" variant="info" duration={0} />);
       const infoIcon = document.querySelector(".marduk-toast-icon");
       expect(infoIcon).toHaveTextContent("i");
 
@@ -87,9 +85,7 @@ describe("Toast", () => {
       ] as const;
 
       positions.forEach((position) => {
-        const { unmount } = render(
-          <Toast message="Test" position={position} duration={0} />
-        );
+        const { unmount } = render(<Toast message="Test" position={position} duration={0} />);
         const toast = screen.getByRole("alert");
         expect(toast.className).toContain(position);
         unmount();

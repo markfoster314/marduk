@@ -21,33 +21,25 @@ describe("ProgressBar", () => {
 
     it("calculates percentage correctly", () => {
       render(<ProgressBar value={50} max={100} />);
-      const fill = document.querySelector(
-        ".marduk-progress-fill"
-      ) as HTMLElement;
+      const fill = document.querySelector(".marduk-progress-fill") as HTMLElement;
       expect(fill.style.width).toBe("50%");
     });
 
     it("handles custom max value", () => {
       render(<ProgressBar value={25} max={50} />);
-      const fill = document.querySelector(
-        ".marduk-progress-fill"
-      ) as HTMLElement;
+      const fill = document.querySelector(".marduk-progress-fill") as HTMLElement;
       expect(fill.style.width).toBe("50%");
     });
 
     it("caps at 100%", () => {
       render(<ProgressBar value={150} max={100} />);
-      const fill = document.querySelector(
-        ".marduk-progress-fill"
-      ) as HTMLElement;
+      const fill = document.querySelector(".marduk-progress-fill") as HTMLElement;
       expect(fill.style.width).toBe("100%");
     });
 
     it("handles negative values", () => {
       render(<ProgressBar value={-10} />);
-      const fill = document.querySelector(
-        ".marduk-progress-fill"
-      ) as HTMLElement;
+      const fill = document.querySelector(".marduk-progress-fill") as HTMLElement;
       expect(fill.style.width).toBe("0%");
     });
   });

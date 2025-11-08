@@ -27,21 +27,14 @@ describe("Alert", () => {
       ["success", "Success message", "success"],
       ["warning", "Warning message", "warning"],
       ["error", "Error message", "error"],
-    ] as const)(
-      "renders %s variant correctly",
-      (variant, message, expectedClass) => {
-        render(
-          variant === "info" ? (
-            <Alert>{message}</Alert>
-          ) : (
-            <Alert variant={variant}>{message}</Alert>
-          )
-        );
-        const alert = screen.getByRole("alert");
-        expect(alert.className).toContain(expectedClass);
-        expect(alert).toHaveAttribute("data-variant", variant);
-      }
-    );
+    ] as const)("renders %s variant correctly", (variant, message, expectedClass) => {
+      render(
+        variant === "info" ? <Alert>{message}</Alert> : <Alert variant={variant}>{message}</Alert>,
+      );
+      const alert = screen.getByRole("alert");
+      expect(alert.className).toContain(expectedClass);
+      expect(alert).toHaveAttribute("data-variant", variant);
+    });
   });
 
   describe("Closable", () => {
@@ -60,7 +53,7 @@ describe("Alert", () => {
       render(
         <Alert closable onClose={handleClose}>
           Message
-        </Alert>
+        </Alert>,
       );
 
       const closeButton = screen.getByLabelText("Close alert");
@@ -100,12 +93,12 @@ describe("Alert", () => {
         render(
           <Alert variant={variant} darkMode>
             Message
-          </Alert>
+          </Alert>,
         );
         const alert = screen.getByRole("alert");
         expect(alert).toHaveClass("marduk-alert--dark");
         expect(alert).toHaveClass(`marduk-alert--${variant}`);
-      }
+      },
     );
   });
 
@@ -140,7 +133,7 @@ describe("Alert", () => {
       render(
         <Alert variant="success" animation="fadeInUp" darkMode>
           Message
-        </Alert>
+        </Alert>,
       );
       const alert = screen.getByRole("alert");
       expect(alert).toHaveClass("marduk-alert--success");
@@ -212,7 +205,7 @@ describe("Alert", () => {
           }
         >
           Message
-        </Alert>
+        </Alert>,
       );
       const alert = screen.getByRole("alert");
       expect(alert).toHaveStyle({
