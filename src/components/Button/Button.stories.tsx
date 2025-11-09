@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
-import { UserIcon, ThumbsUpIcon, TriangleExclamationIcon } from "@/icons";
+import { UserIcon, ThumbsUpIcon, TriangleExclamationIcon, CircleInfoIcon } from "@/icons";
 import React from "react";
 import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
@@ -62,6 +62,30 @@ const meta: Meta<typeof Button> = {
     fullWidth: {
       control: { type: "boolean" },
       description: "Makes button take full width of container",
+    },
+    leftIcon: {
+      control: { type: "select" },
+      options: ["none", "user", "info", "warning", "thumbsup"],
+      mapping: {
+        none: undefined,
+        user: <UserIcon size="small" />,
+        info: <CircleInfoIcon size="small" />,
+        warning: <TriangleExclamationIcon size="small" />,
+        thumbsup: <ThumbsUpIcon size="small" />,
+      },
+      description: "Icon to display on the left",
+    },
+    rightIcon: {
+      control: { type: "select" },
+      options: ["none", "user", "info", "warning", "thumbsup"],
+      mapping: {
+        none: undefined,
+        user: <UserIcon size="small" />,
+        info: <CircleInfoIcon size="small" />,
+        warning: <TriangleExclamationIcon size="small" />,
+        thumbsup: <ThumbsUpIcon size="small" />,
+      },
+      description: "Icon to display on the right",
     },
     onClick: { action: "clicked" },
   },
