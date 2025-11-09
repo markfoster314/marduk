@@ -71,6 +71,17 @@ export {
 } from "./components/Svg/presets";
 export type { SvgPresetConfig, SvgPresets } from "./components/Svg/presets";
 
+export { Link } from "./components/Link/Link";
+export type { LinkProps } from "./components/Link/Link";
+export type { LinkUnderline, LinkTarget } from "./components/Link/Link.types";
+export {
+  defineLinkPresets,
+  getPreset as getLinkPreset,
+  getAllPresets as getAllLinkPresets,
+  resetCustomPresets as resetLinkCustomPresets,
+} from "./components/Link/presets";
+export type { LinkPresetConfig, LinkPresets } from "./components/Link/presets";
+
 export { Alert } from "./compositions/Alert/Alert";
 export type { AlertProps } from "./compositions/Alert/Alert";
 export type { AlertVariant, AlertAnimation } from "./compositions/Alert/Alert.types";

@@ -1,0 +1,270 @@
+/* Base Link Styles */
+.marduk-link {
+  --link-color: inherit;
+  --link-font-family: var(--marduk-font-family-base);
+  --link-font-size: inherit;
+  --link-font-weight: inherit;
+  --link-line-height: var(--marduk-line-height-normal);
+  --link-letter-spacing: normal;
+  --link-text-align: left;
+  --link-text-decoration: none;
+  --link-margin: 0;
+
+  --link-underline-thickness: 1px;
+  --link-underline-offset: 2px;
+
+  --link-hover-opacity: 0.8;
+  --link-active-opacity: 0.6;
+  --link-visited-color: var(--marduk-color-primary-700, #2a4365);
+
+  --link-focus-outline-color: var(--marduk-color-primary-500);
+  --link-focus-outline-width: 2px;
+  --link-focus-outline-offset: 2px;
+
+  --link-icon-gap: 0.25rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--link-icon-gap);
+  margin: var(--link-margin);
+  padding: 0;
+  font-family: var(--link-font-family);
+  font-size: var(--link-font-size);
+  font-weight: var(--link-font-weight);
+  line-height: var(--link-line-height);
+  letter-spacing: var(--link-letter-spacing);
+  text-align: var(--link-text-align);
+  text-decoration: var(--link-text-decoration);
+  color: var(--link-color);
+  cursor: pointer;
+  transition: all var(--marduk-transition-fast);
+}
+
+.marduk-link:focus {
+  outline: var(--link-focus-outline-width) solid var(--link-focus-outline-color);
+  outline-offset: var(--link-focus-outline-offset);
+}
+
+.marduk-link:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.marduk-link:visited {
+  color: var(--link-visited-color);
+}
+
+/* Text wrapper */
+.marduk-link__text {
+  display: inline;
+}
+
+/* Icon styles */
+.marduk-link__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.marduk-link__icon--left {
+  margin-right: var(--link-icon-gap);
+}
+
+.marduk-link__icon--right {
+  margin-left: var(--link-icon-gap);
+}
+
+/* Size Variants - Mobile first */
+.marduk-link--size-xs {
+  --link-font-size: var(--marduk-text-size-xs);
+}
+
+.marduk-link--size-sm {
+  --link-font-size: var(--marduk-text-size-sm);
+}
+
+.marduk-link--size-md {
+  --link-font-size: var(--marduk-text-size-md);
+}
+
+.marduk-link--size-lg {
+  --link-font-size: var(--marduk-text-size-lg);
+}
+
+.marduk-link--size-xl {
+  --link-font-size: var(--marduk-text-size-xl);
+}
+
+/* Tablet breakpoint (768px+) */
+@media (min-width: 768px) {
+  .marduk-link--size-xs {
+    --link-font-size: var(--marduk-text-size-sm);
+  }
+
+  .marduk-link--size-sm {
+    --link-font-size: var(--marduk-text-size-md);
+  }
+
+  .marduk-link--size-md {
+    --link-font-size: var(--marduk-text-size-lg);
+  }
+
+  .marduk-link--size-lg {
+    --link-font-size: var(--marduk-text-size-xl);
+  }
+
+  .marduk-link--size-xl {
+    --link-font-size: var(--marduk-text-size-2xl);
+  }
+}
+
+/* Desktop breakpoint (1024px+) */
+@media (min-width: 1024px) {
+  .marduk-link--size-xs {
+    --link-font-size: var(--marduk-text-size-sm);
+  }
+
+  .marduk-link--size-sm {
+    --link-font-size: var(--marduk-text-size-md);
+  }
+
+  .marduk-link--size-md {
+    --link-font-size: var(--marduk-text-size-lg);
+  }
+
+  .marduk-link--size-lg {
+    --link-font-size: var(--marduk-text-size-xl);
+  }
+
+  .marduk-link--size-xl {
+    --link-font-size: var(--marduk-text-size-3xl);
+  }
+}
+
+/* Weight Variants */
+.marduk-link--weight-normal {
+  --link-font-weight: var(--marduk-font-weight-normal);
+}
+
+.marduk-link--weight-medium {
+  --link-font-weight: var(--marduk-font-weight-medium);
+}
+
+.marduk-link--weight-semibold {
+  --link-font-weight: var(--marduk-font-weight-semibold);
+}
+
+.marduk-link--weight-bold {
+  --link-font-weight: var(--marduk-font-weight-bold);
+}
+
+/* Alignment */
+.marduk-link--align-left {
+  --link-text-align: left;
+}
+
+.marduk-link--align-center {
+  --link-text-align: center;
+}
+
+.marduk-link--align-right {
+  --link-text-align: right;
+}
+
+.marduk-link--align-justify {
+  --link-text-align: justify;
+}
+
+/* Line Height */
+.marduk-link--line-height-tight {
+  --link-line-height: var(--marduk-line-height-tight);
+}
+
+.marduk-link--line-height-normal {
+  --link-line-height: var(--marduk-line-height-normal);
+}
+
+.marduk-link--line-height-relaxed {
+  --link-line-height: var(--marduk-line-height-relaxed);
+}
+
+.marduk-link--line-height-loose {
+  --link-line-height: var(--marduk-line-height-loose);
+}
+
+/* Letter Spacing */
+.marduk-link--spacing-tight {
+  --link-letter-spacing: var(--marduk-letter-spacing-tight);
+}
+
+.marduk-link--spacing-normal {
+  --link-letter-spacing: var(--marduk-letter-spacing-normal);
+}
+
+.marduk-link--spacing-wide {
+  --link-letter-spacing: var(--marduk-letter-spacing-wide);
+}
+
+/* Text Truncate */
+.marduk-link--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Text Clamp */
+.marduk-link--clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: var(--link-max-lines, 3);
+  line-clamp: var(--link-max-lines, 3);
+}
+
+/* Italic */
+.marduk-link--italic {
+  font-style: italic;
+}
+
+/* Underline Styles */
+.marduk-link--underline-none {
+  text-decoration: none;
+}
+
+.marduk-link--underline-hover {
+  text-decoration: none;
+}
+
+.marduk-link--underline-hover:hover {
+  text-decoration: underline;
+}
+
+.marduk-link--underline-always {
+  text-decoration: underline;
+}
+
+/* Hover Effects */
+.marduk-link:hover {
+  opacity: var(--link-hover-opacity);
+}
+
+.marduk-link:active {
+  opacity: var(--link-active-opacity);
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .marduk-link {
+    --link-text-decoration: underline;
+  }
+
+  .marduk-link:focus {
+    --link-focus-outline-width: 3px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .marduk-link {
+    transition: none;
+  }
+}
