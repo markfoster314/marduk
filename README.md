@@ -10,7 +10,7 @@ Mark's React Components library
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.1+-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.0+-61dafb.svg)](https://reactjs.org/)
-[![Node](https://img.shields.io/badge/Node-18+-green.svg)](https://nodejs.org/)
+[![Node](https://img.shields.io/badge/Node-20+-green.svg)](https://nodejs.org/)
 [![npm](https://img.shields.io/badge/npm-7+-red.svg)](https://www.npmjs.com/)
 [![npm version](https://img.shields.io/npm/v/@markfoster314/marduk.svg)](https://www.npmjs.com/package/@markfoster314/marduk)
 [![License](https://img.shields.io/github/license/markfoster314/marduk.svg)](https://github.com/markfoster314/marduk/blob/main/LICENSE)
@@ -54,6 +54,7 @@ Stop rebuilding the same components and patterns on every project.
 - **Core primitives:** Production-ready (Box, Text)
 - **Library status:** Beta - actively expanding
 - **Test coverage:** 822 tests passing
+- **Docs:** [Live Storybook](https://markfoster314.github.io/marduk/)
 - **Contributions:** Welcome and encouraged!
 
 ## Installation
@@ -192,6 +193,10 @@ Props always override preset values:
 
 [Icons](src/icons)
 
+## Roadmap
+
+[v0.3.0 and beyond](docs/ROADMAP.md) - 17 components to production-ready.
+
 ## Development
 
 ```bash
@@ -204,11 +209,15 @@ npm run storybook  # Opens on localhost:2015
 **Useful commands:**
 
 ```bash
-npm test              # Run tests
-npm run test:watch    # Tests in watch mode
-npm run storybook     # Component playground
-npm run build         # Build the library
-npm run type-check    # TypeScript checking
+npm test                 # Run tests
+npm run test:watch       # Watch mode
+npm run test:coverage    # Coverage report
+npm run lint             # Lint code
+npm run format:check     # Check formatting
+npm run type-check       # TypeScript check
+npm run storybook        # Dev server
+npm run build-storybook  # Build docs
+npm run build            # Build library
 ```
 
 ## Theming
@@ -258,7 +267,7 @@ const MyButton = ({ isLoading, ...props }: CustomButtonProps) => (
 
 ## Contributing
 
-**Contributions are welcome!** Read our [Contributing Guide](./CONTRIBUTING.md) for detailed information about our development process, code standards, and how to submit pull requests.
+Contributions welcome. See [Contributing Guide](./CONTRIBUTING.md), [Code of Conduct](./CODE_OF_CONDUCT.md), and [roadmap](docs/ROADMAP.md).
 
 - [Report a bug](https://github.com/markfoster314/marduk/issues/new?template=bug_report.md)
 - [Request a feature](https://github.com/markfoster314/marduk/issues/new?template=feature_request.md)
