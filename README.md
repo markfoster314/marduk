@@ -184,6 +184,12 @@ Props always override preset values:
 
 **Compositions:** [Alert](src/compositions/Alert) | [LoadingScreen](src/compositions/LoadingScreen)
 
+## Barebones Features
+
+**Primitives:** [TextInput](src/components/TextInput) | [Checkbox](src/components/Checkbox) | [RadioButtons](src/components/RadioButtons) | [Toggle](src/components/Toggle) | [Dropdown](src/components/Dropdown) | [ProgressBar](src/components/ProgressBar) | [Tooltip](src/components/Tooltip)
+
+**Compositions:** [Modal](src/compositions/Modal) | [Toast](src/compositions/Toast) | [Pagination](src/compositions/Pagination) | [Breadcrumb](src/compositions/Breadcrumb)
+
 [Icons](src/icons)
 
 ## Development

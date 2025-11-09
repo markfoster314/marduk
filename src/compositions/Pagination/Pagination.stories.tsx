@@ -4,7 +4,7 @@ import { useState } from "react";
 import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Pagination> = {
-  title: "Components/Pagination",
+  title: "Compositions/Pagination",
   component: Pagination,
   tags: ["autodocs", "status:barebones"],
   parameters: {

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Breadcrumb, BreadcrumbItem } from "./Breadcrumb";
-import { Title } from "../Title/Title";
+import { Title } from "@/components/Title/Title";
 import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Breadcrumb> = {
-  title: "Components/Breadcrumb",
+  title: "Compositions/Breadcrumb",
   component: Breadcrumb,
   tags: ["autodocs", "status:barebones"],
   parameters: {

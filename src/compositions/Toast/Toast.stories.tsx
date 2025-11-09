@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Toast } from "./Toast";
 import { useState } from "react";
-import { Button } from "../Button/Button";
+import { Button } from "@/components/Button/Button";
 import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Toast> = {
-  title: "Components/Toast",
+  title: "Compositions/Toast",
   component: Toast,
   tags: ["autodocs", "status:barebones"],
   parameters: {
