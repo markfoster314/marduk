@@ -22,7 +22,7 @@ Mark's React Components library
 
 ## What's This?
 
-A lightweight, production-ready React component library built for rapid development. Zero runtime dependencies (just React), fully typed with TypeScript, and themeable with CSS variables. Made for solo devs and startup enthusiasts
+A lightweight React component library built for rapid development. Zero runtime dependencies (just React), fully typed with TypeScript, and themeable with CSS variables. Made for solo devs and startup enthusiasts
 
 **Three layers of abstraction:**
 
