@@ -210,13 +210,15 @@ describe("Svg", () => {
         expect(container.querySelector("svg")).not.toHaveClass("marduk-svg--dark");
       });
 
-      it("applies dark class when darkMode is true", () => {
+      it("applies preset classes when preset is provided", () => {
         const { container } = render(
-          <Svg darkMode>
+          <Svg preset={["primary", "large"]}>
             <TestIcon />
           </Svg>,
         );
-        expect(container.querySelector("svg")).toHaveClass("marduk-svg--dark");
+        const svg = container.querySelector("svg");
+        expect(svg).toHaveClass("marduk-svg--primary");
+        expect(svg).toHaveClass("marduk-svg--large");
       });
     });
 
@@ -637,7 +639,6 @@ describe("Svg", () => {
     });
 
     test.each([
-      { prop: "darkMode", propValue: true, attr: "data-dark-mode" },
       { prop: "decorative", propValue: true, attr: "data-decorative" },
       { prop: "color", propValue: "#ff0000", attr: "data-custom-color" },
       { prop: "hoverColor", propValue: "#ff0000", attr: "data-hoverable" },
@@ -714,6 +715,90 @@ describe("Svg", () => {
         </Svg>,
       );
       expect(container.querySelector("svg")).toHaveAttribute("data-stroke-width", "1.5");
+    });
+  });
+
+  describe("Preset System", () => {
+    it("applies preset color", () => {
+      const { container } = render(
+        <Svg preset={["primary"]}>
+          <TestIcon />
+        </Svg>,
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveAttribute("fill", "var(--color-primary)");
+    });
+
+    it("applies preset size", () => {
+      const { container } = render(
+        <Svg preset={["large"]}>
+          <TestIcon />
+        </Svg>,
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveClass("marduk-svg--size-large");
+    });
+
+    it("applies preset spin", () => {
+      const { container } = render(
+        <Svg preset={["loading"]}>
+          <TestIcon />
+        </Svg>,
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveClass("marduk-svg--spin");
+    });
+
+    it("merges multiple presets", () => {
+      const { container } = render(
+        <Svg preset={["xl", "success"]}>
+          <TestIcon />
+        </Svg>,
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveClass("marduk-svg--size-xl");
+      expect(svg).toHaveAttribute("fill", "var(--color-success)");
+    });
+
+    it("explicit props override preset values", () => {
+      const { container } = render(
+        <Svg preset={["large"]} size="small">
+          <TestIcon />
+        </Svg>,
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveClass("marduk-svg--size-small");
+      expect(svg).not.toHaveClass("marduk-svg--size-large");
+    });
+
+    it("sets data-preset attribute", () => {
+      const { container } = render(
+        <Svg preset={["primary", "large"]}>
+          <TestIcon />
+        </Svg>,
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveAttribute("data-preset", "primary large");
+    });
+
+    it("applies preset classes", () => {
+      const { container } = render(
+        <Svg preset={["danger"]}>
+          <TestIcon />
+        </Svg>,
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveClass("marduk-svg--danger");
+    });
+
+    it("handles empty preset array", () => {
+      const { container } = render(
+        <Svg preset={[]}>
+          <TestIcon />
+        </Svg>,
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).not.toHaveAttribute("data-preset");
     });
   });
 });

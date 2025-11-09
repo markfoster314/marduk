@@ -10,7 +10,7 @@ Marduk is a lightweight React component library with zero dependencies, built fo
 - Test Coverage: 843 tests passing
 - Production-Ready Components: 4 (Box, Text, Title, Button)
 - Total Components: 17
-- v0.3.0 Progress: 2/17 components complete
+- v0.3.0 Progress: 3/17 components complete
 
 ## v0.3.0 - Production-Ready Primitives
 
@@ -36,17 +36,9 @@ Marduk is a lightweight React component library with zero dependencies, built fo
 
 **Svg** - Icon wrapper component
 
-- Status: WIP → Ready
-- Tasks:
-  - Size testing (xs, small, medium, large, xl, 2xl, 3xl)
-  - Rotation testing (0, 90, 180, 270)
-  - Flip testing (horizontal, vertical, both)
-  - Animation testing (spin speeds, heartpulse)
-  - Filter testing
-  - Hover color testing
-  - Responsive scaling
-  - Dark mode support
-  - Add preset system support
+- Status: WIP → Ready (DONE)
+- Completed in PR #[TBD]
+- Added preset system, 95 tests, removed darkMode prop (breaking change)
 
 ### New Components (7)
 
