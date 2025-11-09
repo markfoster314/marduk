@@ -392,7 +392,7 @@ Feature branches should branch off `release/v0.3.0` and merge back into it.
 ### Questions?
 
 - Open a [Discussion](https://github.com/markfoster314/marduk/discussions)
-- Check [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines
+- Check [CONTRIBUTING.md](../CONTRIBUTING.md) for detailed guidelines
 - Reach out to [@markfoster314](https://github.com/markfoster314)
 
 ---
