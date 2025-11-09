@@ -4,7 +4,7 @@
   <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
 </div>
 
-_"I guess power comes at a price in every world."_
+_"but Miss Kobayashi saved me."_
 
 Navigation primitive with icons, presets, and all Text features
 
@@ -187,6 +187,47 @@ Render as any HTML element while maintaining link functionality:
   Button-styled Link
 </Link>
 ```
+
+## Customization
+
+Override component-scoped CSS variables for fine-grained control:
+
+```tsx
+<Link
+  href="/"
+  preset={["primary"]}
+  style={{
+    "--link-color": "#ff0000",
+    "--link-hover-opacity": "0.9",
+    "--link-icon-gap": "0.5rem",
+    "--link-underline-thickness": "2px",
+  }}
+>
+  Fully customized link
+</Link>
+```
+
+### Available CSS Variables
+
+**Typography:**
+
+- `--link-color`, `--link-font-size`, `--link-font-weight`, `--link-line-height`, `--link-letter-spacing`, `--link-text-align`, `--link-margin`
+
+**Underline:**
+
+- `--link-underline-thickness`, `--link-underline-offset`
+
+**States:**
+
+- `--link-hover-opacity`, `--link-active-opacity`, `--link-visited-color`
+
+**Focus:**
+
+- `--link-focus-outline-color`, `--link-focus-outline-width`, `--link-focus-outline-offset`
+
+**Layout:**
+
+- `--link-icon-gap`, `--link-max-lines` (for clamp)
 
 ## Responsive Design
 
