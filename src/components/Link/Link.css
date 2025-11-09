@@ -8,6 +8,10 @@
   --link-letter-spacing: normal;
   --link-text-align: left;
   --link-text-decoration: none;
+  --link-margin: 0;
+
+  --link-underline-thickness: 1px;
+  --link-underline-offset: 2px;
 
   --link-hover-opacity: 0.8;
   --link-active-opacity: 0.6;
@@ -22,7 +26,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--link-icon-gap);
-  margin: 0;
+  margin: var(--link-margin);
   padding: 0;
   font-family: var(--link-font-family);
   font-size: var(--link-font-size);
@@ -213,6 +217,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: var(--link-max-lines, 3);
+  line-clamp: var(--link-max-lines, 3);
 }
 
 /* Italic */
@@ -261,12 +266,5 @@
 @media (prefers-reduced-motion: reduce) {
   .marduk-link {
     transition: none;
-  }
-}
-
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  .marduk-link {
-    --link-visited-color: var(--marduk-color-purple-400, #b794f4);
   }
 }

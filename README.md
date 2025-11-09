@@ -59,9 +59,9 @@ Stop rebuilding the same components and patterns on every project.
 
 **Current status:**
 
-- **Core primitives:** Production-ready (Box, Text)
+- **Core primitives:** 6 production-ready (Text, Box, Title, Button, Svg, Link)
 - **Library status:** Beta - actively expanding
-- **Test coverage:** 822 tests passing
+- **Test coverage:** 936 tests passing
 - **Docs:** [Live Storybook](https://markfoster314.github.io/marduk/)
 - **Contributions:** Welcome and encouraged!
 
