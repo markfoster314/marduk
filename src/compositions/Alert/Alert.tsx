@@ -106,17 +106,22 @@ export const Alert = ({
     return darkMode ? `${basePreset}Dark` : basePreset;
   };
 
-  const getButtonVariant = () => {
+  const getButtonPreset = () => {
+    let basePreset = "";
     switch (variant) {
       case "success":
-        return "success";
+        basePreset = "success";
+        break;
       case "warning":
-        return "warning";
+        basePreset = "warning";
+        break;
       case "error":
-        return "danger";
+        basePreset = "danger";
+        break;
       default:
-        return "primary";
+        basePreset = "primary";
     }
+    return darkMode ? `${basePreset}Dark` : basePreset;
   };
 
   const ariaLive = variant === "error" ? "assertive" : "polite";
@@ -144,12 +149,11 @@ export const Alert = ({
       {closable && (
         <Button
           type="button"
-          variant={getButtonVariant()}
+          preset={[getButtonPreset()]}
           appearance="text"
           size="small"
           onClick={handleClose}
           aria-label="Close alert"
-          darkMode={darkMode}
           className="marduk-alert-close"
         >
           ✕

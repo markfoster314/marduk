@@ -6,23 +6,50 @@
 
 _"Oh!"_
 
-A flexible, accessible button component
+Flexible, accessible button component with preset system
 
 ## Basic Usage
 
 ```tsx
 import { Button } from "@markfoster314/marduk";
 
-<Button variant="primary">Click me</Button>;
+<Button preset={["primary"]}>Click me</Button>;
 ```
 
-## Variants
+## Presets
 
-Current variants : `primary`, `secondary`, `success`, `warning`, or `danger`.
+Button supports the library's preset system for color variants. See the [main README](../../README.md#presets-system) for detailed documentation on using presets, creating custom presets, and TypeScript support.
+
+### Built-in Button Presets
+
+**Light mode:**
+
+- `default` - Default button color
+- `primary` - Primary color
+- `secondary` - Secondary color
+- `success` - Success/green
+- `danger` - Danger/red
+- `warning` - Warning/yellow
+
+**Dark mode:**
+
+- `defaultDark` - Default in dark mode
+- `primaryDark` - Primary dark mode
+- `secondaryDark` - Secondary dark mode
+- `successDark` - Success dark mode
+- `dangerDark` - Danger dark mode
+- `warningDark` - Warning dark mode
+
+### Quick Examples
 
 ```tsx
-<Button variant="success">Save</Button>
-<Button variant="danger">Delete</Button>
+<Button preset={["primary"]}>Primary button</Button>
+
+<Button preset={["primaryDark"]}>Primary in dark mode</Button>
+
+<Button preset={["success"]} appearance="outline">
+  Success outline
+</Button>
 ```
 
 ## Appearances
@@ -30,8 +57,9 @@ Current variants : `primary`, `secondary`, `success`, `warning`, or `danger`.
 `filled` (default), `outline`, or `text`.
 
 ```tsx
-<Button variant="primary" appearance="outline">Outline</Button>
-<Button variant="success" appearance="text">Text Button</Button>
+<Button preset={["primary"]} appearance="filled">Filled</Button>
+<Button preset={["primary"]} appearance="outline">Outline</Button>
+<Button preset={["success"]} appearance="text">Text Button</Button>
 ```
 
 ## Sizes
@@ -50,12 +78,12 @@ Add icons on either side, or make it icon-only.
 ```tsx
 <Button leftIcon={<UserIcon />}>Profile</Button>
 <Button rightIcon={<ArrowIcon />}>Next</Button>
-<Button iconOnly leftIcon={<SearchIcon />}>Search</Button>
+<Button iconOnly leftIcon={<SearchIcon />} aria-label="Search">Search</Button>
 ```
 
 ## Loading State
 
-Currently shows a spinner.
+Shows a spinner and disables the button.
 
 ```tsx
 <Button loading>Loading...</Button>
@@ -65,8 +93,6 @@ Currently shows a spinner.
 ## Async onClick
 
 Handles loading state for async operations automatically.
-
-NOTE: supports both onClick and onClick async at the same time. onClick will trigger before onClick async
 
 ```tsx
 <Button
@@ -78,99 +104,116 @@ NOTE: supports both onClick and onClick async at the same time. onClick will tri
 </Button>
 ```
 
-## Polymorphic
+Supports both onClick and onClickAsync. onClick triggers before onClickAsync.
 
-Render as anything using the `as` prop.
-
-```tsx
-<Button as="a" href="/profile">Profile</Button>
-<Button as={Link} to="/home">Home</Button>
-```
-
-## Dark Mode
+## Disabled State
 
 ```tsx
-<Button darkMode variant="primary">
-  Dark Button
+<Button disabled>Disabled</Button>
+<Button preset={["primary"]} appearance="outline" disabled>
+  Disabled Outline
 </Button>
 ```
 
 ## Full Width
 
 ```tsx
-<Button fullWidth>Stretch me</Button>
+<Button fullWidth>Full Width Button</Button>
+```
+
+## Polymorphic
+
+Render as any element using `as` prop.
+
+```tsx
+<Button as="a" href="/profile" preset={["primary"]}>
+  Link Button
+</Button>
+
+<Button as="div" preset={["success"]}>
+  Div Button
+</Button>
 ```
 
 ## Customization
 
-Override CSS variables for custom styling.
+Override styles using CSS variables:
 
 ```tsx
 <Button
-  style={
-    {
-      "--button-border-radius": "999px",
-      "--button-active-scale": "1",
-      "--button-icon-gap": "12px",
-    } as React.CSSProperties
-  }
+  preset={["primary"]}
+  style={{
+    "--button-border-radius": "999px",
+    "--button-padding-x": "32px",
+  }}
 >
-  Custom Button
+  Pill Button
 </Button>
 ```
 
 ### Available CSS Variables
 
-- `--button-bg` / `--button-bg-hover`
-- `--button-color` / `--button-color-hover`
-- `--button-border-color` / `--button-border-width`
-- `--button-border-radius`
-- `--button-font-weight`
-- `--button-focus-outline-color` / `--button-focus-outline-width` / `--button-focus-outline-offset`
-- `--button-active-scale`
-- `--button-icon-gap`
-- `--button-disabled-opacity` / `--button-disabled-filter`
+```css
+--button-font-family
+--button-font-size
+--button-font-weight
+--button-padding-x
+--button-padding-y
+--button-border-radius
+--button-border-width
+--button-transition
+--button-active-scale
+--button-spinner-size
+```
 
 ## Props
 
-| Prop           | Type                                                   | Default   | Description                           |
-| -------------- | ------------------------------------------------------ | --------- | ------------------------------------- |
-| `variant`      | `primary \| secondary \| success \| warning \| danger` | `primary` | Button color scheme                   |
-| `appearance`   | `filled \| outline \| text`                            | `filled`  | Visual style                          |
-| `size`         | `small \| medium \| large`                             | `medium`  | Button size                           |
-| `disabled`     | `boolean`                                              | `false`   | Disable the button                    |
-| `loading`      | `boolean`                                              | `false`   | Show loading state                    |
-| `loadingText`  | `string`                                               | -         | Override text during loading          |
-| `leftIcon`     | `ReactNode`                                            | -         | Icon on the left                      |
-| `rightIcon`    | `ReactNode`                                            | -         | Icon on the right                     |
-| `iconOnly`     | `boolean`                                              | `false`   | Hide text, show only icon             |
-| `fullWidth`    | `boolean`                                              | `false`   | Stretch to full width                 |
-| `darkMode`     | `boolean`                                              | `false`   | Dark mode styling                     |
-| `as`           | `ElementType`                                          | `button`  | Render as different element           |
-| `onClick`      | `function`                                             | -         | Click handler                         |
-| `onClickAsync` | `async function`                                       | -         | Async click handler with auto-loading |
+```typescript
+interface ButtonProps {
+  children: ReactNode;
+  as?: ElementType; // button, a, div, etc.
+  preset?: string[]; // Preset configurations
+  appearance?: "filled" | "outline" | "text";
+  size?: "small" | "medium" | "large";
+  disabled?: boolean;
+  loading?: boolean;
+  loadingText?: ReactNode;
+  onClickAsync?: () => Promise<void>;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
+  iconOnly?: boolean;
+  fullWidth?: boolean;
+  className?: string;
+  style?: CSSProperties;
+}
+```
 
 Plus all standard button/element props.
 
 ## Accessibility
 
-- Keyboard navigable (Tab, Enter, Space)
-- Proper ARIA attributes (`aria-busy`, `aria-disabled`)
-- Screen reader support (icon-only buttons keep text for SR)
+- Semantic button element by default
+- Keyboard accessible (Space, Enter)
+- Proper ARIA attributes (aria-busy, aria-disabled)
+- Screen reader support for icon-only buttons
+- Focus management
 - High contrast mode support
-- Reduced motion support
+- WCAG 2.1 compliant
 
 ## Testing
 
-Data attributes are included for E2E testing:
+Data attributes included for testing:
 
 ```tsx
-<Button variant="primary" size="large" loading />
-// data-variant="primary"
-// data-appearance="filled"
-// data-size="large"
+<Button preset={["success"]} appearance="outline" loading />
+// data-preset="success"
+// data-variant="success"
+// data-appearance="outline"
+// data-size="medium"
 // data-loading="true"
 ```
+
+Available attributes: `data-preset`, `data-variant`, `data-appearance`, `data-size`, `data-loading`, `data-disabled`, `data-icon-only`, `data-full-width`
 
 ---
 

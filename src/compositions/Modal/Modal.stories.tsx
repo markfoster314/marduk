@@ -190,7 +190,7 @@ const WithFormComponent = () => {
             <Button type="button" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
-            <Button type="submit" variant="primary">
+            <Button type="submit" preset={["primary"]}>
               Submit
             </Button>
           </div>

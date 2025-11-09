@@ -7,10 +7,10 @@ Marduk is a lightweight React component library with zero dependencies, built fo
 ## Current Status
 
 - Version: 0.2.0
-- Test Coverage: 826 tests passing
-- Production-Ready Components: 3 (Box, Text, Title)
+- Test Coverage: 843 tests passing
+- Production-Ready Components: 4 (Box, Text, Title, Button)
 - Total Components: 17
-- v0.3.0 Progress: 1/17 components complete
+- v0.3.0 Progress: 2/17 components complete
 
 ## v0.3.0 - Production-Ready Primitives
 
@@ -22,20 +22,11 @@ Marduk is a lightweight React component library with zero dependencies, built fo
 
 ### Components to Upgrade (3)
 
-**Button** - Interactive action component
+**Button** - Interactive action component ✓ COMPLETE
 
-- Status: WIP → Ready
-- Tasks:
-  - Complete all variant testing (primary, secondary, success, warning, danger)
-  - Complete all appearance testing (filled, outline, text)
-  - Test all size combinations (small, medium, large)
-  - Icon placement testing (left, right, icon-only)
-  - Loading state implementation
-  - Async onClick handling
-  - Disabled state accessibility
-  - Keyboard navigation (Enter, Space)
-  - Focus management
-  - Add preset system support
+- Status: WIP → Ready (DONE)
+- Completed in PR #TBD
+- Added preset system, 79 tests, comprehensive coverage
 
 **Title** - Semantic heading component ✓ COMPLETE
 

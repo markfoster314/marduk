@@ -1,6 +1,13 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Button } from "./Button";
+import {
+  defineButtonPresets,
+  getPreset,
+  getAllPresets,
+  resetCustomPresets,
+  builtInPresets,
+} from "./presets";
 
 describe("Button", () => {
   describe("Rendering", () => {
@@ -15,35 +22,47 @@ describe("Button", () => {
     });
   });
 
-  describe("Variants", () => {
-    it("applies primary variant class by default", () => {
+  describe("Presets", () => {
+    it("applies primary preset class by default", () => {
       render(<Button>Primary</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("marduk-button--primary");
     });
 
-    it("applies secondary variant class", () => {
-      render(<Button variant="secondary">Secondary</Button>);
+    it("applies secondary preset class", () => {
+      render(<Button preset={["secondary"]}>Secondary</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("marduk-button--secondary");
+      expect(button).toHaveAttribute("data-preset", "secondary");
     });
 
-    it("applies success variant class", () => {
-      render(<Button variant="success">Success</Button>);
+    it("applies success preset class", () => {
+      render(<Button preset={["success"]}>Success</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("marduk-button--success");
+      expect(button).toHaveAttribute("data-preset", "success");
     });
 
-    it("applies warning variant class", () => {
-      render(<Button variant="warning">Warning</Button>);
+    it("applies warning preset class", () => {
+      render(<Button preset={["warning"]}>Warning</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("marduk-button--warning");
+      expect(button).toHaveAttribute("data-preset", "warning");
     });
 
-    it("applies danger variant class", () => {
-      render(<Button variant="danger">Danger</Button>);
+    it("applies danger preset class", () => {
+      render(<Button preset={["danger"]}>Danger</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("marduk-button--danger");
+      expect(button).toHaveAttribute("data-preset", "danger");
+    });
+
+    it("applies dark preset classes", () => {
+      render(<Button preset={["primaryDark"]}>Primary Dark</Button>);
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("marduk-button--primary");
+      expect(button).toHaveClass("marduk-button--dark");
+      expect(button).toHaveAttribute("data-preset", "primaryDark");
     });
   });
 
@@ -66,15 +85,16 @@ describe("Button", () => {
       expect(button).toHaveClass("marduk-button--appearance-text");
     });
 
-    it("combines variant and appearance", () => {
+    it("combines preset and appearance", () => {
       render(
-        <Button variant="success" appearance="text">
+        <Button preset={["success"]} appearance="text">
           Success Text
         </Button>,
       );
       const button = screen.getByRole("button");
       expect(button).toHaveClass("marduk-button--success");
       expect(button).toHaveClass("marduk-button--appearance-text");
+      expect(button).toHaveAttribute("data-preset", "success");
     });
   });
 
@@ -166,22 +186,19 @@ describe("Button", () => {
       expect(handleClick).not.toHaveBeenCalled();
     });
 
-    it("works with all variants", () => {
-      const variants: Array<"primary" | "secondary" | "success" | "warning" | "danger"> = [
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "danger",
-      ];
+    it("works with all presets", () => {
+      const presets = ["primary", "secondary", "success", "warning", "danger"];
 
-      variants.forEach((variant) => {
+      presets.forEach((preset) => {
         const { container } = render(
-          <Button variant={variant} loading>
+          <Button preset={[preset]} loading>
             Loading
           </Button>,
         );
+        const button = container.querySelector("button");
         expect(container.querySelector(".marduk-button-spinner")).toBeInTheDocument();
+        expect(button).toHaveClass(`marduk-button--${preset}`);
+        expect(button).toHaveAttribute("data-preset", preset);
       });
     });
 
@@ -373,10 +390,11 @@ describe("Button", () => {
   });
 
   describe("Data Attributes for Testing", () => {
-    it("applies data-variant attribute", () => {
-      render(<Button variant="success">Test</Button>);
+    it("applies data-variant attribute from preset", () => {
+      render(<Button preset={["success"]}>Test</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveAttribute("data-variant", "success");
+      expect(button).toHaveAttribute("data-preset", "success");
     });
 
     it("applies data-appearance attribute", () => {
@@ -627,7 +645,7 @@ describe("Button", () => {
 
     it("maintains all button classes with as prop", () => {
       const { container } = render(
-        <Button as="a" variant="success" size="large">
+        <Button as="a" preset={["success"]} size="large">
           Styled Link
         </Button>,
       );
@@ -635,6 +653,7 @@ describe("Button", () => {
       expect(link).toHaveClass("marduk-button");
       expect(link).toHaveClass("marduk-button--success");
       expect(link).toHaveClass("marduk-button--large");
+      expect(link).toHaveAttribute("data-preset", "success");
     });
 
     it("works with icons when rendered as link", () => {
@@ -644,6 +663,72 @@ describe("Button", () => {
         </Button>,
       );
       expect(container.querySelector(".marduk-button-icon-left")).toBeInTheDocument();
+    });
+  });
+
+  describe("Preset System", () => {
+    beforeEach(() => {
+      resetCustomPresets();
+    });
+
+    it("has built-in presets", () => {
+      expect(builtInPresets.primary).toBeDefined();
+      expect(builtInPresets.secondary).toBeDefined();
+      expect(builtInPresets.success).toBeDefined();
+    });
+
+    it("getPreset returns built-in preset", () => {
+      const preset = getPreset("primary");
+      expect(preset).toBeDefined();
+    });
+
+    it("getPreset returns undefined for non-existent preset", () => {
+      const preset = getPreset("nonexistent");
+      expect(preset).toBeUndefined();
+    });
+
+    it("defineButtonPresets adds custom preset", () => {
+      defineButtonPresets({
+        custom: { size: "large" },
+      });
+      const preset = getPreset("custom");
+      expect(preset).toEqual({ size: "large" });
+    });
+
+    it("getAllPresets returns all presets", () => {
+      defineButtonPresets({
+        custom: { size: "large" },
+      });
+      const allPresets = getAllPresets();
+      expect(allPresets.primary).toBeDefined();
+      expect(allPresets.custom).toBeDefined();
+    });
+
+    it("resetCustomPresets clears custom presets", () => {
+      defineButtonPresets({
+        custom: { size: "large" },
+      });
+      expect(getPreset("custom")).toBeDefined();
+      resetCustomPresets();
+      expect(getPreset("custom")).toBeUndefined();
+    });
+
+    it("custom preset overrides built-in with same name", () => {
+      defineButtonPresets({
+        primary: { size: "large" },
+      });
+      const preset = getPreset("primary");
+      expect(preset).toEqual({ size: "large" });
+    });
+
+    it("applies custom preset name as variant class", () => {
+      defineButtonPresets({
+        hero: {},
+      });
+      render(<Button preset={["hero"]}>Hero Button</Button>);
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("marduk-button--hero");
+      expect(button).toHaveAttribute("data-preset", "hero");
     });
   });
 });
