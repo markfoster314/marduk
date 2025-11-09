@@ -226,7 +226,7 @@ export const Responsive: Story = {
       <Svg size={64} responsive color="var(--marduk-color-primary-500)">
         <StarIcon />
       </Svg>
-      <Text as="div" style={{ fontSize: "14px", color: "#666", maxWidth: "400px" }}>
+      <Text style={{ fontSize: "14px", color: "#666", maxWidth: "400px" }}>
         Resize viewport to see responsive scaling at 768px and 1024px breakpoints (custom size with
         responsive prop enabled)
       </Text>

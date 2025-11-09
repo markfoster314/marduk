@@ -15,6 +15,13 @@ const meta: Meta<typeof Box> = {
     },
   },
   argTypes: {
+    children: {
+      control: false,
+      description: "Content to render inside the Box",
+      table: {
+        type: { summary: "ReactNode" },
+      },
+    },
     padding: {
       control: "select",
       options: ["xs", "sm", "md", "lg", "xl", "2xl", "3xl"],
@@ -64,7 +71,7 @@ type Story = StoryObj<typeof Box>;
 export const Default: Story = {
   args: {
     padding: "md",
-    children: "Box content",
+    children: <Text>Box content</Text>,
   },
 };
 
@@ -72,17 +79,17 @@ export const Layouts: Story = {
   render: () => (
     <Box preset={["stack"]} gap="md">
       <Box preset={["hstack"]} padding="md" backgroundColor="#e3f2fd">
-        <Text as="div">Left</Text>
-        <Text as="div">Right</Text>
+        <Text>Left</Text>
+        <Text>Right</Text>
       </Box>
 
       <Box preset={["center"]} height="100px" backgroundColor="#fef3c7">
-        <Text as="div">Centered</Text>
+        <Text>Centered</Text>
       </Box>
 
       <Box preset={["spaceBetween"]} padding="md" backgroundColor="#e0e7ff">
-        <Text as="div">Start</Text>
-        <Text as="div">End</Text>
+        <Text>Start</Text>
+        <Text>End</Text>
       </Box>
     </Box>
   ),
@@ -92,17 +99,17 @@ export const Presets: Story = {
   render: () => (
     <Box preset={["stack"]} gap="md">
       <Box preset={["card"]}>
-        <Text as="div">Card preset</Text>
+        <Text>Card preset</Text>
       </Box>
 
       <Box preset={["stack", "card"]} gap="sm">
-        <Text as="div">Composed presets</Text>
-        <Text as="div">Stack + Card</Text>
+        <Text>Composed presets</Text>
+        <Text>Stack + Card</Text>
       </Box>
 
       <Box preset={["stack"]} gap="xl" padding="md" backgroundColor="#f0f9ff">
-        <Text as="div">Preset with overrides</Text>
-        <Text as="div">Custom gap and background</Text>
+        <Text>Preset with overrides</Text>
+        <Text>Custom gap and background</Text>
       </Box>
     </Box>
   ),
@@ -112,16 +119,16 @@ export const Polymorphic: Story = {
   render: () => (
     <Box preset={["stack"]} gap="md">
       <Box as="article" preset={["card"]}>
-        <Text as="div">Box as article</Text>
+        <Text>Box as article</Text>
       </Box>
 
       <Box as="section" padding="md" backgroundColor="#e3f2fd">
-        <Text as="div">Box as section</Text>
+        <Text>Box as section</Text>
       </Box>
 
       <Box as="nav" preset={["hstack"]}>
-        <Text as="div">Nav</Text>
-        <Text as="div">Item</Text>
+        <Text>Nav</Text>
+        <Text>Item</Text>
       </Box>
     </Box>
   ),
@@ -139,11 +146,11 @@ export const CustomStyling: Story = {
           } as CSSProperties
         }
       >
-        <Text as="div">CSS variable override</Text>
+        <Text>CSS variable override</Text>
       </Box>
 
       <Box padding="md" backgroundColor="#f8fafc" borderRadius="md">
-        <Text as="div">Prop-based styling</Text>
+        <Text>Prop-based styling</Text>
       </Box>
     </Box>
   ),
