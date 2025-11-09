@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-- Node.js >= 18.0.0
-- npm >= 7.0.0
+- Node.js 20.x or higher (24.x recommended for development, see `.nvmrc`)
+- npm >= 9.0.0
 - Git
 
 ## Getting Started
