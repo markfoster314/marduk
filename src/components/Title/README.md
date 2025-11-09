@@ -6,7 +6,7 @@
 
 _"I found you."_
 
-Heading component
+Semantic heading component with preset system
 
 ## Basic Usage
 
@@ -18,7 +18,7 @@ import { Title } from "@markfoster314/marduk";
 
 ## Heading Levels
 
-Use `level` prop for heading hierarchy (h1-h6).
+Use `level` prop for semantic heading hierarchy (h1-h6).
 
 ```tsx
 <Title level={1}>Main Heading</Title>
@@ -26,14 +26,42 @@ Use `level` prop for heading hierarchy (h1-h6).
 <Title level={3}>Subsection</Title>
 ```
 
-## Variants
+## Presets
 
-Current variants: `default`, `primary`, `secondary`, `success`, `warning`, or `danger`.
+Title supports the library's preset system for color variants. See the [main README](../../README.md#presets-system) for detailed documentation on using presets, creating custom presets, and TypeScript support.
+
+### Built-in Title Presets
+
+**Light mode:**
+
+- `default` - Default heading color
+- `primary` - Primary color
+- `secondary` - Secondary color
+- `success` - Success/green
+- `danger` - Danger/red
+- `warning` - Warning/yellow
+- `muted` - Muted/gray
+
+**Dark mode:**
+
+- `defaultDark` - Default heading in dark mode
+- `primaryDark` - Primary color dark mode
+- `secondaryDark` - Secondary color dark mode
+- `successDark` - Success dark mode
+- `dangerDark` - Danger dark mode
+- `warningDark` - Warning dark mode
+- `mutedDark` - Muted dark mode
+
+### Quick Examples
 
 ```tsx
-<Title level={2} variant="primary">Primary Title</Title>
-<Title level={2} variant="success">Success Title</Title>
-<Title level={2} variant="danger">Error Title</Title>
+<Title level={1} preset={["primary"]}>Primary heading</Title>
+
+<Title level={2} preset={["primaryDark"]}>Primary in dark mode</Title>
+
+<Title level={3} preset={["primary"]} size="large" weight="bold">
+  Primary with overrides
+</Title>
 ```
 
 ## Text Alignment
@@ -47,7 +75,7 @@ Current variants: `default`, `primary`, `secondary`, `success`, `warning`, or `d
 
 ## Size & Weight Overrides
 
-Override the default size or weight for custom styling.
+Override default size or weight based on level.
 
 ```tsx
 <Title level={3} size="large">Large H3</Title>
@@ -58,16 +86,14 @@ Override the default size or weight for custom styling.
 
 Truncate long titles with single-line or multi-line clamping.
 
-NOTE: clamp Requires -webkit-line-clamp support (Chrome, Safari, Edge, Firefox 68+)
-
 ```tsx
 <Title level={2} truncate>
   Very long title that gets cut off...
-</Title>;
+</Title>
 
 <Title level={2} clamp maxLines={2}>
   Longer title that wraps to two lines...
-</Title>;
+</Title>
 ```
 
 ## Letter Spacing
@@ -95,107 +121,87 @@ Available styles: `solid`, `double`, `dotted`, `dashed`, `wavy`
 
 ## Polymorphic
 
-Render as anything using the `as` prop while maintaining heading styles.
+Render as any element using `as` prop while maintaining heading styles and accessibility.
 
 ```tsx
-<Title as="div" level={1}>
-  Looks like H1, renders as div
-</Title>;
+<Title level={2} as="div">
+  H2 styling as div with role="heading"
+</Title>
 
-<Title as="a" href="#section" level={2}>
-  Section Link
-</Title>;
-```
-
-Note: Non-heading elements automatically get `role="heading"` and `aria-level` for accessibility.
-
-## Dark Mode
-
-```tsx
-<Title darkMode level={2} variant="primary">
-  Dark Title
+<Title level={1} as="span">
+  H1 styling as span
 </Title>
 ```
+
+Non-heading elements automatically get `role="heading"` and `aria-level` attributes.
 
 ## Custom Colors
 
 ```tsx
-<Title level={1} color="#ff6b6b">
-  Custom Color Title
-</Title>
+<Title level={1} color="#8b5cf6">Custom color</Title>
 
-<Title level={2} color="var(--my-custom-color)">
-  CSS Variable Color
+<Title level={2} color="var(--marduk-color-primary-500)">
+  CSS variable color
 </Title>
 ```
 
 ## Customization
 
-Override CSS variables for custom styling.
+Override default styles using CSS variables:
 
 ```tsx
 <Title
   level={1}
-  style={
-    {
-      "--title-font-size": "4rem",
-      "--title-color": "#ff6b6b",
-      "--title-letter-spacing": "0.1em",
-    } as React.CSSProperties
-  }
+  style={{
+    "--title-font-family": "Georgia, serif",
+    "--title-letter-spacing": "0.05em",
+  }}
 >
-  Custom Title
+  Custom Font
 </Title>
 ```
 
 ### Available CSS Variables
 
-**Base Variables:**
-
-- `--title-color`
-- `--title-font-family`
-- `--title-font-size`
-- `--title-font-weight`
-- `--title-line-height`
-- `--title-letter-spacing`
-- `--title-text-transform`
-- `--title-margin-top`
-- `--title-margin-bottom`
-
-**Underline Variables:**
-
-- `--title-underline-thickness`
-- `--title-underline-offset`
-- `--title-underline-double-thickness`
-
-**High Contrast Variables:**
-
-- `--title-high-contrast-border-width`
-- `--title-high-contrast-padding`
-- `--title-high-contrast-underline-thickness`
-- `--title-high-contrast-underline-offset`
-- `--title-high-contrast-double-thickness`
-- `--title-high-contrast-link-thickness`
-- `--title-high-contrast-link-offset`
+```css
+--title-color
+--title-font-family
+--title-font-size
+--title-font-weight
+--title-line-height
+--title-letter-spacing
+--title-text-transform
+--title-margin-top
+--title-margin-bottom
+--title-underline-thickness
+--title-underline-offset
+--title-underline-double-thickness
+--marduk-title-custom-color
+--title-max-lines
+```
 
 ## Props
 
-| Prop             | Type                                                              | Default   | Description                          |
-| ---------------- | ----------------------------------------------------------------- | --------- | ------------------------------------ |
-| `level`          | `1 \| 2 \| 3 \| 4 \| 5 \| 6`                                      | `1`       | Semantic heading level               |
-| `variant`        | `default \| primary \| secondary \| success \| warning \| danger` | `default` | Color variant                        |
-| `align`          | `left \| center \| right`                                         | `left`    | Text alignment                       |
-| `size`           | `small \| medium \| large`                                        | -         | Size override (optional)             |
-| `weight`         | `normal \| medium \| semibold \| bold`                            | -         | Weight override (optional)           |
-| `truncate`       | `boolean`                                                         | `false`   | Single-line truncation with ellipsis |
-| `clamp`          | `boolean`                                                         | `false`   | Multi-line truncation                |
-| `maxLines`       | `number`                                                          | `2`       | Max lines when clamping              |
-| `spacing`        | `tight \| normal \| wide`                                         | -         | Letter spacing preset                |
-| `underlined`     | `boolean`                                                         | `false`   | Add underline decoration             |
-| `underlineStyle` | `solid \| double \| dotted \| dashed \| wavy`                     | `solid`   | Underline style                      |
-| `darkMode`       | `boolean`                                                         | `false`   | Dark mode styling                    |
-| `color`          | `string`                                                          | -         | Custom color (hex, rgb, CSS var)     |
-| `as`             | `ElementType`                                                     | (dynamic) | Render as different element          |
+```typescript
+interface TitleProps {
+  children: ReactNode;
+  as?: ElementType; // h1-h6, div, span, p, etc.
+  preset?: string[]; // Preset configurations
+  level?: 1 | 2 | 3 | 4 | 5 | 6; // Heading level (default: 1)
+  align?: "left" | "center" | "right"; // Text alignment
+  size?: "small" | "medium" | "large"; // Size override
+  weight?: "normal" | "medium" | "semibold" | "bold"; // Weight override
+  color?: string; // Custom color
+  truncate?: boolean; // Single-line truncation
+  clamp?: boolean; // Multi-line truncation
+  maxLines?: number; // Max lines for clamp (default: 2)
+  spacing?: "tight" | "normal" | "wide"; // Letter spacing
+  underlined?: boolean; // Add underline
+  underlineStyle?: "solid" | "double" | "dotted" | "dashed" | "wavy";
+  className?: string;
+  style?: CSSProperties;
+}
+```
 
 Plus all standard heading/element props.
 
@@ -210,27 +216,27 @@ Plus all standard heading/element props.
 
 ## Responsive Design
 
-Like the rest of the project, the title component handles these three screen sizes responsiveness automatically.
+Titles scale automatically across three breakpoints:
 
 - **Mobile** (0-767px): Base sizes
 - **Tablet** (768px+): Larger sizes
 - **Desktop** (1024px+): Largest sizes
 
-No configuration needed
+No configuration needed.
 
 ## Testing
 
-Data attributes are included for E2E testing:
+Data attributes are included for testing:
 
 ```tsx
-<Title level={2} variant="primary" align="center" truncate />
+<Title level={2} preset={["primary"]} align="center" truncate />
 // data-level="2"
-// data-variant="primary"
+// data-preset="primary"
 // data-align="center"
 // data-truncate="true"
 ```
 
-Available attributes: `data-level`, `data-variant`, `data-align`, `data-size`, `data-weight`, `data-dark-mode`, `data-custom-color`, `data-truncate`, `data-clamp`, `data-max-lines`, `data-spacing`, `data-underlined`, `data-underline-style`
+Available attributes: `data-preset`, `data-level`, `data-align`, `data-size`, `data-weight`, `data-custom-color`, `data-truncate`, `data-clamp`, `data-max-lines`, `data-spacing`, `data-underlined`, `data-underline-style`
 
 ---
 

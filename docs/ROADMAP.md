@@ -7,9 +7,10 @@ Marduk is a lightweight React component library with zero dependencies, built fo
 ## Current Status
 
 - Version: 0.2.0
-- Test Coverage: 822 tests passing
-- Production-Ready Components: 2 (Box, Text)
+- Test Coverage: 826 tests passing
+- Production-Ready Components: 3 (Box, Text, Title)
 - Total Components: 17
+- v0.3.0 Progress: 1/17 components complete
 
 ## v0.3.0 - Production-Ready Primitives
 
@@ -36,19 +37,11 @@ Marduk is a lightweight React component library with zero dependencies, built fo
   - Focus management
   - Add preset system support
 
-**Title** - Semantic heading component
+**Title** - Semantic heading component ✓ COMPLETE
 
-- Status: WIP → Ready
-- Tasks:
-  - Test all heading levels (h1-h6)
-  - Test all variants (default, primary, secondary, success, warning, danger)
-  - Alignment testing (left, center, right)
-  - Size override testing
-  - Weight override testing
-  - Truncation testing (single-line, multi-line clamp)
-  - Underline styles testing
-  - Dark mode support
-  - Add preset system support
+- Status: WIP → Ready (DONE)
+- Completed in PR #35
+- Added preset system, 125 tests, 98% coverage
 
 **Svg** - Icon wrapper component
 

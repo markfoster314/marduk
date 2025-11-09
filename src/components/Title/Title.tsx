@@ -1,17 +1,17 @@
 import { ElementType, ComponentPropsWithoutRef, ReactNode, CSSProperties } from "react";
-import { TitleVariant, TitleSize } from "./Title.types";
+import { TitleSize } from "./Title.types";
 import { Alignment, FontWeight, LetterSpacing, UnderlineStyle } from "@/types/components";
+import { getPreset, TitlePresets, TitlePresetConfig } from "./presets";
 import "./Title.css";
 
 type TitleOwnProps<E extends ElementType = ElementType> = {
   children: ReactNode;
   as?: E;
+  preset?: (keyof TitlePresets | string)[];
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  variant?: TitleVariant;
   align?: Alignment;
   size?: TitleSize;
   weight?: FontWeight;
-  darkMode?: boolean;
   color?: string;
   truncate?: boolean;
   clamp?: boolean;
@@ -24,51 +24,83 @@ type TitleOwnProps<E extends ElementType = ElementType> = {
 export type TitleProps<E extends ElementType = "h1"> = TitleOwnProps<E> &
   Omit<ComponentPropsWithoutRef<E>, keyof TitleOwnProps>;
 
-export type { TitleVariant, TitleSize, Alignment, FontWeight, LetterSpacing, UnderlineStyle };
+export type { TitleSize, Alignment, FontWeight, LetterSpacing, UnderlineStyle };
 
 export const Title = <E extends ElementType = "h1">({
   children,
   as,
+  preset,
   level = 1,
-  variant = "default",
-  align = "left",
+  align,
   size,
   weight,
-  darkMode = false,
   color,
-  truncate = false,
-  clamp = false,
-  maxLines = 2,
+  truncate,
+  clamp,
+  maxLines,
   spacing,
-  underlined = false,
-  underlineStyle = "solid",
+  underlined,
+  underlineStyle,
   className,
   style,
   ...props
 }: TitleProps<E>) => {
+  let mergedPresetConfig: TitlePresetConfig = {};
+
+  if (preset && preset.length > 0) {
+    for (const presetName of preset) {
+      const config = getPreset(presetName);
+      if (config) {
+        mergedPresetConfig = {
+          ...mergedPresetConfig,
+          ...config,
+          style: {
+            ...(mergedPresetConfig.style || {}),
+            ...(config.style || {}),
+          },
+        };
+      }
+    }
+  }
+
+  const resolvedAlign = align ?? mergedPresetConfig.align ?? "left";
+  const resolvedSize = size ?? mergedPresetConfig.size;
+  const resolvedWeight = weight ?? mergedPresetConfig.weight;
+  const resolvedColor = color ?? mergedPresetConfig.color;
+  const resolvedTruncate = truncate ?? mergedPresetConfig.truncate ?? false;
+  const resolvedClamp = clamp ?? mergedPresetConfig.clamp ?? false;
+  const resolvedMaxLines = maxLines ?? mergedPresetConfig.maxLines ?? 2;
+  const resolvedSpacing = spacing ?? mergedPresetConfig.spacing;
+  const resolvedUnderlined = underlined ?? mergedPresetConfig.underlined ?? false;
+  const resolvedUnderlineStyle = underlineStyle ?? mergedPresetConfig.underlineStyle ?? "solid";
+
   const classNames = [
     "marduk-title",
     `marduk-title--level-${level}`,
-    `marduk-title--variant-${variant}`,
-    `marduk-title--align-${align}`,
-    size ? `marduk-title--size-${size}` : "",
-    weight ? `marduk-title--weight-${weight}` : "",
-    darkMode ? "marduk-title--dark" : "",
-    color ? "marduk-title--custom-color" : "",
-    truncate ? "marduk-title--truncate" : "",
-    clamp ? "marduk-title--clamp" : "",
-    spacing ? `marduk-title--spacing-${spacing}` : "",
-    underlined ? "marduk-title--underlined" : "",
-    underlined && underlineStyle ? `marduk-title--underline-${underlineStyle}` : "",
+    `marduk-title--align-${resolvedAlign}`,
+    resolvedSize ? `marduk-title--size-${resolvedSize}` : "",
+    resolvedWeight ? `marduk-title--weight-${resolvedWeight}` : "",
+    resolvedColor ? "marduk-title--custom-color" : "",
+    resolvedTruncate ? "marduk-title--truncate" : "",
+    resolvedClamp ? "marduk-title--clamp" : "",
+    resolvedSpacing ? `marduk-title--spacing-${resolvedSpacing}` : "",
+    resolvedUnderlined ? "marduk-title--underlined" : "",
+    resolvedUnderlined && resolvedUnderlineStyle
+      ? `marduk-title--underline-${resolvedUnderlineStyle}`
+      : "",
     className,
   ]
     .filter(Boolean)
     .join(" ");
 
+  const presetStyle = mergedPresetConfig.style || {};
   const combinedStyle = {
+    ...presetStyle,
     ...style,
-    ...(color ? ({ "--marduk-title-custom-color": color } as CSSProperties) : {}),
-    ...(clamp && maxLines ? ({ "--title-max-lines": maxLines } as CSSProperties) : {}),
+    ...(resolvedColor ? ({ "--marduk-title-custom-color": resolvedColor } as CSSProperties) : {}),
+    ...(resolvedClamp && resolvedMaxLines
+      ? ({ "--title-max-lines": resolvedMaxLines } as CSSProperties)
+      : {}),
   };
 
   const getDefaultHeadingElement = (): ElementType => {
@@ -96,19 +128,19 @@ export const Title = <E extends ElementType = "h1">({
     !as || ["h1", "h2", "h3", "h4", "h5", "h6"].includes(typeof as === "string" ? as : "");
 
   const dataAttributes = {
+    ...(preset && preset.length > 0 && { "data-preset": preset.join(",") }),
     "data-level": level,
-    "data-variant": variant,
-    "data-align": align,
-    ...(size && { "data-size": size }),
-    ...(weight && { "data-weight": weight }),
-    ...(darkMode && { "data-dark-mode": true }),
-    ...(color && { "data-custom-color": true }),
-    ...(truncate && { "data-truncate": true }),
-    ...(clamp && { "data-clamp": true }),
-    ...(clamp && maxLines && { "data-max-lines": maxLines }),
-    ...(spacing && { "data-spacing": spacing }),
-    ...(underlined && { "data-underlined": true }),
-    ...(underlined && underlineStyle && { "data-underline-style": underlineStyle }),
+    "data-align": resolvedAlign,
+    ...(resolvedSize && { "data-size": resolvedSize }),
+    ...(resolvedWeight && { "data-weight": resolvedWeight }),
+    ...(resolvedColor && { "data-custom-color": true }),
+    ...(resolvedTruncate && { "data-truncate": true }),
+    ...(resolvedClamp && { "data-clamp": true }),
+    ...(resolvedClamp && resolvedMaxLines && { "data-max-lines": resolvedMaxLines }),
+    ...(resolvedSpacing && { "data-spacing": resolvedSpacing }),
+    ...(resolvedUnderlined && { "data-underlined": true }),
+    ...(resolvedUnderlined &&
+      resolvedUnderlineStyle && { "data-underline-style": resolvedUnderlineStyle }),
   };
 
   const accessibilityProps = !isHeadingElement ? { "aria-level": level, role: "heading" } : {};
