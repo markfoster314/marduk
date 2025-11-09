@@ -45,7 +45,7 @@ npm run lint # Check code quality### Contribution Guidelines
 
 ### Code of Conduct
 
-Be respectful and constructive in all interactions.
+See [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
 
 ## Contributors
 

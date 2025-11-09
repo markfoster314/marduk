@@ -286,6 +286,10 @@ marduk/
 └── package.json            # Project dependencies and scripts
 ```
 
+### Code of Conduct
+
+See [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
+
 ## Need Help?
 
 - Check existing components for examples
