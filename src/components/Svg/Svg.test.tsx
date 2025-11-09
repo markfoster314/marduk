@@ -732,7 +732,7 @@ describe("Svg", () => {
         </Svg>,
       );
       const svg = container.querySelector("svg");
-      expect(svg).toHaveAttribute("fill", "var(--color-primary)");
+      expect(svg).toHaveAttribute("fill", "var(--marduk-color-primary-500)");
     });
 
     it("applies preset size", () => {
@@ -763,7 +763,7 @@ describe("Svg", () => {
       );
       const svg = container.querySelector("svg");
       expect(svg).toHaveClass("marduk-svg--size-xl");
-      expect(svg).toHaveAttribute("fill", "var(--color-success)");
+      expect(svg).toHaveAttribute("fill", "var(--marduk-color-success-500)");
     });
 
     it("explicit props override preset values", () => {
@@ -832,7 +832,7 @@ describe("Svg", () => {
     it("getSvgPreset returns built-in preset", () => {
       const preset = getSvgPreset("primary");
       expect(preset).toBeDefined();
-      expect(preset?.color).toBe("var(--color-primary)");
+      expect(preset?.color).toBe("var(--marduk-color-primary-500)");
     });
 
     it("getSvgPreset returns undefined for non-existent preset", () => {

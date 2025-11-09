@@ -23,48 +23,48 @@ const builtInPresets: SvgPresets = {
 
   // Color presets (light mode)
   primary: {
-    color: "var(--color-primary)",
+    color: "var(--marduk-color-primary-500)",
   },
   secondary: {
-    color: "var(--color-secondary)",
+    color: "var(--marduk-color-gray-600)",
   },
   success: {
-    color: "var(--color-success)",
+    color: "var(--marduk-color-success-500)",
   },
   danger: {
-    color: "var(--color-danger)",
+    color: "var(--marduk-color-error-400)",
   },
   warning: {
-    color: "var(--color-warning)",
+    color: "var(--marduk-color-warning-500)",
   },
   info: {
-    color: "var(--color-info)",
+    color: "var(--marduk-color-primary-400)",
   },
   muted: {
-    color: "var(--color-muted)",
+    color: "var(--marduk-color-gray-500)",
   },
 
   // Dark mode color presets
   primaryDark: {
-    color: "var(--color-primary-dark)",
+    color: "var(--marduk-color-primary-300)",
   },
   secondaryDark: {
-    color: "var(--color-secondary-dark)",
+    color: "var(--marduk-color-dark-text-secondary)",
   },
   successDark: {
-    color: "var(--color-success-dark)",
+    color: "var(--marduk-color-success-300)",
   },
   dangerDark: {
-    color: "var(--color-danger-dark)",
+    color: "var(--marduk-color-error-200)",
   },
   warningDark: {
-    color: "var(--color-warning-dark)",
+    color: "var(--marduk-color-warning-200)",
   },
   infoDark: {
-    color: "var(--color-info-dark)",
+    color: "var(--marduk-color-primary-200)",
   },
   mutedDark: {
-    color: "var(--color-muted-dark)",
+    color: "var(--marduk-color-dark-text-tertiary)",
   },
 
   // Size presets
