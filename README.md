@@ -26,11 +26,19 @@ A lightweight React component library built for rapid development. Zero runtime 
 
 **Three layers of abstraction:**
 
-- **Primitives** - Base components (Button, Text, Box, TextInput)
+- **Primitives** - Base components (Button, Text, Box, Link, Svg)
 - **Compositions** - Pre-built patterns (LoadingScreen, Alert, Modal)
 - **Templates** _(coming soon)_ - Full page layouts (SignupPage, ProfilePage, DashboardLayout)
 
 Start with primitives for full control, use compositions for speed, or drop in templates to ship faster.
+
+**Responsive by default:**
+
+Components automatically scale across three breakpoints:
+
+- **Mobile** (0-767px): Base sizes
+- **Tablet** (768px+): ~12-17% larger
+- **Desktop** (1024px+): ~25-33% larger
 
 ## Philosophy
 
@@ -177,7 +185,7 @@ Props always override preset values:
 
 ## Production Ready Features
 
-**Primitives:** [Text](src/components/Text) | [Box](src/components/Box) | [Title](src/components/Title) | [Button](src/components/Button) | [Svg](src/components/Svg)
+**Primitives:** [Text](src/components/Text) | [Box](src/components/Box) | [Title](src/components/Title) | [Button](src/components/Button) | [Svg](src/components/Svg) | [Link](src/components/Link)
 
 ## In Progress Features
 
