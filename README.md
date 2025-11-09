@@ -177,11 +177,11 @@ Props always override preset values:
 
 ## Production Ready Features
 
-**Primitives:** [Text](src/components/Text) | [Box](src/components/Box) | [Title](src/components/Title)
+**Primitives:** [Text](src/components/Text) | [Box](src/components/Box) | [Title](src/components/Title) | [Button](src/components/Button)
 
 ## In Progress Features
 
-**Primitives:** [Button](src/components/Button) | [Svg](src/components/Svg)
+**Primitives:** [Svg](src/components/Svg)
 
 **Compositions:** [Alert](src/compositions/Alert) | [LoadingScreen](src/compositions/LoadingScreen)
 

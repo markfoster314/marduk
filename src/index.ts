@@ -28,7 +28,13 @@ export type {
 
 export { Button } from "./components/Button/Button";
 export type { ButtonProps } from "./components/Button/Button";
-export type { ButtonVariant, ButtonAppearance } from "./components/Button/Button.types";
+export {
+  defineButtonPresets,
+  getAllPresets as getAllButtonPresets,
+  resetCustomPresets as resetButtonCustomPresets,
+} from "./components/Button/presets";
+export type { ButtonPresetConfig, ButtonPresets } from "./components/Button/presets";
+export type { ButtonAppearance } from "./components/Button/Button.types";
 
 export { Text } from "./components/Text/Text";
 export type { TextProps } from "./components/Text/Text";

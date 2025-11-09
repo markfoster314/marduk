@@ -320,4 +320,86 @@ describe("Alert", () => {
       expect(title).toHaveAttribute("data-preset", "dangerDark");
     });
   });
+
+  describe("Button Presets", () => {
+    it("close button uses primary preset for info variant", () => {
+      render(
+        <Alert variant="info" closable>
+          Message
+        </Alert>,
+      );
+      const button = screen.getByLabelText("Close alert");
+      expect(button).toHaveAttribute("data-preset", "primary");
+    });
+
+    it("close button uses success preset for success variant", () => {
+      render(
+        <Alert variant="success" closable>
+          Message
+        </Alert>,
+      );
+      const button = screen.getByLabelText("Close alert");
+      expect(button).toHaveAttribute("data-preset", "success");
+    });
+
+    it("close button uses warning preset for warning variant", () => {
+      render(
+        <Alert variant="warning" closable>
+          Message
+        </Alert>,
+      );
+      const button = screen.getByLabelText("Close alert");
+      expect(button).toHaveAttribute("data-preset", "warning");
+    });
+
+    it("close button uses danger preset for error variant", () => {
+      render(
+        <Alert variant="error" closable>
+          Message
+        </Alert>,
+      );
+      const button = screen.getByLabelText("Close alert");
+      expect(button).toHaveAttribute("data-preset", "danger");
+    });
+
+    it("close button uses dark presets when darkMode is true", () => {
+      render(
+        <Alert variant="info" closable darkMode>
+          Message
+        </Alert>,
+      );
+      const button = screen.getByLabelText("Close alert");
+      expect(button).toHaveAttribute("data-preset", "primaryDark");
+    });
+
+    it("close button uses dark success preset", () => {
+      render(
+        <Alert variant="success" closable darkMode>
+          Message
+        </Alert>,
+      );
+      const button = screen.getByLabelText("Close alert");
+      expect(button).toHaveAttribute("data-preset", "successDark");
+    });
+
+    it("close button uses dark warning preset", () => {
+      render(
+        <Alert variant="warning" closable darkMode>
+          Message
+        </Alert>,
+      );
+      const button = screen.getByLabelText("Close alert");
+      expect(button).toHaveAttribute("data-preset", "warningDark");
+    });
+
+    it("close button uses dark danger preset for error variant", () => {
+      render(
+        <Alert variant="error" closable darkMode>
+          Message
+        </Alert>,
+      );
+      const button = screen.getByLabelText("Close alert");
+      expect(button).toHaveAttribute("data-preset", "dangerDark");
+    });
+  });
 });
