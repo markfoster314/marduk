@@ -1,6 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Svg } from "./Svg";
+import {
+  defineSvgPresets,
+  getPreset as getSvgPreset,
+  getAllPresets as getAllSvgPresets,
+  resetCustomPresets as resetSvgCustomPresets,
+} from "./presets";
 
 describe("Svg", () => {
   const TestIcon = () => <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />;
@@ -799,6 +805,63 @@ describe("Svg", () => {
       );
       const svg = container.querySelector("svg");
       expect(svg).not.toHaveAttribute("data-preset");
+    });
+  });
+
+  describe("Preset System Functions", () => {
+    beforeEach(() => {
+      resetSvgCustomPresets();
+    });
+
+    it("defineSvgPresets adds custom preset", () => {
+      defineSvgPresets({
+        custom: {
+          size: "xl",
+        },
+      });
+      const { container } = render(
+        <Svg preset={["custom"]}>
+          <TestIcon />
+        </Svg>,
+      );
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveClass("marduk-svg--size-xl");
+      expect(svg).toHaveClass("marduk-svg--custom");
+    });
+
+    it("getSvgPreset returns built-in preset", () => {
+      const preset = getSvgPreset("primary");
+      expect(preset).toBeDefined();
+      expect(preset?.color).toBe("var(--color-primary)");
+    });
+
+    it("getSvgPreset returns undefined for non-existent preset", () => {
+      const preset = getSvgPreset("nonexistent");
+      expect(preset).toBeUndefined();
+    });
+
+    it("getAllSvgPresets returns all presets", () => {
+      const presets = getAllSvgPresets();
+      expect(presets.primary).toBeDefined();
+      expect(presets.success).toBeDefined();
+      expect(presets.danger).toBeDefined();
+    });
+
+    it("resetSvgCustomPresets clears custom presets", () => {
+      defineSvgPresets({ temp: { size: "large" } });
+      resetSvgCustomPresets();
+      const preset = getSvgPreset("temp");
+      expect(preset).toBeUndefined();
+    });
+
+    it("custom preset with same name as built-in is accessible", () => {
+      defineSvgPresets({
+        customPrimary: {
+          color: "blue",
+        },
+      });
+      const preset = getSvgPreset("customPrimary");
+      expect(preset?.color).toBe("blue");
     });
   });
 });
