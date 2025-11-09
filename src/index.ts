@@ -60,11 +60,17 @@ export { LoadingScreen } from "./compositions/LoadingScreen/LoadingScreen";
 export type { LoadingScreenProps } from "./compositions/LoadingScreen/LoadingScreen";
 export type { LoadingScreenAnimation } from "./compositions/LoadingScreen/LoadingScreen.types";
 
+export { Breadcrumb } from "./compositions/Breadcrumb/Breadcrumb";
+export type { BreadcrumbProps, BreadcrumbItem } from "./compositions/Breadcrumb/Breadcrumb";
+
+export { Toast } from "./compositions/Toast/Toast";
+export type { ToastProps } from "./compositions/Toast/Toast";
+
+export { Pagination } from "./compositions/Pagination/Pagination";
+export type { PaginationProps } from "./compositions/Pagination/Pagination";
+
 export { TextInput } from "./components/TextInput/TextInput";
 export type { TextInputProps } from "./components/TextInput/TextInput";
-
-export { Breadcrumb } from "./components/Breadcrumb/Breadcrumb";
-export type { BreadcrumbProps, BreadcrumbItem } from "./components/Breadcrumb/Breadcrumb";
 
 export { Checkbox } from "./components/Checkbox/Checkbox";
 export type { CheckboxProps } from "./components/Checkbox/Checkbox";
@@ -78,14 +84,8 @@ export type { ToggleProps } from "./components/Toggle/Toggle";
 export { RadioButtons } from "./components/RadioButtons/RadioButtons";
 export type { RadioButtonsProps, RadioOption } from "./components/RadioButtons/RadioButtons";
 
-export { Toast } from "./components/Toast/Toast";
-export type { ToastProps } from "./components/Toast/Toast";
-
 export { ProgressBar } from "./components/ProgressBar/ProgressBar";
 export type { ProgressBarProps } from "./components/ProgressBar/ProgressBar";
-
-export { Pagination } from "./components/Pagination/Pagination";
-export type { PaginationProps } from "./components/Pagination/Pagination";
 
 export { Tooltip } from "./components/Tooltip/Tooltip";
 export type { TooltipProps } from "./components/Tooltip/Tooltip";
