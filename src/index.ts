@@ -56,13 +56,20 @@ export type { TitlePresetConfig, TitlePresets } from "./components/Title/presets
 export type { TitleSize } from "./components/Title/Title.types";
 
 export { Svg } from "./components/Svg/Svg";
-export type { SvgProps } from "./components/Svg/Svg";
+export type { SvgProps } from "./components/Svg/Svg.types";
 export type {
   RotationAngle,
   FlipDirection,
   SpinSpeed,
   SvgAnimation,
 } from "./components/Svg/Svg.types";
+export {
+  defineSvgPresets,
+  getPreset as getSvgPreset,
+  getAllPresets as getAllSvgPresets,
+  resetCustomPresets as resetSvgCustomPresets,
+} from "./components/Svg/presets";
+export type { SvgPresetConfig, SvgPresets } from "./components/Svg/presets";
 
 export { Alert } from "./compositions/Alert/Alert";
 export type { AlertProps } from "./compositions/Alert/Alert";

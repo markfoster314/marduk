@@ -9,33 +9,132 @@ import {
   TriangleExclamationIcon,
 } from "./index";
 import { Text } from "../components/Text/Text";
+import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
 const meta: Meta<typeof Icon> = {
   title: "Icons/Icon",
   component: Icon,
-  tags: ["autodocs"],
+  parameters: {
+    layout: "centered",
+    docs: {
+      subtitle: STORYBOOK_STATUS.WIP,
+    },
+  },
+  tags: ["autodocs", "status:wip"],
   argTypes: {
     name: {
       control: { type: "select" },
       options: Object.keys(iconData),
+      description: "Icon name from the icon data",
+    },
+    preset: {
+      control: { type: "multi-select" },
+      options: [
+        "default",
+        "icon",
+        "loading",
+        "primary",
+        "secondary",
+        "success",
+        "danger",
+        "warning",
+        "info",
+        "muted",
+        "primaryDark",
+        "secondaryDark",
+        "successDark",
+        "dangerDark",
+        "warningDark",
+        "infoDark",
+        "mutedDark",
+        "large",
+        "xl",
+      ],
+      description: "Preset configurations (select multiple)",
     },
     size: {
       control: { type: "select" },
       options: ["xs", "small", "medium", "large", "xl", "2xl", "3xl"],
+      description: "Icon size with responsive scaling",
     },
     color: {
       control: { type: "color" },
+      description: "Custom color",
+    },
+    viewBox: {
+      control: { type: "text" },
+      description: "SVG viewBox attribute",
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "0 0 24 24" },
+      },
+    },
+    align: {
+      control: { type: "select" },
+      options: ["left", "center", "right"],
+      description: "Horizontal alignment",
     },
     rotate: {
       control: { type: "select" },
       options: [0, 90, 180, 270],
+      description: "Rotation in degrees",
     },
     flip: {
       control: { type: "select" },
       options: ["horizontal", "vertical", "both"],
+      description: "Flip direction",
     },
     spin: {
       control: { type: "boolean" },
+      description: "Enable spin animation",
+    },
+    spinSpeed: {
+      control: { type: "select" },
+      options: ["slow", "normal", "fast"],
+      description: "Spin animation speed",
+    },
+    animation: {
+      control: { type: "select" },
+      options: ["heartpulse"],
+      description: "Custom animation type",
+    },
+    filter: {
+      control: { type: "text" },
+      description: "CSS filter effects",
+    },
+    hoverColor: {
+      control: { type: "color" },
+      description: "Color on hover",
+    },
+    responsive: {
+      control: { type: "boolean" },
+      description: "Enable responsive scaling for custom sizes",
+    },
+    strokeWidth: {
+      control: { type: "text" },
+      description: "Stroke width for outlined icons",
+    },
+    strokeLinecap: {
+      control: { type: "select" },
+      options: ["butt", "round", "square"],
+      description: "Stroke line cap style",
+    },
+    strokeLinejoin: {
+      control: { type: "select" },
+      options: ["miter", "round", "bevel"],
+      description: "Stroke line join style",
+    },
+    title: {
+      control: { type: "text" },
+      description: "Accessible title for screen readers",
+    },
+    description: {
+      control: { type: "text" },
+      description: "Accessible description",
+    },
+    decorative: {
+      control: { type: "boolean" },
+      description: "Mark as decorative (aria-hidden)",
     },
   },
 };
@@ -156,6 +255,65 @@ export const Interactive: Story = {
         hoverColor="var(--marduk-color-danger-500)"
         style={{ cursor: "pointer" }}
       />
+    </div>
+  ),
+};
+
+export const Alignment: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "20px", width: "300px" }}>
+      <div style={{ width: "100%", border: "1px solid #ccc", padding: "10px" }}>
+        <UserIcon align="left" size="large" />
+      </div>
+      <div style={{ width: "100%", border: "1px solid #ccc", padding: "10px" }}>
+        <UserIcon align="center" size="large" />
+      </div>
+      <div style={{ width: "100%", border: "1px solid #ccc", padding: "10px" }}>
+        <UserIcon align="right" size="large" />
+      </div>
+    </div>
+  ),
+};
+
+export const Presets: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+        <ThumbsUpIcon preset={["primary"]} />
+        <CircleInfoIcon preset={["success"]} />
+        <TriangleExclamationIcon preset={["danger"]} />
+        <UserIcon preset={["warning"]} />
+      </div>
+      <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+        <ThumbsUpIcon preset={["primaryDark"]} />
+        <CircleInfoIcon preset={["successDark"]} />
+        <TriangleExclamationIcon preset={["dangerDark"]} />
+        <UserIcon preset={["warningDark"]} />
+      </div>
+      <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+        <CircleInfoIcon preset={["loading"]} />
+        <UserIcon preset={["icon", "large"]} />
+        <ThumbsUpIcon preset={["xl", "primary"]} />
+      </div>
+    </div>
+  ),
+};
+
+export const Filters: Story = {
+  render: () => (
+    <div style={{ display: "flex", gap: "25px", flexWrap: "wrap" }}>
+      <UserIcon size="xl" color="var(--marduk-color-primary-500)" />
+      <UserIcon size="xl" filter="grayscale(100%)" />
+      <UserIcon size="xl" filter="blur(2px)" />
+      <UserIcon size="xl" filter="brightness(1.5)" />
+    </div>
+  ),
+};
+
+export const Animations: Story = {
+  render: () => (
+    <div style={{ display: "flex", gap: "20px" }}>
+      <ThumbsUpIcon size="xl" animation="heartpulse" color="var(--marduk-color-danger-500)" />
     </div>
   ),
 };

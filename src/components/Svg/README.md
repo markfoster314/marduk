@@ -18,6 +18,81 @@ import { Svg } from "@markfoster314/marduk";
 </Svg>;
 ```
 
+## Preset System
+
+Presets provide composable, type-safe styling configurations:
+
+```tsx
+// Color presets
+<Svg preset={["primary"]}>
+  <path d="..." />
+</Svg>
+
+// Size presets
+<Svg preset={["large"]}>
+  <path d="..." />
+</Svg>
+
+// Loading preset (with spin)
+<Svg preset={["loading"]}>
+  <path d="..." />
+</Svg>
+
+// Combine multiple presets
+<Svg preset={["xl", "success"]}>
+  <path d="..." />
+</Svg>
+
+// Dark mode presets
+<Svg preset={["primaryDark"]}>
+  <path d="..." />
+</Svg>
+```
+
+### Built-in Presets
+
+**Base:**
+
+- `default` - Medium size, currentColor
+- `icon` - Medium size, decorative
+- `loading` - Spin animation enabled
+
+**Colors (Light):**
+
+- `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `muted`
+
+**Colors (Dark):**
+
+- `primaryDark`, `secondaryDark`, `successDark`, `dangerDark`, `warningDark`, `infoDark`, `mutedDark`
+
+**Sizes:**
+
+- `large`, `xl`
+
+### Custom Presets
+
+Define your own presets:
+
+```tsx
+import { defineSvgPresets } from "@markfoster314/marduk";
+
+defineSvgPresets({
+  brand: {
+    color: "var(--brand-color)",
+    size: "large",
+  },
+  spinner: {
+    spin: true,
+    spinSpeed: "fast",
+    size: "xl",
+  },
+});
+
+<Svg preset={["brand"]}>
+  <path d="..." />
+</Svg>;
+```
+
 ## Customization
 
 Override CSS variables for custom styling.
@@ -63,10 +138,10 @@ Override CSS variables for custom styling.
 
 | Prop             | Type                                                           | Default        | Description                                |
 | ---------------- | -------------------------------------------------------------- | -------------- | ------------------------------------------ |
+| `preset`         | `string[]`                                                     | `[]`           | Preset configurations (composable)         |
 | `size`           | `xs \| small \| medium \| large \| xl \| 2xl \| 3xl \| number` | `medium`       | Icon size with responsive scaling          |
 | `color`          | `string`                                                       | `currentColor` | Custom color                               |
 | `viewBox`        | `string`                                                       | `0 0 24 24`    | SVG viewBox attribute                      |
-| `darkMode`       | `boolean`                                                      | `false`        | Dark mode styling                          |
 | `align`          | `left \| center \| right`                                      | -              | Horizontal alignment                       |
 | `rotate`         | `0 \| 90 \| 180 \| 270`                                        | -              | Rotation in degrees                        |
 | `flip`           | `horizontal \| vertical \| both`                               | -              | Flip direction                             |
@@ -126,7 +201,7 @@ Data attributes are included for E2E testing:
 // data-spin-speed="fast"
 ```
 
-Available attributes: `data-size`, `data-custom-size`, `data-responsive`, `data-filter`, `data-dark-mode`, `data-align`, `data-rotate`, `data-flip`, `data-spin`, `data-spin-speed`, `data-animation`, `data-decorative`, `data-custom-color`, `data-hoverable`, `data-stroke-width`
+Available attributes: `data-size`, `data-custom-size`, `data-responsive`, `data-filter`, `data-preset`, `data-align`, `data-rotate`, `data-flip`, `data-spin`, `data-spin-speed`, `data-animation`, `data-decorative`, `data-custom-color`, `data-hoverable`, `data-stroke-width`
 
 ---
 
