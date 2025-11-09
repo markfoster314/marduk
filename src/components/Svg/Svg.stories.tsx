@@ -9,11 +9,43 @@ const meta: Meta<typeof Svg> = {
   parameters: {
     layout: "centered",
     docs: {
-      subtitle: STORYBOOK_STATUS.WIP,
+      subtitle: STORYBOOK_STATUS.READY,
     },
   },
-  tags: ["autodocs", "status:wip"],
+  tags: ["autodocs", "status:ready"],
   argTypes: {
+    children: {
+      control: false,
+      description: "SVG path elements or other SVG content",
+      table: {
+        type: { summary: "ReactNode" },
+      },
+    },
+    preset: {
+      control: { type: "multi-select" },
+      options: [
+        "default",
+        "icon",
+        "loading",
+        "primary",
+        "secondary",
+        "success",
+        "danger",
+        "warning",
+        "info",
+        "muted",
+        "primaryDark",
+        "secondaryDark",
+        "successDark",
+        "dangerDark",
+        "warningDark",
+        "infoDark",
+        "mutedDark",
+        "large",
+        "xl",
+      ],
+      description: "Preset configurations (select multiple)",
+    },
     size: {
       control: { type: "select" },
       options: ["xs", "small", "medium", "large", "xl", "2xl", "3xl"],
@@ -23,9 +55,13 @@ const meta: Meta<typeof Svg> = {
       control: { type: "color" },
       description: "Custom color",
     },
-    darkMode: {
-      control: { type: "boolean" },
-      description: "Dark mode styling",
+    viewBox: {
+      control: { type: "text" },
+      description: "SVG viewBox attribute",
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "0 0 24 24" },
+      },
     },
     align: {
       control: { type: "select" },
@@ -67,6 +103,18 @@ const meta: Meta<typeof Svg> = {
     hoverColor: {
       control: { type: "color" },
       description: "Color on hover",
+    },
+    title: {
+      control: { type: "text" },
+      description: "Accessible title for screen readers",
+    },
+    description: {
+      control: { type: "text" },
+      description: "Accessible description",
+    },
+    decorative: {
+      control: { type: "boolean" },
+      description: "Mark as decorative (aria-hidden)",
     },
   },
 };
@@ -191,6 +239,28 @@ export const Transformations: Story = {
   ),
 };
 
+export const Alignment: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "20px", width: "300px" }}>
+      <div style={{ width: "100%", border: "1px solid #ccc", padding: "10px" }}>
+        <Svg align="left" size="large">
+          <StarIcon />
+        </Svg>
+      </div>
+      <div style={{ width: "100%", border: "1px solid #ccc", padding: "10px" }}>
+        <Svg align="center" size="large">
+          <StarIcon />
+        </Svg>
+      </div>
+      <div style={{ width: "100%", border: "1px solid #ccc", padding: "10px" }}>
+        <Svg align="right" size="large">
+          <StarIcon />
+        </Svg>
+      </div>
+    </div>
+  ),
+};
+
 export const Animations: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "20px" }}>
@@ -243,6 +313,52 @@ export const Interactive: Story = {
       <Svg size="xl" hoverColor="var(--marduk-color-success-500)" style={{ cursor: "pointer" }}>
         <CheckIcon />
       </Svg>
+    </div>
+  ),
+};
+
+export const Presets: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+        <Svg preset={["primary"]}>
+          <StarIcon />
+        </Svg>
+        <Svg preset={["success"]}>
+          <CheckIcon />
+        </Svg>
+        <Svg preset={["danger"]}>
+          <HeartIcon />
+        </Svg>
+        <Svg preset={["warning"]}>
+          <StarIcon />
+        </Svg>
+      </div>
+      <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+        <Svg preset={["primaryDark"]}>
+          <StarIcon />
+        </Svg>
+        <Svg preset={["successDark"]}>
+          <CheckIcon />
+        </Svg>
+        <Svg preset={["dangerDark"]}>
+          <HeartIcon />
+        </Svg>
+        <Svg preset={["warningDark"]}>
+          <StarIcon />
+        </Svg>
+      </div>
+      <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+        <Svg preset={["loading"]}>
+          <StarIcon />
+        </Svg>
+        <Svg preset={["icon", "large"]}>
+          <HeartIcon />
+        </Svg>
+        <Svg preset={["xl", "primary"]}>
+          <CheckIcon />
+        </Svg>
+      </div>
     </div>
   ),
 };

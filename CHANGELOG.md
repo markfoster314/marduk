@@ -12,6 +12,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - v0.5.0 → First templates added
 - v1.0.0 → API stable, proven in production
 
+## [0.2.1] - 2025-11-09
+
+### Added
+- Link component with preset system, external link security, icon support
+- Preset systems for Title, Button, Svg components
+- Icon Storybook improvements with comprehensive controls
+- Responsive design documentation (3 breakpoints)
+- Component-scoped CSS variables across all components
+
+### Changed
+- **BREAKING:** Title - removed `variant` and `darkMode` props, use `preset` instead
+- **BREAKING:** Button - removed `variant` and `darkMode` props, use `preset` instead  
+- **BREAKING:** Svg - removed `darkMode` prop, use `preset` instead
+- Updated test coverage to 936 tests
+
+### Fixed
+- Svg preset CSS variables (now use correct --marduk-* prefix)
+- Button Storybook icon controls (select dropdowns instead of object display)
+
+### Note
+- Semantic versioning not followed, but breaking changes only affect WIP and BAREBONES features and this project has no users yet except for me :)
+
 ## [0.2.0] - 2025-11-08
 
 ### Added
@@ -214,5 +236,7 @@ pnpm add @markfoster314/marduk
 
 ---
 
-[Unreleased]: https://github.com/markfoster314/marduk/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/markfoster314/marduk/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/markfoster314/marduk/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/markfoster314/marduk/compare/v0.1.4...v0.2.0
 [0.1.0]: https://github.com/markfoster314/marduk/releases/tag/v0.1.0

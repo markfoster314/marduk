@@ -1,12 +1,13 @@
 import { ElementType, ComponentPropsWithoutRef, ReactNode, useState } from "react";
-import { ButtonVariant, ButtonAppearance } from "./Button.types";
+import { ButtonAppearance } from "./Button.types";
 import { ComponentSize } from "@/types/components";
+import { getPreset, ButtonPresets, ButtonPresetConfig } from "./presets";
 import "./Button.css";
 
 type ButtonOwnProps<E extends ElementType = ElementType> = {
   children: ReactNode;
   as?: E;
-  variant?: ButtonVariant;
+  preset?: (keyof ButtonPresets | string)[];
   appearance?: ButtonAppearance;
   size?: ComponentSize;
   disabled?: boolean;
@@ -17,20 +18,19 @@ type ButtonOwnProps<E extends ElementType = ElementType> = {
   rightIcon?: ReactNode;
   iconOnly?: boolean;
   fullWidth?: boolean;
-  darkMode?: boolean;
 };
 
 export type ButtonProps<E extends ElementType = "button"> = ButtonOwnProps<E> &
   Omit<ComponentPropsWithoutRef<E>, keyof ButtonOwnProps>;
 
-export type { ButtonVariant, ButtonAppearance, ComponentSize };
+export type { ButtonAppearance, ComponentSize };
 
 const defaultElement = "button";
 
 export const Button = <E extends ElementType = typeof defaultElement>({
   children,
   as,
-  variant = "primary",
+  preset,
   appearance = "filled",
   size = "medium",
   disabled = false,
@@ -41,7 +41,6 @@ export const Button = <E extends ElementType = typeof defaultElement>({
   rightIcon,
   iconOnly = false,
   fullWidth = false,
-  darkMode = false,
   className,
   ...props
 }: ButtonProps<E>) => {
@@ -49,6 +48,32 @@ export const Button = <E extends ElementType = typeof defaultElement>({
   const [asyncLoading, setAsyncLoading] = useState(false);
 
   const isLoading = loading || asyncLoading;
+
+  let mergedPresetConfig: ButtonPresetConfig = {};
+
+  if (preset && preset.length > 0) {
+    for (const presetName of preset) {
+      const config = getPreset(presetName);
+      if (config) {
+        mergedPresetConfig = {
+          ...mergedPresetConfig,
+          ...config,
+        };
+      }
+    }
+  }
+
+  const getVariantFromPreset = (): string => {
+    if (!preset || preset.length === 0) return "primary";
+    const lastPreset = preset[preset.length - 1];
+    if (lastPreset.endsWith("Dark")) {
+      return lastPreset.replace("Dark", "");
+    }
+    return lastPreset;
+  };
+
+  const isDark = preset && preset.length > 0 && preset.some((p) => p.endsWith("Dark"));
+  const variant = getVariantFromPreset();
 
   // Thought: potentially make onClick and onClickAsync props mutually exclusive,
   //       would be a breaking change, so probably keep as is. Sort of cool to
@@ -78,7 +103,7 @@ export const Button = <E extends ElementType = typeof defaultElement>({
     isLoading ? "marduk-button--loading" : "",
     iconOnly ? "marduk-button--icon-only" : "",
     fullWidth ? "marduk-button--full-width" : "",
-    darkMode ? "marduk-button--dark" : "",
+    isDark ? "marduk-button--dark" : "",
     className,
   ]
     .filter(Boolean)
@@ -98,6 +123,7 @@ export const Button = <E extends ElementType = typeof defaultElement>({
 
   const componentProps = {
     className: classNames,
+    ...(preset && preset.length > 0 && { "data-preset": preset.join(",") }),
     "data-variant": variant,
     "data-appearance": appearance,
     "data-size": size,

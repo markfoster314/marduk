@@ -6,11 +6,15 @@ Marduk is a lightweight React component library with zero dependencies, built fo
 
 ## Current Status
 
-- Version: 0.2.0
-- Test Coverage: 826 tests passing
-- Production-Ready Components: 3 (Box, Text, Title)
+- Version: 0.2.1 (interim release)
+- Test Coverage: 936 tests passing
+- Production-Ready Components: 6 (Box, Text, Title, Button, Svg, Link)
 - Total Components: 17
-- v0.3.0 Progress: 1/17 components complete
+- v0.3.0 Progress: 4/17 components complete (23.53%)
+
+## v0.2.1 - Interim Release (2025-11-09)
+
+Released 4 production-ready components (Title, Button, Svg, Link) with preset systems and breaking changes. v0.3.0 work continues with remaining 13 components.
 
 ## v0.3.0 - Production-Ready Primitives
 
@@ -22,20 +26,11 @@ Marduk is a lightweight React component library with zero dependencies, built fo
 
 ### Components to Upgrade (3)
 
-**Button** - Interactive action component
+**Button** - Interactive action component ✓ COMPLETE
 
-- Status: WIP → Ready
-- Tasks:
-  - Complete all variant testing (primary, secondary, success, warning, danger)
-  - Complete all appearance testing (filled, outline, text)
-  - Test all size combinations (small, medium, large)
-  - Icon placement testing (left, right, icon-only)
-  - Loading state implementation
-  - Async onClick handling
-  - Disabled state accessibility
-  - Keyboard navigation (Enter, Space)
-  - Focus management
-  - Add preset system support
+- Status: WIP → Ready (DONE)
+- Completed in PR #TBD
+- Added preset system, 79 tests, comprehensive coverage
 
 **Title** - Semantic heading component ✓ COMPLETE
 
@@ -45,32 +40,17 @@ Marduk is a lightweight React component library with zero dependencies, built fo
 
 **Svg** - Icon wrapper component
 
-- Status: WIP → Ready
-- Tasks:
-  - Size testing (xs, small, medium, large, xl, 2xl, 3xl)
-  - Rotation testing (0, 90, 180, 270)
-  - Flip testing (horizontal, vertical, both)
-  - Animation testing (spin speeds, heartpulse)
-  - Filter testing
-  - Hover color testing
-  - Responsive scaling
-  - Dark mode support
-  - Add preset system support
+- Status: WIP → Ready (DONE)
+- Completed in PR #[TBD]
+- Added preset system, 95 tests, removed darkMode prop (breaking change)
 
 ### New Components (7)
 
 **Link** - Navigation primitive
 
-- Status: New → Ready
-- Features:
-  - Internal/external link variants
-  - Icon support (left, right)
-  - Underline styles
-  - Active/visited states
-  - Keyboard navigation
-  - ARIA labels
-  - Preset system
-  - All Text component features
+- Status: New → Ready (DONE)
+- Completed in PR #[TBD]
+- 68 tests, preset system, icon support, external link security, polymorphic rendering
 
 **Badge** - Status indicators and labels
 

@@ -1,4 +1,4 @@
-import { SvgProps } from "../components/Svg/Svg";
+import { SvgProps } from "../components/Svg/Svg.types";
 
 // plans to implement later
 

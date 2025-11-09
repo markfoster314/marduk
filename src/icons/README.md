@@ -48,9 +48,9 @@ All icon components accept the same props as the Svg component:
 | `color`      | `string`                                                       | `currentColor` | Custom color          |
 | `rotate`     | `0 \| 90 \| 180 \| 270`                                        | -              | Rotation in degrees   |
 | `flip`       | `horizontal \| vertical \| both`                               | -              | Flip direction        |
+| `preset`     | `string[]`                                                     | `[]`           | Preset configurations |
 | `spin`       | `boolean`                                                      | `false`        | Enable spin animation |
 | `spinSpeed`  | `slow \| normal \| fast`                                       | `normal`       | Spin animation speed  |
-| `darkMode`   | `boolean`                                                      | `false`        | Dark mode styling     |
 | `filter`     | `string`                                                       | -              | CSS filter effects    |
 | `hoverColor` | `string`                                                       | -              | Color on hover        |
 | `responsive` | `boolean`                                                      | `false`        | Responsive scaling    |

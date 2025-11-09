@@ -28,7 +28,13 @@ export type {
 
 export { Button } from "./components/Button/Button";
 export type { ButtonProps } from "./components/Button/Button";
-export type { ButtonVariant, ButtonAppearance } from "./components/Button/Button.types";
+export {
+  defineButtonPresets,
+  getAllPresets as getAllButtonPresets,
+  resetCustomPresets as resetButtonCustomPresets,
+} from "./components/Button/presets";
+export type { ButtonPresetConfig, ButtonPresets } from "./components/Button/presets";
+export type { ButtonAppearance } from "./components/Button/Button.types";
 
 export { Text } from "./components/Text/Text";
 export type { TextProps } from "./components/Text/Text";
@@ -50,13 +56,31 @@ export type { TitlePresetConfig, TitlePresets } from "./components/Title/presets
 export type { TitleSize } from "./components/Title/Title.types";
 
 export { Svg } from "./components/Svg/Svg";
-export type { SvgProps } from "./components/Svg/Svg";
+export type { SvgProps } from "./components/Svg/Svg.types";
 export type {
   RotationAngle,
   FlipDirection,
   SpinSpeed,
   SvgAnimation,
 } from "./components/Svg/Svg.types";
+export {
+  defineSvgPresets,
+  getPreset as getSvgPreset,
+  getAllPresets as getAllSvgPresets,
+  resetCustomPresets as resetSvgCustomPresets,
+} from "./components/Svg/presets";
+export type { SvgPresetConfig, SvgPresets } from "./components/Svg/presets";
+
+export { Link } from "./components/Link/Link";
+export type { LinkProps } from "./components/Link/Link";
+export type { LinkUnderline, LinkTarget } from "./components/Link/Link.types";
+export {
+  defineLinkPresets,
+  getPreset as getLinkPreset,
+  getAllPresets as getAllLinkPresets,
+  resetCustomPresets as resetLinkCustomPresets,
+} from "./components/Link/presets";
+export type { LinkPresetConfig, LinkPresets } from "./components/Link/presets";
 
 export { Alert } from "./compositions/Alert/Alert";
 export type { AlertProps } from "./compositions/Alert/Alert";

@@ -1,56 +1,55 @@
-import { SVGAttributes, ReactNode, CSSProperties } from "react";
-import { RotationAngle, FlipDirection, SpinSpeed, SvgAnimation } from "./Svg.types";
-import { Alignment } from "@/types/components";
+import { CSSProperties } from "react";
+import { SvgProps } from "./Svg.types";
+import { getPreset } from "./presets";
 import "./Svg.css";
-
-export interface SvgProps extends SVGAttributes<SVGSVGElement> {
-  children: ReactNode;
-  size?: "xs" | "small" | "medium" | "large" | "xl" | "2xl" | "3xl" | number;
-  color?: string;
-  viewBox?: string;
-  darkMode?: boolean;
-  align?: Alignment;
-  rotate?: RotationAngle;
-  flip?: FlipDirection;
-  title?: string;
-  description?: string;
-  decorative?: boolean;
-  spin?: boolean;
-  spinSpeed?: SpinSpeed;
-  animation?: SvgAnimation;
-  strokeWidth?: number | string;
-  strokeLinecap?: "butt" | "round" | "square";
-  strokeLinejoin?: "miter" | "round" | "bevel";
-  hoverColor?: string;
-  responsive?: boolean;
-  filter?: string;
-}
 
 export const Svg = ({
   children,
-  size = "medium",
+  size,
   color,
   viewBox = "0 0 24 24",
-  darkMode = false,
+  preset = [],
   align,
   rotate,
   flip,
   title,
   description,
-  decorative = false,
-  spin = false,
+  decorative,
+  spin,
   animation,
-  spinSpeed = "normal",
+  spinSpeed,
   strokeWidth,
   strokeLinecap,
   strokeLinejoin,
   hoverColor,
-  responsive = false,
+  responsive,
   filter,
   className,
   style,
   ...props
 }: SvgProps) => {
+  // Merge presets in order
+  const mergedConfig = preset.reduce((acc, presetName) => {
+    const config = getPreset(presetName as string);
+    return config ? { ...acc, ...config } : acc;
+  }, {} as Partial<SvgProps>);
+
+  // Apply preset values with explicit props taking precedence
+  const resolvedSize = size ?? mergedConfig.size ?? "medium";
+  const resolvedColor = color ?? mergedConfig.color;
+  const resolvedAlign = align ?? mergedConfig.align;
+  const resolvedRotate = rotate ?? mergedConfig.rotate;
+  const resolvedFlip = flip ?? mergedConfig.flip;
+  const resolvedDecorative = decorative ?? mergedConfig.decorative ?? false;
+  const resolvedSpin = spin ?? mergedConfig.spin ?? false;
+  const resolvedSpinSpeed = spinSpeed ?? mergedConfig.spinSpeed ?? "normal";
+  const resolvedAnimation = animation ?? mergedConfig.animation;
+  const resolvedStrokeWidth = strokeWidth ?? mergedConfig.strokeWidth;
+  const resolvedStrokeLinecap = strokeLinecap ?? mergedConfig.strokeLinecap;
+  const resolvedStrokeLinejoin = strokeLinejoin ?? mergedConfig.strokeLinejoin;
+  const resolvedHoverColor = hoverColor ?? mergedConfig.hoverColor;
+  const resolvedResponsive = responsive ?? mergedConfig.responsive ?? false;
+  const resolvedFilter = filter ?? mergedConfig.filter;
   const sizeMap: Record<string, number> = {
     xs: 12,
     small: 16,
@@ -60,20 +59,20 @@ export const Svg = ({
     "2xl": 64,
     "3xl": 96,
   };
-  const sizeValue = typeof size === "number" ? size : sizeMap[size];
-  const isCustomSize = typeof size === "number";
+  const sizeValue = typeof resolvedSize === "number" ? resolvedSize : sizeMap[resolvedSize];
+  const isCustomSize = typeof resolvedSize === "number";
 
   const classNames = [
     "marduk-svg",
-    !isCustomSize ? `marduk-svg--size-${size}` : "",
-    responsive && isCustomSize ? "marduk-svg--responsive" : "",
-    darkMode ? "marduk-svg--dark" : "",
-    align ? `marduk-svg--align-${align}` : "",
-    rotate ? `marduk-svg--rotate-${rotate}` : "",
-    flip ? `marduk-svg--flip-${flip}` : "",
-    spin ? `marduk-svg--spin marduk-svg--spin-${spinSpeed}` : "",
-    animation ? `marduk-svg--animation-${animation}` : "",
-    hoverColor ? "marduk-svg--hoverable" : "",
+    !isCustomSize ? `marduk-svg--size-${resolvedSize}` : "",
+    resolvedResponsive && isCustomSize ? "marduk-svg--responsive" : "",
+    resolvedAlign ? `marduk-svg--align-${resolvedAlign}` : "",
+    resolvedRotate ? `marduk-svg--rotate-${resolvedRotate}` : "",
+    resolvedFlip ? `marduk-svg--flip-${resolvedFlip}` : "",
+    resolvedSpin ? `marduk-svg--spin marduk-svg--spin-${resolvedSpinSpeed}` : "",
+    resolvedAnimation ? `marduk-svg--animation-${resolvedAnimation}` : "",
+    resolvedHoverColor ? "marduk-svg--hoverable" : "",
+    ...(preset.length > 0 ? preset.map((p) => `marduk-svg--${p}`) : []),
     className,
   ]
     .filter(Boolean)
@@ -81,41 +80,41 @@ export const Svg = ({
 
   const inlineStyles = {
     ...style,
-    ...(hoverColor && { "--hover-color": hoverColor }),
+    ...(resolvedHoverColor && { "--hover-color": resolvedHoverColor }),
     ...(isCustomSize && {
       "--svg-custom-size": `${sizeValue}px`,
     }),
-    ...(filter && { filter }),
+    ...(resolvedFilter && { filter: resolvedFilter }),
   } as CSSProperties;
 
   const dataAttributes = {
-    "data-size": typeof size === "number" ? "custom" : size,
-    ...(typeof size === "number" && { "data-custom-size": size }),
-    ...(responsive && isCustomSize && { "data-responsive": true }),
-    ...(filter && { "data-filter": true }),
-    ...(darkMode && { "data-dark-mode": true }),
-    ...(align && { "data-align": align }),
-    ...(rotate && { "data-rotate": rotate }),
-    ...(flip && { "data-flip": flip }),
-    ...(spin && { "data-spin": true, "data-spin-speed": spinSpeed }),
-    ...(animation && { "data-animation": animation }),
-    ...(decorative && { "data-decorative": true }),
-    ...(color && { "data-custom-color": true }),
-    ...(hoverColor && { "data-hoverable": true }),
-    ...(strokeWidth && { "data-stroke-width": strokeWidth }),
+    "data-size": typeof resolvedSize === "number" ? "custom" : resolvedSize,
+    ...(typeof resolvedSize === "number" && { "data-custom-size": resolvedSize }),
+    ...(resolvedResponsive && isCustomSize && { "data-responsive": true }),
+    ...(resolvedFilter && { "data-filter": true }),
+    ...(preset.length > 0 && { "data-preset": preset.join(" ") }),
+    ...(resolvedAlign && { "data-align": resolvedAlign }),
+    ...(resolvedRotate && { "data-rotate": resolvedRotate }),
+    ...(resolvedFlip && { "data-flip": resolvedFlip }),
+    ...(resolvedSpin && { "data-spin": true, "data-spin-speed": resolvedSpinSpeed }),
+    ...(resolvedAnimation && { "data-animation": resolvedAnimation }),
+    ...(resolvedDecorative && { "data-decorative": true }),
+    ...(resolvedColor && { "data-custom-color": true }),
+    ...(resolvedHoverColor && { "data-hoverable": true }),
+    ...(resolvedStrokeWidth && { "data-stroke-width": resolvedStrokeWidth }),
   };
 
   return (
     <svg
       className={classNames}
       viewBox={viewBox}
-      fill={color || "currentColor"}
-      stroke={strokeWidth ? color || "currentColor" : undefined}
-      strokeWidth={strokeWidth}
-      strokeLinecap={strokeLinecap}
-      strokeLinejoin={strokeLinejoin}
+      fill={resolvedColor || "currentColor"}
+      stroke={resolvedStrokeWidth ? resolvedColor || "currentColor" : undefined}
+      strokeWidth={resolvedStrokeWidth}
+      strokeLinecap={resolvedStrokeLinecap}
+      strokeLinejoin={resolvedStrokeLinejoin}
       xmlns="http://www.w3.org/2000/svg"
-      aria-hidden={decorative ? true : undefined}
+      aria-hidden={resolvedDecorative ? true : undefined}
       style={inlineStyles}
       {...dataAttributes}
       {...props}

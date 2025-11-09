@@ -169,6 +169,34 @@ describe("Individual Icon Components", () => {
   });
 });
 
+describe("Preset System", () => {
+  it("applies preset to Icon component", () => {
+    const { container } = render(<Icon name="user" preset={["primary"]} />);
+    const svg = container.querySelector("svg");
+    expect(svg).toHaveClass("marduk-svg--primary");
+    expect(svg).toHaveAttribute("data-preset", "primary");
+  });
+
+  it("applies multiple presets to Icon component", () => {
+    const { container } = render(<Icon name="user" preset={["large", "success"]} />);
+    const svg = container.querySelector("svg");
+    expect(svg).toHaveClass("marduk-svg--large");
+    expect(svg).toHaveClass("marduk-svg--success");
+  });
+
+  it("applies preset to individual icon component", () => {
+    const { container } = render(<UserIcon preset={["danger"]} />);
+    const svg = container.querySelector("svg");
+    expect(svg).toHaveClass("marduk-svg--danger");
+  });
+
+  it("applies dark mode preset to Icon", () => {
+    const { container } = render(<Icon name="user" preset={["primaryDark"]} />);
+    const svg = container.querySelector("svg");
+    expect(svg).toHaveClass("marduk-svg--primaryDark");
+  });
+});
+
 describe("Accessibility", () => {
   it("supports title prop", () => {
     const { container } = render(<Icon name="user" title="User Profile" />);

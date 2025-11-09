@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Svg, SvgProps } from "../components/Svg/Svg";
+import { Svg } from "../components/Svg/Svg";
+import { SvgProps } from "../components/Svg/Svg.types";
 import { iconData } from "./data";
 
 export interface IconProps extends Omit<SvgProps, "children" | "viewBox"> {
