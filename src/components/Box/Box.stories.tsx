@@ -59,8 +59,21 @@ const meta: Meta<typeof Box> = {
       options: ["sm", "md", "lg", "full"],
     },
     preset: {
-      control: "select",
-      options: ["stack", "hstack", "center", "card", "darkCard", "grid2", "grid3", "spaceBetween"],
+      control: { type: "multi-select" },
+      options: [
+        "stack",
+        "hstack",
+        "center",
+        "card",
+        "darkCard",
+        "grid2",
+        "grid3",
+        "spaceBetween",
+        "sidebar",
+        "header",
+        "footer",
+      ],
+      description: "Preset configurations (select multiple)",
     },
   },
 };

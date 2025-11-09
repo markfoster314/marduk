@@ -41,7 +41,13 @@ export type { TextPresetConfig, TextPresets } from "./components/Text/presets";
 
 export { Title } from "./components/Title/Title";
 export type { TitleProps } from "./components/Title/Title";
-export type { TitleVariant, TitleSize } from "./components/Title/Title.types";
+export {
+  defineTitlePresets,
+  getAllPresets as getAllTitlePresets,
+  resetCustomPresets as resetTitleCustomPresets,
+} from "./components/Title/presets";
+export type { TitlePresetConfig, TitlePresets } from "./components/Title/presets";
+export type { TitleSize } from "./components/Title/Title.types";
 
 export { Svg } from "./components/Svg/Svg";
 export type { SvgProps } from "./components/Svg/Svg";

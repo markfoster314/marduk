@@ -10,11 +10,31 @@ const meta: Meta<typeof Title> = {
   parameters: {
     layout: "centered",
     docs: {
-      subtitle: STORYBOOK_STATUS.WIP,
+      subtitle: STORYBOOK_STATUS.READY,
     },
   },
-  tags: ["autodocs", "status:wip"],
+  tags: ["autodocs", "status:ready"],
   argTypes: {
+    preset: {
+      control: { type: "multi-select" },
+      options: [
+        "default",
+        "primary",
+        "secondary",
+        "success",
+        "danger",
+        "warning",
+        "muted",
+        "defaultDark",
+        "primaryDark",
+        "secondaryDark",
+        "successDark",
+        "dangerDark",
+        "warningDark",
+        "mutedDark",
+      ],
+      description: "Preset configurations (select multiple)",
+    },
     as: {
       control: { type: "select" },
       options: ["h1", "h2", "h3", "h4", "h5", "h6", "div", "span", "p"],
@@ -24,11 +44,6 @@ const meta: Meta<typeof Title> = {
       control: { type: "select" },
       options: [1, 2, 3, 4, 5, 6],
       description: "Heading level (h1-h6)",
-    },
-    variant: {
-      control: { type: "select" },
-      options: ["default", "primary", "secondary", "success", "warning", "danger"],
-      description: "Color variant",
     },
     align: {
       control: { type: "select" },
@@ -44,10 +59,6 @@ const meta: Meta<typeof Title> = {
       control: { type: "select" },
       options: ["normal", "medium", "semibold", "bold"],
       description: "Font weight override",
-    },
-    darkMode: {
-      control: { type: "boolean" },
-      description: "Enable dark mode styling",
     },
     color: {
       control: { type: "color" },
@@ -105,26 +116,24 @@ export const AllLevels: Story = {
   ),
 };
 
-export const Variants: Story = {
+export const Presets: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-      <Title level={2} variant="default">
-        Default variant
+      <Title level={2}>Default preset</Title>
+      <Title level={2} preset={["primary"]}>
+        Primary preset
       </Title>
-      <Title level={2} variant="primary">
-        Primary variant
+      <Title level={2} preset={["secondary"]}>
+        Secondary preset
       </Title>
-      <Title level={2} variant="secondary">
-        Secondary variant
+      <Title level={2} preset={["success"]}>
+        Success preset
       </Title>
-      <Title level={2} variant="success">
-        Success variant
+      <Title level={2} preset={["warning"]}>
+        Warning preset
       </Title>
-      <Title level={2} variant="warning">
-        Warning variant
-      </Title>
-      <Title level={2} variant="danger">
-        Danger variant
+      <Title level={2} preset={["danger"]}>
+        Danger preset
       </Title>
     </div>
   ),
@@ -234,13 +243,13 @@ export const DarkMode: Story = {
         gap: "16px",
       }}
     >
-      <Title level={2} darkMode variant="primary">
+      <Title level={2} preset={["primaryDark"]}>
         Primary title in dark mode
       </Title>
-      <Title level={2} darkMode variant="success">
+      <Title level={2} preset={["successDark"]}>
         Success title in dark mode
       </Title>
-      <Title level={2} darkMode variant="danger">
+      <Title level={2} preset={["dangerDark"]}>
         Danger title in dark mode
       </Title>
     </div>
@@ -293,7 +302,7 @@ export const CustomStyling: Story = {
           } as React.CSSProperties
         }
         underlined
-        variant="primary"
+        preset={["primary"]}
       >
         Custom underline via CSS variables
       </Title>

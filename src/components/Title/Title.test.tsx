@@ -1,6 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Title } from "./Title";
+import {
+  defineTitlePresets,
+  getPreset,
+  getAllPresets,
+  resetCustomPresets,
+  builtInPresets,
+} from "./presets";
 
 describe("Title", () => {
   describe("Rendering", () => {
@@ -54,34 +61,31 @@ describe("Title", () => {
   });
 
   describe("Variants", () => {
-    it("applies default variant by default", () => {
+    it("renders without preset by default", () => {
       render(<Title>Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-default");
+      const element = screen.getByText("Test");
+      expect(element).toBeInTheDocument();
+      expect(element.getAttribute("data-preset")).toBeNull();
     });
 
-    it("applies primary variant class", () => {
-      render(<Title variant="primary">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-primary");
+    it("applies primary preset color", () => {
+      render(<Title preset={["primary"]}>Test</Title>);
+      const element = screen.getByText("Test");
+      expect(element).toBeInTheDocument();
+      expect(element.getAttribute("data-preset")).toBe("primary");
     });
 
-    it("applies secondary variant class", () => {
-      render(<Title variant="secondary">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-secondary");
+    it("applies secondary preset color", () => {
+      render(<Title preset={["secondary"]}>Test</Title>);
+      const element = screen.getByText("Test");
+      expect(element).toBeInTheDocument();
+      expect(element.getAttribute("data-preset")).toBe("secondary");
     });
 
-    it("applies success variant class", () => {
-      render(<Title variant="success">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-success");
-    });
-
-    it("applies warning variant class", () => {
-      render(<Title variant="warning">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-warning");
-    });
-
-    it("applies danger variant class", () => {
-      render(<Title variant="danger">Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-danger");
+    it("applies multiple presets", () => {
+      render(<Title preset={["primary", "muted"]}>Test</Title>);
+      const element = screen.getByText("Test");
+      expect(element.getAttribute("data-preset")).toBe("primary,muted");
     });
   });
 
@@ -195,9 +199,9 @@ describe("Title", () => {
     });
 
     it("applies marduk-title class for high contrast targeting", () => {
-      render(<Title variant="primary">Test</Title>);
+      render(<Title preset={["primary"]}>Test</Title>);
       expect(screen.getByText("Test")).toHaveClass("marduk-title");
-      expect(screen.getByText("Test")).toHaveClass("marduk-title--variant-primary");
+      expect(screen.getByText("Test")).toHaveAttribute("data-preset", "primary");
     });
 
     it("renders with href for link testing", () => {
@@ -222,41 +226,23 @@ describe("Title", () => {
     });
   });
 
-  describe("Dark Mode", () => {
-    it("does not apply dark mode class by default", () => {
-      render(<Title>Test</Title>);
+  describe("Dark Mode Presets", () => {
+    it("applies primaryDark preset", () => {
+      render(<Title preset={["primaryDark"]}>Test</Title>);
       const element = screen.getByText("Test");
-      expect(element).not.toHaveClass("marduk-title--dark");
+      expect(element).toHaveAttribute("data-preset", "primaryDark");
     });
 
-    it("applies dark mode class when darkMode is true", () => {
-      render(<Title darkMode>Test</Title>);
-      expect(screen.getByText("Test")).toHaveClass("marduk-title--dark");
+    it("applies successDark preset", () => {
+      render(<Title preset={["successDark"]}>Test</Title>);
+      const element = screen.getByText("Test");
+      expect(element).toHaveAttribute("data-preset", "successDark");
     });
 
-    it("does not apply dark mode class when darkMode is false", () => {
-      render(<Title darkMode={false}>Test</Title>);
-      expect(screen.getByText("Test")).not.toHaveClass("marduk-title--dark");
-    });
-
-    it("works with all variants in dark mode", () => {
-      const { rerender } = render(
-        <Title darkMode variant="primary">
-          Test
-        </Title>,
-      );
-      let element = screen.getByText("Test");
-      expect(element).toHaveClass("marduk-title--dark");
-      expect(element).toHaveClass("marduk-title--variant-primary");
-
-      rerender(
-        <Title darkMode variant="success">
-          Test
-        </Title>,
-      );
-      element = screen.getByText("Test");
-      expect(element).toHaveClass("marduk-title--dark");
-      expect(element).toHaveClass("marduk-title--variant-success");
+    it("applies dangerDark preset", () => {
+      render(<Title preset={["dangerDark"]}>Test</Title>);
+      const element = screen.getByText("Test");
+      expect(element).toHaveAttribute("data-preset", "dangerDark");
     });
   });
 
@@ -298,14 +284,14 @@ describe("Title", () => {
       });
     });
 
-    it("applies custom color class alongside variant class", () => {
+    it("applies custom color with preset", () => {
       render(
-        <Title variant="primary" color="#00ff00">
+        <Title preset={["primary"]} color="#00ff00">
           Test
         </Title>,
       );
       const title = screen.getByText("Test");
-      expect(title).toHaveClass("marduk-title--variant-primary");
+      expect(title).toHaveAttribute("data-preset", "primary");
       expect(title).toHaveClass("marduk-title--custom-color");
       expect(title).toHaveStyle({ "--marduk-title-custom-color": "#00ff00" });
     });
@@ -352,28 +338,27 @@ describe("Title", () => {
   describe("Combined Props", () => {
     it("applies multiple prop classes together", () => {
       render(
-        <Title level={3} variant="primary" align="center" size="large" weight="bold">
+        <Title level={3} preset={["primary"]} align="center" size="large" weight="bold">
           Combined
         </Title>,
       );
       const element = screen.getByText("Combined");
       expect(element).toHaveClass("marduk-title--level-3");
-      expect(element).toHaveClass("marduk-title--variant-primary");
+      expect(element).toHaveAttribute("data-preset", "primary");
       expect(element).toHaveClass("marduk-title--align-center");
       expect(element).toHaveClass("marduk-title--size-large");
       expect(element).toHaveClass("marduk-title--weight-bold");
     });
 
-    it("applies dark mode with other props", () => {
+    it("applies dark preset with other props", () => {
       render(
-        <Title level={2} variant="primary" darkMode>
+        <Title level={2} preset={["primaryDark"]}>
           Dark Title
         </Title>,
       );
       const element = screen.getByText("Dark Title");
       expect(element).toHaveClass("marduk-title--level-2");
-      expect(element).toHaveClass("marduk-title--variant-primary");
-      expect(element).toHaveClass("marduk-title--dark");
+      expect(element).toHaveAttribute("data-preset", "primaryDark");
     });
   });
 
@@ -383,9 +368,9 @@ describe("Title", () => {
       expect(screen.getByText("Test")).toHaveAttribute("data-level", "3");
     });
 
-    it("applies data-variant attribute", () => {
-      render(<Title variant="primary">Test</Title>);
-      expect(screen.getByText("Test")).toHaveAttribute("data-variant", "primary");
+    it("applies data-preset attribute", () => {
+      render(<Title preset={["primary"]}>Test</Title>);
+      expect(screen.getByText("Test")).toHaveAttribute("data-preset", "primary");
     });
 
     it("applies data-align attribute", () => {
@@ -413,14 +398,9 @@ describe("Title", () => {
       expect(screen.getByText("Test")).not.toHaveAttribute("data-weight");
     });
 
-    it("applies data-dark-mode when darkMode is true", () => {
-      render(<Title darkMode>Test</Title>);
-      expect(screen.getByText("Test")).toHaveAttribute("data-dark-mode", "true");
-    });
-
-    it("does not apply data-dark-mode when darkMode is false", () => {
-      render(<Title darkMode={false}>Test</Title>);
-      expect(screen.getByText("Test")).not.toHaveAttribute("data-dark-mode");
+    it("does not apply data-preset when no preset is provided", () => {
+      render(<Title>Test</Title>);
+      expect(screen.getByText("Test")).not.toHaveAttribute("data-preset");
     });
 
     it("applies data-custom-color when color prop is provided", () => {
@@ -437,11 +417,10 @@ describe("Title", () => {
       render(
         <Title
           level={2}
-          variant="success"
+          preset={["success"]}
           align="right"
           size="small"
           weight="semibold"
-          darkMode
           color="#00ff00"
         >
           Full Test
@@ -449,11 +428,10 @@ describe("Title", () => {
       );
       const element = screen.getByText("Full Test");
       expect(element).toHaveAttribute("data-level", "2");
-      expect(element).toHaveAttribute("data-variant", "success");
+      expect(element).toHaveAttribute("data-preset", "success");
       expect(element).toHaveAttribute("data-align", "right");
       expect(element).toHaveAttribute("data-size", "small");
       expect(element).toHaveAttribute("data-weight", "semibold");
-      expect(element).toHaveAttribute("data-dark-mode", "true");
       expect(element).toHaveAttribute("data-custom-color", "true");
     });
 
@@ -461,7 +439,6 @@ describe("Title", () => {
       render(<Title>Default</Title>);
       const element = screen.getByText("Default");
       expect(element).toHaveAttribute("data-level", "1");
-      expect(element).toHaveAttribute("data-variant", "default");
       expect(element).toHaveAttribute("data-align", "left");
     });
   });
@@ -529,14 +506,14 @@ describe("Title", () => {
 
     it("applies all styling classes when using as prop", () => {
       render(
-        <Title as="div" level={2} variant="primary" align="center" size="large">
+        <Title as="div" level={2} preset={["primary"]} align="center" size="large">
           Styled Div
         </Title>,
       );
       const element = screen.getByText("Styled Div");
       expect(element).toHaveClass("marduk-title");
       expect(element).toHaveClass("marduk-title--level-2");
-      expect(element).toHaveClass("marduk-title--variant-primary");
+      expect(element).toHaveAttribute("data-preset", "primary");
       expect(element).toHaveClass("marduk-title--align-center");
       expect(element).toHaveClass("marduk-title--size-large");
     });
@@ -562,15 +539,14 @@ describe("Title", () => {
       expect(element).toHaveAttribute("id", "test-id");
     });
 
-    it("works with dark mode when using as prop", () => {
+    it("works with dark preset when using as prop", () => {
       render(
-        <Title as="span" darkMode>
+        <Title as="span" preset={["primaryDark"]}>
           Dark Span
         </Title>,
       );
       const element = screen.getByText("Dark Span");
-      expect(element).toHaveClass("marduk-title--dark");
-      expect(element).toHaveAttribute("data-dark-mode", "true");
+      expect(element).toHaveAttribute("data-preset", "primaryDark");
     });
 
     it("works with custom color when using as prop", () => {
@@ -719,15 +695,15 @@ describe("Title", () => {
       expect(screen.getByText("Normal")).not.toHaveAttribute("data-max-lines");
     });
 
-    it("works with all variants when truncated", () => {
+    it("works with presets when truncated", () => {
       render(
-        <Title truncate variant="primary">
+        <Title truncate preset={["primary"]}>
           Truncated Primary
         </Title>,
       );
       const element = screen.getByText("Truncated Primary");
       expect(element).toHaveClass("marduk-title--truncate");
-      expect(element).toHaveClass("marduk-title--variant-primary");
+      expect(element).toHaveAttribute("data-preset", "primary");
     });
 
     it("works with all levels when clamped", () => {
@@ -753,15 +729,15 @@ describe("Title", () => {
       expect(element).toHaveClass("marduk-title--truncate");
     });
 
-    it("works with dark mode", () => {
+    it("works with dark preset", () => {
       render(
-        <Title clamp maxLines={2} darkMode>
+        <Title clamp maxLines={2} preset={["primaryDark"]}>
           Dark Clamped
         </Title>,
       );
       const element = screen.getByText("Dark Clamped");
       expect(element).toHaveClass("marduk-title--clamp");
-      expect(element).toHaveClass("marduk-title--dark");
+      expect(element).toHaveAttribute("data-preset", "primaryDark");
     });
   });
 
@@ -797,15 +773,15 @@ describe("Title", () => {
       expect(screen.getByText("Test")).not.toHaveAttribute("data-spacing");
     });
 
-    it("works with all variants", () => {
+    it("works with presets", () => {
       render(
-        <Title spacing="wide" variant="primary">
+        <Title spacing="wide" preset={["primary"]}>
           Wide Primary
         </Title>,
       );
       const element = screen.getByText("Wide Primary");
       expect(element).toHaveClass("marduk-title--spacing-wide");
-      expect(element).toHaveClass("marduk-title--variant-primary");
+      expect(element).toHaveAttribute("data-preset", "primary");
     });
 
     it("works with polymorphic rendering", () => {
@@ -909,16 +885,16 @@ describe("Title", () => {
       expect(element).not.toHaveClass("marduk-title--underline-wavy");
     });
 
-    it("works with all variants", () => {
+    it("works with presets", () => {
       render(
-        <Title underlined underlineStyle="wavy" variant="primary">
+        <Title underlined underlineStyle="wavy" preset={["primary"]}>
           Underlined Primary
         </Title>,
       );
       const element = screen.getByText("Underlined Primary");
       expect(element).toHaveClass("marduk-title--underlined");
       expect(element).toHaveClass("marduk-title--underline-wavy");
-      expect(element).toHaveClass("marduk-title--variant-primary");
+      expect(element).toHaveAttribute("data-preset", "primary");
     });
 
     it("works with custom colors", () => {
@@ -974,7 +950,7 @@ describe("Title", () => {
       render(
         <Title
           level={2}
-          variant="primary"
+          preset={["primary"]}
           spacing="wide"
           underlined
           underlineStyle="wavy"
@@ -986,12 +962,80 @@ describe("Title", () => {
       );
       const element = screen.getByText("All Features");
       expect(element).toHaveClass("marduk-title--level-2");
-      expect(element).toHaveClass("marduk-title--variant-primary");
+      expect(element).toHaveAttribute("data-preset", "primary");
       expect(element).toHaveClass("marduk-title--spacing-wide");
       expect(element).toHaveClass("marduk-title--underlined");
       expect(element).toHaveClass("marduk-title--underline-wavy");
       expect(element).toHaveClass("marduk-title--weight-bold");
       expect(element).toHaveClass("marduk-title--size-large");
+    });
+  });
+
+  describe("Preset System", () => {
+    beforeEach(() => {
+      resetCustomPresets();
+    });
+
+    it("has built-in presets", () => {
+      expect(builtInPresets.primary).toBeDefined();
+      expect(builtInPresets.secondary).toBeDefined();
+      expect(builtInPresets.success).toBeDefined();
+    });
+
+    it("getPreset returns built-in preset", () => {
+      const preset = getPreset("primary");
+      expect(preset).toBeDefined();
+      expect(preset?.style?.color).toBe("var(--marduk-color-primary-500)");
+    });
+
+    it("getPreset returns undefined for non-existent preset", () => {
+      const preset = getPreset("nonexistent");
+      expect(preset).toBeUndefined();
+    });
+
+    it("defineTitlePresets adds custom preset", () => {
+      defineTitlePresets({
+        custom: { size: "large", weight: "bold" },
+      });
+      const preset = getPreset("custom");
+      expect(preset).toEqual({ size: "large", weight: "bold" });
+    });
+
+    it("getAllPresets returns all presets", () => {
+      defineTitlePresets({
+        custom: { size: "large" },
+      });
+      const allPresets = getAllPresets();
+      expect(allPresets.primary).toBeDefined();
+      expect(allPresets.custom).toBeDefined();
+    });
+
+    it("resetCustomPresets clears custom presets", () => {
+      defineTitlePresets({
+        custom: { size: "large" },
+      });
+      expect(getPreset("custom")).toBeDefined();
+      resetCustomPresets();
+      expect(getPreset("custom")).toBeUndefined();
+    });
+
+    it("custom preset overrides built-in with same name", () => {
+      defineTitlePresets({
+        primary: { size: "large" },
+      });
+      const preset = getPreset("primary");
+      expect(preset).toEqual({ size: "large" });
+    });
+
+    it("applies custom preset in component", () => {
+      defineTitlePresets({
+        hero: { size: "large", weight: "bold", align: "center" },
+      });
+      render(<Title preset={["hero"]}>Hero Title</Title>);
+      const element = screen.getByText("Hero Title");
+      expect(element).toHaveClass("marduk-title--size-large");
+      expect(element).toHaveClass("marduk-title--weight-bold");
+      expect(element).toHaveClass("marduk-title--align-center");
     });
   });
 });

@@ -88,21 +88,22 @@ export const Alert = ({
     return darkMode ? `${basePreset}Dark` : basePreset;
   };
 
-  // This is temporary for when we migrate to the new title component
-  const getTitleVariant = () => {
-    if (darkMode) {
-      return "secondary";
-    }
+  const getTitlePreset = () => {
+    let basePreset = "";
     switch (variant) {
       case "success":
-        return "success";
+        basePreset = "success";
+        break;
       case "warning":
-        return "warning";
+        basePreset = "warning";
+        break;
       case "error":
-        return "danger";
+        basePreset = "danger";
+        break;
       default:
-        return "primary";
+        basePreset = "primary";
     }
+    return darkMode ? `${basePreset}Dark` : basePreset;
   };
 
   const getButtonVariant = () => {
@@ -132,12 +133,7 @@ export const Alert = ({
       <div className="marduk-alert-icon">{icons[variant]}</div>
       <div className="marduk-alert-content">
         {title && (
-          <Title
-            level={6}
-            darkMode={darkMode}
-            variant={getTitleVariant()}
-            className="marduk-alert-title"
-          >
+          <Title level={6} preset={[getTitlePreset()]} className="marduk-alert-title">
             {title}
           </Title>
         )}

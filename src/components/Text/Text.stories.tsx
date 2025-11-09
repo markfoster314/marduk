@@ -15,7 +15,7 @@ const meta: Meta<typeof Text> = {
   tags: ["autodocs", "status:ready"],
   argTypes: {
     preset: {
-      control: { type: "select" },
+      control: { type: "multi-select" },
       options: [
         "default",
         "primary",
@@ -32,7 +32,7 @@ const meta: Meta<typeof Text> = {
         "warningDark",
         "mutedDark",
       ],
-      description: "Text preset (replaces variant + darkMode)",
+      description: "Preset configurations (select multiple)",
     },
     size: {
       control: { type: "select" },

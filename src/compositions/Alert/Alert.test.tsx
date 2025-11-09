@@ -238,4 +238,86 @@ describe("Alert", () => {
       expect(screen.getByLabelText("Close alert")).toBeInTheDocument();
     });
   });
+
+  describe("Title Presets", () => {
+    it("uses primary preset for info variant", () => {
+      render(
+        <Alert variant="info" title="Info Title">
+          Message
+        </Alert>,
+      );
+      const title = screen.getByText("Info Title");
+      expect(title).toHaveAttribute("data-preset", "primary");
+    });
+
+    it("uses success preset for success variant", () => {
+      render(
+        <Alert variant="success" title="Success Title">
+          Message
+        </Alert>,
+      );
+      const title = screen.getByText("Success Title");
+      expect(title).toHaveAttribute("data-preset", "success");
+    });
+
+    it("uses warning preset for warning variant", () => {
+      render(
+        <Alert variant="warning" title="Warning Title">
+          Message
+        </Alert>,
+      );
+      const title = screen.getByText("Warning Title");
+      expect(title).toHaveAttribute("data-preset", "warning");
+    });
+
+    it("uses danger preset for error variant", () => {
+      render(
+        <Alert variant="error" title="Error Title">
+          Message
+        </Alert>,
+      );
+      const title = screen.getByText("Error Title");
+      expect(title).toHaveAttribute("data-preset", "danger");
+    });
+
+    it("uses dark presets when darkMode is true", () => {
+      render(
+        <Alert variant="info" title="Dark Title" darkMode>
+          Message
+        </Alert>,
+      );
+      const title = screen.getByText("Dark Title");
+      expect(title).toHaveAttribute("data-preset", "primaryDark");
+    });
+
+    it("uses dark success preset", () => {
+      render(
+        <Alert variant="success" title="Dark Success" darkMode>
+          Message
+        </Alert>,
+      );
+      const title = screen.getByText("Dark Success");
+      expect(title).toHaveAttribute("data-preset", "successDark");
+    });
+
+    it("uses dark warning preset", () => {
+      render(
+        <Alert variant="warning" title="Dark Warning" darkMode>
+          Message
+        </Alert>,
+      );
+      const title = screen.getByText("Dark Warning");
+      expect(title).toHaveAttribute("data-preset", "warningDark");
+    });
+
+    it("uses dark danger preset for error variant", () => {
+      render(
+        <Alert variant="error" title="Dark Error" darkMode>
+          Message
+        </Alert>,
+      );
+      const title = screen.getByText("Dark Error");
+      expect(title).toHaveAttribute("data-preset", "dangerDark");
+    });
+  });
 });
