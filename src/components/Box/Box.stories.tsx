@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box } from "./Box";
-import { Text } from "../Text/Text";
-// import React from "react";
+import { Text } from "@/index";
 import type { CSSProperties } from "react";
 import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 

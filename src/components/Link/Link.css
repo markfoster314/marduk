@@ -94,49 +94,49 @@
   --link-font-size: var(--marduk-text-size-xl);
 }
 
-/* Tablet breakpoint (768px+) */
+/* Tablet breakpoint (768px+) - 15% increase */
 @media (min-width: 768px) {
   .marduk-link--size-xs {
-    --link-font-size: var(--marduk-text-size-sm);
+    --link-font-size: calc(var(--marduk-text-size-xs) * var(--marduk-scale-tablet));
   }
 
   .marduk-link--size-sm {
-    --link-font-size: var(--marduk-text-size-md);
+    --link-font-size: calc(var(--marduk-text-size-sm) * var(--marduk-scale-tablet));
   }
 
   .marduk-link--size-md {
-    --link-font-size: var(--marduk-text-size-lg);
+    --link-font-size: calc(var(--marduk-text-size-md) * var(--marduk-scale-tablet));
   }
 
   .marduk-link--size-lg {
-    --link-font-size: var(--marduk-text-size-xl);
+    --link-font-size: calc(var(--marduk-text-size-lg) * var(--marduk-scale-tablet));
   }
 
   .marduk-link--size-xl {
-    --link-font-size: var(--marduk-text-size-2xl);
+    --link-font-size: calc(var(--marduk-text-size-xl) * var(--marduk-scale-tablet));
   }
 }
 
-/* Desktop breakpoint (1024px+) */
+/* Desktop breakpoint (1024px+) - 30% increase */
 @media (min-width: 1024px) {
   .marduk-link--size-xs {
-    --link-font-size: var(--marduk-text-size-sm);
+    --link-font-size: calc(var(--marduk-text-size-xs) * var(--marduk-scale-desktop));
   }
 
   .marduk-link--size-sm {
-    --link-font-size: var(--marduk-text-size-md);
+    --link-font-size: calc(var(--marduk-text-size-sm) * var(--marduk-scale-desktop));
   }
 
   .marduk-link--size-md {
-    --link-font-size: var(--marduk-text-size-lg);
+    --link-font-size: calc(var(--marduk-text-size-md) * var(--marduk-scale-desktop));
   }
 
   .marduk-link--size-lg {
-    --link-font-size: var(--marduk-text-size-xl);
+    --link-font-size: calc(var(--marduk-text-size-lg) * var(--marduk-scale-desktop));
   }
 
   .marduk-link--size-xl {
-    --link-font-size: var(--marduk-text-size-3xl);
+    --link-font-size: calc(var(--marduk-text-size-xl) * var(--marduk-scale-desktop));
   }
 }
 

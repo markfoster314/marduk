@@ -169,4 +169,9 @@
   --marduk-breakpoint-md: 768px;
   --marduk-breakpoint-lg: 1024px;
   --marduk-breakpoint-xl: 1280px;
+
+  /* Responsive scaling multipliers */
+  --marduk-scale-mobile: 1;
+  --marduk-scale-tablet: 1.15;
+  --marduk-scale-desktop: 1.3;
 }
