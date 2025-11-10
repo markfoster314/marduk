@@ -7,10 +7,10 @@ Marduk is a lightweight React component library with zero dependencies, built fo
 ## Current Status
 
 - Version: 0.2.1 (interim release)
-- Test Coverage: 936 tests passing
-- Production-Ready Components: 6 (Box, Text, Title, Button, Svg, Link)
+- Test Coverage: 996 tests passing
+- Production-Ready Components: 7 (Box, Text, Title, Button, Svg, Link, Badge)
 - Total Components: 17
-- v0.3.0 Progress: 4/17 components complete (23.53%)
+- v0.3.0 Progress: 5/17 components complete (29.41%)
 
 ## v0.2.1 - Interim Release (2025-11-09)
 
@@ -52,16 +52,11 @@ Released 4 production-ready components (Title, Button, Svg, Link) with preset sy
 - Completed in PR #[TBD]
 - 68 tests, preset system, icon support, external link security, polymorphic rendering
 
-**Badge** - Status indicators and labels
+**Badge** - Status indicators and labels ✓ COMPLETE
 
-- Status: New → Ready
-- Features:
-  - Variants (primary, secondary, success, warning, danger, info)
-  - Sizes (small, medium, large)
-  - Dot indicator option
-  - Number/count display
-  - Positioning (standalone, overlay on other components)
-  - Preset system
+- Status: New → Ready (DONE)
+- Completed in PR #[TBD]
+- 56 tests, preset system, count display with 99+ formatting, dot indicators, overlay positioning
 
 **Spinner** - Loading indicator
 

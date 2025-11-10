@@ -82,6 +82,17 @@ export {
 } from "./components/Link/presets";
 export type { LinkPresetConfig, LinkPresets } from "./components/Link/presets";
 
+export { Badge } from "./components/Badge/Badge";
+export type { BadgeProps } from "./components/Badge/Badge";
+export type { BadgeSize, BadgePosition } from "./components/Badge/Badge.types";
+export {
+  defineBadgePresets,
+  getPreset as getBadgePreset,
+  getAllPresets as getAllBadgePresets,
+  resetCustomPresets as resetBadgeCustomPresets,
+} from "./components/Badge/presets";
+export type { BadgePresetConfig, BadgePresets } from "./components/Badge/presets";
+
 export { Alert } from "./compositions/Alert/Alert";
 export type { AlertProps } from "./compositions/Alert/Alert";
 export type { AlertVariant, AlertAnimation } from "./compositions/Alert/Alert.types";
