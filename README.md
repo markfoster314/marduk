@@ -61,9 +61,9 @@ Stop rebuilding the same components and patterns on every project.
 
 **Current status:**
 
-- **Core primitives:** 6 production-ready (Text, Box, Title, Button, Svg, Link)
+- **Core primitives:** 7 production-ready (Text, Box, Title, Button, Svg, Link, Badge)
 - **Library status:** Beta - actively expanding
-- **Test coverage:** 936 tests passing
+- **Test coverage:** 996 tests passing
 - **Docs:** [Live Storybook](https://markfoster314.github.io/marduk/)
 - **Contributions:** Welcome and encouraged!
 
@@ -204,7 +204,7 @@ Props always override preset values:
 
 ## Production Ready Features
 
-**Primitives:** [Text](src/components/Text) | [Box](src/components/Box) | [Title](src/components/Title) | [Button](src/components/Button) | [Svg](src/components/Svg) | [Link](src/components/Link)
+**Primitives:** [Text](src/components/Text) | [Box](src/components/Box) | [Title](src/components/Title) | [Button](src/components/Button) | [Svg](src/components/Svg) | [Link](src/components/Link) | [Badge](src/components/Badge)
 
 ## In Progress Features
 

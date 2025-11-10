@@ -1,0 +1,154 @@
+.marduk-badge {
+  --badge-bg: var(--marduk-color-primary-500);
+  --badge-color: var(--marduk-color-white);
+  --badge-border-color: transparent;
+  --badge-border-width: 0;
+  --badge-border-radius: var(--marduk-radius-full);
+  --badge-padding-x: var(--marduk-spacing-4);
+  --badge-padding-y: var(--marduk-spacing-1);
+  --badge-font-size: var(--marduk-text-size-xs);
+  --badge-font-weight: var(--marduk-font-weight-semibold);
+  --badge-font-family: var(--marduk-font-family-base);
+  --badge-line-height: 1;
+  --badge-min-width: 20px;
+  --badge-dot-size: 8px;
+
+  --badge-overlay-top: 0;
+  --badge-overlay-right: 0;
+  --badge-overlay-transform-x: 50%;
+  --badge-overlay-transform-y: -50%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--badge-padding-y) var(--badge-padding-x);
+  font-family: var(--badge-font-family);
+  font-size: var(--badge-font-size);
+  font-weight: var(--badge-font-weight);
+  line-height: var(--badge-line-height);
+  color: var(--badge-color);
+  background-color: var(--badge-bg);
+  border: var(--badge-border-width) solid var(--badge-border-color);
+  border-radius: var(--badge-border-radius);
+  min-width: var(--badge-min-width);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  transition: all var(--marduk-transition-fast);
+}
+
+/* Size Variants - Mobile first */
+.marduk-badge--size-small {
+  --badge-padding-x: var(--marduk-spacing-4);
+  --badge-padding-y: var(--marduk-spacing-2);
+  --badge-font-size: 0.625rem;
+  --badge-min-width: 16px;
+  --badge-dot-size: 6px;
+}
+
+.marduk-badge--size-medium {
+  --badge-padding-x: var(--marduk-spacing-5);
+  --badge-padding-y: var(--marduk-spacing-2);
+  --badge-font-size: 0.75rem;
+  --badge-min-width: 20px;
+  --badge-dot-size: 8px;
+}
+
+.marduk-badge--size-large {
+  --badge-padding-x: var(--marduk-spacing-6);
+  --badge-padding-y: var(--marduk-spacing-3);
+  --badge-font-size: 0.875rem;
+  --badge-min-width: 24px;
+  --badge-dot-size: 10px;
+}
+
+/* Tablet breakpoint (768px+) - 15% increase */
+@media (min-width: 768px) {
+  .marduk-badge--size-small {
+    --badge-padding-x: calc(var(--marduk-spacing-4) * var(--marduk-scale-tablet));
+    --badge-padding-y: calc(var(--marduk-spacing-2) * var(--marduk-scale-tablet));
+    --badge-font-size: calc(0.625rem * var(--marduk-scale-tablet));
+    --badge-dot-size: calc(6px * var(--marduk-scale-tablet));
+  }
+
+  .marduk-badge--size-medium {
+    --badge-padding-x: calc(var(--marduk-spacing-5) * var(--marduk-scale-tablet));
+    --badge-padding-y: calc(var(--marduk-spacing-2) * var(--marduk-scale-tablet));
+    --badge-font-size: calc(0.75rem * var(--marduk-scale-tablet));
+    --badge-dot-size: calc(8px * var(--marduk-scale-tablet));
+  }
+
+  .marduk-badge--size-large {
+    --badge-padding-x: calc(var(--marduk-spacing-6) * var(--marduk-scale-tablet));
+    --badge-padding-y: calc(var(--marduk-spacing-3) * var(--marduk-scale-tablet));
+    --badge-font-size: calc(0.875rem * var(--marduk-scale-tablet));
+    --badge-dot-size: calc(10px * var(--marduk-scale-tablet));
+  }
+}
+
+/* Desktop breakpoint (1024px+) - 30% increase */
+@media (min-width: 1024px) {
+  .marduk-badge--size-small {
+    --badge-padding-x: calc(var(--marduk-spacing-4) * var(--marduk-scale-desktop));
+    --badge-padding-y: calc(var(--marduk-spacing-2) * var(--marduk-scale-desktop));
+    --badge-font-size: calc(0.625rem * var(--marduk-scale-desktop));
+    --badge-dot-size: calc(6px * var(--marduk-scale-desktop));
+  }
+
+  .marduk-badge--size-medium {
+    --badge-padding-x: calc(var(--marduk-spacing-5) * var(--marduk-scale-desktop));
+    --badge-padding-y: calc(var(--marduk-spacing-2) * var(--marduk-scale-desktop));
+    --badge-font-size: calc(0.75rem * var(--marduk-scale-desktop));
+    --badge-dot-size: calc(8px * var(--marduk-scale-desktop));
+  }
+
+  .marduk-badge--size-large {
+    --badge-padding-x: calc(var(--marduk-spacing-6) * var(--marduk-scale-desktop));
+    --badge-padding-y: calc(var(--marduk-spacing-3) * var(--marduk-scale-desktop));
+    --badge-font-size: calc(0.875rem * var(--marduk-scale-desktop));
+    --badge-dot-size: calc(10px * var(--marduk-scale-desktop));
+  }
+}
+
+/* Position Variants */
+.marduk-badge--position-standalone {
+  position: relative;
+}
+
+.marduk-badge--position-overlay {
+  position: absolute;
+  top: var(--badge-overlay-top);
+  right: var(--badge-overlay-right);
+  transform: translate(var(--badge-overlay-transform-x), var(--badge-overlay-transform-y));
+  z-index: 1;
+}
+
+/* Dot Indicator */
+.marduk-badge--dot {
+  --badge-padding-x: 0;
+  --badge-padding-y: 0;
+  --badge-min-width: var(--badge-dot-size);
+
+  width: var(--badge-dot-size);
+  height: var(--badge-dot-size);
+  border-radius: var(--marduk-radius-circle);
+}
+
+/* Count Badge */
+.marduk-badge--count {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .marduk-badge {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .marduk-badge {
+    --badge-border-width: 2px;
+    --badge-border-color: currentColor;
+  }
+}
