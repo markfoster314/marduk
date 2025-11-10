@@ -297,6 +297,34 @@ Override these to customize responsive behavior across all components:
 
 **Note:** Title component uses semantic heading scales and does not use these multipliers.
 
+### Dark Mode
+
+Marduk handles dark mode through **explicit preset selection**, not automatic system preference detection:
+
+```
+// Light mode app - use light presets
+<Text preset={["primary"]}>Primary text</Text>
+<Button preset={["success"]} appearance="filled">Success button</Button>
+<Link preset={["danger"]}>Danger link</Link>
+
+
+// Dark mode app - use dark presets
+<Text preset={["primaryDark"]}>Primary text</Text>
+<Button preset={["successDark"]} appearance="filled">Success button</Button>
+<Link preset={["dangerDark"]}>Danger link</Link>**Philosophy:**
+```
+
+Build your application for **one consistent theme** (light or dark), not both simultaneously. This approach gives you:
+
+- **Full control**: Explicitly choose which components use which theme
+- **Predictable behavior**: No automatic switching based on system preferences
+- **Simpler implementation**: No need for theme providers or context
+- **Better performance**: No runtime theme calculations
+
+All production components include dark mode presets (`primaryDark`, `successDark`, etc.) that work with dark backgrounds. Choose your theme at the application level and use the appropriate presets consistently throughout.
+
+**Note:** The library does not use `@media (prefers-color-scheme: dark)` for automatic theme switching. If you need automatic theme switching based on user preference, implement it at the application level and conditionally pass the appropriate presets.
+
 ## TypeScript
 
 Fully typed with exported types for everything:
