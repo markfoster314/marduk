@@ -114,6 +114,75 @@ describe("Link", () => {
       const link = screen.getByText("Test").closest("a");
       expect(link).toHaveClass("marduk-link--size-xl");
     });
+
+    it("merges style objects from multiple presets (deep merge)", () => {
+      defineLinkPresets({
+        stylePreset1: {
+          style: { textTransform: "uppercase", letterSpacing: "0.05em" },
+        },
+        stylePreset2: {
+          style: { color: "rgb(255, 0, 0)", fontWeight: "700" },
+        },
+      });
+      render(
+        <Link href="/" preset={["stylePreset1", "stylePreset2"]}>
+          Test
+        </Link>,
+      );
+      const link = screen.getByText("Test").closest("a");
+      expect(link).toHaveStyle({ textTransform: "uppercase" });
+      expect(link).toHaveStyle({ letterSpacing: "0.05em" });
+      expect(link).toHaveStyle({ color: "rgb(255, 0, 0)" });
+      expect(link).toHaveStyle({ fontWeight: "700" });
+    });
+
+    it("last preset wins for conflicting style properties", () => {
+      defineLinkPresets({
+        boldStyle: {
+          style: { fontWeight: "bold", color: "rgb(0, 0, 255)" },
+        },
+        normalStyle: {
+          style: { fontWeight: "normal", textDecoration: "underline" },
+        },
+      });
+      render(
+        <Link href="/" preset={["boldStyle", "normalStyle"]}>
+          Test
+        </Link>,
+      );
+      const link = screen.getByText("Test").closest("a");
+      expect(link).toHaveStyle({ fontWeight: "normal" });
+      expect(link).toHaveStyle({ color: "rgb(0, 0, 255)" });
+      expect(link).toHaveStyle({ textDecoration: "underline" });
+    });
+
+    it("merges preset style with custom style prop", () => {
+      render(
+        <Link href="/" preset={["primary"]} style={{ fontFamily: "monospace" }}>
+          Test
+        </Link>,
+      );
+      const link = screen.getByText("Test").closest("a");
+      expect(link).toHaveStyle({
+        color: "var(--marduk-color-primary-500)",
+        fontFamily: "monospace",
+      });
+    });
+
+    it("props override merged preset values", () => {
+      defineLinkPresets({
+        bodyLink: {
+          size: "lg",
+        },
+      });
+      render(
+        <Link href="/" preset={["primary", "bodyLink"]} size="sm">
+          Test
+        </Link>,
+      );
+      const link = screen.getByText("Test").closest("a");
+      expect(link).toHaveClass("marduk-link--size-sm");
+    });
   });
 
   describe("External Links", () => {

@@ -34,11 +34,13 @@ Start with primitives for full control, use compositions for speed, or drop in t
 
 **Responsive by default:**
 
-Components automatically scale across three breakpoints:
+Components automatically scale across three breakpoints using uniform multipliers:
 
-- **Mobile** (0-767px): Base sizes
-- **Tablet** (768px+): ~12-17% larger
-- **Desktop** (1024px+): ~25-33% larger
+- **Mobile** (0-767px): Base sizes (1.0×)
+- **Tablet** (768px+): 15% larger (1.15×)
+- **Desktop** (1024px+): 30% larger (1.30×)
+
+All sizing properties (font-size, padding, icons) scale consistently for smooth UI transitions.
 
 ## Philosophy
 
@@ -163,10 +165,27 @@ declare module "@markfoster314/marduk" {
 
 ### Composing Presets
 
-Combine multiple presets by passing an array. Later presets overwrite earlier ones:
+Combine multiple presets by passing an array. Later presets override earlier ones, with one important exception: **the `style` object is deeply merged**:
 
 ```tsx
 <Box preset={["grid3", "spaceBetween"]}>Flex layout with grid spacing</Box>
+```
+
+**Deep merge behavior:**
+
+- Regular properties (size, weight, etc.): Later presets replace earlier values
+- The `style` object: CSS properties from all presets are combined
+- Conflicting CSS properties: Last preset wins
+- Explicit props: Always override all preset values
+
+```tsx
+// Example: Multiple presets with styles
+<Link preset={["nav", "highlight"]}>
+  {/* nav: { style: { textTransform: "uppercase" } }
+      highlight: { style: { color: "red", fontWeight: "bold" } }
+      Result: All CSS properties combined */}
+  Navigation Link
+</Link>
 ```
 
 ### Override Preset Values
@@ -253,6 +272,30 @@ Components also have their own CSS variables for granular control:
   Pill Button
 </Button>
 ```
+
+### Responsive Scaling
+
+The library uses uniform responsive multipliers to ensure all components scale consistently:
+
+```css
+:root {
+  --marduk-scale-mobile: 1;
+  --marduk-scale-tablet: 1.15; /* 15% larger at 768px+ */
+  --marduk-scale-desktop: 1.3; /* 30% larger at 1024px+ */
+}
+```
+
+Override these to customize responsive behavior across all components:
+
+```css
+/* More aggressive scaling for larger screens */
+:root {
+  --marduk-scale-tablet: 1.2; /* 20% larger */
+  --marduk-scale-desktop: 1.4; /* 40% larger */
+}
+```
+
+**Note:** Title component uses semantic heading scales and does not use these multipliers.
 
 ## TypeScript
 

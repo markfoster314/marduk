@@ -75,11 +75,24 @@ export const Link = <E extends ElementType = typeof defaultElement>({
 }: LinkProps<E>) => {
   const Element: ElementType = as || defaultElement;
 
-  // Merge presets in order
-  const mergedConfig = preset.reduce((acc, presetName) => {
-    const config = getPreset(presetName as string);
-    return config ? { ...acc, ...config } : acc;
-  }, {} as LinkPresetConfig);
+  // Merge presets in order with deep style merging
+  let mergedConfig: LinkPresetConfig = {};
+
+  if (preset && preset.length > 0) {
+    for (const presetName of preset) {
+      const config = getPreset(presetName as string);
+      if (config) {
+        mergedConfig = {
+          ...mergedConfig,
+          ...config,
+          style: {
+            ...(mergedConfig.style || {}),
+            ...(config.style || {}),
+          },
+        };
+      }
+    }
+  }
 
   // Apply preset values with explicit props taking precedence
   const resolvedSize = size ?? mergedConfig.size;

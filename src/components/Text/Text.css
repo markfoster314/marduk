@@ -50,47 +50,49 @@
   --text-font-size: var(--marduk-text-size-xl);
 }
 
+/* Tablet breakpoint (768px+) - 15% increase */
 @media (min-width: 768px) {
   .marduk-text--size-xs {
-    --text-font-size: var(--marduk-text-size-sm);
+    --text-font-size: calc(var(--marduk-text-size-xs) * var(--marduk-scale-tablet));
   }
 
   .marduk-text--size-sm {
-    --text-font-size: var(--marduk-text-size-md);
+    --text-font-size: calc(var(--marduk-text-size-sm) * var(--marduk-scale-tablet));
   }
 
   .marduk-text--size-md {
-    --text-font-size: var(--marduk-text-size-lg);
+    --text-font-size: calc(var(--marduk-text-size-md) * var(--marduk-scale-tablet));
   }
 
   .marduk-text--size-lg {
-    --text-font-size: var(--marduk-text-size-xl);
+    --text-font-size: calc(var(--marduk-text-size-lg) * var(--marduk-scale-tablet));
   }
 
   .marduk-text--size-xl {
-    --text-font-size: var(--marduk-text-size-2xl);
+    --text-font-size: calc(var(--marduk-text-size-xl) * var(--marduk-scale-tablet));
   }
 }
 
+/* Desktop breakpoint (1024px+) - 30% increase */
 @media (min-width: 1024px) {
   .marduk-text--size-xs {
-    --text-font-size: var(--marduk-text-size-sm);
+    --text-font-size: calc(var(--marduk-text-size-xs) * var(--marduk-scale-desktop));
   }
 
   .marduk-text--size-sm {
-    --text-font-size: var(--marduk-text-size-md);
+    --text-font-size: calc(var(--marduk-text-size-sm) * var(--marduk-scale-desktop));
   }
 
   .marduk-text--size-md {
-    --text-font-size: var(--marduk-text-size-lg);
+    --text-font-size: calc(var(--marduk-text-size-md) * var(--marduk-scale-desktop));
   }
 
   .marduk-text--size-lg {
-    --text-font-size: var(--marduk-text-size-xl);
+    --text-font-size: calc(var(--marduk-text-size-lg) * var(--marduk-scale-desktop));
   }
 
   .marduk-text--size-xl {
-    --text-font-size: var(--marduk-text-size-3xl);
+    --text-font-size: calc(var(--marduk-text-size-xl) * var(--marduk-scale-desktop));
   }
 }
 
