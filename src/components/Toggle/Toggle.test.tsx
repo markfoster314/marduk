@@ -186,6 +186,38 @@ describe("Toggle", () => {
     });
   });
 
+  describe("Data Attributes", () => {
+    it("includes data-size attribute", () => {
+      const { container } = render(<Toggle size="small" />);
+      const label = container.querySelector(".marduk-toggle-label");
+      expect(label).toHaveAttribute("data-size", "small");
+    });
+
+    it("includes data-label-position attribute", () => {
+      const { container } = render(<Toggle label="Test" labelPosition="left" />);
+      const label = container.querySelector(".marduk-toggle-label");
+      expect(label).toHaveAttribute("data-label-position", "left");
+    });
+
+    it("includes data-disabled attribute when disabled", () => {
+      const { container } = render(<Toggle disabled />);
+      const label = container.querySelector(".marduk-toggle-label");
+      expect(label).toHaveAttribute("data-disabled", "true");
+    });
+
+    it("includes data-checked attribute when checked", () => {
+      const { container } = render(<Toggle checked onChange={() => {}} />);
+      const label = container.querySelector(".marduk-toggle-label");
+      expect(label).toHaveAttribute("data-checked", "true");
+    });
+
+    it("does not include data-checked when unchecked", () => {
+      const { container } = render(<Toggle checked={false} onChange={() => {}} />);
+      const label = container.querySelector(".marduk-toggle-label");
+      expect(label).not.toHaveAttribute("data-checked");
+    });
+  });
+
   describe("Accessibility", () => {
     it("has checkbox role", () => {
       render(<Toggle />);
@@ -203,6 +235,17 @@ describe("Toggle", () => {
     it("supports aria-label when no visible label", () => {
       render(<Toggle aria-label="Enable feature" />);
       expect(screen.getByLabelText("Enable feature")).toBeInTheDocument();
+    });
+
+    it("can be toggled with Space key", async () => {
+      const handleChange = jest.fn();
+      const user = userEvent.setup();
+      render(<Toggle onChange={handleChange} />);
+      const toggle = screen.getByRole("checkbox");
+
+      toggle.focus();
+      await user.keyboard(" ");
+      expect(handleChange).toHaveBeenCalled();
     });
   });
 });

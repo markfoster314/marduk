@@ -145,6 +145,51 @@ describe("ProgressBar", () => {
     });
   });
 
+  describe("Data Attributes", () => {
+    it("includes data-variant attribute", () => {
+      const { container } = render(<ProgressBar value={50} variant="success" />);
+      const wrapper = container.querySelector(".marduk-progress-wrapper");
+      expect(wrapper).toHaveAttribute("data-variant", "success");
+    });
+
+    it("includes data-size attribute", () => {
+      const { container } = render(<ProgressBar value={50} size="small" />);
+      const wrapper = container.querySelector(".marduk-progress-wrapper");
+      expect(wrapper).toHaveAttribute("data-size", "small");
+    });
+
+    it("includes data-value and data-max attributes", () => {
+      const { container } = render(<ProgressBar value={50} max={100} />);
+      const wrapper = container.querySelector(".marduk-progress-wrapper");
+      expect(wrapper).toHaveAttribute("data-value", "50");
+      expect(wrapper).toHaveAttribute("data-max", "100");
+    });
+
+    it("includes data-percentage attribute", () => {
+      const { container } = render(<ProgressBar value={50} max={100} />);
+      const wrapper = container.querySelector(".marduk-progress-wrapper");
+      expect(wrapper).toHaveAttribute("data-percentage", "50");
+    });
+
+    it("includes data-striped attribute when striped", () => {
+      const { container } = render(<ProgressBar value={50} striped />);
+      const wrapper = container.querySelector(".marduk-progress-wrapper");
+      expect(wrapper).toHaveAttribute("data-striped", "true");
+    });
+
+    it("includes data-animated attribute when animated", () => {
+      const { container } = render(<ProgressBar value={50} animated />);
+      const wrapper = container.querySelector(".marduk-progress-wrapper");
+      expect(wrapper).toHaveAttribute("data-animated", "true");
+    });
+
+    it("includes data-show-label attribute when showLabel is true", () => {
+      const { container } = render(<ProgressBar value={50} showLabel />);
+      const wrapper = container.querySelector(".marduk-progress-wrapper");
+      expect(wrapper).toHaveAttribute("data-show-label", "true");
+    });
+  });
+
   describe("Custom Props", () => {
     it("applies custom className", () => {
       render(<ProgressBar value={50} className="custom-class" />);

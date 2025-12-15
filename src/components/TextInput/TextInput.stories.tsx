@@ -5,10 +5,10 @@ import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 const meta: Meta<typeof TextInput> = {
   title: "Components/TextInput",
   component: TextInput,
-  tags: ["autodocs", "status:barebones"],
+  tags: ["autodocs", "status:ready"],
   parameters: {
     docs: {
-      subtitle: STORYBOOK_STATUS.BAREBONES,
+      subtitle: STORYBOOK_STATUS.READY,
     },
   },
   argTypes: {

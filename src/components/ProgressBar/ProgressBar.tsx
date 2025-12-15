@@ -41,8 +41,19 @@ export const ProgressBar = ({
     .filter(Boolean)
     .join(" ");
 
+  const dataAttributes = {
+    "data-variant": variant,
+    "data-size": size,
+    "data-value": value,
+    "data-max": max,
+    "data-percentage": Math.round(percentage),
+    ...(striped && { "data-striped": true }),
+    ...(animated && { "data-animated": true }),
+    ...(showLabel && { "data-show-label": true }),
+  };
+
   return (
-    <div className={wrapperClasses} {...props}>
+    <div className={wrapperClasses} {...dataAttributes} {...props}>
       {(label || showLabel) && (
         <div className="marduk-progress-label-container">
           {label && <span className="marduk-progress-label">{label}</span>}

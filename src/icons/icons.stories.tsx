@@ -17,10 +17,10 @@ const meta: Meta<typeof Icon> = {
   parameters: {
     layout: "centered",
     docs: {
-      subtitle: STORYBOOK_STATUS.WIP,
+      subtitle: STORYBOOK_STATUS.READY,
     },
   },
-  tags: ["autodocs", "status:wip"],
+  tags: ["autodocs", "status:ready"],
   argTypes: {
     name: {
       control: { type: "select" },

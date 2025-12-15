@@ -30,15 +30,43 @@
 }
 
 .marduk-progress-bar--small {
-  height: 4px;
+  height: calc(4px * var(--marduk-scale-mobile));
 }
 
 .marduk-progress-bar--medium {
-  height: var(--marduk-spacing-4);
+  height: calc(var(--marduk-spacing-4) * var(--marduk-scale-mobile));
 }
 
 .marduk-progress-bar--large {
-  height: var(--marduk-spacing-5);
+  height: calc(var(--marduk-spacing-5) * var(--marduk-scale-mobile));
+}
+
+@media (min-width: 768px) {
+  .marduk-progress-bar--small {
+    height: calc(4px * var(--marduk-scale-tablet));
+  }
+
+  .marduk-progress-bar--medium {
+    height: calc(var(--marduk-spacing-4) * var(--marduk-scale-tablet));
+  }
+
+  .marduk-progress-bar--large {
+    height: calc(var(--marduk-spacing-5) * var(--marduk-scale-tablet));
+  }
+}
+
+@media (min-width: 1024px) {
+  .marduk-progress-bar--small {
+    height: calc(4px * var(--marduk-scale-desktop));
+  }
+
+  .marduk-progress-bar--medium {
+    height: calc(var(--marduk-spacing-4) * var(--marduk-scale-desktop));
+  }
+
+  .marduk-progress-bar--large {
+    height: calc(var(--marduk-spacing-5) * var(--marduk-scale-desktop));
+  }
 }
 
 .marduk-progress-fill {

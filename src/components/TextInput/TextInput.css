@@ -39,18 +39,49 @@
 }
 
 .marduk-input--small {
-  padding: var(--marduk-spacing-3) 10px;
+  padding: calc(var(--marduk-spacing-3) * var(--marduk-scale-mobile))
+    calc(10px * var(--marduk-scale-mobile));
   font-size: var(--marduk-text-size-sm);
 }
 
 .marduk-input--medium {
-  padding: 10px 14px;
+  padding: calc(10px * var(--marduk-scale-mobile)) calc(14px * var(--marduk-scale-mobile));
   font-size: var(--marduk-text-size-md);
 }
 
 .marduk-input--large {
-  padding: 14px 18px;
+  padding: calc(14px * var(--marduk-scale-mobile)) calc(18px * var(--marduk-scale-mobile));
   font-size: var(--marduk-text-size-lg);
+}
+
+@media (min-width: 768px) {
+  .marduk-input--small {
+    padding: calc(var(--marduk-spacing-3) * var(--marduk-scale-tablet))
+      calc(10px * var(--marduk-scale-tablet));
+  }
+
+  .marduk-input--medium {
+    padding: calc(10px * var(--marduk-scale-tablet)) calc(14px * var(--marduk-scale-tablet));
+  }
+
+  .marduk-input--large {
+    padding: calc(14px * var(--marduk-scale-tablet)) calc(18px * var(--marduk-scale-tablet));
+  }
+}
+
+@media (min-width: 1024px) {
+  .marduk-input--small {
+    padding: calc(var(--marduk-spacing-3) * var(--marduk-scale-desktop))
+      calc(10px * var(--marduk-scale-desktop));
+  }
+
+  .marduk-input--medium {
+    padding: calc(10px * var(--marduk-scale-desktop)) calc(14px * var(--marduk-scale-desktop));
+  }
+
+  .marduk-input--large {
+    padding: calc(14px * var(--marduk-scale-desktop)) calc(18px * var(--marduk-scale-desktop));
+  }
 }
 
 .marduk-input--error {

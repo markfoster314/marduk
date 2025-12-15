@@ -169,6 +169,44 @@ describe("Dropdown", () => {
     });
   });
 
+  describe("Data Attributes", () => {
+    it("includes data-size attribute", () => {
+      const { container } = render(
+        <Dropdown options={mockOptions} size="small" onChange={() => {}} />,
+      );
+      const wrapper = container.querySelector(".marduk-dropdown-wrapper");
+      expect(wrapper).toHaveAttribute("data-size", "small");
+    });
+
+    it("includes data-disabled attribute when disabled", () => {
+      const { container } = render(<Dropdown options={mockOptions} disabled onChange={() => {}} />);
+      const wrapper = container.querySelector(".marduk-dropdown-wrapper");
+      expect(wrapper).toHaveAttribute("data-disabled", "true");
+    });
+
+    it("includes data-required attribute when required", () => {
+      const { container } = render(<Dropdown options={mockOptions} required onChange={() => {}} />);
+      const wrapper = container.querySelector(".marduk-dropdown-wrapper");
+      expect(wrapper).toHaveAttribute("data-required", "true");
+    });
+
+    it("includes data-error attribute when error is present", () => {
+      const { container } = render(
+        <Dropdown options={mockOptions} error="Error message" onChange={() => {}} />,
+      );
+      const wrapper = container.querySelector(".marduk-dropdown-wrapper");
+      expect(wrapper).toHaveAttribute("data-error", "true");
+    });
+
+    it("includes data-value attribute with selected value", () => {
+      const { container } = render(
+        <Dropdown options={mockOptions} value="option2" onChange={() => {}} />,
+      );
+      const wrapper = container.querySelector(".marduk-dropdown-wrapper");
+      expect(wrapper).toHaveAttribute("data-value", "option2");
+    });
+  });
+
   describe("Accessibility", () => {
     it("has combobox role", () => {
       render(<Dropdown options={mockOptions} onChange={() => {}} />);

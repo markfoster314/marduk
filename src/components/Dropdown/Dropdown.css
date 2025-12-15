@@ -46,18 +46,55 @@
 }
 
 .marduk-dropdown--small {
-  padding: var(--marduk-spacing-3) 10px;
+  padding-top: calc(var(--marduk-spacing-3) * var(--marduk-scale-mobile));
+  padding-bottom: calc(var(--marduk-spacing-3) * var(--marduk-scale-mobile));
+  padding-left: calc(14px * var(--marduk-scale-mobile));
+  padding-right: 40px;
   font-size: var(--marduk-text-size-sm);
 }
 
 .marduk-dropdown--medium {
-  padding: 10px 14px;
+  padding-top: calc(10px * var(--marduk-scale-mobile));
+  padding-bottom: calc(10px * var(--marduk-scale-mobile));
+  padding-left: calc(18px * var(--marduk-scale-mobile));
+  padding-right: 40px;
   font-size: var(--marduk-text-size-md);
 }
 
 .marduk-dropdown--large {
-  padding: 14px 18px;
+  padding-top: calc(14px * var(--marduk-scale-mobile));
+  padding-bottom: calc(14px * var(--marduk-scale-mobile));
+  padding-left: calc(22px * var(--marduk-scale-mobile));
+  padding-right: 40px;
   font-size: var(--marduk-text-size-lg);
+}
+
+@media (min-width: 768px) {
+  .marduk-dropdown--small {
+    padding-left: calc(14px * var(--marduk-scale-tablet));
+  }
+
+  .marduk-dropdown--medium {
+    padding-left: calc(18px * var(--marduk-scale-tablet));
+  }
+
+  .marduk-dropdown--large {
+    padding-left: calc(22px * var(--marduk-scale-tablet));
+  }
+}
+
+@media (min-width: 1024px) {
+  .marduk-dropdown--small {
+    padding-left: calc(14px * var(--marduk-scale-desktop));
+  }
+
+  .marduk-dropdown--medium {
+    padding-left: calc(18px * var(--marduk-scale-desktop));
+  }
+
+  .marduk-dropdown--large {
+    padding-left: calc(22px * var(--marduk-scale-desktop));
+  }
 }
 
 .marduk-dropdown-arrow {

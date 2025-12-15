@@ -54,8 +54,16 @@ export const Dropdown = ({
     .filter(Boolean)
     .join(" ");
 
+  const dataAttributes = {
+    "data-size": size,
+    ...(disabled && { "data-disabled": true }),
+    ...(required && { "data-required": true }),
+    ...(error && { "data-error": true }),
+    ...(selectedValue && { "data-value": selectedValue }),
+  };
+
   return (
-    <div className="marduk-dropdown-wrapper">
+    <div className="marduk-dropdown-wrapper" {...dataAttributes}>
       {label && (
         <label className="marduk-dropdown-label">
           {label}

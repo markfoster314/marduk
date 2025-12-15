@@ -39,8 +39,17 @@ export const TextInput = ({
     .filter(Boolean)
     .join(" ");
 
+  const dataAttributes = {
+    "data-size": size,
+    "data-type": type,
+    ...(disabled && { "data-disabled": true }),
+    ...(required && { "data-required": true }),
+    ...(error && { "data-error": true }),
+    ...(focused && { "data-focused": true }),
+  };
+
   return (
-    <div className="marduk-input-wrapper">
+    <div className="marduk-input-wrapper" {...dataAttributes}>
       {label && (
         <label className="marduk-input-label">
           {label}
