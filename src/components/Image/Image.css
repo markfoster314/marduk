@@ -1,0 +1,84 @@
+.marduk-image {
+  --image-fit: cover;
+  --image-aspect-ratio: auto;
+  --image-border-radius: 0;
+  --image-error-bg: var(--marduk-color-gray-100);
+  --image-error-color: var(--marduk-color-gray-500);
+  --image-error-font-size: var(--marduk-text-size-sm);
+
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: var(--image-fit);
+  border-radius: var(--image-border-radius);
+}
+
+.marduk-image--fit-contain {
+  --image-fit: contain;
+  object-fit: contain;
+}
+
+.marduk-image--fit-cover {
+  --image-fit: cover;
+  object-fit: cover;
+}
+
+.marduk-image--fit-fill {
+  --image-fit: fill;
+  object-fit: fill;
+}
+
+.marduk-image--fit-none {
+  --image-fit: none;
+  object-fit: none;
+}
+
+.marduk-image--fit-scale-down {
+  --image-fit: scale-down;
+  object-fit: scale-down;
+}
+
+.marduk-image--aspect-1-1 {
+  aspect-ratio: 1 / 1;
+}
+
+.marduk-image--aspect-4-3 {
+  aspect-ratio: 4 / 3;
+}
+
+.marduk-image--aspect-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.marduk-image--aspect-21-9 {
+  aspect-ratio: 21 / 9;
+}
+
+.marduk-image--loading {
+  opacity: 0.7;
+}
+
+.marduk-image--error {
+  display: none;
+}
+
+.marduk-image--fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--image-error-bg);
+  color: var(--image-error-color);
+  font-size: var(--image-error-font-size);
+  min-height: 100px;
+}
+
+.marduk-image__placeholder {
+  position: absolute;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.marduk-image__error-text {
+  padding: var(--marduk-spacing-md);
+  text-align: center;
+}

@@ -1,0 +1,90 @@
+.marduk-spinner {
+  --spinner-size: 24px;
+  --spinner-color: var(--marduk-color-primary-500);
+  --spinner-speed: 1s;
+  --spinner-border-width: 2.5px;
+  --spinner-label-color: var(--marduk-color-gray-600);
+  --spinner-label-font-size: var(--marduk-text-size-sm);
+  --spinner-label-gap: var(--marduk-spacing-xs);
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spinner-label-gap);
+}
+
+.marduk-spinner__circle {
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  border: var(--spinner-border-width) solid transparent;
+  border-top-color: var(--spinner-color);
+  border-radius: 50%;
+  animation: marduk-spin var(--spinner-speed) linear infinite;
+}
+
+.marduk-spinner__label {
+  font-size: var(--spinner-label-font-size);
+  color: var(--spinner-label-color);
+  line-height: 1.2;
+}
+
+/* Size Variants - Mobile first */
+.marduk-spinner--size-small {
+  --spinner-size: 20px;
+  --spinner-border-width: 2px;
+}
+
+.marduk-spinner--size-medium {
+  --spinner-size: 24px;
+  --spinner-border-width: 2.5px;
+}
+
+.marduk-spinner--size-large {
+  --spinner-size: 40px;
+  --spinner-border-width: 3.5px;
+}
+
+/* Speed Variants */
+.marduk-spinner--speed-slow {
+  --spinner-speed: 1.5s;
+}
+
+.marduk-spinner--speed-normal {
+  --spinner-speed: 1s;
+}
+
+.marduk-spinner--speed-fast {
+  --spinner-speed: 0.5s;
+}
+
+@keyframes marduk-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Scaling - Tablet */
+@media (min-width: 768px) {
+  .marduk-spinner--size-small {
+    --spinner-size: calc(20px * var(--marduk-scale-tablet));
+  }
+  .marduk-spinner--size-medium {
+    --spinner-size: calc(24px * var(--marduk-scale-tablet));
+  }
+  .marduk-spinner--size-large {
+    --spinner-size: calc(40px * var(--marduk-scale-tablet));
+  }
+}
+
+/* Responsive Scaling - Desktop */
+@media (min-width: 1024px) {
+  .marduk-spinner--size-small {
+    --spinner-size: calc(20px * var(--marduk-scale-desktop));
+  }
+  .marduk-spinner--size-medium {
+    --spinner-size: calc(24px * var(--marduk-scale-desktop));
+  }
+  .marduk-spinner--size-large {
+    --spinner-size: calc(40px * var(--marduk-scale-desktop));
+  }
+}
