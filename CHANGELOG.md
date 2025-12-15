@@ -7,10 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Planned
 
-- v0.3.0 → All primitives production-ready
 - v0.4.0 → Core compositions production-ready
 - v0.5.0 → First templates added
 - v1.0.0 → API stable, proven in production
+
+## [0.3.0] - 2025-12-15
+
+### Added
+- **13 new production-ready primitive components:**
+  - Avatar - User avatar with image fallback, status indicators, and multiple shapes
+  - Divider - Visual separator with orientation, thickness, and label support
+  - Image - Smart image component with lazy loading, placeholder, and error handling
+  - Skeleton - Loading placeholder with multiple shapes and animations
+  - Spinner - Loading indicator with sizes, speeds, and labels
+  - Toggle - Switch component with label positioning and responsive sizing
+  - Checkbox - Checkbox input with indeterminate state and error handling
+  - RadioButtons - Radio button group with horizontal/vertical layouts
+  - TextInput - Text input with multiple types, validation states, and helper text
+  - Dropdown - Select dropdown with disabled options and error states
+  - ProgressBar - Progress indicator with variants, labels, and animations
+  - Tooltip - Hover tooltip with positioning and delay control
+  - Icon - Icon component with transformations and animations
+
+- Comprehensive test coverage with data attributes for all new components
+- Responsive CSS implementation using global scale multipliers for all components
+- Complete README documentation for all 20 primitive components
+- Data attributes for testing across all components
+
+### Changed
+- Updated all remaining primitive components from BAREBONES/WIP to production-ready status
+- Enhanced test coverage to 1000+ tests
+- Improved Storybook documentation with comprehensive stories for all components
+- Updated component status badges to `status:ready` in Storybook
+
+### Fixed
+- Checkbox checkmark centering (now properly centered vertically and horizontally)
+- Dropdown text padding (offset to left to accommodate arrow button)
+- Tooltip Storybook controls (hide React internals in children prop)
+
+### Technical
+- All 20 primitive components now meet production-ready criteria
+- Zero linting errors across all components
+- Comprehensive responsive design support
+- Full accessibility compliance (WCAG 2.1 Level AA)
 
 ## [0.2.1] - 2025-11-09
 

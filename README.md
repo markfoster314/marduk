@@ -61,9 +61,9 @@ Stop rebuilding the same components and patterns on every project.
 
 **Current status:**
 
-- **Core primitives:** 7 production-ready (Text, Box, Title, Button, Svg, Link, Badge)
-- **Library status:** Beta - actively expanding
-- **Test coverage:** 996 tests passing
+- **Core primitives:** 20 production-ready components (all primitives complete!)
+- **Library status:** v0.3.0 - Ready for release
+- **Test coverage:** 1000+ tests passing
 - **Docs:** [Live Storybook](https://markfoster314.github.io/marduk/)
 - **Contributions:** Welcome and encouraged!
 
@@ -204,7 +204,7 @@ Props always override preset values:
 
 ## Production Ready Features
 
-**Primitives:** [Text](src/components/Text) | [Box](src/components/Box) | [Title](src/components/Title) | [Button](src/components/Button) | [Svg](src/components/Svg) | [Link](src/components/Link) | [Badge](src/components/Badge)
+**Primitives:** [Text](src/components/Text) | [Box](src/components/Box) | [Title](src/components/Title) | [Button](src/components/Button) | [Svg](src/components/Svg) | [Link](src/components/Link) | [Badge](src/components/Badge) | [Avatar](src/components/Avatar) | [Divider](src/components/Divider) | [Image](src/components/Image) | [Skeleton](src/components/Skeleton) | [Spinner](src/components/Spinner) | [Toggle](src/components/Toggle) | [Checkbox](src/components/Checkbox) | [RadioButtons](src/components/RadioButtons) | [TextInput](src/components/TextInput) | [Dropdown](src/components/Dropdown) | [ProgressBar](src/components/ProgressBar) | [Tooltip](src/components/Tooltip) | [Icon](src/icons)
 
 ## In Progress Features
 
@@ -212,15 +212,15 @@ Props always override preset values:
 
 ## Barebones Features
 
-**Primitives:** [TextInput](src/components/TextInput) | [Checkbox](src/components/Checkbox) | [RadioButtons](src/components/RadioButtons) | [Toggle](src/components/Toggle) | [Dropdown](src/components/Dropdown) | [ProgressBar](src/components/ProgressBar) | [Tooltip](src/components/Tooltip)
-
 **Compositions:** [Modal](src/compositions/Modal) | [Toast](src/compositions/Toast) | [Pagination](src/compositions/Pagination) | [Breadcrumb](src/compositions/Breadcrumb)
+
+## Icon Library
 
 [Icons](src/icons)
 
 ## Roadmap
 
-[v0.3.0 and beyond](docs/ROADMAP.md) - 17 components to production-ready.
+[v0.3.0 and beyond](docs/ROADMAP.md) - All primitives production-ready! Next: compositions.
 
 ## Development
 
