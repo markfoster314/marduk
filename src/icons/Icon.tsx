@@ -18,8 +18,13 @@ export const Icon: FC<IconProps> = ({ name, viewBox, ...props }) => {
 
   const paths = Array.isArray(icon.paths) ? icon.paths : [icon.paths];
 
+  const iconDataAttributes = {
+    "data-icon-name": name,
+    ...(viewBox && { "data-viewbox": viewBox }),
+  };
+
   return (
-    <Svg viewBox={viewBox || icon.viewBox || "0 0 24 24"} {...props}>
+    <Svg viewBox={viewBox || icon.viewBox || "0 0 24 24"} {...iconDataAttributes} {...props}>
       {paths.map((path, index) => (
         <path key={index} d={path} />
       ))}

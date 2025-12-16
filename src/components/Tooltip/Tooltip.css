@@ -7,7 +7,8 @@
   position: absolute;
   background-color: var(--marduk-color-gray-700);
   color: var(--marduk-color-white);
-  padding: var(--marduk-spacing-3) var(--marduk-spacing-5);
+  padding: calc(var(--marduk-spacing-3) * var(--marduk-scale-mobile))
+    calc(var(--marduk-spacing-5) * var(--marduk-scale-mobile));
   border-radius: var(--marduk-radius-md);
   font-size: var(--marduk-text-size-sm);
   font-family: var(--marduk-font-family-base);
@@ -16,6 +17,20 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity var(--marduk-transition-fast);
+}
+
+@media (min-width: 768px) {
+  .marduk-tooltip {
+    padding: calc(var(--marduk-spacing-3) * var(--marduk-scale-tablet))
+      calc(var(--marduk-spacing-5) * var(--marduk-scale-tablet));
+  }
+}
+
+@media (min-width: 1024px) {
+  .marduk-tooltip {
+    padding: calc(var(--marduk-spacing-3) * var(--marduk-scale-desktop))
+      calc(var(--marduk-spacing-5) * var(--marduk-scale-desktop));
+  }
 }
 
 .marduk-tooltip--visible {

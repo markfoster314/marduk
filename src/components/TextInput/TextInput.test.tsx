@@ -168,6 +168,47 @@ describe("TextInput", () => {
     });
   });
 
+  describe("Data Attributes", () => {
+    it("includes data-size attribute", () => {
+      const { container } = render(<TextInput size="small" />);
+      const wrapper = container.querySelector(".marduk-input-wrapper");
+      expect(wrapper).toHaveAttribute("data-size", "small");
+    });
+
+    it("includes data-type attribute", () => {
+      const { container } = render(<TextInput type="email" />);
+      const wrapper = container.querySelector(".marduk-input-wrapper");
+      expect(wrapper).toHaveAttribute("data-type", "email");
+    });
+
+    it("includes data-disabled attribute when disabled", () => {
+      const { container } = render(<TextInput disabled />);
+      const wrapper = container.querySelector(".marduk-input-wrapper");
+      expect(wrapper).toHaveAttribute("data-disabled", "true");
+    });
+
+    it("includes data-required attribute when required", () => {
+      const { container } = render(<TextInput required />);
+      const wrapper = container.querySelector(".marduk-input-wrapper");
+      expect(wrapper).toHaveAttribute("data-required", "true");
+    });
+
+    it("includes data-error attribute when error is present", () => {
+      const { container } = render(<TextInput error="Error message" />);
+      const wrapper = container.querySelector(".marduk-input-wrapper");
+      expect(wrapper).toHaveAttribute("data-error", "true");
+    });
+
+    it("includes data-focused attribute when focused", () => {
+      const { container } = render(<TextInput />);
+      const input = screen.getByRole("textbox");
+      const wrapper = container.querySelector(".marduk-input-wrapper");
+
+      fireEvent.focus(input);
+      expect(wrapper).toHaveAttribute("data-focused", "true");
+    });
+  });
+
   describe("Accessibility", () => {
     it("is keyboard accessible", () => {
       render(<TextInput />);

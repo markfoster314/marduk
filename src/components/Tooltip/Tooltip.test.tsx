@@ -310,6 +310,47 @@ describe("Tooltip", () => {
     });
   });
 
+  describe("Data Attributes", () => {
+    it("includes data-position attribute", () => {
+      const { container } = render(
+        <Tooltip content="Tooltip" position="bottom">
+          <button>Hover</button>
+        </Tooltip>,
+      );
+      const wrapper = container.querySelector(".marduk-tooltip-wrapper");
+      expect(wrapper).toHaveAttribute("data-position", "bottom");
+    });
+
+    it("includes data-delay attribute", () => {
+      const { container } = render(
+        <Tooltip content="Tooltip" delay={500}>
+          <button>Hover</button>
+        </Tooltip>,
+      );
+      const wrapper = container.querySelector(".marduk-tooltip-wrapper");
+      expect(wrapper).toHaveAttribute("data-delay", "500");
+    });
+
+    it("includes data-visible attribute when visible", async () => {
+      const { container } = render(
+        <Tooltip content="Tooltip" delay={0}>
+          <button>Hover</button>
+        </Tooltip>,
+      );
+      const wrapper = container.querySelector(".marduk-tooltip-wrapper");
+      const trigger = screen.getByText("Hover");
+
+      fireEvent.mouseEnter(trigger);
+      act(() => {
+        jest.advanceTimersByTime(0);
+      });
+
+      await waitFor(() => {
+        expect(wrapper).toHaveAttribute("data-visible", "true");
+      });
+    });
+  });
+
   describe("Accessibility", () => {
     it("has tooltip role", async () => {
       render(

@@ -51,8 +51,17 @@ export const RadioButtons = ({
     .filter(Boolean)
     .join(" ");
 
+  const dataAttributes = {
+    "data-size": size,
+    "data-direction": direction,
+    ...(disabled && { "data-disabled": true }),
+    ...(required && { "data-required": true }),
+    ...(error && { "data-error": true }),
+    ...(selectedValue && { "data-value": selectedValue }),
+  };
+
   return (
-    <div className="marduk-radio-wrapper">
+    <div className="marduk-radio-wrapper" {...dataAttributes}>
       {label && (
         <label className="marduk-radio-label">
           {label}

@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Modal } from "./Modal";
 import { useState } from "react";
-import { Button } from "@/components/Button/Button";
-import { TextInput } from "@/components/TextInput/TextInput";
+import { Button, TextInput } from "@/index";
 import React from "react";
 import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 

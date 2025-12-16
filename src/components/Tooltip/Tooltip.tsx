@@ -43,6 +43,12 @@ export const Tooltip = ({ children, content, position = "top", delay = 200 }: To
     .filter(Boolean)
     .join(" ");
 
+  const dataAttributes = {
+    "data-position": position,
+    "data-delay": delay,
+    ...(isVisible && { "data-visible": true }),
+  };
+
   return (
     <div
       className="marduk-tooltip-wrapper"
@@ -50,6 +56,7 @@ export const Tooltip = ({ children, content, position = "top", delay = 200 }: To
       onMouseLeave={hideTooltip}
       onFocus={showTooltip}
       onBlur={hideTooltip}
+      {...dataAttributes}
     >
       {children}
       {isVisible && (

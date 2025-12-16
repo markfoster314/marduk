@@ -86,6 +86,13 @@ export const Toggle = ({
     .filter(Boolean)
     .join(" ");
 
+  const dataAttributes = {
+    "data-size": size,
+    "data-label-position": labelPosition,
+    ...(disabled && { "data-disabled": true }),
+    ...(checkedValue && { "data-checked": true }),
+  };
+
   const toggleContent = (
     <>
       <input
@@ -104,7 +111,7 @@ export const Toggle = ({
   );
 
   return (
-    <label className={labelClasses}>
+    <label className={labelClasses} {...dataAttributes}>
       {label && labelPosition === "left" && <span className="marduk-toggle-text">{label}</span>}
       <div className={toggleClasses}>{toggleContent}</div>
       {label && labelPosition === "right" && <span className="marduk-toggle-text">{label}</span>}

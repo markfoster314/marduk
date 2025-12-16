@@ -34,11 +34,13 @@ Start with primitives for full control, use compositions for speed, or drop in t
 
 **Responsive by default:**
 
-Components automatically scale across three breakpoints:
+Components automatically scale across three breakpoints using uniform multipliers:
 
-- **Mobile** (0-767px): Base sizes
-- **Tablet** (768px+): ~12-17% larger
-- **Desktop** (1024px+): ~25-33% larger
+- **Mobile** (0-767px): Base sizes (1.0×)
+- **Tablet** (768px+): 15% larger (1.15×)
+- **Desktop** (1024px+): 30% larger (1.30×)
+
+All sizing properties (font-size, padding, icons) scale consistently for smooth UI transitions.
 
 ## Philosophy
 
@@ -59,9 +61,9 @@ Stop rebuilding the same components and patterns on every project.
 
 **Current status:**
 
-- **Core primitives:** 6 production-ready (Text, Box, Title, Button, Svg, Link)
-- **Library status:** Beta - actively expanding
-- **Test coverage:** 936 tests passing
+- **Core primitives:** 20 production-ready components (all primitives complete!)
+- **Library status:** v0.3.0 - Ready for release
+- **Test coverage:** 1000+ tests passing
 - **Docs:** [Live Storybook](https://markfoster314.github.io/marduk/)
 - **Contributions:** Welcome and encouraged!
 
@@ -163,10 +165,27 @@ declare module "@markfoster314/marduk" {
 
 ### Composing Presets
 
-Combine multiple presets by passing an array. Later presets overwrite earlier ones:
+Combine multiple presets by passing an array. Later presets override earlier ones, with one important exception: **the `style` object is deeply merged**:
 
 ```tsx
 <Box preset={["grid3", "spaceBetween"]}>Flex layout with grid spacing</Box>
+```
+
+**Deep merge behavior:**
+
+- Regular properties (size, weight, etc.): Later presets replace earlier values
+- The `style` object: CSS properties from all presets are combined
+- Conflicting CSS properties: Last preset wins
+- Explicit props: Always override all preset values
+
+```tsx
+// Example: Multiple presets with styles
+<Link preset={["nav", "highlight"]}>
+  {/* nav: { style: { textTransform: "uppercase" } }
+      highlight: { style: { color: "red", fontWeight: "bold" } }
+      Result: All CSS properties combined */}
+  Navigation Link
+</Link>
 ```
 
 ### Override Preset Values
@@ -185,7 +204,7 @@ Props always override preset values:
 
 ## Production Ready Features
 
-**Primitives:** [Text](src/components/Text) | [Box](src/components/Box) | [Title](src/components/Title) | [Button](src/components/Button) | [Svg](src/components/Svg) | [Link](src/components/Link)
+**Primitives:** [Text](src/components/Text) | [Box](src/components/Box) | [Title](src/components/Title) | [Button](src/components/Button) | [Svg](src/components/Svg) | [Link](src/components/Link) | [Badge](src/components/Badge) | [Avatar](src/components/Avatar) | [Divider](src/components/Divider) | [Image](src/components/Image) | [Skeleton](src/components/Skeleton) | [Spinner](src/components/Spinner) | [Toggle](src/components/Toggle) | [Checkbox](src/components/Checkbox) | [RadioButtons](src/components/RadioButtons) | [TextInput](src/components/TextInput) | [Dropdown](src/components/Dropdown) | [ProgressBar](src/components/ProgressBar) | [Tooltip](src/components/Tooltip) | [Icon](src/icons)
 
 ## In Progress Features
 
@@ -193,15 +212,15 @@ Props always override preset values:
 
 ## Barebones Features
 
-**Primitives:** [TextInput](src/components/TextInput) | [Checkbox](src/components/Checkbox) | [RadioButtons](src/components/RadioButtons) | [Toggle](src/components/Toggle) | [Dropdown](src/components/Dropdown) | [ProgressBar](src/components/ProgressBar) | [Tooltip](src/components/Tooltip)
-
 **Compositions:** [Modal](src/compositions/Modal) | [Toast](src/compositions/Toast) | [Pagination](src/compositions/Pagination) | [Breadcrumb](src/compositions/Breadcrumb)
+
+## Icon Library
 
 [Icons](src/icons)
 
 ## Roadmap
 
-[v0.3.0 and beyond](docs/ROADMAP.md) - 17 components to production-ready.
+[v0.3.0 and beyond](docs/ROADMAP.md) - All primitives production-ready! Next: compositions.
 
 ## Development
 
@@ -253,6 +272,58 @@ Components also have their own CSS variables for granular control:
   Pill Button
 </Button>
 ```
+
+### Responsive Scaling
+
+The library uses uniform responsive multipliers to ensure all components scale consistently:
+
+```css
+:root {
+  --marduk-scale-mobile: 1;
+  --marduk-scale-tablet: 1.15; /* 15% larger at 768px+ */
+  --marduk-scale-desktop: 1.3; /* 30% larger at 1024px+ */
+}
+```
+
+Override these to customize responsive behavior across all components:
+
+```css
+/* More aggressive scaling for larger screens */
+:root {
+  --marduk-scale-tablet: 1.2; /* 20% larger */
+  --marduk-scale-desktop: 1.4; /* 40% larger */
+}
+```
+
+**Note:** Title component uses semantic heading scales and does not use these multipliers.
+
+### Dark Mode
+
+Marduk handles dark mode through **explicit preset selection**, not automatic system preference detection:
+
+```
+// Light mode app - use light presets
+<Text preset={["primary"]}>Primary text</Text>
+<Button preset={["success"]} appearance="filled">Success button</Button>
+<Link preset={["danger"]}>Danger link</Link>
+
+
+// Dark mode app - use dark presets
+<Text preset={["primaryDark"]}>Primary text</Text>
+<Button preset={["successDark"]} appearance="filled">Success button</Button>
+<Link preset={["dangerDark"]}>Danger link</Link>**Philosophy:**
+```
+
+Build your application for **one consistent theme** (light or dark), not both simultaneously. This approach gives you:
+
+- **Full control**: Explicitly choose which components use which theme
+- **Predictable behavior**: No automatic switching based on system preferences
+- **Simpler implementation**: No need for theme providers or context
+- **Better performance**: No runtime theme calculations
+
+All production components include dark mode presets (`primaryDark`, `successDark`, etc.) that work with dark backgrounds. Choose your theme at the application level and use the appropriate presets consistently throughout.
+
+**Note:** The library does not use `@media (prefers-color-scheme: dark)` for automatic theme switching. If you need automatic theme switching based on user preference, implement it at the application level and conditionally pass the appropriate presets.
 
 ## TypeScript
 

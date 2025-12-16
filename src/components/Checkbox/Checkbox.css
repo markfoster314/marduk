@@ -37,18 +37,52 @@
 }
 
 .marduk-checkbox--small + .marduk-checkbox-checkmark {
-  height: 16px;
-  width: 16px;
+  height: calc(16px * var(--marduk-scale-mobile));
+  width: calc(16px * var(--marduk-scale-mobile));
 }
 
 .marduk-checkbox--medium + .marduk-checkbox-checkmark {
-  height: 20px;
-  width: 20px;
+  height: calc(20px * var(--marduk-scale-mobile));
+  width: calc(20px * var(--marduk-scale-mobile));
 }
 
 .marduk-checkbox--large + .marduk-checkbox-checkmark {
-  height: 24px;
-  width: 24px;
+  height: calc(24px * var(--marduk-scale-mobile));
+  width: calc(24px * var(--marduk-scale-mobile));
+}
+
+@media (min-width: 768px) {
+  .marduk-checkbox--small + .marduk-checkbox-checkmark {
+    height: calc(16px * var(--marduk-scale-tablet));
+    width: calc(16px * var(--marduk-scale-tablet));
+  }
+
+  .marduk-checkbox--medium + .marduk-checkbox-checkmark {
+    height: calc(20px * var(--marduk-scale-tablet));
+    width: calc(20px * var(--marduk-scale-tablet));
+  }
+
+  .marduk-checkbox--large + .marduk-checkbox-checkmark {
+    height: calc(24px * var(--marduk-scale-tablet));
+    width: calc(24px * var(--marduk-scale-tablet));
+  }
+}
+
+@media (min-width: 1024px) {
+  .marduk-checkbox--small + .marduk-checkbox-checkmark {
+    height: calc(16px * var(--marduk-scale-desktop));
+    width: calc(16px * var(--marduk-scale-desktop));
+  }
+
+  .marduk-checkbox--medium + .marduk-checkbox-checkmark {
+    height: calc(20px * var(--marduk-scale-desktop));
+    width: calc(20px * var(--marduk-scale-desktop));
+  }
+
+  .marduk-checkbox--large + .marduk-checkbox-checkmark {
+    height: calc(24px * var(--marduk-scale-desktop));
+    width: calc(24px * var(--marduk-scale-desktop));
+  }
 }
 
 .marduk-checkbox-label:hover .marduk-checkbox:not(:disabled) + .marduk-checkbox-checkmark {
@@ -63,37 +97,37 @@
 .marduk-checkbox--small:checked + .marduk-checkbox-checkmark::after {
   content: "";
   position: absolute;
-  left: 4px;
-  top: 1px;
-  width: 4px;
-  height: 8px;
+  left: 50%;
+  top: 45%;
+  width: 5px;
+  height: 9px;
   border: solid var(--marduk-color-white);
   border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .marduk-checkbox--medium:checked + .marduk-checkbox-checkmark::after {
   content: "";
   position: absolute;
-  left: 6px;
-  top: 2px;
-  width: 5px;
-  height: 10px;
+  left: 50%;
+  top: 45%;
+  width: 6px;
+  height: 11px;
   border: solid var(--marduk-color-white);
   border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .marduk-checkbox--large:checked + .marduk-checkbox-checkmark::after {
   content: "";
   position: absolute;
-  left: 7px;
-  top: 2px;
-  width: 6px;
-  height: 12px;
+  left: 50%;
+  top: 45%;
+  width: 7px;
+  height: 13px;
   border: solid var(--marduk-color-white);
   border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .marduk-checkbox--indeterminate + .marduk-checkbox-checkmark {
@@ -104,37 +138,37 @@
 .marduk-checkbox--small.marduk-checkbox--indeterminate + .marduk-checkbox-checkmark::after {
   content: "";
   position: absolute;
-  left: 3px;
-  top: 6px;
+  left: 50%;
+  top: 50%;
   width: 8px;
   height: 2px;
   background-color: var(--marduk-color-white);
   border: none;
-  transform: none;
+  transform: translate(-50%, -50%);
 }
 
 .marduk-checkbox--medium.marduk-checkbox--indeterminate + .marduk-checkbox-checkmark::after {
   content: "";
   position: absolute;
-  left: 4px;
-  top: 8px;
+  left: 50%;
+  top: 50%;
   width: 10px;
   height: 2px;
   background-color: var(--marduk-color-white);
   border: none;
-  transform: none;
+  transform: translate(-50%, -50%);
 }
 
 .marduk-checkbox--large.marduk-checkbox--indeterminate + .marduk-checkbox-checkmark::after {
   content: "";
   position: absolute;
-  left: 5px;
-  top: 10px;
+  left: 50%;
+  top: 50%;
   width: 12px;
   height: 2px;
   background-color: var(--marduk-color-white);
   border: none;
-  transform: none;
+  transform: translate(-50%, -50%);
 }
 
 .marduk-checkbox:focus + .marduk-checkbox-checkmark {

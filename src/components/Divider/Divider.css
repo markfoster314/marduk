@@ -1,0 +1,140 @@
+.marduk-divider {
+  --divider-color: var(--marduk-color-gray-300);
+  --divider-thickness: 1px;
+  --divider-spacing: var(--marduk-spacing-md);
+
+  border: none;
+  background-color: var(--divider-color);
+  margin: 0;
+}
+
+.marduk-divider--horizontal {
+  width: 100%;
+  height: var(--divider-thickness);
+}
+
+.marduk-divider--vertical {
+  width: var(--divider-thickness);
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.marduk-divider--thin {
+  --divider-thickness: 1px;
+}
+
+.marduk-divider--medium {
+  --divider-thickness: 2px;
+}
+
+.marduk-divider--thick {
+  --divider-thickness: 4px;
+}
+
+.marduk-divider--spacing-small {
+  --divider-spacing: calc(var(--marduk-spacing-sm) * var(--marduk-scale-mobile));
+}
+
+.marduk-divider--spacing-medium {
+  --divider-spacing: calc(var(--marduk-spacing-md) * var(--marduk-scale-mobile));
+}
+
+.marduk-divider--spacing-large {
+  --divider-spacing: calc(var(--marduk-spacing-lg) * var(--marduk-scale-mobile));
+}
+
+.marduk-divider--spacing-small.marduk-divider--horizontal {
+  margin-top: var(--divider-spacing);
+  margin-bottom: var(--divider-spacing);
+}
+
+.marduk-divider--spacing-medium.marduk-divider--horizontal {
+  margin-top: var(--divider-spacing);
+  margin-bottom: var(--divider-spacing);
+}
+
+.marduk-divider--spacing-large.marduk-divider--horizontal {
+  margin-top: var(--divider-spacing);
+  margin-bottom: var(--divider-spacing);
+}
+
+.marduk-divider--spacing-small.marduk-divider--vertical {
+  margin-left: var(--divider-spacing);
+  margin-right: var(--divider-spacing);
+}
+
+.marduk-divider--spacing-medium.marduk-divider--vertical {
+  margin-left: var(--divider-spacing);
+  margin-right: var(--divider-spacing);
+}
+
+.marduk-divider--spacing-large.marduk-divider--vertical {
+  margin-left: var(--divider-spacing);
+  margin-right: var(--divider-spacing);
+}
+
+.marduk-divider-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: var(--marduk-spacing-md);
+}
+
+.marduk-divider-wrapper .marduk-divider {
+  flex: 1;
+  margin: 0;
+}
+
+.marduk-divider__label {
+  font-size: var(--marduk-text-size-sm);
+  color: var(--marduk-color-gray-600);
+  white-space: nowrap;
+  padding: 0 calc(var(--marduk-spacing-xs) * var(--marduk-scale-mobile));
+}
+
+/* Responsive Scaling - Tablet */
+@media (min-width: 768px) {
+  .marduk-divider--spacing-small {
+    --divider-spacing: calc(var(--marduk-spacing-sm) * var(--marduk-scale-tablet));
+  }
+
+  .marduk-divider--spacing-medium {
+    --divider-spacing: calc(var(--marduk-spacing-md) * var(--marduk-scale-tablet));
+  }
+
+  .marduk-divider--spacing-large {
+    --divider-spacing: calc(var(--marduk-spacing-lg) * var(--marduk-scale-tablet));
+  }
+
+  .marduk-divider-wrapper {
+    gap: calc(var(--marduk-spacing-md) * var(--marduk-scale-tablet));
+  }
+
+  .marduk-divider__label {
+    padding: 0 calc(var(--marduk-spacing-xs) * var(--marduk-scale-tablet));
+  }
+}
+
+/* Responsive Scaling - Desktop */
+@media (min-width: 1024px) {
+  .marduk-divider--spacing-small {
+    --divider-spacing: calc(var(--marduk-spacing-sm) * var(--marduk-scale-desktop));
+  }
+
+  .marduk-divider--spacing-medium {
+    --divider-spacing: calc(var(--marduk-spacing-md) * var(--marduk-scale-desktop));
+  }
+
+  .marduk-divider--spacing-large {
+    --divider-spacing: calc(var(--marduk-spacing-lg) * var(--marduk-scale-desktop));
+  }
+
+  .marduk-divider-wrapper {
+    gap: calc(var(--marduk-spacing-md) * var(--marduk-scale-desktop));
+  }
+
+  .marduk-divider__label {
+    padding: 0 calc(var(--marduk-spacing-xs) * var(--marduk-scale-desktop));
+  }
+}

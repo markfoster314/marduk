@@ -1,0 +1,83 @@
+.marduk-skeleton {
+  --skeleton-bg: var(--marduk-color-gray-200);
+  --skeleton-highlight: var(--marduk-color-gray-100);
+  --skeleton-width: 100%;
+  --skeleton-height: 1em;
+  --skeleton-border-radius: var(--marduk-radius-sm);
+
+  display: inline-block;
+  width: var(--skeleton-width);
+  height: var(--skeleton-height);
+  background-color: var(--skeleton-bg);
+  border-radius: var(--skeleton-border-radius);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shape Variants */
+.marduk-skeleton--shape-text {
+  --skeleton-border-radius: var(--marduk-radius-sm);
+  height: 1em;
+}
+
+.marduk-skeleton--shape-circle {
+  --skeleton-border-radius: 50%;
+  aspect-ratio: 1 / 1;
+}
+
+.marduk-skeleton--shape-rectangle {
+  --skeleton-border-radius: var(--marduk-radius-md);
+}
+
+/* Animation Variants */
+.marduk-skeleton--animation-pulse {
+  animation: marduk-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.marduk-skeleton--animation-wave {
+  animation: marduk-skeleton-wave 1.5s ease-in-out infinite;
+}
+
+.marduk-skeleton--animation-wave::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: marduk-skeleton-shimmer 1.5s infinite;
+}
+
+.marduk-skeleton--animation-none {
+  /* No animation */
+}
+
+@keyframes marduk-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes marduk-skeleton-wave {
+  0%,
+  100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes marduk-skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

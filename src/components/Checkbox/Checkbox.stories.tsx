@@ -7,10 +7,10 @@ import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 const meta: Meta<typeof Checkbox> = {
   title: "Components/Checkbox",
   component: Checkbox,
-  tags: ["autodocs", "status:barebones"],
+  tags: ["autodocs", "status:ready"],
   parameters: {
     docs: {
-      subtitle: STORYBOOK_STATUS.BAREBONES,
+      subtitle: STORYBOOK_STATUS.READY,
     },
   },
   argTypes: {

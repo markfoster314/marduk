@@ -6,10 +6,10 @@ import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 const meta: Meta<typeof ProgressBar> = {
   title: "Components/ProgressBar",
   component: ProgressBar,
-  tags: ["autodocs", "status:barebones"],
+  tags: ["autodocs", "status:ready"],
   parameters: {
     docs: {
-      subtitle: STORYBOOK_STATUS.BAREBONES,
+      subtitle: STORYBOOK_STATUS.READY,
     },
   },
   argTypes: {

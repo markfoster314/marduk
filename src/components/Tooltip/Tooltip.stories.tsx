@@ -6,16 +6,39 @@ import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 const meta: Meta<typeof Tooltip> = {
   title: "Components/Tooltip",
   component: Tooltip,
-  tags: ["autodocs", "status:barebones"],
+  tags: ["autodocs", "status:ready"],
   parameters: {
     docs: {
-      subtitle: STORYBOOK_STATUS.BAREBONES,
+      subtitle: STORYBOOK_STATUS.READY,
     },
   },
   argTypes: {
+    children: {
+      control: false,
+      description: "React element that triggers the tooltip",
+      table: {
+        type: { summary: "ReactElement" },
+      },
+    },
+    content: {
+      control: "text",
+      description: "Tooltip content (string or ReactNode)",
+      table: {
+        type: { summary: "ReactNode" },
+      },
+    },
     position: {
       control: "select",
       options: ["top", "bottom", "left", "right"],
+      description: "Tooltip position relative to trigger",
+    },
+    delay: {
+      control: { type: "number" },
+      description: "Delay in milliseconds before showing tooltip",
+      table: {
+        type: { summary: "number" },
+        defaultValue: { summary: "200" },
+      },
     },
   },
 };

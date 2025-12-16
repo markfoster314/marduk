@@ -165,6 +165,50 @@ describe("RadioButtons", () => {
     });
   });
 
+  describe("Data Attributes", () => {
+    it("includes data-size attribute", () => {
+      const { container } = render(<RadioButtons name="size" options={mockOptions} size="small" />);
+      const wrapper = container.querySelector(".marduk-radio-wrapper");
+      expect(wrapper).toHaveAttribute("data-size", "small");
+    });
+
+    it("includes data-direction attribute", () => {
+      const { container } = render(
+        <RadioButtons name="size" options={mockOptions} direction="horizontal" />,
+      );
+      const wrapper = container.querySelector(".marduk-radio-wrapper");
+      expect(wrapper).toHaveAttribute("data-direction", "horizontal");
+    });
+
+    it("includes data-disabled attribute when disabled", () => {
+      const { container } = render(<RadioButtons name="size" options={mockOptions} disabled />);
+      const wrapper = container.querySelector(".marduk-radio-wrapper");
+      expect(wrapper).toHaveAttribute("data-disabled", "true");
+    });
+
+    it("includes data-required attribute when required", () => {
+      const { container } = render(<RadioButtons name="size" options={mockOptions} required />);
+      const wrapper = container.querySelector(".marduk-radio-wrapper");
+      expect(wrapper).toHaveAttribute("data-required", "true");
+    });
+
+    it("includes data-error attribute when error is present", () => {
+      const { container } = render(
+        <RadioButtons name="size" options={mockOptions} error="Error message" />,
+      );
+      const wrapper = container.querySelector(".marduk-radio-wrapper");
+      expect(wrapper).toHaveAttribute("data-error", "true");
+    });
+
+    it("includes data-value attribute with selected value", () => {
+      const { container } = render(
+        <RadioButtons name="size" options={mockOptions} value="medium" />,
+      );
+      const wrapper = container.querySelector(".marduk-radio-wrapper");
+      expect(wrapper).toHaveAttribute("data-value", "medium");
+    });
+  });
+
   describe("Accessibility", () => {
     it("has radiogroup role", () => {
       render(<RadioButtons name="size" options={mockOptions} label="Size" />);
@@ -185,6 +229,14 @@ describe("RadioButtons", () => {
 
       expect(smallRadio.id).toBe("size-small");
       expect(mediumRadio.id).toBe("size-medium");
+    });
+
+    it("is keyboard accessible", () => {
+      render(<RadioButtons name="size" options={mockOptions} />);
+      const smallRadio = screen.getByLabelText("Small");
+
+      smallRadio.focus();
+      expect(smallRadio).toHaveFocus();
     });
   });
 });

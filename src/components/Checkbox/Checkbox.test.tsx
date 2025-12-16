@@ -198,6 +198,38 @@ describe("Checkbox", () => {
     });
   });
 
+  describe("Data Attributes", () => {
+    it("includes data-size attribute", () => {
+      const { container } = render(<Checkbox size="small" />);
+      const wrapper = container.querySelector(".marduk-checkbox-wrapper");
+      expect(wrapper).toHaveAttribute("data-size", "small");
+    });
+
+    it("includes data-disabled attribute when disabled", () => {
+      const { container } = render(<Checkbox disabled />);
+      const wrapper = container.querySelector(".marduk-checkbox-wrapper");
+      expect(wrapper).toHaveAttribute("data-disabled", "true");
+    });
+
+    it("includes data-checked attribute when checked", () => {
+      const { container } = render(<Checkbox checked />);
+      const wrapper = container.querySelector(".marduk-checkbox-wrapper");
+      expect(wrapper).toHaveAttribute("data-checked", "true");
+    });
+
+    it("includes data-indeterminate attribute when indeterminate", () => {
+      const { container } = render(<Checkbox indeterminate />);
+      const wrapper = container.querySelector(".marduk-checkbox-wrapper");
+      expect(wrapper).toHaveAttribute("data-indeterminate", "true");
+    });
+
+    it("includes data-error attribute when error is present", () => {
+      const { container } = render(<Checkbox error="Error message" />);
+      const wrapper = container.querySelector(".marduk-checkbox-wrapper");
+      expect(wrapper).toHaveAttribute("data-error", "true");
+    });
+  });
+
   describe("Accessibility", () => {
     it("has checkbox role", () => {
       render(<Checkbox />);
@@ -237,6 +269,19 @@ describe("Checkbox", () => {
 
       rerender(<Checkbox checked={true} onChange={() => {}} />);
       expect(screen.getByRole("checkbox")).toBeChecked();
+    });
+  });
+
+  describe("Uncontrolled Component", () => {
+    it("works without checked prop", async () => {
+      const user = userEvent.setup();
+      render(<Checkbox label="Test" />);
+
+      const checkbox = screen.getByRole("checkbox");
+      expect(checkbox).not.toBeChecked();
+
+      await user.click(checkbox);
+      expect(checkbox).toBeChecked();
     });
   });
 });

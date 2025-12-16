@@ -70,63 +70,65 @@
   --svg-size: 96px;
 }
 
+/* Tablet breakpoint (768px+) - 15% increase */
 @media (min-width: 768px) {
   .marduk-svg--size-xs {
-    --svg-size: 14px;
+    --svg-size: calc(12px * var(--marduk-scale-tablet));
   }
 
   .marduk-svg--size-small {
-    --svg-size: 20px;
+    --svg-size: calc(16px * var(--marduk-scale-tablet));
   }
 
   .marduk-svg--size-medium {
-    --svg-size: 28px;
+    --svg-size: calc(24px * var(--marduk-scale-tablet));
   }
 
   .marduk-svg--size-large {
-    --svg-size: 36px;
+    --svg-size: calc(32px * var(--marduk-scale-tablet));
   }
 
   .marduk-svg--size-xl {
-    --svg-size: 54px;
+    --svg-size: calc(48px * var(--marduk-scale-tablet));
   }
 
   .marduk-svg--size-2xl {
-    --svg-size: 72px;
+    --svg-size: calc(64px * var(--marduk-scale-tablet));
   }
 
   .marduk-svg--size-3xl {
-    --svg-size: 108px;
+    --svg-size: calc(96px * var(--marduk-scale-tablet));
   }
 }
 
+/* Desktop breakpoint (1024px+) - 30% increase */
 @media (min-width: 1024px) {
   .marduk-svg--size-xs {
-    --svg-size: 16px;
+    --svg-size: calc(12px * var(--marduk-scale-desktop));
   }
 
   .marduk-svg--size-small {
-    --svg-size: 24px;
+    --svg-size: calc(16px * var(--marduk-scale-desktop));
   }
 
   .marduk-svg--size-medium {
-    --svg-size: 32px;
+    --svg-size: calc(24px * var(--marduk-scale-desktop));
   }
 
   .marduk-svg--size-large {
-    --svg-size: 40px;
+    --svg-size: calc(32px * var(--marduk-scale-desktop));
   }
 
   .marduk-svg--size-xl {
-    --svg-size: 60px;
+    --svg-size: calc(48px * var(--marduk-scale-desktop));
   }
 
   .marduk-svg--size-2xl {
-    --svg-size: 80px;
+    --svg-size: calc(64px * var(--marduk-scale-desktop));
   }
 
   .marduk-svg--size-3xl {
-    --svg-size: 120px;
+    --svg-size: calc(96px * var(--marduk-scale-desktop));
   }
 }
 
@@ -137,15 +139,17 @@
   height: calc(var(--svg-custom-size, var(--svg-size)) * var(--svg-responsive-scale));
 }
 
+/* Tablet breakpoint (768px+) - 15% increase */
 @media (min-width: 768px) {
   .marduk-svg--responsive {
-    --svg-responsive-scale: 1.125;
+    --svg-responsive-scale: var(--marduk-scale-tablet);
   }
 }
 
+/* Desktop breakpoint (1024px+) - 30% increase */
 @media (min-width: 1024px) {
   .marduk-svg--responsive {
-    --svg-responsive-scale: 1.25;
+    --svg-responsive-scale: var(--marduk-scale-desktop);
   }
 }
 

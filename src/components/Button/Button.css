@@ -176,37 +176,49 @@
 }
 
 .marduk-button--small {
-  padding: var(--marduk-spacing-3) var(--marduk-spacing-5);
-  font-size: var(--marduk-text-size-sm);
-  min-width: 48px;
+  --button-padding-y: var(--marduk-spacing-3);
+  --button-padding-x: var(--marduk-spacing-5);
+  --button-font-size: var(--marduk-text-size-sm);
+  --button-min-width: 48px;
+
+  padding: var(--button-padding-y) var(--button-padding-x);
+  font-size: var(--button-font-size);
+  min-width: var(--button-min-width);
 }
 
 .marduk-button--medium {
-  padding: var(--marduk-spacing-4) var(--marduk-spacing-7);
-  font-size: var(--marduk-text-size-md);
-  min-width: 64px;
+  --button-padding-y: var(--marduk-spacing-4);
+  --button-padding-x: var(--marduk-spacing-7);
+  --button-font-size: var(--marduk-text-size-md);
+  --button-min-width: 64px;
+
+  padding: var(--button-padding-y) var(--button-padding-x);
+  font-size: var(--button-font-size);
+  min-width: var(--button-min-width);
 }
 
 .marduk-button--large {
-  padding: var(--marduk-spacing-6) var(--marduk-spacing-9);
-  font-size: var(--marduk-text-size-lg);
-  min-width: 80px;
+  --button-padding-y: var(--marduk-spacing-6);
+  --button-padding-x: var(--marduk-spacing-9);
+  --button-font-size: var(--marduk-text-size-lg);
+  --button-min-width: 80px;
+
+  padding: var(--button-padding-y) var(--button-padding-x);
+  font-size: var(--button-font-size);
+  min-width: var(--button-min-width);
 }
 
 /* text buttons need less padding */
 .marduk-button--appearance-text.marduk-button--small {
-  padding-left: var(--marduk-spacing-3);
-  padding-right: var(--marduk-spacing-3);
+  --button-padding-x: var(--marduk-spacing-3);
 }
 
 .marduk-button--appearance-text.marduk-button--medium {
-  padding-left: var(--marduk-spacing-4);
-  padding-right: var(--marduk-spacing-4);
+  --button-padding-x: var(--marduk-spacing-4);
 }
 
 .marduk-button--appearance-text.marduk-button--large {
-  padding-left: var(--marduk-spacing-5);
-  padding-right: var(--marduk-spacing-5);
+  --button-padding-x: var(--marduk-spacing-5);
 }
 
 .marduk-button:where(:disabled),
@@ -230,37 +242,45 @@
   transform: none;
 }
 
+/* Tablet breakpoint (768px+) - 15% increase */
 @media (min-width: 768px) {
   .marduk-button--small {
-    padding: var(--marduk-spacing-2) var(--marduk-spacing-5);
-    font-size: var(--marduk-text-size-sm);
+    --button-padding-y: calc(var(--marduk-spacing-3) * var(--marduk-scale-tablet));
+    --button-padding-x: calc(var(--marduk-spacing-5) * var(--marduk-scale-tablet));
+    --button-font-size: calc(var(--marduk-text-size-sm) * var(--marduk-scale-tablet));
   }
 
   .marduk-button--medium {
-    padding: var(--marduk-spacing-4) var(--marduk-spacing-7);
-    font-size: var(--marduk-text-size-md);
+    --button-padding-y: calc(var(--marduk-spacing-4) * var(--marduk-scale-tablet));
+    --button-padding-x: calc(var(--marduk-spacing-7) * var(--marduk-scale-tablet));
+    --button-font-size: calc(var(--marduk-text-size-md) * var(--marduk-scale-tablet));
   }
 
   .marduk-button--large {
-    padding: var(--marduk-spacing-6) var(--marduk-spacing-9);
-    font-size: var(--marduk-text-size-lg);
+    --button-padding-y: calc(var(--marduk-spacing-6) * var(--marduk-scale-tablet));
+    --button-padding-x: calc(var(--marduk-spacing-9) * var(--marduk-scale-tablet));
+    --button-font-size: calc(var(--marduk-text-size-lg) * var(--marduk-scale-tablet));
   }
 }
 
+/* Desktop breakpoint (1024px+) - 30% increase */
 @media (min-width: 1024px) {
   .marduk-button--small {
-    padding: var(--marduk-spacing-3) var(--marduk-spacing-6);
-    font-size: var(--marduk-text-size-sm);
+    --button-padding-y: calc(var(--marduk-spacing-3) * var(--marduk-scale-desktop));
+    --button-padding-x: calc(var(--marduk-spacing-6) * var(--marduk-scale-desktop));
+    --button-font-size: calc(var(--marduk-text-size-sm) * var(--marduk-scale-desktop));
   }
 
   .marduk-button--medium {
-    padding: var(--marduk-spacing-5) var(--marduk-spacing-8);
-    font-size: var(--marduk-text-size-md);
+    --button-padding-y: calc(var(--marduk-spacing-5) * var(--marduk-scale-desktop));
+    --button-padding-x: calc(var(--marduk-spacing-8) * var(--marduk-scale-desktop));
+    --button-font-size: calc(var(--marduk-text-size-md) * var(--marduk-scale-desktop));
   }
 
   .marduk-button--large {
-    padding: var(--marduk-spacing-7) var(--marduk-spacing-11);
-    font-size: var(--marduk-text-size-lg);
+    --button-padding-y: calc(var(--marduk-spacing-7) * var(--marduk-scale-desktop));
+    --button-padding-x: calc(var(--marduk-spacing-11) * var(--marduk-scale-desktop));
+    --button-font-size: calc(var(--marduk-text-size-lg) * var(--marduk-scale-desktop));
   }
 }
 

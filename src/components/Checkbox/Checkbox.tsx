@@ -95,8 +95,16 @@ export const Checkbox = ({
     .filter(Boolean)
     .join(" ");
 
+  const dataAttributes = {
+    "data-size": size,
+    ...(disabled && { "data-disabled": true }),
+    ...(checkedValue && { "data-checked": true }),
+    ...(indeterminate && { "data-indeterminate": true }),
+    ...(error && { "data-error": true }),
+  };
+
   return (
-    <div className="marduk-checkbox-wrapper">
+    <div className="marduk-checkbox-wrapper" {...dataAttributes}>
       <label className={labelClasses}>
         <input
           ref={checkboxRef}
