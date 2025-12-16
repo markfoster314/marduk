@@ -1,5 +1,11 @@
 # Tooltip
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"I found you."_
+
 A tooltip component that displays contextual information on hover or focus.
 
 ## Basic Usage

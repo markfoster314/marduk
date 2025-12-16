@@ -1,5 +1,11 @@
 # Toggle
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"I found you."_
+
 A toggle switch component for binary on/off states.
 
 ## Basic Usage

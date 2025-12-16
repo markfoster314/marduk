@@ -1,5 +1,11 @@
 # ProgressBar
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"but Miss Kobayashi saved me."_
+
 A progress bar component for displaying task completion or loading states.
 
 ## Basic Usage

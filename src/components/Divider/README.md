@@ -1,5 +1,11 @@
 # Divider
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"but Miss Kobayashi saved me."_
+
 Visual separator component with orientation, thickness, and label support.
 
 ## Basic Usage

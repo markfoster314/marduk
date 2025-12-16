@@ -1,5 +1,11 @@
 # Spinner
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"but Miss Kobayashi saved me."_
+
 Loading indicator component with customizable size, speed, and color presets.
 
 ## Basic Usage

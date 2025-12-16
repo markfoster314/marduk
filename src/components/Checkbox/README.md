@@ -1,5 +1,11 @@
 # Checkbox
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"but Miss Kobayashi saved me."_
+
 A checkbox component with support for checked, indeterminate, and error states.
 
 ## Basic Usage

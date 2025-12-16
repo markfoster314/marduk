@@ -1,5 +1,11 @@
 # Avatar
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"but Miss Kobayashi saved me."_
+
 User avatar component with image fallback, initials, status indicators, and multiple sizes.
 
 ## Basic Usage

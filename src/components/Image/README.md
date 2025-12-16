@@ -1,5 +1,11 @@
 # Image
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"but Miss Kobayashi saved me."_
+
 Smart image component with lazy loading, placeholder support, error handling, and aspect ratio control.
 
 ## Basic Usage

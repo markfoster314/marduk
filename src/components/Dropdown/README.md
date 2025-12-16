@@ -1,5 +1,11 @@
 # Dropdown
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"but Miss Kobayashi saved me."_
+
 A select dropdown component with support for options, validation states, and helper text.
 
 ## Basic Usage

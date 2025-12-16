@@ -1,5 +1,11 @@
 # TextInput
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"Mmm."_
+
 A text input component with support for various input types, validation states, and helper text.
 
 ## Basic Usage

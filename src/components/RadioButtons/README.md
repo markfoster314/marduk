@@ -1,5 +1,11 @@
 # RadioButtons
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"but Miss Kobayashi saved me."_
+
 A radio button group component for single selection from multiple options.
 
 ## Basic Usage

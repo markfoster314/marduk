@@ -1,5 +1,11 @@
 # Badge
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"but Miss Kobayashi saved me."_
+
 Status indicators and labels for highlighting information
 
 ## Basic Usage

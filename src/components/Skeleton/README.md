@@ -1,5 +1,11 @@
 # Skeleton
 
+<div align="center">
+  <img src="../../../docs/gifs/kanna-poke.gif" alt="Kanna Poke" width="400">
+</div>
+
+_"but Miss Kobayashi saved me."_
+
 Loading placeholder component with shape variants, animations, and multiple item support.
 
 ## Basic Usage
