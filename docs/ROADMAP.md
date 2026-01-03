@@ -100,6 +100,8 @@ Before releasing v0.3.0:
 
 ### v0.3.1 - Core Feedback Compositions
 
+**Milestone:** [v0.3.1](https://github.com/markfoster314/marduk/milestone/2)
+
 **Goal:** Complete notification and feedback patterns for user interactions.
 
 **Target components (3):**
@@ -111,6 +113,8 @@ Before releasing v0.3.0:
 **Focus:** User feedback and loading states
 
 ### v0.3.2 - Navigation & Basic Layout Compositions
+
+**Milestone:** [v0.3.2](https://github.com/markfoster314/marduk/milestone/3)
 
 **Goal:** Establish navigation patterns and basic content containers.
 
@@ -125,6 +129,8 @@ Before releasing v0.3.0:
 
 ### v0.3.3 - Layout & Organization Compositions
 
+**Milestone:** [v0.3.3](https://github.com/markfoster314/marduk/milestone/4)
+
 **Goal:** Provide layout components for organizing complex interfaces.
 
 **Target components (4):**
@@ -138,6 +144,8 @@ Before releasing v0.3.0:
 
 ### v0.3.4 - Data Display Compositions
 
+**Milestone:** [v0.3.4](https://github.com/markfoster314/marduk/milestone/5)
+
 **Goal:** Enable rich data visualization and presentation.
 
 **Target components (3):**
@@ -149,6 +157,8 @@ Before releasing v0.3.0:
 **Focus:** Data visualization and presentation
 
 ### v0.4.0 - Forms & Advanced Interactions
+
+**Milestone:** [v0.4.0](https://github.com/markfoster314/marduk/milestone/6)
 
 **Goal:** Complete the composition suite with form handling and advanced interactive patterns.
 
