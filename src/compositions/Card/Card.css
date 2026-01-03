@@ -1,0 +1,48 @@
+.marduk-card {
+  --card-border-color: var(--marduk-color-gray-300);
+  --card-border-radius: var(--marduk-radius-lg);
+  --card-padding: var(--marduk-spacing-6);
+  --card-shadow: var(--marduk-shadow-md);
+  --card-bg: var(--marduk-color-white);
+
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+.marduk-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--card-padding);
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.marduk-card-title-wrapper {
+  flex: 1;
+}
+
+.marduk-card-title {
+  margin: 0;
+}
+
+.marduk-card-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--marduk-spacing-4);
+}
+
+.marduk-card-body {
+  padding: var(--card-padding);
+  flex: 1;
+}
+
+.marduk-card-footer {
+  padding: var(--card-padding);
+  border-top: 1px solid var(--card-border-color);
+  background-color: var(--marduk-color-gray-50);
+}

@@ -1,0 +1,47 @@
+.marduk-tabs {
+  --tabs-border-color: var(--marduk-color-gray-300);
+  --tabs-active-color: var(--marduk-color-primary-500);
+  --tabs-padding: var(--marduk-spacing-6);
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.marduk-tabs-list {
+  display: flex;
+  border-bottom: 2px solid var(--tabs-border-color);
+  gap: var(--marduk-spacing-2);
+}
+
+.marduk-tabs-tab {
+  padding: var(--marduk-spacing-4) var(--marduk-spacing-6);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all var(--marduk-transition-fast);
+  background: transparent;
+}
+
+.marduk-tabs-tab:hover:not(.marduk-tabs-tab--disabled) {
+  background-color: var(--marduk-color-gray-50);
+}
+
+.marduk-tabs-tab--active {
+  border-bottom-color: var(--tabs-active-color);
+  color: var(--tabs-active-color);
+}
+
+.marduk-tabs-tab--disabled {
+  opacity: var(--marduk-opacity-disabled);
+  cursor: not-allowed;
+}
+
+.marduk-tabs-label {
+  font-weight: var(--marduk-font-weight-medium);
+  margin: 0;
+}
+
+.marduk-tabs-panel {
+  padding: var(--tabs-padding);
+}

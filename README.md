@@ -212,7 +212,7 @@ Props always override preset values:
 
 ## Barebones Features
 
-**Compositions:** [Modal](src/compositions/Modal) | [Toast](src/compositions/Toast) | [Pagination](src/compositions/Pagination) | [Breadcrumb](src/compositions/Breadcrumb)
+**Compositions:** [Modal](src/compositions/Modal) | [Toast](src/compositions/Toast) | [Pagination](src/compositions/Pagination) | [Breadcrumb](src/compositions/Breadcrumb) | [Card](src/compositions/Card) | [Tabs](src/compositions/Tabs) | [Accordion](src/compositions/Accordion) | [Table](src/compositions/Table) | [Form](src/compositions/Form) | [Menu](src/compositions/Menu) | [Sidebar](src/compositions/Sidebar) | [DatePicker](src/compositions/DatePicker) | [Autocomplete](src/compositions/Autocomplete) | [Popover](src/compositions/Popover) | [Wizard](src/compositions/Wizard) | [Timeline](src/compositions/Timeline) | [Carousel](src/compositions/Carousel) | [DataGrid](src/compositions/DataGrid)
 
 ## Icon Library
 

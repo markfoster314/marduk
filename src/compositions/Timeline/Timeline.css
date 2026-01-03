@@ -1,0 +1,59 @@
+.marduk-timeline {
+  position: relative;
+  padding-left: var(--marduk-spacing-8);
+}
+
+.marduk-timeline-item {
+  position: relative;
+  padding-bottom: var(--marduk-spacing-8);
+  display: flex;
+  gap: var(--marduk-spacing-6);
+}
+
+.marduk-timeline-item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 32px;
+  bottom: -16px;
+  width: 2px;
+  background-color: var(--marduk-color-gray-300);
+}
+
+.marduk-timeline-marker {
+  position: absolute;
+  left: -32px;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--marduk-color-white);
+  border: 2px solid var(--marduk-color-gray-300);
+  border-radius: var(--marduk-radius-circle);
+  z-index: 1;
+}
+
+.marduk-timeline-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--marduk-color-primary-500);
+  border-radius: var(--marduk-radius-circle);
+}
+
+.marduk-timeline-content {
+  flex: 1;
+}
+
+.marduk-timeline-timestamp {
+  margin-bottom: var(--marduk-spacing-2);
+}
+
+.marduk-timeline-title {
+  margin: 0 0 var(--marduk-spacing-2) 0;
+}
+
+.marduk-timeline-body {
+  margin-top: var(--marduk-spacing-2);
+}

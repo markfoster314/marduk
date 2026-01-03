@@ -82,41 +82,88 @@ A component is considered production-ready when it meets all criteria:
 
 Before releasing v0.3.0:
 
-- [ ] All 17 components meet production-ready criteria
-- [ ] Update CHANGELOG.md
-- [ ] Version bump to 0.3.0 in package.json
-- [ ] All tests passing (target: >1000 tests)
-- [ ] Build succeeds without errors
-- [ ] Type checking passes
-- [ ] Linting passes with zero warnings
-- [ ] Storybook builds successfully
-- [ ] README updated with new components
-- [ ] Update status badges in all stories
-- [ ] npm publish
-- [ ] GitHub release with release notes
-- [ ] Update Storybook deployment
+- [x] All 17 components meet production-ready criteria
+- [x] Update CHANGELOG.md
+- [x] Version bump to 0.3.0 in package.json
+- [x] All tests passing (target: >1000 tests)
+- [x] Build succeeds without errors
+- [x] Type checking passes
+- [x] Linting passes with zero warnings
+- [x] Storybook builds successfully
+- [x] README updated with new components
+- [x] Update status badges in all stories
+- [x] npm publish
+- [x] GitHub release with release notes
+- [x] Update Storybook deployment
 
 ## Future Roadmap
 
-### v0.4.0 - Production-Ready Compositions
+### v0.3.1 - Core Feedback Compositions
 
-**Target components:**
+**Goal:** Complete notification and feedback patterns for user interactions.
 
-- Alert (WIP → Ready)
-- LoadingIndicator (WIP → Ready)
-- Modal (Barebones → Ready)
-- Toast (Barebones → Ready)
-- Pagination (Barebones → Ready)
-- Breadcrumb (Barebones → Ready)
+**Target components (3):**
 
-**New compositions:**
+- [] Alert (WIP → Ready)
+- [] LoadingIndicator (WIP → Ready)
+- [] Toast (Barebones → Ready)
 
-- Card
-- Tabs
-- Accordion
-- Menu/Navigation
-- Table
-- Form
+**Focus:** User feedback and loading states
+
+### v0.3.2 - Navigation & Basic Layout Compositions
+
+**Goal:** Establish navigation patterns and basic content containers.
+
+**Target components (4):**
+
+- [] Breadcrumb (Barebones → Ready)
+- [] Pagination (Barebones → Ready)
+- [] Menu (New)
+- [] Card (New)
+
+**Focus:** Navigation and content organization
+
+### v0.3.3 - Layout & Organization Compositions
+
+**Goal:** Provide layout components for organizing complex interfaces.
+
+**Target components (4):**
+
+- [] Modal (Barebones → Ready)
+- [] Sidebar (New)
+- [] Tabs (New)
+- [] Accordion (New)
+
+**Focus:** Layout patterns and content organization
+
+### v0.3.4 - Data Display Compositions
+
+**Goal:** Enable rich data visualization and presentation.
+
+**Target components (3):**
+
+- [] Table (New)
+- [] DataGrid (New)
+- [] Timeline (New)
+
+**Focus:** Data visualization and presentation
+
+### v0.4.0 - Forms & Advanced Interactions
+
+**Goal:** Complete the composition suite with form handling and advanced interactive patterns.
+
+**Target components (6):**
+
+- [] Form (New)
+- [] DatePicker (New)
+- [] Autocomplete (New)
+- [] Popover (New)
+- [] Wizard (New)
+- [] Carousel (New)
+
+**Focus:** Form handling and advanced interactions
+
+**Status:** All compositions production-ready
 
 ### v0.5.0 - First Templates
 

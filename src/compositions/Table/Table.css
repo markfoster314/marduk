@@ -1,0 +1,43 @@
+.marduk-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.marduk-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.marduk-table-header {
+  background-color: var(--marduk-color-gray-50);
+}
+
+.marduk-table-header-cell {
+  padding: var(--marduk-spacing-4) var(--marduk-spacing-6);
+  text-align: left;
+  border-bottom: 2px solid var(--marduk-color-gray-300);
+  font-weight: var(--marduk-font-weight-semibold);
+}
+
+.marduk-table-header-text {
+  margin: 0;
+  color: var(--marduk-color-gray-700);
+}
+
+.marduk-table-body {
+  background-color: var(--marduk-color-white);
+}
+
+.marduk-table-row {
+  border-bottom: 1px solid var(--marduk-color-gray-200);
+  transition: background-color var(--marduk-transition-fast);
+}
+
+.marduk-table-row:hover {
+  background-color: var(--marduk-color-gray-50);
+}
+
+.marduk-table-cell {
+  padding: var(--marduk-spacing-4) var(--marduk-spacing-6);
+}

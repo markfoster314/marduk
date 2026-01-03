@@ -1,0 +1,63 @@
+.marduk-accordion {
+  --accordion-border-color: var(--marduk-color-gray-300);
+  --accordion-border-radius: var(--marduk-radius-md);
+  --accordion-padding: var(--marduk-spacing-6);
+  --accordion-gap: var(--marduk-spacing-2);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--accordion-gap);
+  width: 100%;
+}
+
+.marduk-accordion-item {
+  border: 1px solid var(--accordion-border-color);
+  border-radius: var(--accordion-border-radius);
+  overflow: hidden;
+}
+
+.marduk-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--accordion-padding);
+  cursor: pointer;
+  background-color: var(--marduk-color-white);
+  transition: background-color var(--marduk-transition-fast);
+}
+
+.marduk-accordion-header:hover {
+  background-color: var(--marduk-color-gray-50);
+}
+
+.marduk-accordion-header:focus {
+  outline: 2px solid var(--marduk-color-focus);
+  outline-offset: -2px;
+}
+
+.marduk-accordion-header--open {
+  border-bottom: 1px solid var(--accordion-border-color);
+}
+
+.marduk-accordion-title {
+  flex: 1;
+  margin: 0;
+  font-weight: var(--marduk-font-weight-medium);
+}
+
+.marduk-accordion-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 1.25rem;
+  font-weight: var(--marduk-font-weight-bold);
+  color: var(--marduk-color-gray-600);
+  transition: transform var(--marduk-transition-fast);
+}
+
+.marduk-accordion-content {
+  padding: var(--accordion-padding);
+  background-color: var(--marduk-color-white);
+}

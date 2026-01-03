@@ -1,0 +1,43 @@
+.marduk-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: var(--marduk-z-index-modal);
+}
+
+.marduk-sidebar {
+  --sidebar-width: 300px;
+  --sidebar-z-index: calc(var(--marduk-z-index-modal) + 1);
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  max-width: 90vw;
+  background-color: var(--marduk-color-white);
+  box-shadow: var(--marduk-shadow-xl);
+  z-index: var(--sidebar-z-index);
+  overflow-y: auto;
+  transition: transform var(--marduk-transition-medium);
+}
+
+.marduk-sidebar--left {
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.marduk-sidebar--right {
+  right: 0;
+  transform: translateX(100%);
+}
+
+.marduk-sidebar--open.marduk-sidebar--left {
+  transform: translateX(0);
+}
+
+.marduk-sidebar--open.marduk-sidebar--right {
+  transform: translateX(0);
+}

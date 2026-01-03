@@ -1,0 +1,63 @@
+.marduk-wizard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--marduk-spacing-8);
+  width: 100%;
+}
+
+.marduk-wizard-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: var(--marduk-spacing-4) 0;
+}
+
+.marduk-wizard-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--marduk-spacing-2);
+  flex: 1;
+  position: relative;
+}
+
+.marduk-wizard-step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--marduk-radius-circle);
+  background-color: var(--marduk-color-gray-200);
+  color: var(--marduk-color-gray-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--marduk-font-weight-semibold);
+  transition: all var(--marduk-transition-fast);
+}
+
+.marduk-wizard-step--active .marduk-wizard-step-number {
+  background-color: var(--marduk-color-primary-500);
+  color: var(--marduk-color-white);
+}
+
+.marduk-wizard-step--completed .marduk-wizard-step-number {
+  background-color: var(--marduk-color-success-500);
+  color: var(--marduk-color-white);
+}
+
+.marduk-wizard-step-title {
+  font-size: var(--marduk-text-size-sm);
+  text-align: center;
+  margin: 0;
+}
+
+.marduk-wizard-content {
+  min-height: 200px;
+  padding: var(--marduk-spacing-6);
+}
+
+.marduk-wizard-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--marduk-spacing-4);
+}

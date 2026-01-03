@@ -1,0 +1,46 @@
+.marduk-popover-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.marduk-popover {
+  --popover-z-index: var(--marduk-z-index-tooltip);
+
+  position: absolute;
+  background-color: var(--marduk-color-white);
+  border: 1px solid var(--marduk-color-gray-300);
+  border-radius: var(--marduk-radius-md);
+  box-shadow: var(--marduk-shadow-lg);
+  padding: var(--marduk-spacing-4);
+  z-index: var(--popover-z-index);
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.marduk-popover--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: var(--marduk-spacing-2);
+}
+
+.marduk-popover--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: var(--marduk-spacing-2);
+}
+
+.marduk-popover--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: var(--marduk-spacing-2);
+}
+
+.marduk-popover--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: var(--marduk-spacing-2);
+}

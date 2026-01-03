@@ -1,0 +1,29 @@
+.marduk-autocomplete {
+  position: relative;
+  width: 100%;
+}
+
+.marduk-autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: var(--marduk-spacing-2);
+  background-color: var(--marduk-color-white);
+  border: 1px solid var(--marduk-color-gray-300);
+  border-radius: var(--marduk-radius-md);
+  box-shadow: var(--marduk-shadow-lg);
+  z-index: var(--marduk-z-index-dropdown);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.marduk-autocomplete-option {
+  padding: var(--marduk-spacing-4) var(--marduk-spacing-6);
+  cursor: pointer;
+  transition: background-color var(--marduk-transition-fast);
+}
+
+.marduk-autocomplete-option:hover {
+  background-color: var(--marduk-color-gray-50);
+}

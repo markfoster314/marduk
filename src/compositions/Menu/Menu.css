@@ -1,0 +1,53 @@
+.marduk-menu {
+  --menu-padding: var(--marduk-spacing-2);
+  --menu-border-color: var(--marduk-color-gray-300);
+  --menu-border-radius: var(--marduk-radius-md);
+  --menu-shadow: var(--marduk-shadow-lg);
+
+  display: flex;
+  flex-direction: column;
+  background-color: var(--marduk-color-white);
+  border: 1px solid var(--menu-border-color);
+  border-radius: var(--menu-border-radius);
+  box-shadow: var(--menu-shadow);
+  padding: var(--menu-padding);
+  min-width: 200px;
+}
+
+.marduk-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--marduk-spacing-4);
+  padding: var(--marduk-spacing-4) var(--marduk-spacing-6);
+  cursor: pointer;
+  border-radius: var(--marduk-radius-sm);
+  transition: background-color var(--marduk-transition-fast);
+}
+
+.marduk-menu-item:hover:not(.marduk-menu-item--disabled) {
+  background-color: var(--marduk-color-gray-50);
+}
+
+.marduk-menu-item--disabled {
+  opacity: var(--marduk-opacity-disabled);
+  cursor: not-allowed;
+}
+
+.marduk-menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.marduk-menu-label {
+  flex: 1;
+  margin: 0;
+}
+
+.marduk-menu-divider {
+  height: 1px;
+  background-color: var(--menu-border-color);
+  margin: var(--marduk-spacing-2) 0;
+}

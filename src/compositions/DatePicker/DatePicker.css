@@ -1,0 +1,27 @@
+.marduk-date-picker {
+  position: relative;
+  width: 100%;
+}
+
+.marduk-date-picker-calendar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: var(--marduk-spacing-2);
+  background-color: var(--marduk-color-white);
+  border: 1px solid var(--marduk-color-gray-300);
+  border-radius: var(--marduk-radius-md);
+  box-shadow: var(--marduk-shadow-lg);
+  z-index: var(--marduk-z-index-dropdown);
+  padding: var(--marduk-spacing-4);
+  min-width: 300px;
+}
+
+.marduk-date-picker-calendar-header {
+  padding: var(--marduk-spacing-4);
+  border-bottom: 1px solid var(--marduk-color-gray-300);
+}
+
+.marduk-date-picker-calendar-body {
+  padding: var(--marduk-spacing-4);
+}
