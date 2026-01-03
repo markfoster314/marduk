@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Accordion } from "./Accordion";
 import userEvent from "@testing-library/user-event";
@@ -118,24 +118,20 @@ describe("Accordion", () => {
       });
     });
 
-    it("toggles on Enter key", async () => {
-      const user = userEvent.setup();
+    it("toggles on Enter key", () => {
       render(<Accordion items={sampleItems} />);
 
-      const firstHeader = screen.getByText("First Item");
-      firstHeader.focus();
-      await user.keyboard("{Enter}");
+      const firstHeader = screen.getByRole("button", { name: /first item/i });
+      fireEvent.keyDown(firstHeader, { key: "Enter" });
 
       expect(screen.getByText("First content")).toBeInTheDocument();
     });
 
-    it("toggles on Space key", async () => {
-      const user = userEvent.setup();
+    it("toggles on Space key", () => {
       render(<Accordion items={sampleItems} />);
 
-      const firstHeader = screen.getByText("First Item");
-      firstHeader.focus();
-      await user.keyboard(" ");
+      const firstHeader = screen.getByRole("button", { name: /first item/i });
+      fireEvent.keyDown(firstHeader, { key: " " });
 
       expect(screen.getByText("First content")).toBeInTheDocument();
     });
