@@ -83,7 +83,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **BREAKING:** Migrated composition components (Alert, LoadingScreen, Modal) from `components/` to `compositions/` directory
+- **BREAKING:** Migrated composition components (Alert, LoadingIndicator, Modal) from `components/` to `compositions/` directory
 - Updated all internal imports to use `@/` path alias
 - Improved TypeScript configuration with `bundler` module resolution for better compatibility with modern tooling
 - Updated ESLint rules to enforce path alias usage

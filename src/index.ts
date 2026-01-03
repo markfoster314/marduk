@@ -97,9 +97,12 @@ export { Alert } from "./compositions/Alert/Alert";
 export type { AlertProps } from "./compositions/Alert/Alert";
 export type { AlertVariant, AlertAnimation } from "./compositions/Alert/Alert.types";
 
-export { LoadingScreen } from "./compositions/LoadingScreen/LoadingScreen";
-export type { LoadingScreenProps } from "./compositions/LoadingScreen/LoadingScreen";
-export type { LoadingScreenAnimation } from "./compositions/LoadingScreen/LoadingScreen.types";
+export { LoadingIndicator } from "./compositions/LoadingIndicator/LoadingIndicator";
+export type { LoadingIndicatorProps } from "./compositions/LoadingIndicator/LoadingIndicator";
+export type {
+  LoadingIndicatorAnimation,
+  LoadingIndicatorPosition,
+} from "./compositions/LoadingIndicator/LoadingIndicator.types";
 
 export { Breadcrumb } from "./compositions/Breadcrumb/Breadcrumb";
 export type { BreadcrumbProps, BreadcrumbItem } from "./compositions/Breadcrumb/Breadcrumb";
