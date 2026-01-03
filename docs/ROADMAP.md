@@ -103,7 +103,7 @@ Before releasing v0.3.0:
 **Target components:**
 
 - Alert (WIP → Ready)
-- LoadingScreen (WIP → Ready)
+- LoadingIndicator (WIP → Ready)
 - Modal (Barebones → Ready)
 - Toast (Barebones → Ready)
 - Pagination (Barebones → Ready)

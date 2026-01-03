@@ -27,7 +27,7 @@ A lightweight React component library built for rapid development. Zero runtime 
 **Three layers of abstraction:**
 
 - **Primitives** - Base components (Button, Text, Box, Link, Svg)
-- **Compositions** - Pre-built patterns (LoadingScreen, Alert, Modal)
+- **Compositions** - Pre-built patterns (LoadingIndicator, Alert, Modal)
 - **Templates** _(coming soon)_ - Full page layouts (SignupPage, ProfilePage, DashboardLayout)
 
 Start with primitives for full control, use compositions for speed, or drop in templates to ship faster.
@@ -208,7 +208,7 @@ Props always override preset values:
 
 ## In Progress Features
 
-**Compositions:** [Alert](src/compositions/Alert) | [LoadingScreen](src/compositions/LoadingScreen)
+**Compositions:** [Alert](src/compositions/Alert) | [LoadingIndicator](src/compositions/LoadingIndicator)
 
 ## Barebones Features
 

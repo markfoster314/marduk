@@ -1,0 +1,851 @@
+.marduk-loading-indicator-container {
+  --loading-indicator-bg-light: var(--marduk-color-white);
+  --loading-indicator-bg-dark: var(--marduk-color-dark-bg-primary);
+
+  --loading-indicator-icon-size: 6rem;
+  --loading-indicator-icon-scale-tablet: 1.15;
+  --loading-indicator-icon-scale-desktop: 1.3;
+
+  --loading-indicator-gap: 2rem;
+
+  --loading-indicator-pulse-duration: 2s;
+  --loading-indicator-rotate-duration: 3s;
+  --loading-indicator-breathe-duration: 3s;
+  --loading-indicator-glitch-duration: 4s;
+  --loading-indicator-ripple-float-duration: 3s;
+  --loading-indicator-ripple-expand-duration: 2s;
+  --loading-indicator-bounce-duration: 1.5s;
+  --loading-indicator-swing-duration: 2s;
+  --loading-indicator-flip-duration: 2.5s;
+  --loading-indicator-orbit-move-duration: 3s;
+  --loading-indicator-orbit-rotate-duration: 1.5s;
+  --loading-indicator-shake-duration: 1.5s;
+  --loading-indicator-dot-fade-duration: 1.5s;
+
+  --loading-indicator-pulse-scale-start: 1;
+  --loading-indicator-pulse-scale-peak: 1.1;
+  --loading-indicator-breathe-scale-min: 0.95;
+  --loading-indicator-breathe-scale-max: 1.05;
+  --loading-indicator-breathe-opacity-min: 0.7;
+  --loading-indicator-breathe-opacity-max: 1;
+
+  --loading-indicator-shadow-color: rgba(66, 153, 225, 0.5);
+  --loading-indicator-shadow-color-intense: rgba(66, 153, 225, 0.8);
+  --loading-indicator-shadow-color-light: rgba(66, 153, 225, 0.4);
+  --loading-indicator-shadow-color-medium: rgba(66, 153, 225, 0.6);
+
+  --loading-indicator-glitch-color-red: rgba(255, 0, 100, 0.7);
+  --loading-indicator-glitch-color-cyan: rgba(0, 255, 255, 0.7);
+  --loading-indicator-glitch-bg-red: rgba(255, 0, 100, 0.1);
+  --loading-indicator-glitch-bg-cyan: rgba(0, 255, 255, 0.1);
+  --loading-indicator-glitch-opacity: 0.8;
+
+  --loading-indicator-ripple-start: 6rem;
+  --loading-indicator-ripple-end: 10rem;
+  --loading-indicator-ripple-border-width: 2px;
+  --loading-indicator-ripple-border-color: rgba(66, 153, 225, 0.4);
+  --loading-indicator-ripple-opacity-start: 0.8;
+  --loading-indicator-ripple-delay: 1s;
+
+  --loading-indicator-bounce-height-high: -30px;
+  --loading-indicator-bounce-height-low: -15px;
+
+  --loading-indicator-swing-angle-max: 15deg;
+  --loading-indicator-swing-angle-mid: -10deg;
+  --loading-indicator-swing-angle-small: 5deg;
+  --loading-indicator-swing-angle-tiny: -2deg;
+
+  --loading-indicator-orbit-distance: 20px;
+
+  --loading-indicator-shake-distance: 2px;
+  --loading-indicator-shake-rotation: 1deg;
+
+  --loading-indicator-ripple-float-distance: -10px;
+
+  --loading-indicator-text-size: 1.25rem;
+  --loading-indicator-text-weight: 500;
+  --loading-indicator-text-spacing: 0.1em;
+
+  --loading-indicator-dot-delay-1: 0s;
+  --loading-indicator-dot-delay-2: 0.3s;
+  --loading-indicator-dot-delay-3: 0.6s;
+
+  --loading-indicator-position-offset: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: var(--marduk-z-index-loading-indicator);
+  background-color: transparent;
+}
+
+/* Fullscreen mode - covers entire viewport */
+.marduk-loading-indicator-container--fullscreen {
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--loading-indicator-bg-light);
+}
+
+/* Relative mode - wrapper container */
+.marduk-loading-indicator-wrapper {
+  --loading-indicator-wrapper-position: relative;
+  --loading-indicator-wrapper-width: 100%;
+  --loading-indicator-wrapper-height: 100%;
+  --loading-indicator-wrapper-min-height: 200px;
+
+  position: var(--loading-indicator-wrapper-position);
+  width: var(--loading-indicator-wrapper-width);
+  height: var(--loading-indicator-wrapper-height);
+  min-height: var(--loading-indicator-wrapper-min-height);
+}
+
+/* Relative mode container */
+.marduk-loading-indicator-container--relative {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Position variants for relative mode */
+.marduk-loading-indicator-container--relative.marduk-loading-indicator-container--top-left {
+  top: var(--loading-indicator-position-offset);
+  left: var(--loading-indicator-position-offset);
+  right: auto;
+  bottom: auto;
+  width: auto;
+  height: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.marduk-loading-indicator-container--relative.marduk-loading-indicator-container--top-center {
+  top: var(--loading-indicator-position-offset);
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%);
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.marduk-loading-indicator-container--relative.marduk-loading-indicator-container--top-right {
+  top: var(--loading-indicator-position-offset);
+  right: var(--loading-indicator-position-offset);
+  left: auto;
+  bottom: auto;
+  width: auto;
+  height: auto;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.marduk-loading-indicator-container--relative.marduk-loading-indicator-container--middle-left {
+  top: 50%;
+  left: var(--loading-indicator-position-offset);
+  right: auto;
+  bottom: auto;
+  width: auto;
+  height: auto;
+  transform: translateY(-50%);
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.marduk-loading-indicator-container--relative.marduk-loading-indicator-container--middle-center {
+  /* Centered in container */
+}
+
+.marduk-loading-indicator-container--relative.marduk-loading-indicator-container--middle-right {
+  top: 50%;
+  right: var(--loading-indicator-position-offset);
+  left: auto;
+  bottom: auto;
+  width: auto;
+  height: auto;
+  transform: translateY(-50%);
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.marduk-loading-indicator-container--relative.marduk-loading-indicator-container--bottom-left {
+  bottom: var(--loading-indicator-position-offset);
+  left: var(--loading-indicator-position-offset);
+  top: auto;
+  right: auto;
+  width: auto;
+  height: auto;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.marduk-loading-indicator-container--relative.marduk-loading-indicator-container--bottom-center {
+  bottom: var(--loading-indicator-position-offset);
+  left: 50%;
+  top: auto;
+  right: auto;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%);
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.marduk-loading-indicator-container--relative.marduk-loading-indicator-container--bottom-right {
+  bottom: var(--loading-indicator-position-offset);
+  right: var(--loading-indicator-position-offset);
+  top: auto;
+  left: auto;
+  width: auto;
+  height: auto;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+/* Position variants for fullscreen mode */
+.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--top-left {
+  min-height: auto;
+  background-color: transparent;
+  top: var(--loading-indicator-position-offset);
+  left: var(--loading-indicator-position-offset);
+  right: auto;
+  bottom: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--top-center {
+  min-height: auto;
+  background-color: transparent;
+  top: var(--loading-indicator-position-offset);
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translateX(-50%);
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--top-right {
+  min-height: auto;
+  background-color: transparent;
+  top: var(--loading-indicator-position-offset);
+  right: var(--loading-indicator-position-offset);
+  left: auto;
+  bottom: auto;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--middle-left {
+  min-height: auto;
+  background-color: transparent;
+  top: 50%;
+  left: var(--loading-indicator-position-offset);
+  right: auto;
+  bottom: auto;
+  transform: translateY(-50%);
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--middle-center {
+  /* Fullscreen centered - default behavior */
+}
+
+.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--middle-right {
+  min-height: auto;
+  background-color: transparent;
+  top: 50%;
+  right: var(--loading-indicator-position-offset);
+  left: auto;
+  bottom: auto;
+  transform: translateY(-50%);
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--bottom-left {
+  min-height: auto;
+  background-color: transparent;
+  bottom: var(--loading-indicator-position-offset);
+  left: var(--loading-indicator-position-offset);
+  top: auto;
+  right: auto;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--bottom-center {
+  min-height: auto;
+  background-color: transparent;
+  bottom: var(--loading-indicator-position-offset);
+  left: 50%;
+  top: auto;
+  right: auto;
+  transform: translateX(-50%);
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--bottom-right {
+  min-height: auto;
+  background-color: transparent;
+  bottom: var(--loading-indicator-position-offset);
+  right: var(--loading-indicator-position-offset);
+  top: auto;
+  left: auto;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.marduk-loading-indicator-container--dark.marduk-loading-indicator-container--fullscreen {
+  background-color: var(--loading-indicator-bg-dark);
+}
+
+/* Dark mode for relative mode - transparent background */
+.marduk-loading-indicator-container--dark.marduk-loading-indicator-container--relative {
+  background-color: transparent;
+}
+
+/* Dark mode for fullscreen positioned variants */
+.marduk-loading-indicator-container--dark.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--top-left,
+.marduk-loading-indicator-container--dark.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--top-center,
+.marduk-loading-indicator-container--dark.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--top-right,
+.marduk-loading-indicator-container--dark.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--middle-left,
+.marduk-loading-indicator-container--dark.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--middle-right,
+.marduk-loading-indicator-container--dark.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--bottom-left,
+.marduk-loading-indicator-container--dark.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--bottom-center,
+.marduk-loading-indicator-container--dark.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--bottom-right {
+  background-color: transparent;
+}
+
+.marduk-loading-indicator-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--loading-indicator-gap);
+}
+
+.marduk-loading-indicator-logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marduk-loading-indicator-icon {
+  width: var(--loading-indicator-icon-size);
+  height: var(--loading-indicator-icon-size);
+  transition:
+    width var(--marduk-transition-fast),
+    height var(--marduk-transition-fast);
+}
+
+.marduk-loading-indicator-logo--pulse svg {
+  animation: marduk-loading-indicator-pulse-scale var(--loading-indicator-pulse-duration)
+    ease-in-out infinite;
+  filter: drop-shadow(0 0 20px var(--loading-indicator-shadow-color));
+}
+
+@keyframes marduk-loading-indicator-pulse-scale {
+  0%,
+  100% {
+    transform: scale(var(--loading-indicator-pulse-scale-start));
+    filter: drop-shadow(0 0 20px var(--loading-indicator-shadow-color));
+  }
+  50% {
+    transform: scale(var(--loading-indicator-pulse-scale-peak));
+    filter: drop-shadow(0 0 40px var(--loading-indicator-shadow-color-intense));
+  }
+}
+
+.marduk-loading-indicator-logo--rotate svg {
+  animation: marduk-loading-indicator-rotate-spin var(--loading-indicator-rotate-duration) linear
+    infinite;
+  filter: drop-shadow(0 4px 20px var(--loading-indicator-shadow-color-light));
+}
+
+@keyframes marduk-loading-indicator-rotate-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.marduk-loading-indicator-logo--breathe svg {
+  animation: marduk-loading-indicator-breathe var(--loading-indicator-breathe-duration) ease-in-out
+    infinite;
+  filter: drop-shadow(0 0 15px var(--loading-indicator-shadow-color-medium));
+}
+
+@keyframes marduk-loading-indicator-breathe {
+  0%,
+  100% {
+    transform: scale(var(--loading-indicator-breathe-scale-min));
+    opacity: var(--loading-indicator-breathe-opacity-min);
+  }
+  50% {
+    transform: scale(var(--loading-indicator-breathe-scale-max));
+    opacity: var(--loading-indicator-breathe-opacity-max);
+  }
+}
+
+.marduk-loading-indicator-logo--glitch {
+  position: relative;
+}
+
+.marduk-loading-indicator-logo--glitch svg {
+  animation: marduk-loading-indicator-glitch-main var(--loading-indicator-glitch-duration)
+    ease-in-out infinite;
+}
+
+.marduk-loading-indicator-logo--glitch::before,
+.marduk-loading-indicator-logo--glitch::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.marduk-loading-indicator-logo--glitch::before {
+  animation: marduk-loading-indicator-glitch-before var(--loading-indicator-glitch-duration)
+    ease-in-out infinite;
+  background: var(--loading-indicator-glitch-bg-red);
+  transform: translateX(calc(var(--loading-indicator-shake-distance) * -1));
+}
+
+.marduk-loading-indicator-logo--glitch::after {
+  animation: marduk-loading-indicator-glitch-after var(--loading-indicator-glitch-duration)
+    ease-in-out infinite;
+  background: var(--loading-indicator-glitch-bg-cyan);
+  transform: translateX(var(--loading-indicator-shake-distance));
+}
+
+@keyframes marduk-loading-indicator-glitch-main {
+  0%,
+  90%,
+  100% {
+    transform: translate(0);
+    filter: drop-shadow(0 0 10px var(--loading-indicator-shadow-color));
+  }
+  92% {
+    transform: translate(
+      calc(var(--loading-indicator-shake-distance) * -1),
+      var(--loading-indicator-shake-distance)
+    );
+    filter: drop-shadow(0 0 20px var(--loading-indicator-glitch-color-red));
+  }
+  94% {
+    transform: translate(
+      var(--loading-indicator-shake-distance),
+      calc(var(--loading-indicator-shake-distance) * -1)
+    );
+    filter: drop-shadow(0 0 20px var(--loading-indicator-glitch-color-cyan));
+  }
+  96% {
+    transform: translate(-1px, -1px);
+  }
+}
+
+@keyframes marduk-loading-indicator-glitch-before {
+  0%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+  92%,
+  96% {
+    opacity: var(--loading-indicator-glitch-opacity);
+  }
+}
+
+@keyframes marduk-loading-indicator-glitch-after {
+  0%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+  94%,
+  98% {
+    opacity: var(--loading-indicator-glitch-opacity);
+  }
+}
+
+.marduk-loading-indicator-logo--ripple {
+  position: relative;
+  --ripple-start: var(--loading-indicator-ripple-start);
+  --ripple-end: var(--loading-indicator-ripple-end);
+}
+
+.marduk-loading-indicator-logo--ripple svg {
+  animation: marduk-loading-indicator-ripple-float var(--loading-indicator-ripple-float-duration)
+    ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+.marduk-loading-indicator-logo--ripple::before,
+.marduk-loading-indicator-logo--ripple::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: var(--loading-indicator-ripple-border-width) solid
+    var(--loading-indicator-ripple-border-color);
+  border-radius: 50%;
+  animation: marduk-loading-indicator-ripple-expand var(--loading-indicator-ripple-expand-duration)
+    ease-out infinite;
+}
+
+.marduk-loading-indicator-logo--ripple::after {
+  animation-delay: var(--loading-indicator-ripple-delay);
+}
+
+@keyframes marduk-loading-indicator-ripple-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(var(--loading-indicator-ripple-float-distance));
+  }
+}
+
+@keyframes marduk-loading-indicator-ripple-expand {
+  0% {
+    width: var(--ripple-start);
+    height: var(--ripple-start);
+    opacity: var(--loading-indicator-ripple-opacity-start);
+  }
+  100% {
+    width: var(--ripple-end);
+    height: var(--ripple-end);
+    opacity: 0;
+  }
+}
+
+.marduk-loading-indicator-logo--bounce svg {
+  animation: marduk-loading-indicator-bounce var(--loading-indicator-bounce-duration)
+    cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+  filter: drop-shadow(0 4px 15px var(--loading-indicator-shadow-color));
+}
+
+@keyframes marduk-loading-indicator-bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(var(--loading-indicator-bounce-height-high)) scale(1, 0.95);
+  }
+  50% {
+    transform: translateY(0) scale(1);
+  }
+  60% {
+    transform: translateY(var(--loading-indicator-bounce-height-low)) scale(1, 0.98);
+  }
+  75% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.marduk-loading-indicator-logo--swing {
+  transform-origin: center top;
+}
+
+.marduk-loading-indicator-logo--swing svg {
+  animation: marduk-loading-indicator-swing var(--loading-indicator-swing-duration) ease-in-out
+    infinite;
+  filter: drop-shadow(0 4px 15px var(--loading-indicator-shadow-color-light));
+}
+
+@keyframes marduk-loading-indicator-swing {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(var(--loading-indicator-swing-angle-max));
+  }
+  40% {
+    transform: rotate(var(--loading-indicator-swing-angle-mid));
+  }
+  60% {
+    transform: rotate(var(--loading-indicator-swing-angle-small));
+  }
+  80% {
+    transform: rotate(var(--loading-indicator-swing-angle-tiny));
+  }
+}
+
+.marduk-loading-indicator-logo--flip svg {
+  animation: marduk-loading-indicator-flip-3d var(--loading-indicator-flip-duration) ease-in-out
+    infinite;
+  filter: drop-shadow(0 4px 15px var(--loading-indicator-shadow-color));
+  transform-style: preserve-3d;
+}
+
+@keyframes marduk-loading-indicator-flip-3d {
+  0% {
+    transform: perspective(400px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(400px) rotateY(180deg);
+  }
+  100% {
+    transform: perspective(400px) rotateY(360deg);
+  }
+}
+
+.marduk-loading-indicator-logo--orbit {
+  position: relative;
+}
+
+.marduk-loading-indicator-logo--orbit svg {
+  animation:
+    marduk-loading-indicator-orbit-move var(--loading-indicator-orbit-move-duration) linear infinite,
+    marduk-loading-indicator-orbit-rotate var(--loading-indicator-orbit-rotate-duration) linear
+      infinite reverse;
+  filter: drop-shadow(0 4px 15px var(--loading-indicator-shadow-color));
+}
+
+@keyframes marduk-loading-indicator-orbit-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(var(--loading-indicator-orbit-distance), 0);
+  }
+  50% {
+    transform: translate(0, var(--loading-indicator-orbit-distance));
+  }
+  75% {
+    transform: translate(calc(var(--loading-indicator-orbit-distance) * -1), 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes marduk-loading-indicator-orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.marduk-loading-indicator-logo--shake svg {
+  animation: marduk-loading-indicator-shake-intense var(--loading-indicator-shake-duration)
+    ease-in-out infinite;
+  filter: drop-shadow(0 4px 15px var(--loading-indicator-shadow-color));
+}
+
+@keyframes marduk-loading-indicator-shake-intense {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  10% {
+    transform: translate(
+        calc(var(--loading-indicator-shake-distance) * -1),
+        calc(var(--loading-indicator-shake-distance) * -1)
+      )
+      rotate(calc(var(--loading-indicator-shake-rotation) * -1));
+  }
+  20% {
+    transform: translate(
+        var(--loading-indicator-shake-distance),
+        var(--loading-indicator-shake-distance)
+      )
+      rotate(var(--loading-indicator-shake-rotation));
+  }
+  30% {
+    transform: translate(
+        calc(var(--loading-indicator-shake-distance) * -1),
+        var(--loading-indicator-shake-distance)
+      )
+      rotate(calc(var(--loading-indicator-shake-rotation) * -1));
+  }
+  40% {
+    transform: translate(
+        var(--loading-indicator-shake-distance),
+        calc(var(--loading-indicator-shake-distance) * -1)
+      )
+      rotate(var(--loading-indicator-shake-rotation));
+  }
+  50% {
+    transform: translate(
+        calc(var(--loading-indicator-shake-distance) * -1),
+        calc(var(--loading-indicator-shake-distance) * -1)
+      )
+      rotate(calc(var(--loading-indicator-shake-rotation) * -1));
+  }
+  60% {
+    transform: translate(
+        var(--loading-indicator-shake-distance),
+        var(--loading-indicator-shake-distance)
+      )
+      rotate(var(--loading-indicator-shake-rotation));
+  }
+  70% {
+    transform: translate(
+        calc(var(--loading-indicator-shake-distance) * -1),
+        var(--loading-indicator-shake-distance)
+      )
+      rotate(calc(var(--loading-indicator-shake-rotation) * -1));
+  }
+  80% {
+    transform: translate(
+        var(--loading-indicator-shake-distance),
+        calc(var(--loading-indicator-shake-distance) * -1)
+      )
+      rotate(var(--loading-indicator-shake-rotation));
+  }
+  90% {
+    transform: translate(
+        calc(var(--loading-indicator-shake-distance) * -1),
+        calc(var(--loading-indicator-shake-distance) * -1)
+      )
+      rotate(0deg);
+  }
+}
+
+.marduk-loading-indicator-text {
+  font-size: var(--loading-indicator-text-size);
+  font-weight: var(--loading-indicator-text-weight);
+  letter-spacing: var(--loading-indicator-text-spacing);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.marduk-loading-indicator-dots {
+  display: inline-flex;
+  margin-left: 0.1em;
+}
+
+.marduk-loading-indicator-dot {
+  animation: marduk-loading-indicator-dot-fade var(--loading-indicator-dot-fade-duration)
+    ease-in-out infinite;
+  opacity: 0;
+}
+
+.marduk-loading-indicator-dot:nth-child(1) {
+  animation-delay: var(--loading-indicator-dot-delay-1);
+}
+
+.marduk-loading-indicator-dot:nth-child(2) {
+  animation-delay: var(--loading-indicator-dot-delay-2);
+}
+
+.marduk-loading-indicator-dot:nth-child(3) {
+  animation-delay: var(--loading-indicator-dot-delay-3);
+}
+
+@media (min-width: 768px) {
+  .marduk-loading-indicator-container {
+    --loading-indicator-gap: 2.5rem;
+    --loading-indicator-icon-size: 8rem;
+    --loading-indicator-text-size: 1.375rem;
+    --loading-indicator-ripple-start: 8rem;
+    --loading-indicator-ripple-end: 13.25rem;
+  }
+
+  .marduk-loading-indicator-logo:not(.marduk-loading-indicator-logo--swing) {
+    transform: scale(var(--loading-indicator-icon-scale-tablet));
+  }
+
+  .marduk-loading-indicator-logo--swing {
+    transform: scale(var(--loading-indicator-icon-scale-tablet));
+    transform-origin: center top;
+  }
+}
+
+@media (min-width: 1024px) {
+  .marduk-loading-indicator-container {
+    --loading-indicator-gap: 3rem;
+    --loading-indicator-icon-size: 9rem;
+    --loading-indicator-text-size: 1.5rem;
+    --loading-indicator-text-spacing: 0.15em;
+    --loading-indicator-ripple-start: 9rem;
+    --loading-indicator-ripple-end: 15rem;
+  }
+
+  .marduk-loading-indicator-logo:not(.marduk-loading-indicator-logo--swing) {
+    transform: scale(var(--loading-indicator-icon-scale-desktop));
+  }
+
+  .marduk-loading-indicator-logo--swing {
+    transform: scale(var(--loading-indicator-icon-scale-desktop));
+    transform-origin: center top;
+  }
+}
+
+@keyframes marduk-loading-indicator-dot-fade {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marduk-loading-indicator-logo--pulse svg,
+  .marduk-loading-indicator-logo--rotate svg,
+  .marduk-loading-indicator-logo--breathe svg,
+  .marduk-loading-indicator-logo--glitch svg,
+  .marduk-loading-indicator-logo--ripple svg,
+  .marduk-loading-indicator-logo--bounce svg,
+  .marduk-loading-indicator-logo--swing svg,
+  .marduk-loading-indicator-logo--flip svg,
+  .marduk-loading-indicator-logo--orbit svg,
+  .marduk-loading-indicator-logo--shake svg {
+    animation: none;
+    transform: none;
+    filter: none;
+  }
+
+  .marduk-loading-indicator-logo--glitch::before,
+  .marduk-loading-indicator-logo--glitch::after,
+  .marduk-loading-indicator-logo--ripple::before,
+  .marduk-loading-indicator-logo--ripple::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .marduk-loading-indicator-dot {
+    animation: none;
+    opacity: 1;
+  }
+
+  .marduk-loading-indicator-icon {
+    transition: none;
+  }
+}
