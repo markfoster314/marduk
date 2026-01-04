@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Toast } from "./Toast";
+import { ToastVariant } from "./Toast.types";
 import { useState } from "react";
 import { Button } from "@/index";
 import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
@@ -7,10 +8,10 @@ import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 const meta: Meta<typeof Toast> = {
   title: "Compositions/Toast",
   component: Toast,
-  tags: ["autodocs", "status:barebones"],
+  tags: ["autodocs", "status:ready"],
   parameters: {
     docs: {
-      subtitle: STORYBOOK_STATUS.BAREBONES,
+      subtitle: STORYBOOK_STATUS.READY,
     },
   },
   argTypes: {
@@ -133,13 +134,13 @@ const InteractiveComponent = () => {
   const [toasts, setToasts] = useState<
     Array<{
       id: number;
-      variant: "info" | "success" | "warning" | "error";
+      variant: ToastVariant;
       message: string;
     }>
   >([]);
   let idCounter = 0;
 
-  const showToast = (variant: "info" | "success" | "warning" | "error", message: string) => {
+  const showToast = (variant: ToastVariant, message: string) => {
     const id = idCounter++;
     setToasts((prev) => [...prev, { id, variant, message }]);
   };

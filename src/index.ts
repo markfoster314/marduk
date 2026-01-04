@@ -159,6 +159,7 @@ export type { BreadcrumbProps, BreadcrumbItem } from "./compositions/Breadcrumb/
 
 export { Toast } from "./compositions/Toast/Toast";
 export type { ToastProps } from "./compositions/Toast/Toast";
+export type { ToastVariant, ToastPosition } from "./compositions/Toast/Toast.types";
 
 export { Pagination } from "./compositions/Pagination/Pagination";
 export type { PaginationProps } from "./compositions/Pagination/Pagination";
