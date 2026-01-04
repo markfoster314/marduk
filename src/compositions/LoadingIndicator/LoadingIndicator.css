@@ -1,13 +1,27 @@
 .marduk-loading-indicator-container {
+  /* Background colors */
   --loading-indicator-bg-light: var(--marduk-color-white);
   --loading-indicator-bg-dark: var(--marduk-color-dark-bg-primary);
 
+  /* Icon sizing */
   --loading-indicator-icon-size: 6rem;
   --loading-indicator-icon-scale-tablet: 1.15;
   --loading-indicator-icon-scale-desktop: 1.3;
 
+  /* Spacing */
   --loading-indicator-gap: 2rem;
+  --loading-indicator-position-offset: 1rem;
+  --loading-indicator-dots-margin-left: 0.1em;
 
+  /* Fullscreen */
+  --loading-indicator-fullscreen-min-height: 100vh;
+  --loading-indicator-fullscreen-edge: 0;
+
+  /* Wrapper */
+  --loading-indicator-wrapper-min-height: 200px;
+  --loading-indicator-wrapper-full-size: 100%;
+
+  /* Animation durations */
   --loading-indicator-pulse-duration: 2s;
   --loading-indicator-rotate-duration: 3s;
   --loading-indicator-breathe-duration: 3s;
@@ -22,55 +36,75 @@
   --loading-indicator-shake-duration: 1.5s;
   --loading-indicator-dot-fade-duration: 1.5s;
 
+  /* Animation scales and transforms */
   --loading-indicator-pulse-scale-start: 1;
   --loading-indicator-pulse-scale-peak: 1.1;
   --loading-indicator-breathe-scale-min: 0.95;
   --loading-indicator-breathe-scale-max: 1.05;
   --loading-indicator-breathe-opacity-min: 0.7;
   --loading-indicator-breathe-opacity-max: 1;
+  --loading-indicator-bounce-scale-y-compress-high: 0.95;
+  --loading-indicator-bounce-scale-y-compress-low: 0.98;
+  --loading-indicator-flip-perspective: 400px;
 
+  /* Shadow values */
   --loading-indicator-shadow-color: rgba(66, 153, 225, 0.5);
   --loading-indicator-shadow-color-intense: rgba(66, 153, 225, 0.8);
   --loading-indicator-shadow-color-light: rgba(66, 153, 225, 0.4);
   --loading-indicator-shadow-color-medium: rgba(66, 153, 225, 0.6);
+  --loading-indicator-shadow-blur-normal: 20px;
+  --loading-indicator-shadow-blur-intense: 40px;
+  --loading-indicator-shadow-blur-medium: 15px;
+  --loading-indicator-shadow-blur-small: 10px;
+  --loading-indicator-shadow-offset-y: 4px;
 
+  /* Glitch animation */
   --loading-indicator-glitch-color-red: rgba(255, 0, 100, 0.7);
   --loading-indicator-glitch-color-cyan: rgba(0, 255, 255, 0.7);
   --loading-indicator-glitch-bg-red: rgba(255, 0, 100, 0.1);
   --loading-indicator-glitch-bg-cyan: rgba(0, 255, 255, 0.1);
   --loading-indicator-glitch-opacity: 0.8;
+  --loading-indicator-glitch-offset: -1px;
 
+  /* Ripple animation */
   --loading-indicator-ripple-start: 6rem;
   --loading-indicator-ripple-end: 10rem;
   --loading-indicator-ripple-border-width: 2px;
   --loading-indicator-ripple-border-color: rgba(66, 153, 225, 0.4);
   --loading-indicator-ripple-opacity-start: 0.8;
   --loading-indicator-ripple-delay: 1s;
+  --loading-indicator-ripple-float-distance: -10px;
+  --loading-indicator-ripple-z-index: 2;
 
+  /* Bounce animation */
   --loading-indicator-bounce-height-high: -30px;
   --loading-indicator-bounce-height-low: -15px;
 
+  /* Swing animation */
   --loading-indicator-swing-angle-max: 15deg;
   --loading-indicator-swing-angle-mid: -10deg;
   --loading-indicator-swing-angle-small: 5deg;
   --loading-indicator-swing-angle-tiny: -2deg;
 
+  /* Orbit animation */
   --loading-indicator-orbit-distance: 20px;
 
+  /* Shake animation */
   --loading-indicator-shake-distance: 2px;
   --loading-indicator-shake-rotation: 1deg;
 
-  --loading-indicator-ripple-float-distance: -10px;
-
+  /* Text styling */
   --loading-indicator-text-size: 1.25rem;
   --loading-indicator-text-weight: 500;
   --loading-indicator-text-spacing: 0.1em;
 
+  /* Dots animation */
   --loading-indicator-dot-delay-1: 0s;
   --loading-indicator-dot-delay-2: 0.3s;
   --loading-indicator-dot-delay-3: 0.6s;
 
-  --loading-indicator-position-offset: 1rem;
+  /* Transition */
+  --loading-indicator-icon-transition: var(--marduk-transition-fast);
 
   display: flex;
   align-items: center;
@@ -82,21 +116,21 @@
 
 /* Fullscreen mode - covers entire viewport */
 .marduk-loading-indicator-container--fullscreen {
-  min-height: 100vh;
+  min-height: var(--loading-indicator-fullscreen-min-height);
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: var(--loading-indicator-fullscreen-edge);
+  left: var(--loading-indicator-fullscreen-edge);
+  right: var(--loading-indicator-fullscreen-edge);
+  bottom: var(--loading-indicator-fullscreen-edge);
   background-color: var(--loading-indicator-bg-light);
 }
 
 /* Relative mode - wrapper container */
 .marduk-loading-indicator-wrapper {
   --loading-indicator-wrapper-position: relative;
-  --loading-indicator-wrapper-width: 100%;
-  --loading-indicator-wrapper-height: 100%;
-  --loading-indicator-wrapper-min-height: 200px;
+  --loading-indicator-wrapper-width: var(--loading-indicator-wrapper-full-size);
+  --loading-indicator-wrapper-height: var(--loading-indicator-wrapper-full-size);
+  --loading-indicator-wrapper-min-height: var(--loading-indicator-wrapper-min-height);
 
   position: var(--loading-indicator-wrapper-position);
   width: var(--loading-indicator-wrapper-width);
@@ -107,12 +141,12 @@
 /* Relative mode container */
 .marduk-loading-indicator-container--relative {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
+  top: var(--loading-indicator-fullscreen-edge);
+  left: var(--loading-indicator-fullscreen-edge);
+  right: var(--loading-indicator-fullscreen-edge);
+  bottom: var(--loading-indicator-fullscreen-edge);
+  width: var(--loading-indicator-wrapper-full-size);
+  height: var(--loading-indicator-wrapper-full-size);
 }
 
 /* Position variants for relative mode */
@@ -162,9 +196,8 @@
   justify-content: flex-start;
 }
 
-.marduk-loading-indicator-container--relative.marduk-loading-indicator-container--middle-center {
-  /* Centered in container */
-}
+/* .marduk-loading-indicator-container--relative.marduk-loading-indicator-container--middle-center */
+/* Centered in container - uses default container alignment */
 
 .marduk-loading-indicator-container--relative.marduk-loading-indicator-container--middle-right {
   top: 50%;
@@ -259,9 +292,8 @@
   justify-content: flex-start;
 }
 
-.marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--middle-center {
-  /* Fullscreen centered - default behavior */
-}
+/* .marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--middle-center */
+/* Fullscreen centered - default behavior */
 
 .marduk-loading-indicator-container--fullscreen.marduk-loading-indicator-container--middle-right {
   min-height: auto;
@@ -348,32 +380,41 @@
   width: var(--loading-indicator-icon-size);
   height: var(--loading-indicator-icon-size);
   transition:
-    width var(--marduk-transition-fast),
-    height var(--marduk-transition-fast);
+    width var(--loading-indicator-icon-transition),
+    height var(--loading-indicator-icon-transition);
 }
 
 .marduk-loading-indicator-logo--pulse svg {
   animation: marduk-loading-indicator-pulse-scale var(--loading-indicator-pulse-duration)
     ease-in-out infinite;
-  filter: drop-shadow(0 0 20px var(--loading-indicator-shadow-color));
+  filter: drop-shadow(
+    0 0 var(--loading-indicator-shadow-blur-normal) var(--loading-indicator-shadow-color)
+  );
 }
 
 @keyframes marduk-loading-indicator-pulse-scale {
   0%,
   100% {
     transform: scale(var(--loading-indicator-pulse-scale-start));
-    filter: drop-shadow(0 0 20px var(--loading-indicator-shadow-color));
+    filter: drop-shadow(
+      0 0 var(--loading-indicator-shadow-blur-normal) var(--loading-indicator-shadow-color)
+    );
   }
   50% {
     transform: scale(var(--loading-indicator-pulse-scale-peak));
-    filter: drop-shadow(0 0 40px var(--loading-indicator-shadow-color-intense));
+    filter: drop-shadow(
+      0 0 var(--loading-indicator-shadow-blur-intense) var(--loading-indicator-shadow-color-intense)
+    );
   }
 }
 
 .marduk-loading-indicator-logo--rotate svg {
   animation: marduk-loading-indicator-rotate-spin var(--loading-indicator-rotate-duration) linear
     infinite;
-  filter: drop-shadow(0 4px 20px var(--loading-indicator-shadow-color-light));
+  filter: drop-shadow(
+    0 var(--loading-indicator-shadow-offset-y) var(--loading-indicator-shadow-blur-normal)
+      var(--loading-indicator-shadow-color-light)
+  );
 }
 
 @keyframes marduk-loading-indicator-rotate-spin {
@@ -388,7 +429,9 @@
 .marduk-loading-indicator-logo--breathe svg {
   animation: marduk-loading-indicator-breathe var(--loading-indicator-breathe-duration) ease-in-out
     infinite;
-  filter: drop-shadow(0 0 15px var(--loading-indicator-shadow-color-medium));
+  filter: drop-shadow(
+    0 0 var(--loading-indicator-shadow-blur-medium) var(--loading-indicator-shadow-color-medium)
+  );
 }
 
 @keyframes marduk-loading-indicator-breathe {
@@ -442,24 +485,33 @@
   90%,
   100% {
     transform: translate(0);
-    filter: drop-shadow(0 0 10px var(--loading-indicator-shadow-color));
+    filter: drop-shadow(
+      0 0 var(--loading-indicator-shadow-blur-small) var(--loading-indicator-shadow-color)
+    );
   }
   92% {
     transform: translate(
       calc(var(--loading-indicator-shake-distance) * -1),
       var(--loading-indicator-shake-distance)
     );
-    filter: drop-shadow(0 0 20px var(--loading-indicator-glitch-color-red));
+    filter: drop-shadow(
+      0 0 var(--loading-indicator-shadow-blur-normal) var(--loading-indicator-glitch-color-red)
+    );
   }
   94% {
     transform: translate(
       var(--loading-indicator-shake-distance),
       calc(var(--loading-indicator-shake-distance) * -1)
     );
-    filter: drop-shadow(0 0 20px var(--loading-indicator-glitch-color-cyan));
+    filter: drop-shadow(
+      0 0 var(--loading-indicator-shadow-blur-normal) var(--loading-indicator-glitch-color-cyan)
+    );
   }
   96% {
-    transform: translate(-1px, -1px);
+    transform: translate(
+      var(--loading-indicator-glitch-offset),
+      var(--loading-indicator-glitch-offset)
+    );
   }
 }
 
@@ -497,7 +549,7 @@
   animation: marduk-loading-indicator-ripple-float var(--loading-indicator-ripple-float-duration)
     ease-in-out infinite;
   position: relative;
-  z-index: 2;
+  z-index: var(--loading-indicator-ripple-z-index);
 }
 
 .marduk-loading-indicator-logo--ripple::before,
@@ -553,13 +605,15 @@
     transform: translateY(0) scale(1);
   }
   25% {
-    transform: translateY(var(--loading-indicator-bounce-height-high)) scale(1, 0.95);
+    transform: translateY(var(--loading-indicator-bounce-height-high))
+      scale(1, var(--loading-indicator-bounce-scale-y-compress-high));
   }
   50% {
     transform: translateY(0) scale(1);
   }
   60% {
-    transform: translateY(var(--loading-indicator-bounce-height-low)) scale(1, 0.98);
+    transform: translateY(var(--loading-indicator-bounce-height-low))
+      scale(1, var(--loading-indicator-bounce-scale-y-compress-low));
   }
   75% {
     transform: translateY(0) scale(1);
@@ -573,7 +627,10 @@
 .marduk-loading-indicator-logo--swing svg {
   animation: marduk-loading-indicator-swing var(--loading-indicator-swing-duration) ease-in-out
     infinite;
-  filter: drop-shadow(0 4px 15px var(--loading-indicator-shadow-color-light));
+  filter: drop-shadow(
+    0 var(--loading-indicator-shadow-offset-y) var(--loading-indicator-shadow-blur-medium)
+      var(--loading-indicator-shadow-color-light)
+  );
 }
 
 @keyframes marduk-loading-indicator-swing {
@@ -598,19 +655,22 @@
 .marduk-loading-indicator-logo--flip svg {
   animation: marduk-loading-indicator-flip-3d var(--loading-indicator-flip-duration) ease-in-out
     infinite;
-  filter: drop-shadow(0 4px 15px var(--loading-indicator-shadow-color));
+  filter: drop-shadow(
+    0 var(--loading-indicator-shadow-offset-y) var(--loading-indicator-shadow-blur-medium)
+      var(--loading-indicator-shadow-color)
+  );
   transform-style: preserve-3d;
 }
 
 @keyframes marduk-loading-indicator-flip-3d {
   0% {
-    transform: perspective(400px) rotateY(0deg);
+    transform: perspective(var(--loading-indicator-flip-perspective)) rotateY(0deg);
   }
   50% {
-    transform: perspective(400px) rotateY(180deg);
+    transform: perspective(var(--loading-indicator-flip-perspective)) rotateY(180deg);
   }
   100% {
-    transform: perspective(400px) rotateY(360deg);
+    transform: perspective(var(--loading-indicator-flip-perspective)) rotateY(360deg);
   }
 }
 
@@ -623,7 +683,10 @@
     marduk-loading-indicator-orbit-move var(--loading-indicator-orbit-move-duration) linear infinite,
     marduk-loading-indicator-orbit-rotate var(--loading-indicator-orbit-rotate-duration) linear
       infinite reverse;
-  filter: drop-shadow(0 4px 15px var(--loading-indicator-shadow-color));
+  filter: drop-shadow(
+    0 var(--loading-indicator-shadow-offset-y) var(--loading-indicator-shadow-blur-medium)
+      var(--loading-indicator-shadow-color)
+  );
 }
 
 @keyframes marduk-loading-indicator-orbit-move {
@@ -656,7 +719,10 @@
 .marduk-loading-indicator-logo--shake svg {
   animation: marduk-loading-indicator-shake-intense var(--loading-indicator-shake-duration)
     ease-in-out infinite;
-  filter: drop-shadow(0 4px 15px var(--loading-indicator-shadow-color));
+  filter: drop-shadow(
+    0 var(--loading-indicator-shadow-offset-y) var(--loading-indicator-shadow-blur-medium)
+      var(--loading-indicator-shadow-color)
+  );
 }
 
 @keyframes marduk-loading-indicator-shake-intense {
@@ -741,7 +807,7 @@
 
 .marduk-loading-indicator-dots {
   display: inline-flex;
-  margin-left: 0.1em;
+  margin-left: var(--loading-indicator-dots-margin-left);
 }
 
 .marduk-loading-indicator-dot {
@@ -847,5 +913,21 @@
 
   .marduk-loading-indicator-icon {
     transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .marduk-loading-indicator-icon {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  .marduk-loading-indicator-text {
+    font-weight: 600;
+  }
+
+  .marduk-loading-indicator-dot {
+    opacity: 1;
+    font-weight: 700;
   }
 }
