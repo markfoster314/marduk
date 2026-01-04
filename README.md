@@ -202,6 +202,64 @@ Props always override preset values:
 </Box>
 ```
 
+## Compositions
+
+Compositions are higher-level UI patterns built using primitive components. They provide ready-to-use solutions for common interface patterns while maintaining flexibility through primitive customization.
+
+### Composition Philosophy
+
+**Built with primitives:**
+
+- All compositions use in-house primitive components (Box, Text, Title, Button, etc.) internally
+- This ensures consistency, theming, and maintainability across the library
+
+**Primitive customization:**
+
+- Compositions allow you to pass primitive components as props for maximum flexibility
+- This lets you customize styling, presets, or behavior of internal primitives without modifying the composition itself
+
+### Example: Customizing Primitives in Compositions
+
+```
+import { Alert, Text, Title, Button } from "@markfoster314/marduk";
+
+// Default Alert uses internal primitives
+<Alert variant="success" title="Success">
+Operation completed successfully
+</Alert>
+
+// Customize the icon in LoadingIndicator
+<LoadingIndicator
+icon={<CustomSpinner />}
+text="Loading..."
+/>
+
+// Card allows custom title component
+<Card
+title={<Title level={2} preset={["primary"]}>Custom Title</Title>}
+
+Card content
+</Card>
+
+// Alert with custom close button
+<Alert
+variant="warning"
+closable
+// The close button is a Button primitive internally
+// You can customize it by passing a custom Button component if the API supports it
+>
+Warning message
+</Alert>
+```
+
+### When to Use Compositions vs Primitives
+
+- **Use Compositions** when you need a complete, ready-to-use pattern (Alert, Modal, Card)
+- **Use Primitives** when you need full control over layout and styling
+- **Customize Compositions** by passing primitive components as props when available
+
+**Note:** Not all compositions expose all internal primitives as props. Check individual component documentation for available customization options.
+
 ## Production Ready Features
 
 **Primitives:** [Text](src/components/Text) | [Box](src/components/Box) | [Title](src/components/Title) | [Button](src/components/Button) | [Svg](src/components/Svg) | [Link](src/components/Link) | [Badge](src/components/Badge) | [Avatar](src/components/Avatar) | [Divider](src/components/Divider) | [Image](src/components/Image) | [Skeleton](src/components/Skeleton) | [Spinner](src/components/Spinner) | [Toggle](src/components/Toggle) | [Checkbox](src/components/Checkbox) | [RadioButtons](src/components/RadioButtons) | [TextInput](src/components/TextInput) | [Dropdown](src/components/Dropdown) | [ProgressBar](src/components/ProgressBar) | [Tooltip](src/components/Tooltip) | [Icon](src/icons)
