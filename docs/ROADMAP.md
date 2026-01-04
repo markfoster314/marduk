@@ -6,11 +6,11 @@ Marduk is a lightweight React component library with zero dependencies, built fo
 
 ## Current Status
 
-- Version: 0.3.0 (ready for release)
+- Version: 0.3.1 (ready for release)
 - Test Coverage: 1000+ tests passing
-- Production-Ready Components: 20 (all primitives complete)
+- Production-Ready Components: 23 (20 primitives + 3 compositions)
 - Total Primitive Components: 20
-- v0.3.0 Status: COMPLETE - All primitives production-ready
+- v0.3.1 Status: COMPLETE - Core feedback compositions production-ready
 
 ## v0.2.1 - Interim Release (2025-11-09)
 
@@ -106,11 +106,13 @@ Before releasing v0.3.0:
 
 **Target components (3):**
 
-- [] Alert (WIP → Ready)
-- [] LoadingIndicator (WIP → Ready)
-- [] Toast (Barebones → Ready)
+- [x] Alert (WIP → Ready)
+- [x] LoadingIndicator (WIP → Ready)
+- [x] Toast (Barebones → Ready)
 
 **Focus:** User feedback and loading states
+
+**Status:** COMPLETE - All components production-ready
 
 ### v0.3.2 - Navigation & Basic Layout Compositions
 
@@ -240,5 +242,5 @@ Feature branches should branch off `release/v0.3.0` and merge back into it.
 ---
 
 **Last Updated:** December 2025  
-**Version:** 0.3.0  
+**Version:** 0.3.1  
 **Status:** Ready for release
