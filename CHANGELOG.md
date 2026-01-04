@@ -11,6 +11,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - v0.5.0 → First templates added
 - v1.0.0 → API stable, proven in production
 
+## [0.3.1] - 2026-01-04
+
+### Added
+- **Toast composition component** - Production-ready toast notification component
+  - 4 variants (info, success, warning, error)
+  - 6 position options (top/bottom × left/center/right)
+  - Auto-dismiss with configurable duration
+  - Custom icon, text, and button props
+  - Full WCAG 2.1 Level AA compliance
+  - TypeScript types exported (ToastVariant, ToastPosition)
+  - Component-scoped CSS variables
+  - prefers-reduced-motion and prefers-contrast support
+
+- **LoadingIndicator composition component enhancements**
+  - Custom text component support via `customText` prop
+  - Component-scoped CSS variables with semantic naming
+  - prefers-contrast media query support for high contrast mode
+  - Enhanced accessibility features
+
+- **Alert composition component** - Production-ready alert notification component
+  - 4 variants (info, success, warning, error)
+  - Dismissible alerts with animations
+  - Custom icon, text, and button props
+  - Full WCAG 2.1 Level AA compliance
+  - Component-scoped CSS variables
+
+### Changed
+- LoadingIndicator: Updated from WIP to production-ready status
+- Toast: Updated from barebones to production-ready status
+- Alert: Updated from WIP to production-ready status
+
+### Technical
+- All 3 composition components (Alert, LoadingIndicator, Toast) now meet production-ready criteria
+- Zero linting errors across all components
+- Comprehensive test coverage (>90% for all compositions)
+- Full accessibility compliance (WCAG 2.1 Level AA)
+- Component-scoped CSS variables across all compositions
+
 ## [0.3.0] - 2025-12-15
 
 ### Added
@@ -275,7 +313,9 @@ pnpm add @markfoster314/marduk
 
 ---
 
-[Unreleased]: https://github.com/markfoster314/marduk/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/markfoster314/marduk/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/markfoster314/marduk/compare/v0.3.0...v0.3.1
+[0.3.0]: https://github.com/markfoster314/marduk/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/markfoster314/marduk/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/markfoster314/marduk/compare/v0.1.4...v0.2.0
 [0.1.0]: https://github.com/markfoster314/marduk/releases/tag/v0.1.0
