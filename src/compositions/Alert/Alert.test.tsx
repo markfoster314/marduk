@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Alert } from "./Alert";
+import { Text } from "@/components/Text/Text";
 
 describe("Alert", () => {
   describe("Rendering", () => {
@@ -18,6 +19,151 @@ describe("Alert", () => {
       render(<Alert>Message</Alert>);
       const titleElement = document.querySelector(".marduk-alert-title");
       expect(titleElement).not.toBeInTheDocument();
+    });
+
+    it("renders with customTitle", () => {
+      render(<Alert customTitle={<Text>Custom Title</Text>}>Message</Alert>);
+      expect(screen.getByText("Custom Title")).toBeInTheDocument();
+    });
+
+    it("customTitle takes precedence over title", () => {
+      render(
+        <Alert title="String Title" customTitle={<Text>Custom Title</Text>}>
+          Message
+        </Alert>,
+      );
+      expect(screen.getByText("Custom Title")).toBeInTheDocument();
+      expect(screen.queryByText("String Title")).not.toBeInTheDocument();
+    });
+
+    it("renders customTitle with Text component styling", () => {
+      render(
+        <Alert
+          customTitle={
+            <Text preset={["primary"]} size="sm" weight="semibold">
+              Styled Custom Title
+            </Text>
+          }
+        >
+          Message
+        </Alert>,
+      );
+      const customTitle = screen.getByText("Styled Custom Title");
+      expect(customTitle).toBeInTheDocument();
+      expect(customTitle.closest(".marduk-alert-title")).toBeInTheDocument();
+    });
+
+    it("renders with customText", () => {
+      render(<Alert customText={<Text>Custom Text</Text>}>Default Message</Alert>);
+      expect(screen.getByText("Custom Text")).toBeInTheDocument();
+      expect(screen.queryByText("Default Message")).not.toBeInTheDocument();
+    });
+
+    it("customText takes precedence over children", () => {
+      render(
+        <Alert customText={<Text preset={["primary"]}>Custom Message</Text>}>
+          This should be ignored
+        </Alert>,
+      );
+      expect(screen.getByText("Custom Message")).toBeInTheDocument();
+      expect(screen.queryByText("This should be ignored")).not.toBeInTheDocument();
+    });
+
+    it("renders customText with Text component styling", () => {
+      render(
+        <Alert
+          customText={
+            <Text preset={["success"]} size="md" weight="semibold">
+              Styled Custom Text
+            </Text>
+          }
+        >
+          Message
+        </Alert>,
+      );
+      const customText = screen.getByText("Styled Custom Text");
+      expect(customText).toBeInTheDocument();
+      expect(customText.closest(".marduk-alert-message")).toBeInTheDocument();
+    });
+
+    it("renders with customIcon", () => {
+      render(<Alert customIcon={<span data-testid="custom-icon">🔔</span>}>Message</Alert>);
+      expect(screen.getByTestId("custom-icon")).toBeInTheDocument();
+    });
+
+    it("customIcon replaces default variant icon", () => {
+      const { container } = render(
+        <Alert variant="error" customIcon={<span data-testid="custom-icon">⚠️</span>}>
+          Message
+        </Alert>,
+      );
+      expect(screen.getByTestId("custom-icon")).toBeInTheDocument();
+      // Default error icon (SkullCrossbonesIcon) should not be present
+      const defaultIcon = container.querySelector(".marduk-alert-icon svg");
+      expect(defaultIcon).not.toBeInTheDocument();
+    });
+
+    it("renders customIcon with custom styling", () => {
+      render(
+        <Alert
+          customIcon={
+            <span data-testid="styled-icon" style={{ fontSize: "24px", color: "red" }}>
+              🎯
+            </span>
+          }
+        >
+          Message
+        </Alert>,
+      );
+      const customIcon = screen.getByTestId("styled-icon");
+      expect(customIcon).toBeInTheDocument();
+      expect(customIcon.closest(".marduk-alert-icon")).toBeInTheDocument();
+    });
+
+    it("renders with customButton when closable is true", () => {
+      render(
+        <Alert closable customButton={<button data-testid="custom-button">Close</button>}>
+          Message
+        </Alert>,
+      );
+      expect(screen.getByTestId("custom-button")).toBeInTheDocument();
+    });
+
+    it("customButton replaces default close button", () => {
+      render(
+        <Alert closable customButton={<button data-testid="custom-button">Dismiss</button>}>
+          Message
+        </Alert>,
+      );
+      expect(screen.getByTestId("custom-button")).toBeInTheDocument();
+      expect(screen.queryByLabelText("Close alert")).not.toBeInTheDocument();
+    });
+
+    it("does not render customButton when closable is false", () => {
+      render(
+        <Alert closable={false} customButton={<button data-testid="custom-button">Close</button>}>
+          Message
+        </Alert>,
+      );
+      expect(screen.queryByTestId("custom-button")).not.toBeInTheDocument();
+    });
+
+    it("renders customButton with custom styling", () => {
+      render(
+        <Alert
+          closable
+          customButton={
+            <button data-testid="styled-button" style={{ padding: "8px", fontSize: "14px" }}>
+              Custom Close
+            </button>
+          }
+        >
+          Message
+        </Alert>,
+      );
+      const customButton = screen.getByTestId("styled-button");
+      expect(customButton).toBeInTheDocument();
+      expect(customButton.closest(".marduk-alert-close")).toBeInTheDocument();
     });
   });
 
@@ -139,6 +285,103 @@ describe("Alert", () => {
       expect(alert).toHaveClass("marduk-alert--success");
       expect(alert).toHaveClass("marduk-alert--animation-fadeInUp");
       expect(alert).toHaveClass("marduk-alert--dark");
+    });
+  });
+
+  describe("Close Animation", () => {
+    it("does not apply close animation class by default", () => {
+      const { container } = render(<Alert closable>Message</Alert>);
+      const alert = container.querySelector(".marduk-alert");
+      expect(alert).not.toHaveClass("marduk-alert--close-animation-fadeOutLeft");
+      expect(alert).not.toHaveClass("marduk-alert--close-animation-fadeOutDown");
+      expect(alert).not.toHaveAttribute("data-close-animation");
+    });
+
+    it("does not apply close animation class when closeAnimation is 'none'", () => {
+      render(
+        <Alert closable closeAnimation="none">
+          Message
+        </Alert>,
+      );
+      const alert = screen.getByRole("alert");
+      expect(alert).not.toHaveClass("marduk-alert--close-animation-fadeOutLeft");
+      expect(alert).not.toHaveClass("marduk-alert--close-animation-fadeOutDown");
+      expect(alert).not.toHaveAttribute("data-close-animation");
+    });
+
+    test.each([["fadeOutLeft"], ["fadeOutDown"]] as const)(
+      "applies %s close animation data attribute",
+      (closeAnimation) => {
+        render(
+          <Alert closable closeAnimation={closeAnimation}>
+            Message
+          </Alert>,
+        );
+        const alert = screen.getByRole("alert");
+        expect(alert).toHaveAttribute("data-close-animation", closeAnimation);
+      },
+    );
+
+    it("applies fadeOutLeft animation class when closing", () => {
+      const { container } = render(
+        <Alert closable closeAnimation="fadeOutLeft">
+          Message
+        </Alert>,
+      );
+      const alert = container.querySelector(".marduk-alert");
+      const closeButton = screen.getByLabelText("Close alert");
+
+      fireEvent.click(closeButton);
+      expect(alert?.className).toContain("marduk-alert--close-animation-fadeOutLeft");
+    });
+
+    it("applies fadeOutDown animation class when closing", () => {
+      const { container } = render(
+        <Alert closable closeAnimation="fadeOutDown">
+          Message
+        </Alert>,
+      );
+      const alert = container.querySelector(".marduk-alert");
+      const closeButton = screen.getByLabelText("Close alert");
+
+      fireEvent.click(closeButton);
+      expect(alert?.className).toContain("marduk-alert--close-animation-fadeOutDown");
+    });
+
+    it("applies close animation and calls onClose after delay", () => {
+      jest.useFakeTimers();
+      const onClose = jest.fn();
+      const { container } = render(
+        <Alert closable closeAnimation="fadeOutLeft" onClose={onClose}>
+          Message
+        </Alert>,
+      );
+      const closeButton = screen.getByLabelText("Close alert");
+
+      fireEvent.click(closeButton);
+      const alert = container.querySelector(".marduk-alert");
+      expect(screen.getByRole("alert")).toBeInTheDocument();
+      expect(alert?.className).toContain("marduk-alert--close-animation-fadeOutLeft");
+      expect(onClose).not.toHaveBeenCalled();
+
+      jest.advanceTimersByTime(400);
+      expect(onClose).toHaveBeenCalled();
+
+      jest.useRealTimers();
+    });
+
+    it("removes alert immediately when closeAnimation is 'none'", () => {
+      const onClose = jest.fn();
+      render(
+        <Alert closable closeAnimation="none" onClose={onClose}>
+          Message
+        </Alert>,
+      );
+      const closeButton = screen.getByLabelText("Close alert");
+
+      fireEvent.click(closeButton);
+      expect(onClose).toHaveBeenCalled();
+      expect(screen.queryByRole("alert")).not.toBeInTheDocument();
     });
   });
 
