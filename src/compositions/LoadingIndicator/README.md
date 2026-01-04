@@ -35,6 +35,29 @@ Change the loading text or hide it completely.
 <LoadingIndicator showText={false} />
 ```
 
+## Custom Text Component
+
+You can pass a custom React element as the text using the `customText` prop. If `customText` is provided, it takes precedence over the default `text` prop. Note that when using `customText`, the animated dots are not automatically included.
+
+```tsx
+import { LoadingIndicator, Text } from "@markfoster314/marduk";
+
+<LoadingIndicator
+  customText={<Text preset={["primary"]} size="md">Custom loading message</Text>}
+  text="This text prop will be ignored when customText is provided"
+/>
+
+<LoadingIndicator
+  customText={
+    <div>
+      <Text preset={["primary"]} weight="semibold">Processing</Text>
+      <Text preset={["primary"]} size="sm">This may take a moment</Text>
+    </div>
+  }
+  text="Loading with complex custom text"
+/>
+```
+
 ## Custom Icon
 
 Pass any React element as the icon.
@@ -131,6 +154,7 @@ The icon, gap, and text size all scale proportionally for smooth UI transitions.
 | `animation`   | `pulse \| rotate \| breathe \| glitch \| ripple \| bounce \| swing \| flip \| orbit \| shake`                                         | `pulse`         | Animation type                                                      |
 | `showText`    | `boolean`                                                                                                                             | `true`          | Show/hide loading text                                              |
 | `text`        | `string`                                                                                                                              | `"Loading"`     | Custom loading text                                                 |
+| `customText`  | `ReactElement`                                                                                                                        | -               | Custom text component (takes precedence over `text`)                |
 | `icon`        | `ReactElement`                                                                                                                        | -               | Custom icon element                                                 |
 | `darkMode`    | `boolean`                                                                                                                             | `false`         | Dark mode styling                                                   |
 | `textVariant` | `default \| primary \| secondary \| success \| danger \| warning \| muted`                                                            | `default`       | Text color variant                                                  |

@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { LoadingIndicator } from "./LoadingIndicator";
+import { Text } from "@/components/Text/Text";
 
 describe("LoadingIndicator", () => {
   describe("Rendering", () => {
@@ -38,6 +39,92 @@ describe("LoadingIndicator", () => {
       } else {
         expect(textQuery).not.toBeInTheDocument();
       }
+    });
+  });
+
+  describe("Custom Text", () => {
+    it("renders customText when provided", () => {
+      render(
+        <LoadingIndicator
+          customText={<Text data-testid="custom-text">Custom loading message</Text>}
+        />,
+      );
+      expect(screen.getByTestId("custom-text")).toBeInTheDocument();
+      expect(screen.getByText("Custom loading message")).toBeInTheDocument();
+    });
+
+    it("customText takes precedence over text prop", () => {
+      render(
+        <LoadingIndicator
+          text="Default text"
+          customText={<Text data-testid="custom-text">Custom text</Text>}
+        />,
+      );
+      expect(screen.getByTestId("custom-text")).toBeInTheDocument();
+      expect(screen.getByText("Custom text")).toBeInTheDocument();
+      expect(screen.queryByText("Default text")).not.toBeInTheDocument();
+    });
+
+    it("customText does not show dots", () => {
+      const { container } = render(<LoadingIndicator customText={<Text>Custom message</Text>} />);
+      const dots = container.querySelectorAll(".marduk-loading-indicator-dot");
+      expect(dots).toHaveLength(0);
+    });
+
+    it("customText respects showText prop", () => {
+      const { rerender } = render(
+        <LoadingIndicator
+          showText={true}
+          customText={<Text data-testid="custom-text">Loading</Text>}
+        />,
+      );
+      expect(screen.getByTestId("custom-text")).toBeInTheDocument();
+
+      rerender(
+        <LoadingIndicator
+          showText={false}
+          customText={<Text data-testid="custom-text">Loading</Text>}
+        />,
+      );
+      expect(screen.queryByTestId("custom-text")).not.toBeInTheDocument();
+    });
+
+    it("customText can contain nested elements", () => {
+      render(
+        <LoadingIndicator
+          customText={
+            <div>
+              <Text weight="bold">Processing</Text>
+              <Text size="sm">This may take a moment</Text>
+            </div>
+          }
+        />,
+      );
+      expect(screen.getByText("Processing")).toBeInTheDocument();
+      expect(screen.getByText("This may take a moment")).toBeInTheDocument();
+    });
+
+    it("customText works with Text component styling", () => {
+      render(
+        <LoadingIndicator
+          customText={
+            <Text preset={["primary"]} size="md" weight="semibold" data-testid="styled-text">
+              Styled Custom Text
+            </Text>
+          }
+        />,
+      );
+      const customText = screen.getByTestId("styled-text");
+      expect(customText).toBeInTheDocument();
+      expect(customText.closest(".marduk-loading-indicator-text")).toBeInTheDocument();
+    });
+
+    it("uses default text when customText is not provided", () => {
+      render(<LoadingIndicator text="Default message" />);
+      expect(screen.getByText("Default message")).toBeInTheDocument();
+      const { container } = render(<LoadingIndicator text="Default message" />);
+      const dots = container.querySelectorAll(".marduk-loading-indicator-dot");
+      expect(dots).toHaveLength(3);
     });
   });
 

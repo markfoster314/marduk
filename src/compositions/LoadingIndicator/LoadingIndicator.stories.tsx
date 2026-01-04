@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { LoadingIndicator } from "./LoadingIndicator";
+import { Text } from "@/components/Text/Text";
 import React from "react";
 import { STORYBOOK_STATUS } from "@/utils/storybook/constants";
 
@@ -9,10 +10,10 @@ const meta: Meta<typeof LoadingIndicator> = {
   parameters: {
     layout: "fullscreen",
     docs: {
-      subtitle: STORYBOOK_STATUS.WIP_FUNCTIONAL,
+      subtitle: STORYBOOK_STATUS.READY,
     },
   },
-  tags: ["autodocs", "status:wip"],
+  tags: ["autodocs", "status:ready"],
   argTypes: {
     animation: {
       control: { type: "select" },
@@ -94,6 +95,24 @@ export const Bounce: Story = {
 
 export const CustomText: Story = {
   render: () => <LoadingIndicator animation="breathe" text="Please wait" textVariant="primary" />,
+};
+
+export const CustomTextComponent: Story = {
+  render: () => (
+    <LoadingIndicator
+      animation="pulse"
+      customText={
+        <div>
+          <Text preset={["primary"]} weight="semibold" size="lg">
+            Processing
+          </Text>
+          <Text preset={["primary"]} size="sm">
+            This may take a moment
+          </Text>
+        </div>
+      }
+    />
+  ),
 };
 
 export const NoText: Story = {

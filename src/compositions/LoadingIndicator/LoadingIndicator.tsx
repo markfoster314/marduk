@@ -11,6 +11,7 @@ export interface LoadingIndicatorProps {
   animation?: LoadingIndicatorAnimation;
   showText?: boolean;
   text?: string;
+  customText?: ReactElement;
   icon?: ReactElement;
   darkMode?: boolean;
   textVariant?: TextVariant;
@@ -40,6 +41,7 @@ export const LoadingIndicator = ({
   animation = "pulse",
   showText = true,
   text = "Loading",
+  customText,
   icon,
   darkMode = false,
   textVariant = "default",
@@ -102,12 +104,15 @@ export const LoadingIndicator = ({
         >
           {logoIcon}
         </Box>
-        {showText && (
-          <Text preset={[textPreset]} className="marduk-loading-indicator-text" as="div">
-            {text}
-            <Dots />
-          </Text>
-        )}
+        {showText &&
+          (customText ? (
+            <Box className="marduk-loading-indicator-text">{customText}</Box>
+          ) : (
+            <Text preset={[textPreset]} className="marduk-loading-indicator-text" as="div">
+              {text}
+              <Dots />
+            </Text>
+          ))}
       </Box>
     </Box>
   );
