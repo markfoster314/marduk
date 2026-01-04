@@ -1,54 +1,90 @@
 .marduk-toast {
+  /* Spacing */
+  --toast-gap: var(--marduk-spacing-5);
+  --toast-padding-block: var(--marduk-spacing-5);
+  --toast-padding-inline: var(--marduk-spacing-6);
+  --toast-offset: 20px;
+
+  /* Sizing */
+  --toast-min-width: 300px;
+  --toast-max-width: 500px;
+  --toast-border-radius: var(--marduk-radius-md);
+
+  /* Shadow */
+  --toast-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  /* Icon */
+  --toast-icon-size: 20px;
+
+  /* Close button */
+  --toast-close-opacity: 0.7;
+  --toast-close-opacity-hover: 1;
+  --toast-close-transition: var(--marduk-transition-fast);
+
+  /* Animation */
+  --toast-animation-duration: var(--marduk-transition-medium);
+  --toast-animation-translate-y: -20px;
+
+  /* Colors - default (info variant) */
+  --toast-bg: var(--marduk-color-primary-50);
+  --toast-border-color: var(--marduk-color-primary-200);
+  --toast-text-color: var(--marduk-color-primary-600);
+  --toast-icon-color: var(--marduk-color-primary-500);
+
   position: fixed;
   display: flex;
   align-items: center;
-  gap: var(--marduk-spacing-5);
-  padding: var(--marduk-spacing-5) var(--marduk-spacing-6);
-  border-radius: var(--marduk-radius-md);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  min-width: 300px;
-  max-width: 500px;
+  gap: var(--toast-gap);
+  padding: var(--toast-padding-block) var(--toast-padding-inline);
+  border-radius: var(--toast-border-radius);
+  box-shadow: var(--toast-shadow);
+  min-width: var(--toast-min-width);
+  max-width: var(--toast-max-width);
   z-index: var(--marduk-z-index-toast);
-  animation: slideIn var(--marduk-transition-medium) ease-out;
+  animation: slideIn var(--toast-animation-duration) ease-out;
   font-family: var(--marduk-font-family-base);
+  background-color: var(--toast-bg);
+  border: 1px solid var(--toast-border-color);
+  color: var(--toast-text-color);
 }
 
 .marduk-toast--top-right {
-  top: 20px;
-  right: 20px;
+  top: var(--toast-offset);
+  right: var(--toast-offset);
 }
 
 .marduk-toast--top-left {
-  top: 20px;
-  left: 20px;
+  top: var(--toast-offset);
+  left: var(--toast-offset);
 }
 
 .marduk-toast--bottom-right {
-  bottom: 20px;
-  right: 20px;
+  bottom: var(--toast-offset);
+  right: var(--toast-offset);
 }
 
 .marduk-toast--bottom-left {
-  bottom: 20px;
-  left: 20px;
+  bottom: var(--toast-offset);
+  left: var(--toast-offset);
 }
 
 .marduk-toast--top-center {
-  top: 20px;
+  top: var(--toast-offset);
   left: 50%;
   transform: translateX(-50%);
 }
 
 .marduk-toast--bottom-center {
-  bottom: 20px;
+  bottom: var(--toast-offset);
   left: 50%;
   transform: translateX(-50%);
 }
 
 .marduk-toast-icon {
-  font-size: 20px;
+  font-size: var(--toast-icon-size);
   line-height: 1;
   flex-shrink: 0;
+  color: var(--toast-icon-color);
 }
 
 .marduk-toast-message {
@@ -58,65 +94,60 @@
 }
 
 .marduk-toast-close {
-  background: none;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
   font-size: var(--marduk-text-size-lg);
   line-height: 1;
-  opacity: 0.7;
-  transition: opacity var(--marduk-transition-fast);
+  color: var(--toast-text-color);
+  opacity: var(--toast-close-opacity);
+  transition:
+    opacity var(--toast-close-transition),
+    background-color var(--toast-close-transition),
+    color var(--toast-close-transition);
   flex-shrink: 0;
 }
 
 .marduk-toast-close:hover {
-  opacity: 1;
+  opacity: var(--toast-close-opacity-hover);
+  background-color: var(--toast-close-bg-hover);
+  border-radius: var(--marduk-radius-sm);
 }
 
+/* Variant colors */
 .marduk-toast--info {
-  background-color: var(--marduk-color-primary-50);
-  border: 1px solid var(--marduk-color-primary-200);
-  color: var(--marduk-color-primary-600);
-}
-
-.marduk-toast--info .marduk-toast-icon {
-  color: var(--marduk-color-primary-500);
+  --toast-bg: var(--marduk-color-primary-50);
+  --toast-border-color: var(--marduk-color-primary-200);
+  --toast-text-color: var(--marduk-color-primary-600);
+  --toast-icon-color: var(--marduk-color-primary-500);
 }
 
 .marduk-toast--success {
-  background-color: var(--marduk-color-success-50);
-  border: 1px solid var(--marduk-color-success-200);
-  color: var(--marduk-color-success-800);
-}
-
-.marduk-toast--success .marduk-toast-icon {
-  color: var(--marduk-color-success-500);
+  --toast-bg: var(--marduk-color-success-50);
+  --toast-border-color: var(--marduk-color-success-200);
+  --toast-text-color: var(--marduk-color-success-800);
+  --toast-icon-color: var(--marduk-color-success-500);
 }
 
 .marduk-toast--warning {
-  background-color: var(--marduk-color-warning-50);
-  border: 1px solid var(--marduk-color-warning-200);
-  color: var(--marduk-color-warning-800);
-}
-
-.marduk-toast--warning .marduk-toast-icon {
-  color: var(--marduk-color-warning-500);
+  --toast-bg: var(--marduk-color-warning-50);
+  --toast-border-color: var(--marduk-color-warning-200);
+  --toast-text-color: var(--marduk-color-warning-800);
+  --toast-icon-color: var(--marduk-color-warning-500);
 }
 
 .marduk-toast--error {
-  background-color: var(--marduk-color-error-50);
-  border: 1px solid var(--marduk-color-error-200);
-  color: var(--marduk-color-error-700);
-}
-
-.marduk-toast--error .marduk-toast-icon {
-  color: var(--marduk-color-error-400);
+  --toast-bg: var(--marduk-color-error-50);
+  --toast-border-color: var(--marduk-color-error-200);
+  --toast-text-color: var(--marduk-color-error-700);
+  --toast-icon-color: var(--marduk-color-error-400);
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(var(--toast-animation-translate-y));
   }
   to {
     opacity: 1;
@@ -125,20 +156,61 @@
 }
 
 .marduk-toast--top-center {
-  animation: slideInCenter var(--marduk-transition-medium) ease-out;
+  animation: slideInCenter var(--toast-animation-duration) ease-out;
 }
 
 .marduk-toast--bottom-center {
-  animation: slideInCenter var(--marduk-transition-medium) ease-out;
+  animation: slideInCenter var(--toast-animation-duration) ease-out;
 }
 
 @keyframes slideInCenter {
   from {
     opacity: 0;
-    transform: translate(-50%, -20px);
+    transform: translate(-50%, var(--toast-animation-translate-y));
   }
   to {
     opacity: 1;
     transform: translate(-50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marduk-toast {
+    animation: none;
+  }
+
+  .marduk-toast--top-center,
+  .marduk-toast--bottom-center {
+    animation: none;
+  }
+
+  .marduk-toast-close {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .marduk-toast {
+    border-width: 2px;
+  }
+
+  .marduk-toast--info {
+    --toast-border-color: var(--marduk-color-primary-400);
+    --toast-text-color: var(--marduk-color-primary-700);
+  }
+
+  .marduk-toast--success {
+    --toast-border-color: var(--marduk-color-success-400);
+    --toast-text-color: var(--marduk-color-success-900);
+  }
+
+  .marduk-toast--warning {
+    --toast-border-color: var(--marduk-color-warning-400);
+    --toast-text-color: var(--marduk-color-warning-900);
+  }
+
+  .marduk-toast--error {
+    --toast-border-color: var(--marduk-color-error-400);
+    --toast-text-color: var(--marduk-color-error-800);
   }
 }

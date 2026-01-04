@@ -1,19 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
+import { ToastVariant, ToastPosition } from "./Toast.types";
+import { Box } from "@/components/Box/Box";
+import { Button } from "@/components/Button/Button";
+import { Text } from "@/components/Text/Text";
 import "./Toast.css";
 
 export interface ToastProps {
   message: string;
-  variant?: "info" | "success" | "warning" | "error";
+  variant?: ToastVariant;
   duration?: number;
   onClose?: () => void;
-  position?:
-    | "top-right"
-    | "top-left"
-    | "bottom-right"
-    | "bottom-left"
-    | "top-center"
-    | "bottom-center";
+  position?: ToastPosition;
+  customIcon?: ReactElement;
+  customText?: ReactElement;
+  customButton?: ReactElement;
 }
+
+export type { ToastVariant, ToastPosition };
 
 export const Toast = ({
   message,
@@ -21,6 +24,9 @@ export const Toast = ({
   duration = 5000,
   onClose,
   position = "top-right",
+  customIcon,
+  customText,
+  customButton,
 }: ToastProps) => {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -54,18 +60,41 @@ export const Toast = ({
     error: "✕",
   };
 
+  const ariaLive = variant === "error" ? "assertive" : "polite";
+
+  const dataAttributes = {
+    "data-variant": variant,
+    "data-position": position,
+  };
+
   return (
-    <div className={toastClasses} role="alert">
-      <div className="marduk-toast-icon">{icons[variant]}</div>
-      <div className="marduk-toast-message">{message}</div>
-      <button
-        type="button"
-        className="marduk-toast-close"
-        onClick={handleClose}
-        aria-label="Close toast"
-      >
-        &#10005;
-      </button>
-    </div>
+    <Box
+      className={toastClasses}
+      role="alert"
+      aria-live={ariaLive}
+      aria-atomic="true"
+      {...dataAttributes}
+    >
+      <Box className="marduk-toast-icon">{customIcon || icons[variant]}</Box>
+      {customText ? (
+        <Box className="marduk-toast-message">{customText}</Box>
+      ) : (
+        <Text className="marduk-toast-message">{message}</Text>
+      )}
+      {customButton ? (
+        <Box className="marduk-toast-close">{customButton}</Box>
+      ) : (
+        <Button
+          type="button"
+          appearance="text"
+          size="small"
+          onClick={handleClose}
+          aria-label="Close toast"
+          className="marduk-toast-close"
+        >
+          &#10005;
+        </Button>
+      )}
+    </Box>
   );
 };
